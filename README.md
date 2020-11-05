@@ -4,7 +4,9 @@
 ### Franco Novara
 ### Valentina Damonte
 ### Lautaro Porlan
-### Francisco Lukac 
+### Francisco Lukac
+#### Ingeniero Civil, 29 años. Me gusta tocar la batería y la guitarra.
+
 
 ## Temática del Market Place
 ### ¿Que productos o servicios brindará el sitio?
