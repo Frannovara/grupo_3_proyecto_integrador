@@ -10,6 +10,7 @@
 
 ## Temática del Market Place
 ### ¿Que productos o servicios brindará el sitio?
+##### El servicio será dedicado a la industria de motocicletas, desde la venta de las mismas hasta accesorios relacionados con su conducción.
 ### ¿Quién será nuestra audiencia objetivo?
 ### ¿Cómo ajustaremos nuestra oferta a ese público?
 
