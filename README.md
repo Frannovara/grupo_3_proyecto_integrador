@@ -2,6 +2,7 @@
 
 ## Integrantes del equipo
 ### Franco Novara
+#### Músico, 22 años. Aficionado de la guitarra y trabajo en una empresa dedicada al SEO.
 ### Valentina Damonte
 ### Lautaro Porlan
 ### Francisco Lukac
