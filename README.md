@@ -17,4 +17,4 @@
 ##### Ajustaremos nuestra oferta a ese público brindando un amplio e intuitivo catálogo del rubro con productos que puedan satisfacer cualquier posibilidad económica de los clientes.
 
 ## Referentes
-#### buscar referencias por los productos o servicios que ofrecen, por los clientes a los que apuntan, por la estética que presentan, por las funcionalidades implementadascd
+##### Mercado Libre, Amazon, Coppel y Harley-Davidson.
