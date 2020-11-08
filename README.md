@@ -13,6 +13,7 @@
 ### ¿Que productos o servicios brindará el sitio?
 ##### El servicio será dedicado a la industria de motocicletas, desde la venta de las mismas hasta accesorios relacionados con su conducción.
 ### ¿Quién será nuestra audiencia objetivo?
+##### Nuestra audiencia objetivo son las personas adeptas a la industria automotriz, específicamente en motocicletas y productos afines a su uso.
 ### ¿Cómo ajustaremos nuestra oferta a ese público?
 
 
