@@ -5,6 +5,7 @@
 #### Músico, 22 años. Aficionado de la guitarra y trabajo en una empresa dedicada al SEO.
 ### Valentina Damonte
 ### Lautaro Porlan
+#### Tecnico en electronica, 28 años. Trabajo para NCR Argentina, me gusta viajar, el futbol y el gamming
 ### Francisco Lukac
 #### Ingeniero Civil, 29 años. Me gusta tocar la batería y la guitarra.
 
