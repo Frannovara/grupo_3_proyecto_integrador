@@ -4,6 +4,7 @@
 ### Franco Novara
 #### Músico, 22 años. Aficionado de la guitarra y trabajo en una empresa dedicada al SEO.
 ### Valentina Damonte
+### Estudiante de diseño, 21 años. 
 ### Lautaro Porlan
 #### Tecnico en electronica, 28 años. Trabajo para NCR Argentina, me gusta viajar, el futbol y el gamming
 ### Francisco Lukac
