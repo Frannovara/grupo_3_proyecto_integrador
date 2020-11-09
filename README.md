@@ -5,6 +5,7 @@
 #### Músico, 22 años. Aficionado de la guitarra y trabajo en una empresa dedicada al SEO.
 ### Valentina Damonte
 ### Lautaro Porlan
+#### Tecnico en electronica, 28 años. Trabajo para NCR Argentina, me gusta viajar, el futbol y el gamming
 ### Francisco Lukac
 #### Ingeniero Civil, 29 años. Me gusta tocar la batería y la guitarra.
 
@@ -16,6 +17,7 @@
 ##### Nuestra audiencia objetivo son las personas adeptas a la industria automotriz, específicamente en motocicletas y productos afines a su uso.
 ### ¿Cómo ajustaremos nuestra oferta a ese público?
 ##### Ajustaremos nuestra oferta a ese público brindando un amplio e intuitivo catálogo del rubro con productos que puedan satisfacer cualquier posibilidad económica de los clientes.
+
 
 ## Referentes
 ##### Mercado Libre, Amazon, Coppel y Harley-Davidson.
