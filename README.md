@@ -20,4 +20,8 @@
 
 
 ## Referentes
-##### Mercado Libre, Amazon, Coppel y Harley-Davidson.
+##### Mercado Libre
+##### Amazon
+##### Coppel
+##### Harley-Davidson
+##### https://www.purecycles.com/
