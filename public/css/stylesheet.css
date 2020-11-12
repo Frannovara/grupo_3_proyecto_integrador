@@ -1,0 +1,106 @@
+body {
+    font-family: 'Courier New', Courier, monospace;
+}
+/*Desde esta linea hasta nuevo aviso se estiliza el buscador con hover */
+.navbar {
+    display: inline-block;
+    background-color: #f1f8fe;
+    border-radius: 20px;
+    border: solid 2px #8aa4ba;
+    padding: 10px;
+}
+#buscador{
+    display:none;
+}
+.buscador {
+    background-color: inherit;
+    border: none;
+}
+.navbar:hover #buscador{
+    display: inline-block;
+}
+/*Hasta acá es el estilizado del buscador*/
+
+.margen-superior {
+    background-color: #FCA311;
+    text-align: left;
+    padding: 5px;
+}
+
+.logo {
+    width: 25%;
+    margin-left: 0%;
+    text-align: left;
+}
+
+.pie-de-pagina{
+    background-color: #265277;
+    padding: 15px;
+    text-align: center;
+}
+.links-inferiores {
+    margin: auto;
+}
+.margen-inferior{
+    background-color: #FCA311;
+    margin: auto;
+    text-align: center;
+}
+
+.div-logo-inferior {
+    margin: auto;
+    padding: 10px;
+}
+
+.logo-inferior {
+    color: #265277;
+    padding: 3px;
+}
+
+.link-inferior {
+    color: #FCA311;
+    text-decoration: none;
+    padding: 10px 3px;
+}
+.div-margen-superior {
+    margin-right: 10%;
+    text-align: right;
+}
+
+.logo-superior {
+    color: #265277;
+    text-decoration: none;
+    margin-right: 0px;
+    padding: 3px;
+}
+.login {
+    color: #FCA311;
+    text-decoration: none;
+    padding: 5px;
+    border: solid 2px #8aa4ba;
+    border-radius: 5px;
+}
+
+.carrito {
+    padding: 5px;
+}
+
+.encabezado {
+    width: 80%;
+    margin: auto;
+    background-color: #265277;
+}
+
+.indice {
+    color: #FCA311;
+    display: inline-block;
+    float: right;
+    padding: 4%;
+}
+.div-encabezado {
+    background-color: #265277;
+}
+
+.fas {
+    color: #FCA311;
+}
