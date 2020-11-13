@@ -15,7 +15,19 @@ app.get('/', function (req, res) {
     res.sendFile(__dirname + '/views/index.html')
 })
 app.get('/login', function (req,res) {
-    res.sendFile(__dirname + 'views/login.html')
+    res.sendFile(__dirname + '/views/login.html')
+})
+app.get('/productoCart', function (req,res) {
+    res.sendFile(__dirname + '/views/productoCart.html')
+})
+app.get('/login', function (req,res) {
+    res.sendFile(__dirname + '/views/login.html')
+})
+app.get('/login', function (req,res) {
+    res.sendFile(__dirname + '/views/login.html')
+})
+app.get('/login', function (req,res) {
+    res.sendFile(__dirname + '/views/login.html')
 })
 
 //links de las imagenes y stylesheet
