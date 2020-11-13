@@ -1,106 +1,226 @@
-body {
-    font-family: 'Courier New', Courier, monospace;
+* {
+    font-family: sans-serif
 }
+
+/*Mobile first: primero definimos el style de la versión mobile 450px o menos con media queries*/
+@media (max-width: 500px){
+    .margen-superior {
+        display: none;
+    }
+    .logo-azul{
+        display: none;
+    }
+    .login{
+        display: none;
+    }
+
+    #indice {
+        display: none;
+    }
+
+    .menu-list li {
+        list-style-type: none;
+        text-align: center;
+    }
+    .menu-list a {
+        display: block;
+        text-decoration: none;
+        color: #265277;
+    }
+
+    .menu-content {
+        max-height: 0;
+        overflow: hidden;
+    }
+    .menu-content ul li {
+        border-bottom: solid 1px #265277;
+    }
+    input:checked ~ .menu-content {
+        max-height: 100%;
+    }
+    
+    input#menu {
+        display: none;
+    }
+      
+    .encabezado {
+        width: 100%;
+        margin: auto;
+        background-color: #FCA311;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .collapsible-menu {
+        float: right;
+    }
+
+    .login-mobile {
+        order: 1;
+        color: #265277
+    }
+   
+    .buscador {
+        color: #265277;
+        background-color: inherit;
+        border: none;
+    }
+
+    .pie-de-pagina{
+        background-color: #265277;
+        padding: 15px;
+        text-align: center;
+    }
+    .links-inferiores {
+        margin: auto;
+    }
+    .margen-inferior{
+        background-color: #FCA311;
+        margin: auto;
+        text-align: center;
+    }
+
+    .div-logo-inferior {
+        margin: auto;
+        padding: 10px;
+    }
+
+    .logo-inferior {
+        color: #265277;
+        padding: 3px;
+    }
+
+    .link-inferior {
+        color: #FCA311;
+        text-decoration: none;
+        padding: 10px 3px;
+    }
+}
+
+/*A partir de ahora definimos el estilo de la versión web*/
+
 /*Desde esta linea hasta nuevo aviso se estiliza el buscador con hover */
-.navbar {
-    display: inline-block;
-    background-color: #f1f8fe;
-    border-radius: 20px;
-    border: solid 2px #8aa4ba;
-    padding: 10px;
-}
-#buscador{
-    display:none;
-}
-.buscador {
-    background-color: inherit;
-    border: none;
-}
-.navbar:hover #buscador{
-    display: inline-block;
-}
-/*Hasta acá es el estilizado del buscador*/
+@media (min-width: 501px){
+    .logo-naranja {
+        display: none;
+    }
+    .login-mobile{
+        display: none;
+    }
+    .collapsible-menu {
+        display: none;
+    }
 
-.margen-superior {
-    background-color: #FCA311;
-    text-align: left;
-    padding: 5px;
-}
+    .navbar {
+        display: inline-block;
+        background-color: #f1f8fe;
+        border-radius: 20px;
+        border: solid 2px #8aa4ba;
+        padding: 10px;
+    }
+    #buscador{
+        display:none;
+    }
+    .buscador {
+        background-color: inherit;
+        border: none;
+    }
+    .navbar:hover #buscador{
+        display: inline-block;
+    }
+    /*Hasta acá es el estilizado del buscador*/
 
-.logo {
-    width: 25%;
-    margin-left: 0%;
-    text-align: left;
-}
+    .margen-superior {
+        background-color: #FCA311;
+        text-align: left;
+        padding: 5px;
+    }
 
-.pie-de-pagina{
-    background-color: #265277;
-    padding: 15px;
-    text-align: center;
-}
-.links-inferiores {
-    margin: auto;
-}
-.margen-inferior{
-    background-color: #FCA311;
-    margin: auto;
-    text-align: center;
-}
+    .pie-de-pagina{
+        background-color: #265277;
+        padding: 15px;
+        text-align: center;
+    }
+    .links-inferiores {
+        margin: auto;
+    }
+    .margen-inferior{
+        background-color: #FCA311;
+        margin: auto;
+        text-align: center;
+    }
 
-.div-logo-inferior {
-    margin: auto;
-    padding: 10px;
-}
+    .div-logo-inferior {
+        margin: auto;
+        padding: 10px;
+    }
 
-.logo-inferior {
-    color: #265277;
-    padding: 3px;
-}
+    .logo-inferior {
+        color: #265277;
+        padding: 3px;
+    }
 
-.link-inferior {
-    color: #FCA311;
-    text-decoration: none;
-    padding: 10px 3px;
-}
-.div-margen-superior {
-    margin-right: 10%;
-    text-align: right;
-}
+    .link-inferior {
+        color: #FCA311;
+        text-decoration: none;
+        padding: 10px 3px;
+    }
+    .div-margen-superior {
+        margin-right: 10%;
+        text-align: right;
+    }
 
-.logo-superior {
-    color: #265277;
-    text-decoration: none;
-    margin-right: 0px;
-    padding: 3px;
-}
-.login {
-    color: #FCA311;
-    text-decoration: none;
-    padding: 5px;
-    border: solid 2px #8aa4ba;
-    border-radius: 5px;
-}
+    .logo-superior {
+        color: #265277;
+        text-decoration: none;
+        margin-right: 0px;
+        padding: 3px;
+    }
 
-.carrito {
-    padding: 5px;
-}
+    /*encabezado logo e indice son los tres elementos que configuran el header azul*/
+    .encabezado {
+        width: 80%;
+        margin: auto;
+        background-color: #265277;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
 
-.encabezado {
-    width: 80%;
-    margin: auto;
-    background-color: #265277;
-}
+    .logo-azul {
+        display: inline;
+        width:45%;
+        margin-left: 0%;
+        text-align: left;
+    }
 
-.indice {
-    color: #FCA311;
-    display: inline-block;
-    float: right;
-    padding: 4%;
-}
-.div-encabezado {
-    background-color: #265277;
-}
+    .indice {
+        color: #FCA311;
+        float: right;
+    }
 
-.fas {
-    color: #FCA311;
+    .carrito {
+        padding: 5px;
+    }
+
+    .login {
+        display: inline;
+        color: #FCA311;
+        text-decoration: none;
+        padding: 5px;
+        border: solid 2px #8aa4ba;
+        border-radius: 5px;
+    }
+
+    .div-encabezado {
+        background-color: #265277;
+    }
+
+    .fas {
+        color: #FCA311;
+    }
 }
