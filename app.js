@@ -20,8 +20,8 @@ app.get('/login', function (req,res) {
 app.get('/productoCart', function (req,res) {
     res.sendFile(__dirname + '/views/productoCart.html')
 })
-app.get('/login', function (req,res) {
-    res.sendFile(__dirname + '/views/login.html')
+app.get('/nosotros', function (req,res) {
+    res.sendFile(__dirname + '/views/nosotros.html')
 })
 app.get('/login', function (req,res) {
     res.sendFile(__dirname + '/views/login.html')
