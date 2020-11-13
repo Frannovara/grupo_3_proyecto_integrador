@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/Frannovara/grupo_3_proyecto_integrador/issues"
   },
-  "homepage": "https://github.com/Frannovara/grupo_3_proyecto_integrador#readme"
+  "homepage": "https://github.com/Frannovara/grupo_3_proyecto_integrador#readme",
+  "dependencies": {
+    "exprexx": "^1.0.0"
+  }
 }
