@@ -115,9 +115,7 @@
 
     .navbar {
         display: inline-block;
-        background-color: #f1f8fe;
-        border-radius: 20px;
-        border: solid 2px #8aa4ba;
+        background-color: #265277;
         padding: 10px;
     }
     #buscador{
@@ -127,8 +125,14 @@
         background-color: inherit;
         border: none;
     }
+
     .navbar:hover #buscador{
         display: inline-block;
+    }
+    .navbar:hover {
+        background-color: #f1f8fe;
+        border-radius: 20px;
+        border: solid 2px #8aa4ba;
     }
     /*Hasta acá es el estilizado del buscador*/
 
@@ -204,16 +208,15 @@
     }
 
     .carrito {
-        padding: 5px;
+        padding: 8px;
     }
 
     .login {
         display: inline;
         color: #FCA311;
         text-decoration: none;
-        padding: 5px;
-        border: solid 2px #8aa4ba;
-        border-radius: 5px;
+        padding:10 px;
+        
     }
 
     .div-encabezado {
