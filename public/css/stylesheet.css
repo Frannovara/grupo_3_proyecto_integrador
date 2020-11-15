@@ -226,4 +226,47 @@
     .fas {
         color: #FCA311;
     }
+
+    /* estilos section motos home*/
+
+    .section1 {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around ;
+
+    }
+    .div-articulos {
+        margin: 0 auto;
+        max-width: 900px;
+        flex-direction: row;
+        
+    }
+    article img {
+        width: 100%;
+    }
+    
+    .article-home {
+        border: 4px solid #265277;
+        border-radius: 6px;
+        margin-top : 10px;
+        margin-bottom: 10px;  
+        
+    }  
+    .p-home {
+        font-family: sans-serif;
+        color:#173650;
+        background-color: #FCA311 ;
+        text-align: center;
+    }
+    
+    
+    
+    
+    .img1 {width: 250px;
+        height: 250px;
+
+    }
+
+
 }
