@@ -267,18 +267,22 @@
 /* aca terminan estilos en la parte de las motos*/
 
 .div-ofertas {
-    padding: 5px;
+    padding: 2px;
     text-align: center;
     background-color:#FCA311;
     color: #265277;
     height: 40px;
+    
 }
 .div-imagen-home{
-    margin-left: 70px;
-    width: 90%;
+    
+    width: 100%;
     display: flex;
     justify-content: center;
     
+}
+body {
+    background-color: rgb(187, 186, 206)
 }
 
 
