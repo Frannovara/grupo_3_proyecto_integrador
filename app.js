@@ -30,6 +30,10 @@ app.get('/register', function (req,res) {
     res.sendFile(__dirname + '/views/register.html')
 })
 
+app.post( '/' , function (req, res) {
+    res.redirect('/')
+})
+
 //links de las imagenes y stylesheet
 app.get('*', function (req,res) {
     res.sendFile(__dirname + '/public/' + req.url)

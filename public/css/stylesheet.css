@@ -1,9 +1,13 @@
 * {
     font-family: sans-serif
 }
+a {
+    text-decoration: none;
+    color: inherit;
+}
 
 /*Mobile first: primero definimos el style de la versión mobile 450px o menos con media queries*/
-@media (max-width: 500px){
+
     .margen-superior {
         display: none;
     }
@@ -97,12 +101,76 @@
         text-decoration: none;
         padding: 10px 3px;
     }
-}
+    main.login{
+        text-align: center;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        color: #265277;
+    }
+    .campo-datos {
+        background-color: #f1f8fe;
+        border: solid 2px #8aa4ba;
+        border-radius: 5px;
+        padding: 10px;
+        color: #265277;
+        margin: 10px;
+        padding-left: 20px;
+        display: flex;
+    }
+    input {
+        background-color: inherit;
+        border: none;
+        flex-grow: 1;
+        margin: 0px 5px;
+    }
+
+    .boton-form {
+        margin: 5px;
+        background-color: #f1f8fe;
+        border: solid 2px #265277;
+        border-radius: 5px;
+        color: #265277;
+        padding: 5px;
+        width: fit-content;
+    }
+    .registrate {
+        margin: 5px 0px 15px 0px;
+        font-size:80%;
+    }
+    label {
+        font-weight: bold;
+    }
+
+    .olvide-pass {
+        font-size:80%;
+    }
+
+    h1.titulo-seccion {
+        font-size: 100%;
+    }
 
 /*A partir de ahora definimos el estilo de la versión web*/
 
 /*Desde esta linea hasta nuevo aviso se estiliza el buscador con hover */
 @media (min-width: 501px){
+    
+    .logo-azul{
+        display: inline-block;
+    }
+    .login{
+        display: inline-block;
+    }
+
+    #indice {
+        display: inline-block;
+    }
+    a {
+        text-decoration: none;
+    }
+
     .logo-naranja {
         display: none;
     }
@@ -140,6 +208,8 @@
         background-color: #FCA311;
         text-align: left;
         padding: 5px;
+        display: inherit;
+        width: 100%;
     }
 
     .pie-de-pagina{
@@ -281,9 +351,7 @@
     justify-content: center;
     
 }
-body {
-    background-color: rgb(187, 186, 206)
-}
+
 
 
 
