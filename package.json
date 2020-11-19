@@ -1,0 +1,23 @@
+{
+  "name": "grupo_3_proyecto_integrador",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Frannovara/grupo_3_proyecto_integrador.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Frannovara/grupo_3_proyecto_integrador/issues"
+  },
+  "homepage": "https://github.com/Frannovara/grupo_3_proyecto_integrador#readme",
+  "dependencies": {
+    "exprexx": "^1.0.0"
+  }
+}
