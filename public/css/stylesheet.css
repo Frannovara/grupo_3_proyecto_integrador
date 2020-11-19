@@ -97,7 +97,7 @@
         text-decoration: none;
         padding: 10px 3px;
     }
-    /* Adaptacion de estilos para productos version mobile*/
+    /* Adaptacion de estilos para productos version mobile (home)*/
     .img1 {width: 250px;
         height: 250px;
 
@@ -130,7 +130,8 @@
         border-radius: 6px;
         margin-top : 10px;
         margin-bottom: 10px; 
-        background-color: white; 
+        background-color: white;
+         
         
     }  
     .p-home {
@@ -141,8 +142,16 @@
     }
     body {
         background-color: rgb(187, 186, 206);
+        
     }
-
+    .div-ofertas {
+        padding: 2px;
+        text-align: center;
+        background-color:#FCA311;
+        color: #265277;
+        height: 40px;
+        
+    }
     
 
 
@@ -314,6 +323,7 @@
         height: 250px;
         display:flex;
         justify-content: center;
+        margin-right: 5% ;
         
 
     }
