@@ -1,13 +1,9 @@
 * {
     font-family: sans-serif
 }
-a {
-    text-decoration: none;
-    color: inherit;
-}
 
 /*Mobile first: primero definimos el style de la versión mobile 450px o menos con media queries*/
-
+@media (max-width: 500px){
     .margen-superior {
         display: none;
     }
@@ -101,76 +97,61 @@ a {
         text-decoration: none;
         padding: 10px 3px;
     }
-    main.login{
-        text-align: center;
+    /* Adaptacion de estilos para productos version mobile*/
+    .img1 {width: 250px;
+        height: 250px;
+
+    }
+    .div-imagen-home{
+    
+        width: 100%;
+        display: none;
+        justify-content: center;
+        
+    }
+    .section1 {
+        width: 100%;
         display: flex;
         flex-wrap: wrap;
+        justify-content: space-around ;
+        
+        
+
+    }
+    .div-articulos {
+        margin: 0 auto;
+        max-width: 900px;
         flex-direction: column;
-        justify-content: space-between;
-        align-items: center;
-        color: #265277;
+        
+        
     }
-    .campo-datos {
-        background-color: #f1f8fe;
-        border: solid 2px #8aa4ba;
-        border-radius: 5px;
-        padding: 10px;
-        color: #265277;
-        margin: 10px;
-        padding-left: 20px;
-        display: flex;
+    .article-home {
+        border: 4px solid #265277;
+        border-radius: 6px;
+        margin-top : 10px;
+        margin-bottom: 10px; 
+        background-color: white; 
+        
+    }  
+    .p-home {
+        font-family: sans-serif;
+        color:#173650;
+        background-color: #FCA311 ;
+        text-align: center;
     }
-    input {
-        background-color: inherit;
-        border: none;
-        flex-grow: 1;
-        margin: 0px 5px;
-    }
-
-    .boton-form {
-        margin: 5px;
-        background-color: #f1f8fe;
-        border: solid 2px #265277;
-        border-radius: 5px;
-        color: #265277;
-        padding: 5px;
-        width: fit-content;
-    }
-    .registrate {
-        margin: 5px 0px 15px 0px;
-        font-size:80%;
-    }
-    label {
-        font-weight: bold;
+    body {
+        background-color: rgb(187, 186, 206);
     }
 
-    .olvide-pass {
-        font-size:80%;
-    }
+    
 
-    h1.titulo-seccion {
-        font-size: 100%;
-    }
+
+}
 
 /*A partir de ahora definimos el estilo de la versión web*/
 
 /*Desde esta linea hasta nuevo aviso se estiliza el buscador con hover */
 @media (min-width: 501px){
-    
-    .logo-azul{
-        display: inline-block;
-    }
-    .login{
-        display: inline-block;
-    }
-
-    #indice {
-        display: inline-block;
-    }
-    a {
-        text-decoration: none;
-    }
-
     .logo-naranja {
         display: none;
     }
@@ -208,8 +189,6 @@ a {
         background-color: #FCA311;
         text-align: left;
         padding: 5px;
-        display: inherit;
-        width: 100%;
     }
 
     .pie-de-pagina{
@@ -297,7 +276,7 @@ a {
         color: #FCA311;
     }
 
-    /* estilos section motos home*/
+    /* estilos section motos home desktop*/
 
     .section1 {
         width: 100%;
@@ -320,7 +299,8 @@ a {
         border: 4px solid #265277;
         border-radius: 6px;
         margin-top : 10px;
-        margin-bottom: 10px;  
+        margin-bottom: 10px; 
+        background-color: white; 
         
     }  
     .p-home {
@@ -332,6 +312,9 @@ a {
     
     .img1 {width: 250px;
         height: 250px;
+        display:flex;
+        justify-content: center;
+        
 
     }
 /* aca terminan estilos en la parte de las motos*/
@@ -351,12 +334,13 @@ a {
     justify-content: center;
     
 }
+body {
+    background-color: rgb(187, 186, 206);
+    display: inline
+    
+    
+    
 
-
-
-
-
-
-
+}
 
 }
