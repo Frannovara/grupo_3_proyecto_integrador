@@ -97,6 +97,55 @@
         text-decoration: none;
         padding: 10px 3px;
     }
+    /* Adaptacion de estilos para productos version mobile*/
+    .img1 {width: 250px;
+        height: 250px;
+
+    }
+    .div-imagen-home{
+    
+        width: 100%;
+        display: none;
+        justify-content: center;
+        
+    }
+    .section1 {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around ;
+        
+        
+
+    }
+    .div-articulos {
+        margin: 0 auto;
+        max-width: 900px;
+        flex-direction: column;
+        
+        
+    }
+    .article-home {
+        border: 4px solid #265277;
+        border-radius: 6px;
+        margin-top : 10px;
+        margin-bottom: 10px; 
+        background-color: white; 
+        
+    }  
+    .p-home {
+        font-family: sans-serif;
+        color:#173650;
+        background-color: #FCA311 ;
+        text-align: center;
+    }
+    body {
+        background-color: rgb(187, 186, 206);
+    }
+
+    
+
+
 }
 
 /*A partir de ahora definimos el estilo de la versión web*/
@@ -227,7 +276,7 @@
         color: #FCA311;
     }
 
-    /* estilos section motos home*/
+    /* estilos section motos home desktop*/
 
     .section1 {
         width: 100%;
@@ -250,7 +299,8 @@
         border: 4px solid #265277;
         border-radius: 6px;
         margin-top : 10px;
-        margin-bottom: 10px;  
+        margin-bottom: 10px; 
+        background-color: white; 
         
     }  
     .p-home {
@@ -262,6 +312,9 @@
     
     .img1 {width: 250px;
         height: 250px;
+        display:flex;
+        justify-content: center;
+        
 
     }
 /* aca terminan estilos en la parte de las motos*/
@@ -282,13 +335,12 @@
     
 }
 body {
-    background-color: rgb(187, 186, 206)
+    background-color: rgb(187, 186, 206);
+    display: inline
+    
+    
+    
+
 }
-
-
-
-
-
-
 
 }
