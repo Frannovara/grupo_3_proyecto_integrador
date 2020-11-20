@@ -48,10 +48,17 @@
         margin: auto;
         background-color: #FCA311;
         display: flex;
-        flex-wrap: wrap;
+        /*flex-wrap: wrap;*//*esto lo comente para arreglar el logo en mobile*/
         flex-direction: column;
         justify-content: space-between;
         align-items: center;
+    }
+    .img-logo-naranja{
+        width: 327px;
+        padding: 5%;
+        
+        
+        
     }
     .collapsible-menu {
         float: right;
