@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/Frannovara/grupo_3_proyecto_integrador#readme",
   "dependencies": {
+    "express": "^4.17.1",
     "exprexx": "^1.0.0"
   }
 }

@@ -359,5 +359,9 @@ body {
     
 
 }
+/*Desde aca se arma el listado de productos en carrito de compras*/
+.productos-carrito{
+    background-color: white;
+}
 
 }
