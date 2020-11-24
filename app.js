@@ -32,6 +32,9 @@ app.get('/register', function (req,res) {
 app.get('/contact', function (req,res) {
     res.sendFile(__dirname + '/views/contact.html')
 })
+app.get('/productDetail', function (req,res) {
+    res.sendFile(__dirname + '/views/productDetail.html')
+})
 
 app.post( '/' , function (req, res) {
     res.redirect('/')
