@@ -436,6 +436,7 @@
         justify-content: space-between;
         border-radius: 8px;
         background-color: white;
+        background-color: #F1F8FE;
         margin: 6% 2% 6% 2%;
         border: solid 2px #265277;
         color: rgb(85, 83, 83);
@@ -460,6 +461,7 @@
         justify-content: space-between;
         border-radius: 8px;
         background-color: white;
+        background-color: #F1F8FE;
         margin: 6% 2% 6% 2%;
         border: solid 2px #265277;
         color: rgb(85, 83, 83);
@@ -483,6 +485,7 @@
     justify-content: space-between;
     border-radius: 8px;
     background-color: white;
+    background-color: #F1F8FE;
     margin: 6% 2% 1% 2%;
     border: solid 2px #265277;
     color: rgb(85, 83, 83);
@@ -496,14 +499,16 @@
 
 .boton-compra{
     color: #04233b;
-    background-color: rgb(161, 219, 221);
+    background-color: white;
     display: flex;
-    border-radius: 8px;
+    border-radius: 5px;
     border: solid 2px #04233b;
     font-size: 14px;
-    margin: 15px;
+    width: fit-content;
+    margin: 5px;
     margin-left: 1224px;
-    padding: 11px;
+    padding: 5px;
+    border: solid 2px #04233b;
 }
 
 
