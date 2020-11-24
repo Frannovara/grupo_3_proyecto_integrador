@@ -21,9 +21,12 @@
 
 
 ## Referentes
-##### Mercado Libre
-##### Amazon
-##### Coppel
-##### Harley-Davidson
+##### Mercado Libre https://www.mercadolibre.com.ar/
+##### Amazon https://www.amazon.com/
+##### Coppel https://www.coppel.com.ar/
+##### Harley-Davidson https://harley-davidson.com.ar/
 ##### https://www.purecycles.com/
 ##### https://argentina.benelli.com
+
+## Link tablero Trello
+##### https://trello.com/b/t020Y50o/trabajo-integrador-gr-3
