@@ -532,12 +532,15 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around ;
+    background-color: #f1f8fe;
+    border-radius: 6px;
 
 }
 .div-articulo {
     margin: 0 auto;
     max-width: 900px;
     flex-direction: row;
+    
 }
 
 .article-moto {
@@ -546,10 +549,18 @@
     margin-top : 10px;
     margin-bottom: 10px; 
     background-color: white; 
+   
 }
+.p-product {
+    font-family: sans-serif;
+    color:#173650;
+    background-color: #FCA311 ;
+    text-align: center;
+}
+
 .caracteristicas{
     border-radius: 6px;
-    background-color: rgb(221, 220, 220); 
+    background-color: #f1f8fe;
     margin-left: 2%;
     margin-right: 2%;
     margin-bottom: 2%;
@@ -591,7 +602,34 @@
 .acomodar{
     margin-right: 20%;
     margin-top: 2%;
+    display: flex;
+    flex-wrap: wrap;
    
   
 
+}
+.background{
+    border-radius: 6px;
+    background-color: #f1f8fe;
+    
+
+
+}
+
+.background-fondo{
+    border-radius: 6px;
+    background-color: #f1f8fe;
+    margin-top: 2%;
+
+
+}
+.section{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+@media (max-width:500px) {
+    section{
+        flex-direction: column;
+    }
 }
