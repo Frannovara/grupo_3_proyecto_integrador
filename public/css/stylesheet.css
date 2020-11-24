@@ -496,14 +496,16 @@
 
 .boton-compra{
     color: #04233b;
-    background-color: rgb(161, 219, 221);
+    background-color: white;
     display: flex;
-    border-radius: 8px;
+    border-radius: 5px;
     border: solid 2px #04233b;
     font-size: 14px;
-    margin: 15px;
+    width: fit-content;
+    margin: 5px;
     margin-left: 1224px;
-    padding: 11px;
+    padding: 5px;
+    border: solid 2px #04233b;
 }
 .flechas-cantidad {
     display: flex;
