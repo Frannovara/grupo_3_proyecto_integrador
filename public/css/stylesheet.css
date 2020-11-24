@@ -434,4 +434,13 @@ body {
 .total-numero{
     margin-right: 10%;
 }
+.boton-compra{
+    color: #04233b;
+    display: flex;
+    border-radius: 8px;
+    border: solid 2px #04233b;
+    font-size: 18px;
+    margin: 15px;
+    padding: 11px;
+}
 }
