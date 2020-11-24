@@ -434,4 +434,91 @@ body {
 .total-numero{
     margin-right: 10%;
 }
+
+
+
+
+
+/* detalle de producto*/
+
+
+
+.sugerencias {
+    font-family:sans-serif ;
+    margin-left: 30%;
+    margin-right: 22%;
+    margin-top : 60px;
+    margin-bottom: 40px; 
+    
+    
+
+}
+
+.section-pd {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around ;
+
+}
+.div-articulo {
+    margin: 0 auto;
+    max-width: 900px;
+    flex-direction: row;
+}
+
+.article-moto {
+    border: 4px solid #265277;
+    border-radius: 6px;
+    margin-top : 10px;
+    margin-bottom: 10px; 
+    background-color: white; 
+}
+.caracteristicas{
+    border-radius: 6px;
+    background-color: rgb(221, 220, 220); 
+    margin-left: 2%;
+    margin-right: 2%;
+    margin-bottom: 2%;
+    margin-top: 2%;
+    
+
+}
+
+.lista{
+    margin-bottom: 2%;
+    margin-top: 2%;
+    margin-left: 5%; 
+    display:flex;
+}
+
+.div-imagen-moto1{
+    width: 700px;
+    height: 600px;
+    margin-left: 15%;
+    margin-top: 2%;
+    border: 4px solid #265277;
+    border-radius: 6px;
+}
+
+.listas-caracteristicas{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.listas{
+    display: flex;
+    margin-top: 2%;
+    margin-bottom: 20%;
+    
+    
+}
+
+.acomodar{
+    margin-right: 20%;
+    margin-top: 2%;
+   
+  
+
 }
