@@ -435,7 +435,7 @@
         display: flex;
         justify-content: space-between;
         border-radius: 8px;
-        background-color: rgb(228, 220, 220);
+        background-color: white;
         margin: 6% 2% 6% 2%;
         border: solid 2px #265277;
         color: rgb(85, 83, 83);
@@ -459,7 +459,7 @@
         display: flex;
         justify-content: space-between;
         border-radius: 8px;
-        background-color: rgb(228, 220, 220);
+        background-color: white;
         margin: 6% 2% 6% 2%;
         border: solid 2px #265277;
         color: rgb(85, 83, 83);
@@ -482,7 +482,7 @@
     display: flex;
     justify-content: space-between;
     border-radius: 8px;
-    background-color: rgb(228, 220, 220);
+    background-color: white;
     margin: 6% 2% 1% 2%;
     border: solid 2px #265277;
     color: rgb(85, 83, 83);
@@ -505,11 +505,6 @@
     margin-left: 1224px;
     padding: 11px;
 }
-.flechas-cantidad {
-    display: flex;
-    flex-direction: column;
-    margin: -331% -29% 0% 85%;
-}
 
 
 /* detalle de producto*/
@@ -518,10 +513,11 @@
 
 .sugerencias {
     font-family:sans-serif ;
-    margin-left: 30%;
-    margin-right: 22%;
-    margin-top : 60px;
-    margin-bottom: 40px; 
+    margin-left: 0%;
+    margin-right: 0%;
+    text-align: center;
+    color:#173650;
+    background-color: #FCA311 ;
     
     
 
@@ -532,7 +528,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around ;
-    background-color: #f1f8fe;
+    
     border-radius: 6px;
 
 }
@@ -577,10 +573,8 @@
 }
 
 .div-imagen-moto1{
-    width: 700px;
-    height: 600px;
-    margin-left: 15%;
-    margin-top: 2%;
+    width: 50%;
+    margin-top: 0%;
     border: 4px solid #265277;
     border-radius: 6px;
 }
@@ -588,7 +582,7 @@
 .listas-caracteristicas{
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    
 }
 
 .listas{
@@ -600,10 +594,11 @@
 }
 
 .acomodar{
-    margin-right: 20%;
+    margin: 2%;
     margin-top: 2%;
-    display: flex;
-    flex-wrap: wrap;
+    text-align: left;
+    
+    
    
   
 
@@ -628,8 +623,28 @@
     flex-wrap: wrap;
     flex-direction: row;
 }
-@media (max-width:500px) {
-    section{
-        flex-direction: column;
-    }
+
+.boton-agregar{
+    color: #04233b;
+    background-color: white;
+    display: flex;
+    border-radius: 4px;
+    border: solid 1px #04233b;
+    font-size: 12px;
+    margin-top: 250%;
+    margin-left: 0%;
 }
+
+.boton-agregarcarrito{
+    color: #04233b;
+    background-color: white;
+    display: flex;
+    border-radius: 4px;
+    border: solid 1px #04233b;
+    font-size: 12px;
+    margin-top: 4%;
+    margin-left: 0%;
+
+}
+/* detalle de prod version mobile */
+
