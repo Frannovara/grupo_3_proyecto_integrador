@@ -505,6 +505,11 @@
     margin-left: 1224px;
     padding: 11px;
 }
+.flechas-cantidad {
+    display: flex;
+    flex-direction: column;
+    margin: -331% -29% 0% 85%;
+}
 
 
 /* detalle de producto*/
