@@ -3,9 +3,11 @@
 }
 
 /*Mobile first: primero definimos el style de la versión mobile 450px o menos con media queries*/
-@media (max-width: 500px){
+
+    /* diseño del encabezado */
     .margen-superior {
         display: none;
+        width: 100%;
     }
     .logo-azul{
         display: none;
@@ -13,21 +15,49 @@
     .login{
         display: none;
     }
-
-    #indice {
+    .indice {
         display: none;
     }
-
+    .encabezado {
+        width: 100%;
+        margin: auto;
+        background-color: #FCA311;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .logo-naranja {
+        text-align: center;
+        display: block;
+        margin: 5px;
+    }
+    .logo-naranja-img {
+        width: 80%;       
+    }
+    .menu {
+        text-align: center;
+        margin-bottom: 5px;
+    }
+    .collapsible-menu {
+        float: center;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        color: #265277;
+    }
     .menu-list li {
         list-style-type: none;
         text-align: center;
+    }
+    .menu-list {
+        padding-inline-start: 0%;
     }
     .menu-list a {
         display: block;
         text-decoration: none;
         color: #265277;
     }
-
     .menu-content {
         max-height: 0;
         overflow: hidden;
@@ -38,52 +68,24 @@
     input:checked ~ .menu-content {
         max-height: 100%;
     }
-    
     input#menu {
         display: none;
     }
-      
-    .encabezado {
-        width: 100%;
-        margin: auto;
-        background-color: #FCA311;
-        display: flex;
-        /*flex-wrap: wrap;*//*esto lo comente para arreglar el logo en mobile*/
-        flex-direction: column;
-        justify-content: space-between;
-        align-items: center;
-        margin-left: 0%;
-    }
-    .img-logo-naranja{
-        width: 327px;
-        padding: 5%;
-        
-        
-        
-    }
-    .collapsible-menu {
-        float: right;
-        margin: -9% 14% 1% 1%;
-        justify-content: center;
-    }
-
     .menu-nav-mobile {
         display: flex;
         align-items: center;
-        margin: 1% 1% 1% 53%;
     }
-
     .login-mobile {
         order: 1;
         color: #265277
     }
-   
     .buscador {
         color: #265277;
         background-color: inherit;
         border: none;
     }
-
+    /* fin diseño encabezado */
+    /* diseño del pie de página */
     .pie-de-pagina{
         background-color: #265277;
         padding: 15px;
@@ -97,22 +99,20 @@
         margin: auto;
         text-align: center;
     }
-
     .div-logo-inferior {
         margin: auto;
         padding: 10px;
     }
-
     .logo-inferior {
         color: #265277;
         padding: 3px;
     }
-
     .link-inferior {
         color: #FCA311;
         text-decoration: none;
         padding: 10px 3px;
     }
+    /* fin pie de página */
     /* Adaptacion de estilos para productos version mobile (home)*/
     .img1 {width: 250px;
         height: 250px;
@@ -156,10 +156,11 @@
         background-color: #FCA311 ;
         text-align: center;
     }
-    body {
-        background-color: rgb(187, 186, 206);
-        
+    
+    .product-detail {
+        text-decoration: none;
     }
+
     .div-ofertas {
         padding: 2px;
         text-align: center;
@@ -169,9 +170,67 @@
         
     }
     
-
-
-}
+    /* Diseño de los formularios de login y registro */
+    .login-form {
+        color: #265277;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .campo-datos {
+        border: solid 2px #265277;
+        border-radius: 5px;
+        padding: 5px;
+        margin: 5px;
+        width: 300px;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+    }
+    .campo-datos-type {
+        border: none;
+        flex-grow: 1;
+    }
+    .boton-form {
+        border: solid 2px #04233b;
+        border-radius: 5px;
+        background-color: white;
+        color: #04233b;
+        margin: 5px;
+        padding: 5px;
+        width: fit-content;
+    }
+    .register-form {
+        text-align: center;
+        color: #265277;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        align-items: center;
+        margin: 10px;
+        font-size: 18px;
+    }
+    .register-form-block {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+    .register-form-terms {
+        margin: 10px;
+        font-size: 80%;
+    }
+    .register-form-button {
+        border: solid 2px #265277;
+        border-radius: 5px;
+        padding: 5px;
+        display: inline-block;
+        margin: 10px;
+        background-color: white;
+        color: #265277;
+    }
+    /* fin diseño formularios */
 
 /*A partir de ahora definimos el estilo de la versión web*/
 
@@ -185,6 +244,12 @@
     }
     .collapsible-menu {
         display: none;
+    }
+    .margen-superior {
+        display: inline-block;
+    }
+    .indice {
+        display: inline-block;
     }
 
     .navbar {
@@ -290,6 +355,7 @@
         color: #FCA311;
         text-decoration: none;
         padding:10 px;
+        text-align: center;
         
     }
 
@@ -345,104 +411,99 @@
     }
 /* aca terminan estilos en la parte de las motos*/
 
-.div-ofertas {
-    padding: 2px;
-    text-align: center;
-    background-color:#FCA311;
-    color: #265277;
-    height: 40px;
-    
-}
-.div-imagen-home{
-    
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    
-}
-body {
-    background-color: white;
-    display: inline
-    
-    
-    
-
-}
-/*Desde aca se arma el listado de productos en carrito de compras*/
-.carrito-compras{
-    background-color: white;
-}
-.productos-carrito-div{
-    display: flex;
-    justify-content: space-between;
-    border-radius: 8px;
-    background-color: white;
-    margin: 6% 2% 6% 2%;
-    border: solid 2px #265277;
-    color: rgb(85, 83, 83);
-}
-/*Color gris para las letras del carrito*/
+    .div-ofertas {
+        padding: 2px;
+        text-align: center;
+        background-color:#FCA311;
+        color: #265277;
+        height: 40px;
+        
+    }
+    .div-imagen-home{
+        
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        
+    }
+   
+    /*Desde aca se arma el listado de productos en carrito de compras*/
+    .carrito-compras{
+        background-color: white;
+    }
+    .productos-carrito-div{
+        display: flex;
+        justify-content: space-between;
+        border-radius: 8px;
+        background-color: white;
+        margin: 6% 2% 6% 2%;
+        border: solid 2px #265277;
+        color: rgb(85, 83, 83);
+    }
+    /*Color gris para las letras del carrito*/
 
 
-.producto-listado{
-    margin-left: 11%;
-}
-.precio-unitario{
-    margin-left: 35%;
-}
-.cantidad-listado{
-    margin-right: 1px;
-}
-.subtotal-listado{
-    margin-right: 10%;
-}
-.productos-en-carrito{
-    display: flex;
-    justify-content: space-between;
-    border-radius: 8px;
-    background-color: white;
-    margin: 6% 2% 6% 2%;
-    border: solid 2px #265277;
-    color: rgb(85, 83, 83);
-}
+    .producto-listado{
+        margin-left: 11%;
+    }
+    .precio-unitario{
+        margin-left: 35%;
+    }
+    .cantidad-listado{
+        margin-right: 1px;
+    }
+    .subtotal-listado{
+        margin-right: 10%;
+    }
+    .productos-en-carrito{
+        display: flex;
+        justify-content: space-between;
+        border-radius: 8px;
+        background-color: white;
+        margin: 6% 2% 6% 2%;
+        border: solid 2px #265277;
+        color: rgb(85, 83, 83);
+    }
 
-}
-.motos-carrito{
-    margin-left: 11%;
-}
-.precio-numeros{
-    margin-left: 35%;
-}
-.cantidad-numeros{
-    margin-right: 1px;
-}
-.subtotal-numeros{
-    margin-right: 10%;
-}
-.total-carrito{
-    display: flex;
-    justify-content: space-between;
-    border-radius: 8px;
-    background-color: white;
-    margin: 6% 2% 1% 2%;
-    border: solid 2px #265277;
-    color: rgb(85, 83, 83);
-}
-.total-listado{
-    margin-left: 11%;
-}
-.total-numero{
-    margin-right: 10%;
-}
-.boton-compra{
-    color: #04233b;
-    background-color: rgb(161, 219, 221);
-    display: flex;
-    border-radius: 8px;
-    border: solid 2px #04233b;
-    font-size: 14px;
-    margin: 15px;
-    margin-left: 1224px;
-    padding: 11px;
-}
+    .motos-carrito{
+        margin-left: 11%;
+    }
+    .precio-numeros{
+        margin-left: 35%;
+    }
+    .cantidad-numeros{
+        margin-right: 1px;
+    }
+    .subtotal-numeros{
+        margin-right: 10%;
+    }
+    .total-carrito{
+        display: flex;
+        justify-content: space-between;
+        border-radius: 8px;
+        background-color: white;
+        margin: 6% 2% 1% 2%;
+        border: solid 2px #265277;
+        color: rgb(85, 83, 83);
+    }
+    .total-listado{
+        margin-left: 11%;
+    }
+    .total-numero{
+        margin-right: 10%;
+    }
+    .boton-compra{
+        color: #04233b;
+        background-color: rgb(161, 219, 221);
+        display: flex;
+        border-radius: 8px;
+        border: solid 2px #04233b;
+        font-size: 14px;
+        margin: 15px;
+        margin-left: 1224px;
+        padding: 11px;
+    }
+    .product-detail {
+        text-decoration: none;
+    }
 }
