@@ -23,13 +23,13 @@ app.get('/productoCart', function (req,res) {
 app.get('/nosotros', function (req,res) {
     res.sendFile(__dirname + '/views/nosotros.html')
 })
-app.get('/help', function (req,res) {
+app.get('/ayuda', function (req,res) {
     res.sendFile(__dirname + '/views/help.html')
 })
 app.get('/register', function (req,res) {
     res.sendFile(__dirname + '/views/register.html')
 })
-app.get('/contact', function (req,res) {
+app.get('/contacto', function (req,res) {
     res.sendFile(__dirname + '/views/contact.html')
 })
 app.get('/productDetail', function (req,res) {
