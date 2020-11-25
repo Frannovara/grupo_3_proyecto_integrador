@@ -238,29 +238,37 @@
 
     /*version mobile product detail*/
 
-    /*.sugerencias {
-        display:none;
-        
-    
+    .sugerencias {
+        display:none;   
     }
     
     .section-pd {
         display:none;
-    
+        
     }
     .div-articulo {
-        display:none;
+        width: 1366px;
+        margin: 0 auto;
+        
+        flex-direction: row;
+        /*max-width: 900px;*/
     }
     
     .article-moto {
-        display:none;
+        border: 4px solid #265277;
+        border-radius: 6px;
+        margin-top : 10px;
+        margin-bottom: 10px; 
+        background-color: white; 
        
     }
+       
+    
     .div-imagen-moto1{
         width: 100%;
         margin-top: 0%;
         border: 4px solid #265277;
-        border-radius: 6px;} */
+        border-radius: 6px;} 
     
     
 
@@ -558,7 +566,7 @@
     color:#173650;
     background-color: #FCA311 ;
     width: 1366px;
-    
+    display: inline-block;
 
 }
 
