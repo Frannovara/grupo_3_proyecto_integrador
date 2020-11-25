@@ -584,12 +584,15 @@ margin: -331% -29% 0% 85%;
     }
     .precio-unitario{
         margin-left: 35%;
+        font-size: medium;
     }
     .cantidad-listado{
         margin-right: 1px;
+        font-size: medium;
     }
     .subtotal-listado{
         margin-right: 10%;
+        font-size: medium;
     }
     .productos-en-carrito{
         display: flex;
