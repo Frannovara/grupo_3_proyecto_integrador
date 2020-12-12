@@ -374,8 +374,19 @@ margin: -331% -29% 0% 85%;
 ::placeholder {
     color: #265277;
 }
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 .contact-form-input {
     width: 300px;
+    margin: 10px;
+    border: #265277 solid 2px;
+    padding: 5px;
+    border-radius: 15px;
+}
+.contact-form-boton {
     margin: 10px;
     border: #265277 solid 2px;
     padding: 5px;
