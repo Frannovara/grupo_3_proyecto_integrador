@@ -15,7 +15,8 @@ app.set ('view engine', 'ejs')
 
 
 app.use ('/', mainRoutes)
-app.use ('/productDetail', productRoutes)
+app.use ('/products', productRoutes)
+app.use ('/users' , userRoutes)
 app.use (express.static (__dirname + '/public/'));
 
 
