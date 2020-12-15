@@ -1,8 +1,9 @@
 const express = require ('express');
 const app = express();
-const mainRoutes = require ('./routes/main')
-const productRoutes = require ('./routes/products')
-const userRoutes = require ('./routes/users')
+const mainRoutes = require ('./routes/main');
+const productRoutes = require ('./routes/products');
+const userRoutes = require ('./routes/users');
+const methodOverride = require('method-override');
 
 
 let PORT = 3000
@@ -18,3 +19,4 @@ app.use ('/', mainRoutes)
 app.use ('/products', productRoutes)
 app.use ('/users' , userRoutes)
 app.use (express.static (__dirname + '/public/'));
+app.use(methodOverride('_method'));

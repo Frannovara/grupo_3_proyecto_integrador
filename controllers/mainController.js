@@ -12,6 +12,9 @@ const controlador = {
     help: (req,res) => {
         res.render ('help')
     },
+    form: function (req, res) {
+        res.redirect('/')
+    },
     
     }
 

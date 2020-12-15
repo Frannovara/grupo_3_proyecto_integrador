@@ -7,7 +7,7 @@ router.get('/', mainController.home)
 router.get('/contacto', mainController.contact)
 router.get('/nosotros', mainController.nosotros)
 router.get('/ayuda', mainController.help)
-
+router.post( '/' , mainController.form)
 
 
 
