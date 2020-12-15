@@ -4,6 +4,9 @@
 button:hover {
     cursor: pointer;
 }
+body {
+    margin: 0;
+}
 
 /*Mobile first: primero definimos el style de la versión mobile 450px o menos con media queries*/
 
