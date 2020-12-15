@@ -18,9 +18,3 @@ app.use ('/', mainRoutes)
 app.use ('/products', productRoutes)
 app.use ('/users' , userRoutes)
 app.use (express.static (__dirname + '/public/'));
-
-
-app.post( '/' , function (req, res) {
-    res.redirect('/')
-})
-
