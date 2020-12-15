@@ -118,8 +118,12 @@
     
     /* Adaptacion de estilos para productos version mobile (home)*/
     .img1 {width: 250px;
+    }
+    .div-img1 {
+        width: 250px;
         height: 250px;
-
+        display: flex;
+        align-items: center;
     }
     .div-imagen-home{
     
@@ -263,12 +267,7 @@
        
     }
        
-    
-    .div-imagen-moto1{
-        width: 100%;
-        margin-top: 0%;
-        border: 4px solid #265277;
-        border-radius: 6px;} 
+
 
 /*Version mobile carrito*/
 
@@ -564,14 +563,6 @@ margin: -331% -29% 0% 85%;
         text-align: center;
     }
     
-    .img1 {width: 250px;
-        height: 250px;
-        display:flex;
-        justify-content: center;
-        margin-right: 5% ;
-        
-
-    }
 /* aca terminan estilos en la parte de las motos*/
 
     .div-ofertas {
@@ -694,7 +685,7 @@ margin: -331% -29% 0% 85%;
         text-align: center;
         color:#173650;
         background-color: #FCA311 ;
-        width: 1366px;
+        width: 90%;
         display: inline-block;
 
     }
@@ -709,7 +700,7 @@ margin: -331% -29% 0% 85%;
 
     }
     .div-articulo {
-        max-width: 1366px;
+        max-width: 90%;
         margin: 0 auto;
         
         flex-direction: row;
@@ -738,7 +729,6 @@ margin: -331% -29% 0% 85%;
         margin-right: 2%;
         margin-bottom: 2%;
         margin-top: 2%;
-        max-width: 1366px;
     }
 
     .lista{
@@ -747,12 +737,17 @@ margin: -331% -29% 0% 85%;
         margin-left: 5%; 
         display:flex;
     }
-
-    .div-imagen-moto1{
-        width: 50%;
-        margin-top: 0%;
-        border: 4px solid #265277;
-        border-radius: 6px;
+    
+    .div-imagen-moto{
+       width: 50%;
+       border: 4px solid #265277;
+       border-radius: 6px;
+       background-color: #ffffff;
+       display: flex;
+       align-items: center;
+    }
+    .imagen-moto {
+        width: 100%;
     }
     .product-details {
         display: flex;
@@ -762,7 +757,6 @@ margin: -331% -29% 0% 85%;
     .listas-caracteristicas{
         display: flex;
         justify-content: left;
-        width: 1366px;
     }
 
     .listas{
@@ -781,18 +775,14 @@ margin: -331% -29% 0% 85%;
     .background{
         border-radius: 6px;
         background-color: #f1f8fe;
-        
-
-
+        width: 90%;
     }
 
     .background-fondo{
-        width: 1366px;
         border-radius: 6px;
         background-color: #f1f8fe;
         margin-top: 2%;
-
-
+        width: 90%;
     }
     .section{
         display: flex;
