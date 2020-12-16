@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('partials/head.ejs') %>
+<body>
+    <%- include('./partials/header') %>
+    
+    <main class="login-form">
+        <h1 class="titulo-seccion">Ingreso</h1>
+        <form action="/" method="POST">
+            <label for="email">E-mail</label>
+            <div class="campo-datos">
+                <i class="fas fa-envelope"></i><input type="email" name="email" id="email" class="campo-datos-type">
+            </div>
+            <label for="password">Contraseña</label>
+            <div class="campo-datos">
+                <i class="fas fa-lock"></i><input type="password" name="password" id="password" class="campo-datos-type">
+            </div>
+            <p class="olvide-pass">Olvidé mi contraseña</p>
+            <button type="submit" class="boton-form">Ingresar</button>
+        </form>
+        <div class="boton-form"><i class="fab fa-google-plus-g"></i>   Ingresá con Google</div>
+        <div class="boton-form"><i class="fab fa-facebook-f"></i>   Ingresá con Facebook</div>
+        <a href="/users/register" class="registrate">¿No tenés una cuenta? Resgistrate</a>
+    </main>    
+    
+    <%- include('./partials/footer') %>
+</body>
+</html>
