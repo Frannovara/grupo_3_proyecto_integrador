@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('../partials/head') %>
+<body>
+    <%- include('../partials/header') %>
+    <main>
+        <section class="carrito-compras">
+            <div class="productos-carrito-div">
+            <h4 class="producto-listado">Producto/s</h4>
+            <h4 class="precio-unitario">Precio unitario</h4>
+            <h4 class="cantidad-listado">Cantidad</h4>
+            <h4 class="subtotal-listado">Subtotal</h4>
+            </div>
+            <div class="productos-en-carrito">
+                <h5 class="motos-carrito">Moto</h5>
+                <h5 class="precio-numeros">$0.00</h5>
+                <div class="cantidad-carrito">
+                <h5 class="cantidad-numeros">0</h5>
+                <div class="flechas-cantidad">
+                <i class="fas fa-chevron-up"></i>
+                <i class="fas fa-chevron-down"></i>
+                </div>
+                </div>
+                <h5 class="subtotal-numeros">$0.00</h5>
+            </div>
+            <div class="total-carrito">
+                <h4 class="total-listado">Total</h4>
+                <h5 class="total-numero">$0.00</h5>
+            </div>
+            <div>
+                <button type="button" class="boton-compra"><strong>COMPRAR</strong></button>
+            </div>
+        </section>
+    </main>
+    <%- include('../partials/footer') %>
+</body>
+</html>
