@@ -426,6 +426,21 @@ margin: -331% -29% 0% 85%;
 }
 /* fin creacion producto */
 
+.error-404 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #173650;
+}
+.error-404-inicio a{
+    text-decoration: none;
+    color: #173650;
+}
+.error-404-inicio {
+    margin: 15px;
+}
+/* fin error 404 */
+
 
 /*A partir de ahora definimos el estilo de la versión web*/
 

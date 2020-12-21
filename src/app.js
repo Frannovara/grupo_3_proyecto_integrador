@@ -7,7 +7,7 @@ const methodOverride = require('method-override');
 const path = require ('path');
 
 
-let PORT = 3001
+let PORT = 3000
 // app.listen crea el servidor
 app.listen (PORT, function () {
     console.log('Corriendo servidor en http://localhost:'+ PORT +'/')
