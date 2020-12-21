@@ -295,6 +295,8 @@ input:focus {
 
 .carrito-compras{
     background-color: white;
+    display: flex;
+    flex-direction: column;
 }
 .productos-carrito-div{
     display: flex;
@@ -353,9 +355,9 @@ display: flex;
 justify-content: space-between;
 border-bottom-left-radius: 8px;
 border-bottom-right-radius: 8px;
-background-color: white;
 background-color: #F1F8FE;
-margin: 6% 2% 1% 2%;
+border-top: #265277 solid 2px;
+margin: 0 2% 1% 2%;
 color: rgb(85, 83, 83);
 }
 .total-listado{
@@ -364,19 +366,19 @@ margin-left: 3%;
 .total-numero{
 margin-right: 4%;
 }
-
+.boton-compra-div {
+    display: flex;
+    justify-content: center;
+}
 .boton-compra{
-color: #04233b;
-background-color: white;
-display: flex;
-border-radius: 5px;
-border: solid 2px #04233b;
-font-size: 14px;
-width: fit-content;
-margin: 5px;
-margin-left: 280px;
-padding: 5px;
-border: solid 2px #04233b;
+    color: #173650;
+    background-color: #FCA311;
+    border-radius: 5px;
+    font-size: 14px;
+    width: fit-content;
+    margin: 5px;
+    padding: 5px;
+    border: none;
 }
 .flechas-cantidad {
 display: flex;
@@ -658,7 +660,6 @@ margin: -331% -29% 0% 85%;
    
     /*Desde aca se arma el listado de productos en carrito de compras*/
     .carrito-compras{
-        background-color: white;
     }
     .productos-carrito-div{
         display: flex;
@@ -712,10 +713,6 @@ margin: -331% -29% 0% 85%;
     .total-carrito{
         display: flex;
         justify-content: space-between;
-        background-color: white;
-        background-color: #F1F8FE;
-        margin: 0% 2% 1% 2%;
-        color: rgb(85, 83, 83);
     }
     .total-listado{
         margin-left: 11%;
@@ -725,18 +722,8 @@ margin: -331% -29% 0% 85%;
     }
 
     .boton-compra{
-        color: #04233b;
-        background-color: white;
-        display: flex;
-        border-radius: 5px;
-        border: solid 2px #04233b;
-        font-size: 14px;
-        width: fit-content;
-        margin: 5px;
-        margin-left: 1224px;
-        padding: 5px;
-        border: solid 2px #04233b;
     }
+
     .flechas-cantidad {
         display: flex;
         flex-direction: column;
