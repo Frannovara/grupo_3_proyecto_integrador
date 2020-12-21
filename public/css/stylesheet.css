@@ -220,9 +220,9 @@ input:focus {
         flex-grow: 1;
     }
     .boton-form {
-        border: solid 2px #04233b;
+        border: none;
         border-radius: 5px;
-        background-color: white;
+        background-color: #FCA311;
         color: #04233b;
         margin: 5px;
         padding: 5px;
@@ -248,13 +248,16 @@ input:focus {
         font-size: 80%;
     }
     .register-form-button {
-        border: solid 2px #265277;
+        border: none;
         border-radius: 5px;
         padding: 5px;
         display: inline-block;
         margin: 10px;
-        background-color: white;
+        background-color: #FCA311;
         color: #265277;
+    }
+    .registrate {
+        padding: 10px;
     }
     /* fin diseño formularios */
 
@@ -295,13 +298,13 @@ input:focus {
 }
 .productos-carrito-div{
     display: flex;
-    justify-content: space-between;
-    border-radius: 8px;
-    background-color: white;
     background-color: #F1F8FE;
-    margin: 6% 2% 6% 2%;
-    border: solid 2px #265277;
-    color: rgb(85, 83, 83);
+    justify-content: space-between;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    border-bottom: solid 2px #265277;
+    margin: 6% 2% 0 2%;
+    color: #173650;
 }
 /*Color gris para las letras del carrito*/
 
@@ -325,11 +328,10 @@ input:focus {
 .productos-en-carrito{
     display: flex;
     justify-content: space-between;
-    border-radius: 8px;
     background-color: white;
     background-color: #F1F8FE;
-    margin: 6% 2% 6% 2%;
-    border: solid 2px #265277;
+    margin: 0 2%;
+    border-bottom: #265277 solid 1px;
     color: rgb(85, 83, 83);
 }
 
@@ -349,11 +351,11 @@ margin-right: 4%;
 .total-carrito{
 display: flex;
 justify-content: space-between;
-border-radius: 8px;
+border-bottom-left-radius: 8px;
+border-bottom-right-radius: 8px;
 background-color: white;
 background-color: #F1F8FE;
 margin: 6% 2% 1% 2%;
-border: solid 2px #265277;
 color: rgb(85, 83, 83);
 }
 .total-listado{
@@ -661,12 +663,10 @@ margin: -331% -29% 0% 85%;
     .productos-carrito-div{
         display: flex;
         justify-content: space-between;
-        border-radius: 8px;
-        background-color: white;
-        background-color: #F1F8FE;
-        margin: 6% 2% 6% 2%;
-        border: solid 2px #265277;
-        color: rgb(85, 83, 83);
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+        margin: 6% 2% 0 2%;
+        color: #173650;
     }
     /*Color gris para las letras del carrito*/
 
@@ -689,11 +689,10 @@ margin: -331% -29% 0% 85%;
     .productos-en-carrito{
         display: flex;
         justify-content: space-between;
-        border-radius: 8px;
         background-color: white;
         background-color: #F1F8FE;
-        margin: 6% 2% 6% 2%;
-        border: solid 2px #265277;
+        margin: 0 2%;
+        border-bottom: #265277 solid 1px;
         color: rgb(85, 83, 83);
     }
 
@@ -713,11 +712,9 @@ margin: -331% -29% 0% 85%;
     .total-carrito{
         display: flex;
         justify-content: space-between;
-        border-radius: 8px;
         background-color: white;
         background-color: #F1F8FE;
-        margin: 6% 2% 1% 2%;
-        border: solid 2px #265277;
+        margin: 0% 2% 1% 2%;
         color: rgb(85, 83, 83);
     }
     .total-listado{
