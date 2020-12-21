@@ -192,6 +192,16 @@ body {
         align-items: center;
         text-align: center;
     }
+    .olvide-pass-link {
+        padding: 15px;
+    }
+    .olvide-pass-link a {
+        text-decoration: none;
+        color: #173650;
+    }
+    .olvide-pass-link:hover a {
+        text-decoration: underline;
+    }
     .campo-datos {
         border: solid 2px #265277;
         border-radius: 5px;
