@@ -25,7 +25,7 @@ const controladorProductos = {
     },
     productEdit: (req, res) => {
       res.render ('./products/productEdit')
-    },
+    }
 }
 
 module.exports = controladorProductos;
