@@ -4,6 +4,9 @@ const path = require('path');
 
 const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
+const productsFilePath = path.join(__dirname, '../data/productsDataBase.json');
+const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
+
 const controladorProductos = {
     productDetail: function(req, res) {
       const product = products.find(item =>  item.id == req.params.id);
@@ -12,7 +15,7 @@ const controladorProductos = {
 		  } else {
 			  product.price = toThousand (product.price)
 		  }
-      res.render('./products/productDetail/:id' , {product, title: product.name});
+      res.render('./products/productDetail' , {product, title: product.name});
     },
     productCart: function (req,res) {
       res.render('./products/productCart')
