@@ -152,20 +152,20 @@ input:focus {
     }
     .div-articulos {
         margin: 0 auto;
-        max-width: 900px;
+        padding: 0 5%;
         flex-direction: column;
-        
-        
+        background-color: #F1F8FE;
     }
     .article-home {
-        border: 4px solid #265277;
+        border: 1px solid #F1F8FE;
         border-radius: 6px;
         margin-top : 10px;
         margin-bottom: 10px; 
-        background-color: white;
-         
-        
+        background-color: white;        
     }  
+    .article-home:hover {
+        border: 1px solid #265277;
+    }
     .p-home {
         font-family: sans-serif;
         color:#173650;
@@ -493,6 +493,30 @@ margin: -331% -29% 0% 85%;
 }
 /* fin new password */
 
+/* diseño nosotros */
+.nosotros-seccion {
+    display: flex;
+    flex-direction: column;
+    background-color: #F1F8FE;
+}
+
+.concesionaria {
+    width: 100%;
+}
+.nosotros-texto {
+    padding: 2%;
+    font-family: 'Rubik';
+}
+.nosotros-titulo {
+    font-family: 'Rubik', sans-serif;
+    font-style: italic;
+}
+.link-direccion {
+    text-decoration: none;
+    color: #265277;
+}
+/* fin nosotros */
+
 /*A partir de ahora definimos el estilo de la versión web*/
 
 /*Desde esta linea hasta nuevo aviso se estiliza el buscador con hover */
@@ -639,7 +663,6 @@ margin: -331% -29% 0% 85%;
     }
     .div-articulos {
         margin: 0 auto;
-        max-width: 900px;
         flex-direction: row;
         
     }
@@ -647,14 +670,7 @@ margin: -331% -29% 0% 85%;
         width: 100%;
     }
     
-    .article-home {
-        border: 4px solid #265277;
-        border-radius: 6px;
-        margin-top : 10px;
-        margin-bottom: 10px; 
-        background-color: white; 
-        
-    }  
+  
     .p-home {
         font-family: sans-serif;
         color:#173650;
@@ -861,6 +877,21 @@ margin: -331% -29% 0% 85%;
         flex-direction: row;
     }
 
+    /* diseño nosotros */
+    .nosotros-seccion {
+        flex-direction: row;
+    }
+    .concesionario-div {
+        display: flex;
+        align-items: center;
+        flex-shrink: 1;
+    }
+    .concesionaria {
+        width: 100%;
+    }
+    .nosotros-texto {
+        flex-shrink: 2;
+    }
     
 
 }
