@@ -1,4 +1,5 @@
 const { name } = require('ejs');
+const { json } = require('express');
 const fs = require('fs');
 const path = require('path');
 
@@ -20,15 +21,23 @@ const controladorProductos = {
 		  }
       res.render('./products/detail' , {product, title: product.name});
     },
+    deleted : function (req , res){
+      const productsFiltered = products.filter((product) => product.id != req.params.id);
+      let productsJSON = JSON.stringify(productsFiltered);
+      fs.writeFileSync (productsFilePath , productsJSON);
+      res.redirect('./products')
+    },
     cart: function (req,res) {
       res.render('./products/cart')
     },
     create: (req, res) => {
+     
       res.render('./products/create')
     },
     edit: (req, res) => {
       res.render ('./products/edit')
-    }
+    },
+    
 }
 
 module.exports = controladorProductos;
