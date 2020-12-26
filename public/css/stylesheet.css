@@ -289,6 +289,18 @@ input:focus {
         font-size: 12px;
         margin-left: 0%;
         padding:5px;
+        margin: 4px;
+    }
+    .boton-editar{
+        color: #04233b;
+        background-color: rgb(253, 28, 28);
+        display: flex;
+        border-radius: 5px;
+        border: none;
+        font-size: 12px;
+        margin-left: 0%;
+        padding:5px;
+        margin: 4px;
     }
     .boton-agregarcarrito{
         color: #04233b;
@@ -300,6 +312,7 @@ input:focus {
         margin-top: 4%;
         margin-left: 0%;
         padding:5px;
+        margin: 4px;
     }
     .div-articulo {
         width: 1366px;
