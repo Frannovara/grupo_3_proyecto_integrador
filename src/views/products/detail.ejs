@@ -23,6 +23,14 @@
                             <div>
                                 <button type="button" class="boton-agregarcarrito"><strong>Agregar al carrito</strong></button>
                             </div>
+                            <div>
+                                <a href="/products/edit"><button type="button" class="boton-editar"><strong>Editar Producto</strong></button></a>
+                            </div>
+                            <div>
+                                <form action="/delete/<%= product.id %>  ?_method=DELETE"  method="POST">
+                                    <button type="submit" class="boton-editar"><strong>Eliminar Producto</strong></button>
+                                </form>    
+                            </div>
                         </div>
                     </div>
                 </div>
