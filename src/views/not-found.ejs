@@ -2,14 +2,16 @@
 <html lang="en">
     <%- include('partials/head.ejs') %>
 <body>
-    <%- include('./partials/header') %>
-    <section class="error-404">
-        <h2>Error 404!</h2>
-        <h3>La página que estás buscando no existe.</h3>
-        <br>
-        <div class="error-404-inicio"><a href="/">Hace click acá para volver al Inicio</a></div>
-    
-    </section>
+    <div class="body-content">
+        <%- include('./partials/header') %>
+        <section class="error-404">
+            <h2>Error 404!</h2>
+            <h3>La página que estás buscando no existe.</h3>
+            <br>
+            <div class="error-404-inicio"><a href="/">Hace click acá para volver al Inicio</a></div>
+        
+        </section>
+    </div>
     <%- include ('./partials/footer') %>
 </body>
 </html>

@@ -1,15 +1,21 @@
 * {
-    font-family: sans-serif
+    font-family: 'Rubik', sans-serif
 }
 button:hover {
     cursor: pointer;
 }
 body {
     margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 input:focus {
     outline: none;
 }
+.body-content {
+    flex: 1 0 auto;
+  }
 
 /*Mobile first: primero definimos el style de la versión mobile 450px o menos con media queries*/
 
@@ -167,7 +173,6 @@ input:focus {
         border: 1px solid #265277;
     }
     .p-home {
-        font-family: sans-serif;
         color:#173650;
         background-color: #FCA311 ;
         text-align: center;
@@ -179,11 +184,13 @@ input:focus {
 
     .div-ofertas {
         padding: 2px;
-        text-align: center;
         background-color:#FCA311;
         color: #265277;
         height: 40px;
-        
+        font-style: italic;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
     
     /* Diseño de los formularios de login y registro */
@@ -238,6 +245,10 @@ input:focus {
         margin: 10px;
         font-size: 18px;
     }
+    .register-form-fields {
+        display: flex;
+        flex-direction: column;
+    }
     .register-form-block {
         display: flex;
         align-items: center;
@@ -265,7 +276,8 @@ input:focus {
     /*version mobile product detail*/
 
     .sugerencias {
-        display:none;   
+        display:none; 
+        font-style: italic;  
     }
     .div-imagen-moto{
         width: 100%;
@@ -518,10 +530,8 @@ margin: -331% -29% 0% 85%;
 }
 .nosotros-texto {
     padding: 2%;
-    font-family: 'Rubik';
 }
 .nosotros-titulo {
-    font-family: 'Rubik', sans-serif;
     font-style: italic;
 }
 .link-direccion {
@@ -685,7 +695,6 @@ margin: -331% -29% 0% 85%;
     
   
     .p-home {
-        font-family: sans-serif;
         color:#173650;
         background-color: #FCA311 ;
         text-align: center;
@@ -693,14 +702,6 @@ margin: -331% -29% 0% 85%;
     
 /* aca terminan estilos en la parte de las motos*/
 
-    .div-ofertas {
-        padding: 2px;
-        text-align: center;
-        background-color:#FCA311;
-        color: #265277;
-        height: 40px;
-        
-    }
     .div-imagen-home{
         
         width: 100%;
@@ -710,8 +711,6 @@ margin: -331% -29% 0% 85%;
     }
    
     /*Desde aca se arma el listado de productos en carrito de compras*/
-    .carrito-compras{
-    }
     .productos-carrito-div{
         display: flex;
         justify-content: space-between;
@@ -772,9 +771,6 @@ margin: -331% -29% 0% 85%;
         margin-right: 10%;
     }
 
-    .boton-compra{
-    }
-
     .flechas-cantidad {
         display: flex;
         flex-direction: column;
@@ -787,7 +783,6 @@ margin: -331% -29% 0% 85%;
 
 
     .sugerencias {
-        font-family:sans-serif ;
         margin-left: 0%;
         margin-right: 0%;
         text-align: center;
@@ -824,7 +819,6 @@ margin: -331% -29% 0% 85%;
     
     }
     .p-product {
-        font-family: sans-serif;
         color:#173650;
         background-color: #FCA311 ;
         text-align: center;
@@ -897,16 +891,26 @@ margin: -331% -29% 0% 85%;
     .concesionario-div {
         display: flex;
         align-items: center;
-        flex-shrink: 1;
+        width: 35%;
     }
     .concesionaria {
         width: 100%;
     }
     .nosotros-texto {
-        flex-shrink: 2;
+        width: 50%;
     }
-    
 
+    /* fin nosotros */
+
+    /* diseño registro */
+    .register-form-fields {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    .register-form-block {
+        margin: 10px;
+    }
+    /* fin registro */
 }
 
 

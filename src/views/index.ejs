@@ -2,7 +2,8 @@
 <html lang="en">
     <%- include('partials/head.ejs') %>
     <body>
-        <%- include('partials/header') %>
+        <div class="body-content">
+            <%- include('partials/header') %>
             <div>
                 <img class="div-imagen-home" src="/images/imagen-banner-homepage.jpg" alt="img-home">
             </div>
@@ -31,10 +32,7 @@
                     <% }) %>                    
                 </section>
             </div>  
-            
-            <%- include ('./partials/footer') %>
-
-
-        
+        </div>
+        <%- include ('./partials/footer') %>
     </body>
 </html>
