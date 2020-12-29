@@ -21,11 +21,11 @@ const controladorProductos = {
 		  }
       res.render('./products/detail' , {product, title: product.name});
     },
-    deleted : function (req , res){
+    delete : function (req , res){
       const productsFiltered = products.filter((product) => product.id != req.params.id);
       let productsJSON = JSON.stringify(productsFiltered);
       fs.writeFileSync (productsFilePath , productsJSON);
-      res.redirect('./products')
+      res.render('./products/edit')
     },
     cart: function (req,res) {
       res.render('./products/cart')

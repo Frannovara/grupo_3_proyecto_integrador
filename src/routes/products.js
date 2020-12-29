@@ -6,7 +6,7 @@ router.get('/', productController.list)
 router.get('/cart', productController.cart)
 router.get('/edit', productController.edit)
 router.get('/create', productController.create)
-router.delete("/delete/:id" , productController.deleted)
+router.delete('/delete/:id', productController.delete)
 router.get('/:id', productController.detail)
 
 
