@@ -36,7 +36,7 @@ const controladorProductos = {
     },
     edit: (req, res, next) => {
       const productToEdit = products.find(item =>  item.id == req.params.id);
-      res.render('./products/edit')
+      res.render('./products/edit' , {productToEdit, title: 'Editando ' + productToEdit.name}) 
     },
     
 }
