@@ -4,7 +4,7 @@ const productController = require ('../controllers/productController');
 
 router.get('/', productController.list)
 router.get('/cart', productController.cart)
-router.get('/edit', productController.edit)
+router.get('/edit/:id', productController.edit)
 router.get('/create', productController.create)
 router.delete('/delete/:id', productController.delete)
 router.get('/:id', productController.detail)

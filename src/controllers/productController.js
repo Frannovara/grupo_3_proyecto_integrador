@@ -34,8 +34,9 @@ const controladorProductos = {
      
       res.render('./products/create')
     },
-    edit: (req, res) => {
-      res.render ('./products/edit')
+    edit: (req, res, next) => {
+      const productToEdit = products.find(item =>  item.id == req.params.id);
+      res.render('./products/edit')
     },
     
 }
