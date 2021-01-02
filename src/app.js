@@ -12,9 +12,9 @@ let PORT = 3001
 app.listen (PORT, function () {
     console.log('Corriendo servidor en http://localhost:'+ PORT +'/')
 })
+app.use(methodOverride('_method'));
 app.set ('view engine', 'ejs');
 app.set ('views', path.join(__dirname, 'views'));
-app.use(methodOverride('_method'));
 app.use(express.urlencoded({extended:false}));
 app.use(express.json());
 app.use ('/', mainRoutes);
