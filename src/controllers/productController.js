@@ -8,6 +8,28 @@ const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 const productsFilePath = path.join(__dirname, '../data/productsDataBase.json');
 const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
 
+const editProduct = function (req) {
+	products.forEach((product) => {
+		if (product.id == req.params.id) {
+			// product = { ...product, ...req.body, image: req.files[0].filename }
+			product.name = name
+			product.price = price
+			product.discount = Number(product.discount)
+			product.image = req.files[0].filename
+			product.category = category
+			product.description = description
+		}
+	})
+	const productJson = JSON.stringify(products)
+	fs.writeFileSync(productsFilePath, productJson)
+	return product.id
+}
+
+
+
+
+
+
 const controladorProductos = {
     list: function(req, res) {
       res.render('./products/list', {products, toThousand})
@@ -38,7 +60,9 @@ const controladorProductos = {
       const productToEdit = products.find(item =>  item.id == req.params.id);
       res.render('./products/edit' , {productToEdit, title: 'Editando ' + productToEdit.name}) 
     },
+    confirm: (req, res, next) => {
+      const id = editProduct(req)
+      res.redirect('/products/' + id)
+    },
     
 }
-
-module.exports = controladorProductos;
