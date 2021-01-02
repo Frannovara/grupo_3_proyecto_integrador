@@ -25,11 +25,6 @@ const editProduct = function (req) {
 	return product.id
 }
 
-
-
-
-
-
 const controladorProductos = {
     list: function(req, res) {
       res.render('./products/list', {products, toThousand})
@@ -40,8 +35,10 @@ const controladorProductos = {
 			  product.finalPrice = toThousand(product.price * (1 - product.discount/100))
 		  } else {
 			  product.price = toThousand (product.price)
-		  }
-      res.render('./products/detail' , {product, title: product.name});
+      }
+      let productsFilter = products.filter((product) => product.id != req.params.id)
+
+      res.render('./products/detail' , {product, title: product.name, productsFilter, toThousand});
     },
     delete : function (req , res){
       const productsFiltered = products.filter((product) => product.id != req.params.id);
@@ -66,3 +63,5 @@ const controladorProductos = {
     },
     
 }
+
+module.exports = controladorProductos

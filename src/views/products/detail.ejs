@@ -11,27 +11,34 @@
                     <div>
                         <div class=listas-caracteristicas>
                             <div class="div-imagen-moto">
-                                <img class="imagen-moto" src="/images/benelli-tnt-600-negro.jpg" alt="imagen-moto1">
+                                <img class="imagen-moto" src="<%= product.image %> " alt="imagen-moto1">
                             </div>
                             <div class="acomodar">
                                 <p>
-                                    <h4>Marca:</h4>
-                                    <h4>Modelo:</h4>
-                                    <h4>Estado: nueva</h4>  
+                                    <p><strong>Marca:</strong> <%= product.brand %> </p>
+                                    <p><strong>Modelo:</strong> <%= product.name %>  </p>
+                                    <p><strong>Estado:</strong> <%= product.kms %> </p>  
+                                    <p><strong>Descripción:</strong> <%= product.description %> </p>  
                                 </p>
-                                <div>
-                                    <button type="button" class="boton-agregar"><strong>Comprar</strong></button>
-                                </div>
-                                <div>
-                                    <button type="button" class="boton-agregarcarrito"><strong>Agregar al carrito</strong></button>
-                                </div>
-                                <div>
-                                    <a href="/products/edit/<%= product.id %> "><button type="button" class="boton-editar"><strong>Editar Producto</strong></button></a>
-                                </div>
-                                <div>
-                                    <form action="/delete/<%= product.id %>/?_method=DELETE"  method="POST">
-                                        <button type="submit" class="boton-editar"><strong>Eliminar Producto</strong></button>
-                                    </form>    
+                                <div class="detalle-botones">
+                                    <div class="detalle-botones-public">
+                                        <div>
+                                            <button type="button" class="boton-agregar"><strong>Comprar</strong></button>
+                                        </div>
+                                        <div>
+                                            <button type="button" class="boton-agregarcarrito"><strong>Agregar al carrito</strong></button>
+                                        </div>
+                                    </div>
+                                    <div class="detalle-botones-admin">
+                                        <div>
+                                            <a href="/products/edit/<%= product.id %> "><button type="button" class="boton-editar"><strong>Editar Producto</strong></button></a>
+                                        </div>
+                                        <div>
+                                            <form action="/delete/<%= product.id %>/?_method=DELETE"  method="POST">
+                                                <button type="submit" class="boton-editar"><strong>Eliminar Producto</strong></button>
+                                            </form>    
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -42,48 +49,20 @@
                 </div>
                 <div class="div-articulo">
                     <section class="section-pd">
-                        <article class="article-home" >
-                            <a href="/products/productDetail" class="product-detail"> 
-                                <div class="div-img1">
-                                    <img class="img1" src="/images/honda-cb250-twister-negro.jpg" alt="honda cb250 twister">
-                                </div>
-                                <p class="p-home">$450.000 Honda cb250 twister.
-                                                <br>
-                                    2020 | 0km. </p></a>
-                        </article>
-                        <article class="article-home">
-                            <a href="/products/productDetail" class="product-detail"> 
-                                <div class="div-img1">
-                                    <img class= "img1" src="/images/benelli-tnt-150-verde.png" alt="honda xr150">
-                                </div>
-                                <p class="p-home">$160.000 Benelli tnt 15.
-                                <br>
-                                2020 | 0km. </p>
-                            </a>
-                        </article>
-                        <article class="article-home">
-                            <a href="/products/productDetail" class="product-detail">
-                                <div class="div-img1">
-                                    <img class="img1" src="/images/yamaha-125-blanco.jpg" alt="Yamaha ybr 125">
-                                </div>
-                            <p class="p-home">$200.000 Yamaha ybr 125 .
-                                <br>
-                                2019 | 0km. </p></a>
-                        </article>
+                        <% productsFilter.forEach(product => { %>
+                            <article class="article-home" >
+                                <a href="/products/<%= product.id %> " class="product-detail"> 
+                                    <div class="div-img1">
+                                        <img class="img1" src= "<%= product.image %>"  alt= "<%= product.name %>"  >
+                                    </div>
+                                    <p class="p-home"> $<%= toThousand(product.price * (1 - product.discount/100)) %> <%= product.name %> 
+                                                    <br>
+                                        <%= product.year %>  | <%= product.kms %> . </p>
+                                </a>
+                            </article>
+                        <% }) %>
                     </section>
-                </div>
-                    
-                <div class=background>
-                    <div class="caracteristicas">
-                        
-                            <h3>Descripción:</h3>
-                            <p> Lorem ipsum dolor sit amet consectetur adipiscing elit, imperdiet netus rutrum massa nisl fames volutpat magnis, gravida vel et cum montes pulvinar. Nullam curabitur netus metus purus feugiat pharetra eleifend cursus varius neque nostra class lobortis, tristique vehicula per dapibus viverra nisi tellus gravida taciti id quis. Ornare diam quis quam penatibus convallis maecenas rhoncus egestas massa non, viverra magna suscipit suspendisse fames torquent rutrum libero. Aenean nisl maecenas urna porttitor nulla egestas placerat, dui nec bibendum vitae in hendrerit blandit libero, integer massa dignissim sem dictum quis.</p> <p>Dapibus aptent felis magna aenean sociosqu dignissim massa vestibulum nostra, congue natoque ligula ad fusce gravida sed nulla nascetur, libero morbi elementum ante hac sodales inceptos duis. Luctus montes commodo condimentum torquent interdum semper tortor, in donec platea aptent justo mollis, quis neque bibendum consequat porta nam. Ultrices ullamcorper sodales inceptos vivamus donec taciti est, senectus ut accumsan porttitor consequat conubia ante augue, hac tortor phasellus mauris eleifend duis. Pellentesque nisi cras elementum mollis gravida nullam commodo quam magna tellus luctus inceptos est, dui vestibulum lacinia curabitur dignissim semper risus litora potenti massa eu habitasse.</p> <p>Porttitor senectus vestibulum ante cras vel cursus phasellus sociosqu odio nostra, suscipit est a proin sapien ac blandit tempor nullam. Semper ultrices pulvinar ridiculus conubia faucibus venenatis purus nec aliquam sollicitudin nisl, integer convallis tellus morbi tristique augue diam posuere platea a aptent, eu phasellus aenean varius ornare nulla consequat vitae ligula dapibus. Faucibus senectus commodo diam porttitor fames eu lobortis conubia penatibus magnis quis blandit, id metus egestas sodales facilisis magna mi risus malesuada arcu fringilla, dignissim quisque tincidunt nec ad molestie leo eleifend turpis torquent fermentum. Gravida condimentum vulputate dui neque turpis interdum sociis pretium himenaeos, nostra justo curabitur commodo purus id eleifend malesuada, libero cras hendrerit phasellus ridiculus cursus placerat fames
-                                
-                            </p>
-                    
-                        
-                    </div>
-                </div>         
+                </div>        
             </section> 
         </main>
     </div>
