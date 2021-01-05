@@ -22,6 +22,6 @@ router.patch('/:id', upload.any() , productController.confirm);
 router.get('/create', productController.create)
 router.delete('/delete/:id', productController.delete)
 router.get('/:id', productController.detail)
-
+router.post('/products', upload.any(), productController.createProduct);
 
 module.exports = router;
