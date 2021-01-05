@@ -8,7 +8,7 @@
 
 ## Reunión 31/12/2020
 
-Francisco Novara: Realizó la página de Ayuda. Realizará la ruta POST para creación de producto. 
+Franco Novara: Realizó la página de Ayuda. Realizará la ruta POST para creación de producto. 
 
 Lautaro Porlan: Realizó la ruta DELETE para borrar producto. Error 404 al querer borrar un archivo. Realizará la ruta PUT para editar un producto.
 
@@ -16,7 +16,7 @@ Francisco Lukac: Realizó la página de todos los productos con su ruta. La pró
 
 ## Reunión 5/1/2021
 
-Francisco Novara: Continuó con la página de ayuda, y empezó con la ruta POST de creación de producto. Se está terminando la lógica del controlador.
+Franco Novara: Continuó con la página de ayuda, y empezó con la ruta POST de creación de producto. Se está terminando la lógica del controlador.
 
 Lautaro Porlan: Trabajando la ruta de editar producto. Tira el mismo error 404 que tira la ruta DELETE, y no pudimos solucionar.
 
