@@ -37,6 +37,12 @@ const editProduct = function (req) {
 	return product.id
 }
 
+const deleteProduct = function(req) {
+	const productsNotDeleted = products.filter((product) => product.id != req.params.id)
+	let productsJSON = JSON.stringify(productsNotDeleted);
+	fs.writeFileSync(productsFilePath, productsJSON)
+}
+
 const controladorProductos = {
     list: function(req, res) {
       res.render('./products/list', {products, toThousand})
@@ -52,11 +58,9 @@ const controladorProductos = {
 
       res.render('./products/detail' , {product, title: product.name, productsFilter, toThousand});
     },
-    delete : function (req , res){
-      const productsFiltered = products.filter((product) => product.id != req.params.id);
-      let productsJSON = JSON.stringify(productsFiltered);
-      fs.writeFileSync (productsFilePath , productsJSON);
-      res.render('./products/edit')
+    deleteConfirm : (req, res, next) => {
+      deleteProduct(req)
+      res.redirect('/products')
     },
     cart: function (req,res) {
       res.render('./products/cart')
