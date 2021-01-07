@@ -44,8 +44,4 @@ app.use(function(err, req, res, next) {
   res.render('not-found');
 });
 
-app.use((req,res,next) => {
-    res.status(404).render('not-found')
-})
-
-module.exports = app
+module.exports = app;

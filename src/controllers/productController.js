@@ -54,9 +54,10 @@ const controladorProductos = {
 		  } else {
 			  product.price = toThousand (product.price)
       }
-      let productsFilter = products.filter((product) => product.id != req.params.id)
+      let productsFilter = products.filter((bikes) => bikes.id != req.params.id)
+      let filterByName = products.filter((item) => product.name == item.name)
 
-      res.render('./products/detail' , {product, title: product.name, productsFilter, toThousand});
+      res.render('./products/detail' , {product, title: product.name, productsFilter, toThousand, filterByName});
     },
     deleteConfirm : (req, res, next) => {
       deleteProduct(req)
