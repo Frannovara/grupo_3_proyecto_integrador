@@ -280,7 +280,6 @@ input:focus {
         font-style: italic;  
     }
     .div-imagen-moto{
-        width: 100%;
         border-radius: 6px;
         background-color: #ffffff;
         display: flex;
@@ -356,6 +355,30 @@ input:focus {
         width: 90%;
         margin: auto;
     }
+    .dot {
+        height: 25px;
+        width: 25px;
+        border-radius: 50%;
+        display: inline-block;
+        border: solid 1px black;
+        margin: 10px;
+      }
+      .colores {
+          display: flex;
+          flex-wrap: nowrap;
+          justify-content: center;
+      }
+      .titulo-colores {
+          margin: 0;
+          margin-top: 5px;
+      }
+      .moto-imagenes {
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+          align-items: center;
+      }
+
 /*Version mobile carrito*/
 
 .carrito-compras{
@@ -854,9 +877,6 @@ margin: -331% -29% 0% 85%;
         display:flex;
     }
     
-    .div-imagen-moto{
-       width: 50%;
-    }
     
     .product-details {
         display: flex;
@@ -867,7 +887,9 @@ margin: -331% -29% 0% 85%;
         display: flex;
         justify-content: left;
     }
-
+    .moto-imagenes {
+        width: 50%;
+    }
     .listas{
         display: flex;
         margin-top: 2%;
