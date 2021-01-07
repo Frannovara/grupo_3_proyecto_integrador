@@ -222,6 +222,15 @@ input:focus {
         flex-direction: row;
         justify-content: flex-start;
     }
+    .campo-datos-checkbox {  
+        border-radius: 5px;
+        padding: 5px;
+        margin: 5px;
+        width: 300px;
+        flex-direction: row;
+        justify-content: flex-start;
+    }
+  
     .campo-datos-type {
         border: none;
         flex-grow: 1;
