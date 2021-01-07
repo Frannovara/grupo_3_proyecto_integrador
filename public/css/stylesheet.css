@@ -579,6 +579,83 @@ margin: -331% -29% 0% 85%;
 }
 /* fin nosotros */
 
+/* diseño perfil usuario */
+.profile {
+    display: flex;
+    flex-direction: column;
+}
+.profile-image {
+    width: 90%;
+    margin: 5px 0;
+    border-radius: 50%;
+    border: solid 1px #173650;
+    width: 300px;
+    height: 300px;
+}
+.div-profile-image {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.profile-user-data {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+  
+  /* Modal Content/Box */
+  .modal-content {
+    background-color: #fefefe;
+    position: absolute;
+    left: 10%;
+    top: 5%;
+    margin: auto;
+    border: none;
+    border-radius: 15px;
+    width: 80%; /* Could be more or less, depending on screen size */
+  }
+  .modal-header {
+      text-align: center;
+      width: 90%;
+      margin: 5px auto;
+  }
+  .modal-titulo {
+      margin: 0 auto;
+      display: inline-block;
+  }
+  .close {
+    color: #aaa;
+    font-size: 20px;
+    font-weight: bold;
+    float: right;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .edit-user-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+  }
+/* fin diseño perfil usuario */
+
 /*A partir de ahora definimos el estilo de la versión web*/
 
 /*Desde esta linea hasta nuevo aviso se estiliza el buscador con hover */
@@ -948,6 +1025,16 @@ margin: -331% -29% 0% 85%;
         margin: 10px;
     }
     /* fin registro */
+
+    /* diseño perfil */
+    .div-profile-image {
+        width: 20%;
+    }
+    .profile {
+        flex-direction: row;
+        justify-content: space-around;
+    }
+    /* fin perfil */
 }
 
 /* diseño ayuda */

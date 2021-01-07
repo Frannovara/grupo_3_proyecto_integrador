@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('../partials/head.ejs') %>
+<body>
+    <div class="body-content">
+        <%- include('../partials/header') %>
+        <main class="profile">
+            <div class="div-profile-image">
+                <img class="profile-image" src="<%= user.image %> " alt="<%= user.first_name %> <%= user.last_name %> ">           
+                <button onclick="document.getElementById('profile-image-form').style.display='block'" class="boton-form" data-toggle="modal" data-target="#profile-image-form">
+                    <small>Cambiar imagen de perfil</small>
+                </button>
+            </div>
+            <div class="profile-user-data">
+                <h1>Perfil de <%= user.first_name %> <%= user.last_name %> </h1>
+                <p>Nombre: <%= user.first_name %> </p>
+                <p>Apellido: <%= user.last_name %> </p>
+                <p>Email: <%= user.email %> </p>
+                <button onclick="document.getElementById('edit-user-form').style.display='block'" class="boton-form" data-toggle="modal" data-target="#profile-image-form">
+                    <small>Editar datos de Usuario</small>
+                </button>
+            </div>
+            <div id="profile-image-form" class="modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-titulo">Editar foto de perfil</h3>
+                        <span class="close" onclick="document.getElementById('profile-image-form').style.display='none'">&times;</span>
+                    </div>
+                    <div class="modal-content-info">
+                        <h3>Seleccionar la nueva imagen de perfil</h3>
+                        <form action="/users/profileImage" method="POST" enctype="multipart/form-data">
+                            <div class="create-form-element">
+                                <input type="file" name="image" id="image">
+                            </div>
+                            <button type="submit" class="register-form-button">Subir imagen</button>
+                        </form>
+                    </div>
+                    
+                </div>
+            </div>
+            <div id="edit-user-form" class="modal">
+                <div class="modal-content">
+                    <div class="edit-user-content">
+                        <div class="modal-header">
+                            <h3 class="modal-titulo">Editar datos de Usuario</h3>
+                            <span class="close" onclick="document.getElementById('edit-user-form').style.display='none'">&times;</span>
+                        </div>
+                        <form action="/users/profile/:id" method="POST">
+                            <div class="register-form-fields">
+                                <div class="register-form-block">
+                                    <label for="name">Nombre</label>
+                                    <div class="campo-datos">
+                                        <i class="fas fa-user"></i>
+                                        <input type="text" name="first_name" id="first_name" class="campo-datos-type" value="<%= user.first_name %>">
+                                    </div>
+                                    <label for="name">Apellido</label>
+                                    <div class="campo-datos">
+                                        <i class="fas fa-user"></i>
+                                        <input type="text" name="last_name" id="last_name" class="campo-datos-type" value="<%= user.last_name %>">
+                                    </div>
+                                </div>
+                                <div class="register-form-block">
+                                    <label for="email">E-mail</label>
+                                    <div class="campo-datos">
+                                        <i class="fas fa-envelope"></i>
+                                        <input type="email" name="email" id="email" class="campo-datos-type" value="<%= user.email %>">
+                                    </div>
+                                    <label for="password">Contraseña</label>
+                                    <div class="campo-datos">
+                                        <i class="fas fa-lock"></i>
+                                        <input type="password" name="password" id="password" class="campo-datos-type">
+                                    </div>
+                                    <!-- <label for="re-password">Repita la contraseña</label>
+                                    <div class="campo-datos">
+                                        <i class="fas fa-lock"></i>
+                                        <input type="password" name="re-password" id="re-password" class="campo-datos-type">
+                                    </div> -->
+                                </div>
+                            </div>
+                            <button type="submit" class="register-form-button">Editar Datos</button>
+                        </form>
+                    </div>
+                    
+                </div>
+            </div>
+        </main>
+    </div>
+    <%- include('../partials/footer') %>
+</body>
+</html>
