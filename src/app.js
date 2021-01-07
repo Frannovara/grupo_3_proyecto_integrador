@@ -44,4 +44,12 @@ app.use(function(err, req, res, next) {
   res.render('not-found');
 });
 
+<<<<<<< HEAD
 module.exports = app;
+=======
+app.use((req,res,next) => {
+    res.status(404).render('not-found')
+})
+
+module.exports = app
+>>>>>>> d1fbc0ae713ddd37352e17a7be029bbc028715c5
