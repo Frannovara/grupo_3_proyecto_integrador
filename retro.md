@@ -19,3 +19,17 @@
 #### Continuar haciendo: Videollamadas entre los integrantes que pueden para trabajar en conjunto.
 #### Hacer menos: no consultar en el grupo. Por ende empezar a consultar mas en el grupo si hay algo que no se entiende.
 #### Dejar de hacer: Dejar las tareas para último momento y perder el tiempo.
+
+### Retrospectiva Sprint-3:
+#### Comenzar a hacer: planificación de las tareas de sprint y reuniones semanales. Tener una reunión en la que cada uno explica que hizo y como, así todo el equipo puede saber como funciona el proyecto.
+#### Hacer más: reuniones en las que un integrante plantea un problema que no pudo solucionar, y con pair-coding se resuelve.
+#### Continuar haciendo: Organizarnos con el tablero de Trello en la división de tareas.
+#### Hacer menos: olvidarse de actualizar las tareas del Trello.
+#### Dejar de hacer: trabajar cada uno por su lado, en células separadas. Trabajar en equipo, mejorando la comunicación diaria.
+
+### Retrospectiva Sprint-4:
+#### Comenzar a hacer: dejar de perder días antes de comenzar con el sprint.
+#### Hacer más: comunicarnos con tiempo si hay problemas para resolver un problema o consultar con los profesores.
+#### Continuar haciendo: organizar las tareas con reuniones y en el tablero de trello.
+#### Hacer menos: 
+#### Dejar de hacer: repartir tareas en partes iguales para que no se comprima todo en un solo integrante.

@@ -8,6 +8,18 @@ const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 const productsFilePath = path.join(__dirname, '../data/productsDataBase.json');
 const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
 
+const newProduct = function(req) {
+	let newProduct = {
+		id: generateID(),
+		...req.body,
+		image: req.files[0].filename,
+	};
+	products.push(newProduct);
+	let productsJSON = JSON.stringify(products);
+	fs.writeFileSync(productsFilePath, productsJSON)
+	return newProduct.id
+}
+
 const editProduct = function (req) {
 	products.forEach((product) => {
 		if (product.id == req.params.id) {
@@ -25,6 +37,12 @@ const editProduct = function (req) {
 	return product.id
 }
 
+const deleteProduct = function(req) {
+	const productsNotDeleted = products.filter((product) => product.id != req.params.id)
+	let productsJSON = JSON.stringify(productsNotDeleted);
+	fs.writeFileSync(productsFilePath, productsJSON)
+}
+
 const controladorProductos = {
     list: function(req, res) {
       res.render('./products/list', {products, toThousand})
@@ -40,11 +58,9 @@ const controladorProductos = {
 
       res.render('./products/detail' , {product, title: product.name, productsFilter, toThousand});
     },
-    delete : function (req , res){
-      const productsFiltered = products.filter((product) => product.id != req.params.id);
-      let productsJSON = JSON.stringify(productsFiltered);
-      fs.writeFileSync (productsFilePath , productsJSON);
-      res.render('./products/edit')
+    deleteConfirm : (req, res, next) => {
+      deleteProduct(req)
+      res.redirect('/products')
     },
     cart: function (req,res) {
       res.render('./products/cart')
@@ -61,7 +77,10 @@ const controladorProductos = {
       const id = editProduct(req)
       res.redirect('/products/' + id)
     },
-    
+    createProduct: (req, res, next) => {
+      const id = newProduct(req);
+      res.redirect('/')
+    }
 }
 
 module.exports = controladorProductos
