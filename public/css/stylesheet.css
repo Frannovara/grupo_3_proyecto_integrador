@@ -202,6 +202,9 @@ input:focus {
         align-items: center;
         text-align: center;
     }
+    .new-pass-button:hover {
+        cursor: pointer;
+    }
     .olvide-pass-link {
         padding: 15px;
     }
