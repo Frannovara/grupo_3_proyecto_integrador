@@ -2,6 +2,8 @@ const { render } = require("ejs");
 const fs = require('fs');
 const path = require('path');
 const bcrypt = require('bcryptjs');
+const {  validationResult  } = require('express-validator');
+
 
 const usersFilePath = path.join(__dirname, '../data/users.json');
 const users = JSON.parse(fs.readFileSync(usersFilePath, 'utf-8'));
@@ -56,6 +58,9 @@ const deleteUser = (req) => {
 const controladorUsuarios = {
     login: (req , res) =>{
         res.render ('./users/login')
+    },
+    loginProcess: (req , res) =>{
+
     },
     register: (req , res) =>{
         res.render ('./users/register')
