@@ -8006,4 +8006,12 @@
     "password": "$2a$10$9rC4kUKt5RCeya4.Z/kVcuAfiLFQRQIt/opRjTuBufgJXGgO6fWRi",
     "image": "/images/users/default.png",
     "category": "user"
+}, {
+    "id": 1610314007939,
+    "first_name": "Lautaro",
+    "last_name": "porlan",
+    "email": "l.porlann@gmail.com",
+    "password": "$2a$10$IBs0LYMxKtPGScqi9yVfMOjDCI7DBqSOojWB8k/63YCUi7v6/w34e",
+    "image": "/images/users/default.png",
+    "category": "user"
 }]
