@@ -60,7 +60,13 @@ const controladorUsuarios = {
         res.render ('./users/login')
     },
     loginProcess: (req , res) =>{
+        
+        
+        const userToLogin = users.find(user => users.email === req.body.email)
+        if (userToLogin){
 
+        }
+        
     },
     register: (req , res) =>{
         res.render ('./users/register')
