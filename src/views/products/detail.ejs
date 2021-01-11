@@ -10,8 +10,16 @@
                 <div class=background-fondo>
                     <div>
                         <div class=listas-caracteristicas>
-                            <div class="div-imagen-moto">
-                                <img class="imagen-moto" src="<%= product.image %> " alt="imagen-moto1">
+                            <div class="moto-imagenes">
+                                <div class="div-imagen-moto">
+                                    <img class="imagen-moto" src="<%= product.image %> " alt="imagen-moto1">
+                                </div>
+                                <h4 class="titulo-colores">Colores</h4>
+                                <div class="colores">
+                                    <% filterByName.forEach(bike => { %>
+                                        <a href="/products/<%= bike.id %> "><span class="dot" style="background-color: <%= bike.color %>;"></span></a>
+                                    <% }) %>
+                                </div>
                             </div>
                             <div class="acomodar">
                                 <p>

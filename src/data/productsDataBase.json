@@ -2,7 +2,7 @@
     "id": 1,
     "name": "Benelli TNT 150",
     "description": "Exelente motocicleta de la marca italiana, ideal para el uso del dia a dia. El motor es a prueba de balas,  lo que significa que obtendrá años de confiable uso. El chasis es robusto, además, y ofrece un fácil manejo y suspensiones suaves, justo lo que necesitan los nuevos conductores. Cuenta con un tanque de 16lts ,el motor se alimenta por carburador, posee 14HP y 11NM de torque a 8500rpm",
-    "image": "/images/benelli-tnt-150-blanco.png",
+    "image": "/images/products/benelli-tnt-150-blanco.png",
     "category": "Naked",
     "brand": "Benelli",
     "price": 178000,
@@ -14,48 +14,53 @@
     "id": 2,
     "name": "Benelli TNT 150",
     "description": "Exelente motocicleta de la marca italiana, ideal para el uso del dia a dia. El motor es a prueba de balas,  lo que significa que obtendrá años de confiable uso. El chasis es robusto, además, y ofrece un fácil manejo y suspensiones suaves, justo lo que necesitan los nuevos conductores. Cuenta con un tanque de 16lts ,el motor se alimenta por carburador, posee 14HP y 11NM de torque a 8500rpm",
-    "image": "/images/benelli-tnt-150-verde.png",
+    "image": "/images/products/benelli-tnt-150-verde.png",
     "category": "Naked",
     "brand": "Benelli",
     "price": 178000,
     "discount": 15,
     "year": 2019,
     "kms": "0km",
-    "color": "green"
-}, {
+    "color": "green",
+    "finalPrice": "151.300"
+},  {
     "id": 3,
     "name": "Benelli TNT 150",
     "description": "Exelente motocicleta de la marca italiana, ideal para el uso del dia a dia. El motor es a prueba de balas,  lo que significa que obtendrá años de confiable uso. El chasis es robusto, además, y ofrece un fácil manejo y suspensiones suaves, justo lo que necesitan los nuevos conductores. Cuenta con un tanque de 16lts ,el motor se alimenta por carburador, posee 14HP y 11NM de torque a 8500rpm",
-    "image": "/images/benelli-tnt-150-rojo.png",
+    "image": "/images/products/benelli-tnt-150-rojo.png",
     "category": "Naked",
     "brand": "Benelli",
     "price": 178000,
     "discount": 15,
     "year": 2019,
     "kms": "0km",
-    "color": "red"
-}, {
+    "color": "red",
+    "finalPrice": "151.300"
+},
+{
     "id": 4,
     "name": "Benelli TNT 150",
     "description": "Exelente motocicleta de la marca italiana, ideal para el uso del dia a dia. El motor es a prueba de balas,  lo que significa que obtendrá años de confiable uso. El chasis es robusto, además, y ofrece un fácil manejo y suspensiones suaves, justo lo que necesitan los nuevos conductores. Cuenta con un tanque de 16lts ,el motor se alimenta por carburador, posee 14HP y 11NM de torque a 8500rpm",
-    "image": "/images/benelli-tnt-150-negro.png",
+    "image": "/images/products/benelli-tnt-150-negro.png",
     "category": "Naked",
     "brand": "Benelli",
     "price": 178000,
     "discount": 15,
     "year": 2019,
     "kms": "0km",
-    "color": "black"
+    "color": "black",
+    "finalPrice": "151.300"
 }, {
     "id": 5,
     "name": "Benelli TNT 300",
     "description": "Exelente motocicleta de la marca italiana, ideal para el uso del dia a dia. El motor es a prueba de balas,  lo que significa que obtendrá años de confiable uso. El chasis es robusto, además, y ofrece un fácil manejo y suspensiones suaves, justo lo que necesitan los nuevos conductores. Cuenta con un tanque de 16lts ,el motor se alimenta por carburador, posee 14HP y 11NM de torque a 8500rpm",
-    "image": "/images/benelli-tnt-300-blanco.png",
+    "image": "/images/products/benelli-tnt-300-blanco.png",
     "category": "Naked",
     "brand": "Benelli",
     "price": 178000,
     "discount": 15,
     "year": 2019,
     "kms": "0km",
-    "color": "white"
+    "color": "white",
+    "finalPrice": "151.300"
 }]

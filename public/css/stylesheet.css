@@ -202,6 +202,9 @@ input:focus {
         align-items: center;
         text-align: center;
     }
+    .new-pass-button:hover {
+        cursor: pointer;
+    }
     .olvide-pass-link {
         padding: 15px;
     }
@@ -222,6 +225,15 @@ input:focus {
         flex-direction: row;
         justify-content: flex-start;
     }
+    .campo-datos-checkbox {  
+        border-radius: 5px;
+        padding: 5px;
+        margin: 5px;
+        width: 300px;
+        flex-direction: row;
+        justify-content: flex-start;
+    }
+  
     .campo-datos-type {
         border: none;
         flex-grow: 1;
@@ -280,7 +292,6 @@ input:focus {
         font-style: italic;  
     }
     .div-imagen-moto{
-        width: 100%;
         border-radius: 6px;
         background-color: #ffffff;
         display: flex;
@@ -356,6 +367,30 @@ input:focus {
         width: 90%;
         margin: auto;
     }
+    .dot {
+        height: 25px;
+        width: 25px;
+        border-radius: 50%;
+        display: inline-block;
+        border: solid 1px black;
+        margin: 10px;
+      }
+      .colores {
+          display: flex;
+          flex-wrap: nowrap;
+          justify-content: center;
+      }
+      .titulo-colores {
+          margin: 0;
+          margin-top: 5px;
+      }
+      .moto-imagenes {
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+          align-items: center;
+      }
+
 /*Version mobile carrito*/
 
 .carrito-compras{
@@ -555,6 +590,83 @@ margin: -331% -29% 0% 85%;
     color: #265277;
 }
 /* fin nosotros */
+
+/* diseño perfil usuario */
+.profile {
+    display: flex;
+    flex-direction: column;
+}
+.profile-image {
+    width: 90%;
+    margin: 5px 0;
+    border-radius: 50%;
+    border: solid 1px #173650;
+    width: 300px;
+    height: 300px;
+}
+.div-profile-image {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.profile-user-data {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+  
+  /* Modal Content/Box */
+  .modal-content {
+    background-color: #fefefe;
+    position: absolute;
+    left: 10%;
+    top: 5%;
+    margin: auto;
+    border: none;
+    border-radius: 15px;
+    width: 80%; /* Could be more or less, depending on screen size */
+  }
+  .modal-header {
+      text-align: center;
+      width: 90%;
+      margin: 5px auto;
+  }
+  .modal-titulo {
+      margin: 0 auto;
+      display: inline-block;
+  }
+  .close {
+    color: #aaa;
+    font-size: 20px;
+    font-weight: bold;
+    float: right;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .edit-user-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+  }
+/* fin diseño perfil usuario */
 
 /*A partir de ahora definimos el estilo de la versión web*/
 
@@ -854,9 +966,6 @@ margin: -331% -29% 0% 85%;
         display:flex;
     }
     
-    .div-imagen-moto{
-       width: 50%;
-    }
     
     .product-details {
         display: flex;
@@ -867,7 +976,9 @@ margin: -331% -29% 0% 85%;
         display: flex;
         justify-content: left;
     }
-
+    .moto-imagenes {
+        width: 50%;
+    }
     .listas{
         display: flex;
         margin-top: 2%;
@@ -926,6 +1037,16 @@ margin: -331% -29% 0% 85%;
         margin: 10px;
     }
     /* fin registro */
+
+    /* diseño perfil */
+    .div-profile-image {
+        width: 20%;
+    }
+    .profile {
+        flex-direction: row;
+        justify-content: space-around;
+    }
+    /* fin perfil */
 }
 
 /* diseño ayuda */

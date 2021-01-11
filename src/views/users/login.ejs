@@ -15,8 +15,11 @@
                 <div class="campo-datos">
                     <i class="fas fa-lock"></i><input type="password" name="password" id="password" class="campo-datos-type">
                 </div>
+                <div class="remember">
+                    <input type="checkbox" name="remember" id="remember" class="remember"><label for="remember">Recordarme</label>
+                </div>
                 <div class="olvide-pass-link">
-                    <a href="/users/newPassword">Olvidé mi contraseña</a>
+                    <p onclick="document.getElementById('new-password-form').style.display='block'" class="new-pass-button" data-toggle="modal" data-target="#profile-image-form">Olvidé mi contraseña </p>
                 </div>
                 <button type="submit" class="boton-form">Ingresar</button>
             </form>
@@ -27,6 +30,28 @@
             <div class="registrate">
                 <a href="/users/register">¿No tenés una cuenta? Resgistrate</a>
             </div>
+
+            <div id="new-password-form" class="modal">
+                <div class="modal-content">
+                    <div class="new-password-content">
+                        <div class="modal-header">
+                            <h3 class="modal-titulo">Recuperar Contraseña</h3>
+                            <span class="close" onclick="document.getElementById('new-password-form').style.display='none'">&times;</span>
+                        </div>
+                        <div class="new-pass-main">
+                            <p>Enviaremos un email a tu casilla con un link para regenerar la contraseña</p>
+                            <form action="/users/login" method="POST">
+                                <div class="campo-datos">
+                                    <i class="fas fa-envelope"></i><input type="email" name="email" id="email" class="campo-datos-type">
+                                </div>
+                                <button class="boton-form">Enviar</button>
+                            </form>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+
         </main>    
     </div>
     <%- include('../partials/footer') %>
