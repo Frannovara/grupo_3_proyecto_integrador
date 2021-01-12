@@ -24,17 +24,17 @@ const editProduct = function (req) {
 	products.forEach((product) => {
 		if (product.id == req.params.id) {
 			// product = { ...product, ...req.body, image: req.files[0].filename }
-			product.name = name
-			product.price = price
-			product.discount = Number(product.discount)
+			product.name = req.body.name
+			product.price = req.body.price
+			product.discount = Number(req.body.discount)
 			product.image = req.files[0].filename
-			product.category = category
-			product.description = description
+			product.category = req.body.category
+      product.description = req.body.description
+      const productJson = JSON.stringify(products)
+	    fs.writeFileSync(productsFilePath, productJson)
+	    return product.id
 		}
 	})
-	const productJson = JSON.stringify(products)
-	fs.writeFileSync(productsFilePath, productJson)
-	return product.id
 }
 
 const deleteProduct = function(req) {
@@ -49,6 +49,7 @@ const controladorProductos = {
     },
     detail: function(req, res) {
       const product = products.find(item =>  item.id == req.params.id);
+      console.log(product)
 		  if(product.discount) {
 			  product.finalPrice = toThousand(product.price * (1 - product.discount/100))
 		  } else {
@@ -76,7 +77,7 @@ const controladorProductos = {
     },
     confirm: (req, res, next) => {
       const id = editProduct(req)
-      res.redirect('/products/' + id)
+      res.redirect('/')
     },
     createProduct: (req, res, next) => {
       const id = newProduct(req);
