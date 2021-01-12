@@ -25,12 +25,13 @@ const saveUser = function(req) {
 const setImage = (req) => {
     users.forEach((user) => {
         if (user.id == req.params.id) {
-            user.image = req.files[0].filename
+            user.image = '/images/users/' + req.files[0].filename
+            const usersJson = JSON.stringify(users)
+            fs.writeFileSync(usersFilePath, usersJson)
+            return user.id
         }
     })
-    const usersJson = JSON.stringify(users)
-    fs.writeFileSync(usersFilePath, usersJson)
-    return user.id
+    
 }
 
 const editUser =  (req) => {

@@ -8,7 +8,7 @@ const logInValidator = require('../middlewares/logInValidator');
 
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
-      cb(null, '/images/users')
+      cb(null, 'public/images/users')
     },
     filename: function (req, file, cb) {
       cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname))
@@ -21,13 +21,12 @@ var storage = multer.diskStorage({
 router.get('/login', usersController.login)
 router.post('/login',logInValidator,usersController.loginProcess)
 
-
-router.post('/login', usersController.newPassword)
+router.post('/login/newPass', usersController.newPassword)
 router.get('/register', usersController.register)
 router.post('/register', usersController.saveUser)
 router.get('/profile/:id', usersController.profile)
 router.put('/profile/:id', usersController.editUser)
-router.post('/profileimage', upload.any(), usersController.profileImage)
+router.put('/profileimage/:id', upload.any(), usersController.profileImage)
 router.delete('/delete', usersController.deleteUser)
 
 module.exports = router
