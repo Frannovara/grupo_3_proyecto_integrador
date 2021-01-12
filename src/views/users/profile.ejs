@@ -48,7 +48,7 @@
                             <h3 class="modal-titulo">Editar datos de Usuario</h3>
                             <span class="close" onclick="document.getElementById('edit-user-form').style.display='none'">&times;</span>
                         </div>
-                        <form action="/users/profile/:id/?_method=PUT" method="POST">
+                        <form action="/users/profile/<%= user.id %> /?_method=PUT" method="POST">
                             <div class="register-form-fields">
                                 <div class="register-form-block">
                                     <label for="name">Nombre</label>

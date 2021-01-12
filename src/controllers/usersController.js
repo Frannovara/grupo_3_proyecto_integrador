@@ -44,10 +44,11 @@ const editUser =  (req) => {
             user.password = bcrypt.hashSync(req.body.password, 10),
             user.image = user.image,
             user.category = req.body.category
+            const usersJson = JSON.stringify(users)
+            fs.writeFileSync(usersFilePath, usersJson)
+            return user.id
 		}
 	})
-	const usersJson = JSON.stringify(users)
-    fs.writeFileSync(usersFilePath, usersJson)
 }
 
 const deleteUser = (req) => {
@@ -77,18 +78,15 @@ const controladorUsuarios = {
         res.render('./users/profile', {user})
     },
     saveUser: (req, res) => {
-        const newUser = users.find(item =>  item.id == req.params.id)
-        let U = saveUser(req)
+        saveUser(req)
         res.redirect('/')
     },
     profileImage: (req, res) => {
-        const imageUser = users.find(item =>  item.id == req.params.id)
-        let I = setImage(req)
+        setImage(req)
         res.redirect('/')
     },
     editUser: (req, res) => {
-        const editedUser = users.find(item =>  item.id == req.params.id)
-        let e = editUser(req)
+        editUser(req)
         res.redirect('/')
     },
     newPassword: (req, res) => {
