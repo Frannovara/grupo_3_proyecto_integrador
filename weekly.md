@@ -21,3 +21,11 @@ Franco Novara: Continuó con la página de ayuda, y empezó con la ruta POST de 
 Lautaro Porlan: Trabajando la ruta de editar producto. Tira el mismo error 404 que tira la ruta DELETE, y no pudimos solucionar.
 
 Francisco Lukac: Realizó la parametrización del detalle de producto, creación del proyecto con express generator y migrarlo. Error 404 en algunas rutas del controlador de productos que no fueron solucionados.
+
+## Reunión 11/1/2021
+
+Franco Novara: Errores al hacer pull de github. Avanzó con la ruta POST de creación de producto, pero hay un error 404.
+
+Lautaro Porlan: Encontró un error en algunas páginas que aparece la barra de scroll vertical al ingresar texto en formularios, se buscará de donde surge el error y como solucionarlo. Trabajó en el método de Login, aún sin terminar. Surgieron dudas con la variable ValidationResult. Creó el Middleware de Login. Solucionó la ruta DELETE, borra de la base de datos, pero al redirigir a la siguiente página, inicialmente aparece el producto. Finalizará el Login
+
+Francisco Lukac: Realizó la página de perfil de usuario y el formulario de registración de usuarios, también avanzó con el formulario de edición de datos de usuario y de imagen de perfil. Estos últimos dos están con errores actualmente que es necesario consultar. Hizo la elección de colores de moto en la página de detalle de producto. Avanzó con el formulario de eliminación de usuario, pero da error. Realizará la implementación de rutas de huéspedes y usuarios.
