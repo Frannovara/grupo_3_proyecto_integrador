@@ -9,7 +9,7 @@
             <form action="/products/detail/<%= productToEdit.id %>/?_method=PUT" method="post" class="create-form" enctype="multipart/form-data">
                 <div class="create-form-element">
                     <label for="name">Nombre del producto</label>
-                    <input type="text" name="name" id="name" value="<%= productToEdit.name %> ">
+                    <input type="text" name="name" id="name" value="<%= productToEdit.name %>">
                 </div>
                 <div class="create-form-element">
                     <label for="description">Descripción:</label><br>
@@ -43,7 +43,7 @@
                 </div>
                 <div class="create-form-element">
                     <label for="price">Precio</label>
-                    <input type="number" name="price" id="price" value="<%= productToEdit.price %> ">
+                    <input type="number" name="price" id="price" value="<%= productToEdit.price %>">
                 </div>
                 <div class="create-form-element">
                     <label for="discount">Descuento</label>
@@ -63,7 +63,7 @@
                 </div>
                 <div class="create-form-element">
                     <label for="color">Color</label>
-                    <input type="text" name="color" id="color" value="<%= productToEdit.color %> ">
+                    <input type="text" name="color" id="color" value="<%= productToEdit.color %>">
                 </div>
                 <div class="create-form-button">
                     <button type="reset" class="boton-form">Borrar</button>

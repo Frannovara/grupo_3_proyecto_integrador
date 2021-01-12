@@ -390,6 +390,22 @@ input:focus {
           width: 100%;
           align-items: center;
       }
+      .product-discount {
+          color: #FCA311;
+      }
+      .precio-tachado {
+          text-decoration: line-through;
+          color: #265277;
+      }
+      .detail-info {
+          display: flex;
+          flex-direction: column;
+      }
+      .detail-info-content {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+      }
 
 /*Version mobile carrito*/
 
