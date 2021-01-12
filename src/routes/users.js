@@ -27,6 +27,6 @@ router.post('/register', usersController.saveUser)
 router.get('/profile/:id', usersController.profile)
 router.put('/profile/:id', usersController.editUser)
 router.put('/profileimage/:id', upload.any(), usersController.profileImage)
-router.delete('/delete', usersController.deleteUser)
+router.delete('/delete/:id', usersController.deleteUser)
 
 module.exports = router

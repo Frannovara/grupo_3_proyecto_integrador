@@ -19,7 +19,7 @@
                 <button onclick="document.getElementById('edit-user-form').style.display='block'" class="boton-form" data-toggle="modal" data-target="#profile-image-form">
                     Editar datos de Usuario
                 </button>
-                <form action="/users/delete/?_method=DELETE" method="POST">
+                <form action="/users/delete/<%= user.id %> /?_method=DELETE" method="POST">
                     <button type="submit" class="register-form-button">Eliminar Usuario</button>
                 </form>
             </div>
