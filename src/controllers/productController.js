@@ -30,6 +30,9 @@ const editProduct = function (req) {
 			product.image = req.files[0].filename
 			product.category = req.body.category
       product.description = req.body.description
+      product.year = req.body.year
+      product.kms = req.body.kms
+      product.color = req.body.color
       const productJson = JSON.stringify(products)
 	    fs.writeFileSync(productsFilePath, productJson)
 	    return product.id
