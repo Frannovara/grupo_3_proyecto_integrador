@@ -12,7 +12,7 @@ const newProduct = function(req) {
 	let newProduct = {
 		id: generateID(),
 		...req.body,
-		image: req.files[0].filename,
+		image: req.files[0].filename
 	};
 	products.push(newProduct);
 	let productsJSON = JSON.stringify(products);
