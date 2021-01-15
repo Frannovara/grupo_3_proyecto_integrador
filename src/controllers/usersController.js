@@ -60,14 +60,27 @@ const controladorUsuarios = {
         res.render ('./users/login')
     },
     loginProcess: (req , res) =>{
-        
-        
-        const userToLogin = users.find(user => users.email === req.body.email)
-        if (userToLogin){
+        let errors = validationResult(req)
+        if (errors.isEmpty()){
+            const userToLogin = users.find(user => users.email === req.body.email)
+            if ( userToLogin ){
+                    if(bcrypt.compareSync (req.body.password ,userToLogin.password )){
+                        req.session.userLogged = userToLogin;
+                        
+                }   
 
+                
+            }else{
+            return res.render('login' , { errors :errors.errors})
         }
+            }},
+
         
-    },
+        
+
+    
+        
+    
     register: (req , res) =>{
         res.render ('./users/register')
     },
@@ -98,5 +111,6 @@ const controladorUsuarios = {
         res.redirect('/')
     }
 }
+    
 
 module.exports = controladorUsuarios;
