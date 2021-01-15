@@ -62,15 +62,45 @@ const controladorUsuarios = {
         res.render ('./users/login')
     },
     loginProcess: (req , res) =>{
-        const userToLogin = users.find(user => user.email === req.body.email)
-        if (userToLogin != undefined){
-            if(bcrypt.compareSync(req.body.password, userToLogin.password)){
-                delete userToLogin.password;
-                req.session.user = userToLogin
-                res.redirect('/users/profile/' + userToLogin.id)
+        let errors = validationResult(req)
+        if (errors.isEmpty()){
+            const userToLogin = users.find(user => user.email === req.body.email)
+            if( userToLogin != undefined ){
+                if( bcrypt.compareSync(req.body.password , userToLogin.password)  ){
+                        delete userToLogin.password;
+                        req.session.user = userToLogin
+                        res.redirect('/users/profile/' + userToLogin.id);
+                        
+
+                    }else{
+                    res.render('./users/login' , { errors : {password : "el usuario no coincide"} })
+                }
+            }else{
+                res.render ('./users/login' , {errors : {email : "no hay usuario con ese mail"}})
             }
-        }   
+                
+        }else{
+            res.render ('login' , {errors: errors.errors})
+       }
+        
+        
+        
+    
+    
+    
     },
+    
+    logout: (req, res) => {
+        req.session.destroy();
+        res.redirect('/')
+    },
+
+        
+        
+
+    
+        
+    
     register: (req , res) =>{
         res.render ('./users/register')
     },
@@ -102,5 +132,6 @@ const controladorUsuarios = {
         res.redirect('/')
     }
 }
+    
 
 module.exports = controladorUsuarios;

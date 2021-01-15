@@ -16,7 +16,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '../public')));
 app.use(methodOverride('_method'));
-app.use (session ({secret: "shhhh"}));
+app.use (session ({secret: "secreto", resave: false , saveUninitialized: true}));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

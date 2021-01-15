@@ -29,5 +29,6 @@ router.get('/profile/:id', userMiddleware, usersController.profile)
 router.put('/profile/:id', usersController.editUser)
 router.put('/profileimage/:id', upload.any(), usersController.profileImage)
 router.delete('/delete/:id', usersController.deleteUser)
+router.get('/logout', usersController.logout)
 
 module.exports = router

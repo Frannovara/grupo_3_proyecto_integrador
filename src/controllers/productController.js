@@ -2,7 +2,6 @@ const { name } = require('ejs');
 const { json } = require('express');
 const fs = require('fs');
 const path = require('path');
-const { runInNewContext } = require('vm');
 
 const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
@@ -13,7 +12,7 @@ const newProduct = function(req) {
 	let newProduct = {
 		id: generateID(),
 		...req.body,
-		image: req.files[0].filename,
+		image: req.files[0].filename
 	};
 	products.push(newProduct);
 	let productsJSON = JSON.stringify(products);
@@ -44,7 +43,9 @@ const editProduct = function (req) {
 const deleteProduct = function(req) {
 	const productsNotDeleted = products.filter((product) => product.id != req.params.id)
 	let productsJSON = JSON.stringify(productsNotDeleted);
-	fs.writeFileSync(productsFilePath, productsJSON)
+  fs.writeFileSync(productsFilePath, productsJSON)
+  
+  
 }
 
 const controladorProductos = {
