@@ -17,7 +17,7 @@
                                 <h4 class="titulo-colores">Colores</h4>
                                 <div class="colores">
                                     <% filterByName.forEach(bike => { %>
-                                        <a href="/products/<%= bike.id %> "><span class="dot" style="background-color: <%= bike.color %>;"></span></a>
+                                        <a href="/products/<%= bike.id %> "><span class="dot" style= "background-color: <%= bike.color %>"></span></a>
                                     <% }) %>
                                 </div>
                             </div>
@@ -65,7 +65,7 @@
                     <section class="section-pd">
                         <% productsFilter.forEach(product => { %>
                             <article class="article-home" >
-                                <a href="/products/<%= product.id %> " class="product-detail"> 
+                                <a href="/products/<%= product.id %>" class="product-detail" > 
                                     <div class="div-img1">
                                         <img class="img1" src= "/images/products/<%= product.image %>"  alt= "<%= product.name %>"  >
                                     </div>

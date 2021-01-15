@@ -8014,4 +8014,12 @@
     "password": "$2a$10$F8C8cUNtrke/4NNlnkjP6.zuyqQNi9o7uAC1V6xxASrmYoLsNULeW",
     "image": "/images/users/default.png",
     "category": "user"
+}, {
+    "id": 1610741912611,
+    "first_name": "prueba1",
+    "last_name": "prueba2",
+    "email": "prueba@prueba.com",
+    "password": "$2a$10$Tdv4RrGK8HUry90mDO0RP.7DwnsAEsE0D0AKMhwKh7/.l05GLamoW",
+    "image": "/images/users/default.png",
+    "category": "user"
 }]
