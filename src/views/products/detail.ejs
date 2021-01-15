@@ -43,16 +43,19 @@
                                             <button type="button" class="boton-agregarcarrito"><strong>Agregar al carrito</strong></button>
                                         </div>
                                     </div>
-                                    <div class="detalle-botones-admin">
-                                        <div>
-                                            <a href="/products/edit/<%= product.id %> "><button type="button" class="boton-editar"><strong>Editar Producto</strong></button></a>
+                                    <% if (locals.user.category == 'admin') { %>
+                                        <div class="detalle-botones-admin">
+                                            <div>
+                                                <a href="/products/edit/<%= product.id %> "><button type="button" class="boton-editar"><strong>Editar Producto</strong></button></a>
+                                            </div>
+                                            <div>
+                                                <form method="POST" action="/products/delete/<%= product.id %>?_method=DELETE"  >
+                                                    <button type="submit" class="boton-editar"><strong>Eliminar Producto</strong></button>
+                                                </form>    
+                                            </div>
                                         </div>
-                                        <div>
-                                            <form method="POST" action="/products/delete/<%= product.id %>?_method=DELETE"  >
-                                                <button type="submit" class="boton-editar"><strong>Eliminar Producto</strong></button>
-                                            </form>    
-                                        </div>
-                                    </div>
+                                    <% } %>
+                                    
                                 </div>
                             </div>
                         </div>

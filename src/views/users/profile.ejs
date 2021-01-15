@@ -6,20 +6,20 @@
         <%- include('../partials/header') %>
         <main class="profile">
             <div class="div-profile-image">
-                <img class="profile-image" src="<%= user.image %> " alt="<%= user.first_name %> <%= user.last_name %> ">           
+                <img class="profile-image" src="<%= locals.user.image %> " alt="<%= locals.user.first_name %> <%= locals.user.last_name %> ">           
                 <button onclick="document.getElementById('profile-image-form').style.display='block'" class="boton-form" data-toggle="modal" data-target="#profile-image-form">
                     <small>Cambiar imagen de perfil</small>
                 </button>
             </div>
             <div class="profile-user-data">
-                <h1>Perfil de <%= user.first_name %> <%= user.last_name %> </h1>
-                <p>Nombre: <%= user.first_name %> </p>
-                <p>Apellido: <%= user.last_name %> </p>
-                <p>Email: <%= user.email %> </p>
+                <h1>Perfil de <%= locals.user.first_name %> <%= locals.user.last_name %> </h1>
+                <p>Nombre: <%= locals.user.first_name %> </p>
+                <p>Apellido: <%= locals.user.last_name %> </p>
+                <p>Email: <%= locals.user.email %> </p>
                 <button onclick="document.getElementById('edit-user-form').style.display='block'" class="boton-form" data-toggle="modal" data-target="#profile-image-form">
                     Editar datos de Usuario
                 </button>
-                <form action="/users/delete/<%= user.id %> /?_method=DELETE" method="POST">
+                <form action="/users/delete/<%= locals.user.id %> /?_method=DELETE" method="POST">
                     <button type="submit" class="register-form-button">Eliminar Usuario</button>
                 </form>
             </div>
@@ -31,7 +31,7 @@
                     </div>
                     <div class="modal-content-info">
                         <h3>Seleccionar la nueva imagen de perfil</h3>
-                        <form action="/users/profileImage/<%= user.id %>/?_method=PUT" method="POST" enctype="multipart/form-data">
+                        <form action="/users/profileImage/<%= locals.user.id %>/?_method=PUT" method="POST" enctype="multipart/form-data">
                             <div class="create-form-element">
                                 <input type="file" name="image" id="image">
                             </div>
@@ -48,25 +48,25 @@
                             <h3 class="modal-titulo">Editar datos de Usuario</h3>
                             <span class="close" onclick="document.getElementById('edit-user-form').style.display='none'">&times;</span>
                         </div>
-                        <form action="/users/profile/<%= user.id %> /?_method=PUT" method="POST">
+                        <form action="/users/profile/<%= locals.user.id %> /?_method=PUT" method="POST">
                             <div class="register-form-fields">
                                 <div class="register-form-block">
                                     <label for="name">Nombre</label>
                                     <div class="campo-datos">
                                         <i class="fas fa-user"></i>
-                                        <input type="text" name="first_name" id="first_name" class="campo-datos-type" value="<%= user.first_name %>">
+                                        <input type="text" name="first_name" id="first_name" class="campo-datos-type" value="<%= locals.user.first_name %>">
                                     </div>
                                     <label for="name">Apellido</label>
                                     <div class="campo-datos">
                                         <i class="fas fa-user"></i>
-                                        <input type="text" name="last_name" id="last_name" class="campo-datos-type" value="<%= user.last_name %>">
+                                        <input type="text" name="last_name" id="last_name" class="campo-datos-type" value="<%= locals.user.last_name %>">
                                     </div>
                                 </div>
                                 <div class="register-form-block">
                                     <label for="email">E-mail</label>
                                     <div class="campo-datos">
                                         <i class="fas fa-envelope"></i>
-                                        <input type="email" name="email" id="email" class="campo-datos-type" value="<%= user.email %>">
+                                        <input type="email" name="email" id="email" class="campo-datos-type" value="<%= locals.user.email %>">
                                     </div>
                                     <label for="password">Contraseña</label>
                                     <div class="campo-datos">

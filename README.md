@@ -30,3 +30,8 @@
 
 ## Link tablero Trello
 ##### https://trello.com/b/t020Y50o/trabajo-integrador-gr-3
+
+## Usuarios de prueba
+#### Si bien hay una base de datos de usuarios, los usuarios de prueba utilizados son los siguientes:
+##### Usuario administrador ==> email: admin@prueba.com  password: admin1234
+##### Usuario administrador ==> email: user@prueba.com  password: user1234
