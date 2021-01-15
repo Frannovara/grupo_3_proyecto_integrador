@@ -62,19 +62,20 @@ const controladorUsuarios = {
         res.render ('./users/login')
     },
     loginProcess: (req , res) =>{
-        
-        
-        const userToLogin = users.find(user => users.email === req.body.email)
-        if (userToLogin){
-
-        }
-        
+        const userToLogin = users.find(user => user.email === req.body.email)
+        if (userToLogin != undefined){
+            if(bcrypt.compareSync(req.body.password, userToLogin.password)){
+                delete userToLogin.password;
+                req.session.user = userToLogin
+                res.redirect('/users/profile/' + userToLogin.id)
+            }
+        }   
     },
     register: (req , res) =>{
         res.render ('./users/register')
     },
     profile: (req, res) => {
-        const user = users.find(item =>  item.id == req.params.id)
+        const user = req.session.user
         res.render('./users/profile', {user})
     },
     saveUser: (req, res) => {
@@ -94,6 +95,10 @@ const controladorUsuarios = {
     },
     deleteUser: (req, res) => {
         let i = deleteUser(req)
+        res.redirect('/')
+    },
+    logout: (req, res) => {
+        req.session.destroy();
         res.redirect('/')
     }
 }
