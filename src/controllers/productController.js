@@ -2,6 +2,7 @@ const { name } = require('ejs');
 const { json } = require('express');
 const fs = require('fs');
 const path = require('path');
+const { runInNewContext } = require('vm');
 
 const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 

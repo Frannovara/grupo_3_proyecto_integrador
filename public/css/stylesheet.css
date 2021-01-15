@@ -390,7 +390,22 @@ input:focus {
           width: 100%;
           align-items: center;
       }
-
+      .product-discount {
+          color: #FCA311;
+      }
+      .precio-tachado {
+          text-decoration: line-through;
+          color: #265277;
+      }
+      .detail-info {
+          display: flex;
+          flex-direction: column;
+      }
+      .detail-info-content {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+      }
 /*Version mobile carrito*/
 
 .carrito-compras{
@@ -407,6 +422,9 @@ input:focus {
     border-bottom: solid 2px #265277;
     margin: 6% 2% 0 2%;
     color: #173650;
+}
+.section1 {
+    background-color: #F1F8FE;
 }
 /*Color gris para las letras del carrito*/
 
@@ -521,23 +539,41 @@ margin: -331% -29% 0% 85%;
     flex-direction: column;
     align-items: center;
     color: #265277;
+    background-color: #F1F8FE;
 }
 .create-form {
     display: flex;
     flex-direction: column;
-    width: fit-content;
-    margin: 40px;
+    align-items: center;
+    width: 90%;
 }
 .create-form-element {
-    margin: 15px;
     padding: 10px;
-    border-bottom: #265277 solid 1px;
+    margin: 5px;
+    border-radius: 5px;
+    border: #aaa 1px solid;
 }
 .create-form-button {
     margin: 15px;
     padding: 10px;
     display: flex;
     justify-content: center;
+}
+.create-form-column {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: space-between;
+}
+.create-form-row {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.create-form-input {
+    outline: none;
+    background-color: #F1F8FE;
+    border: none;
 }
 /* fin creacion producto */
 
@@ -1027,6 +1063,15 @@ margin: -331% -29% 0% 85%;
     }
 
     /* fin nosotros */
+
+    /* creacion producto */
+    .create-form-row {
+        flex-direction: row;
+    }
+    .create-form-column {
+        width: 45%;
+    }
+    /* fin producto  */
 
     /* diseño registro */
     .register-form-fields {
