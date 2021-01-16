@@ -1098,4 +1098,8 @@ margin: -331% -29% 0% 85%;
     display: flex;
     margin-left: 39%;
 }
+.cuestionario-ayuda {
+    flex-direction: row;
+}
+
 /* fin ayuda */
