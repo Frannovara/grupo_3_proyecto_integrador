@@ -4,22 +4,32 @@
 <body>
     <div class="body-content">
         <%- include('./partials/header') %>
-        <section class="help-section">
+    <section class="help-section">
             <h1 class="titulo-ayuda">¿En qué podemos ayudarte?</h1>
     </div>
-    <div class = "cuestionario-ayuda">
+
+    <div class = "div-contenedor-ayuda">
+            <div class = cuestionario-pregunta>
         <h2 class = "preguntas-ayuda">¿Cómo puede abonar su compra?</h2>
         <h3 class = "respuestas-ayuda">Puede abonar en efectivo y con tarjetas de débito o crédito en cuotas.</h3>
+               
         <h2 class = "preguntas-ayuda">¿Dónde puede retirar el producto?</h2>
         <h3 class = "respuestas-ayuda">Puede retirar el producto en nuestra sucursal en Avenida Corrientes 400, esquina Gallo.</h3>
+            </div> 
+            <div class = cuestionario-pregunta>
         <h2 class = "preguntas-ayuda">¿Cómo son las políticas de devolución?</h2>
         <h3 class = "respuestas-ayuda">Se acepta la devolución dentro de los 10 días siguientes a la compra.</h3>
+        
         <h2 class = "preguntas-ayuda">¿Cuáles son los términos de la garantía?</h2>
         <h3 class = "respuestas-ayuda">Se ofrece garantía por un año, incluyendo los dos primeros service completos para tu moto.</h3>
+            </div>
+            <div class = cuestionario-pregunta>
         <h2 class = "preguntas-ayuda">¿Cómo puede cancelar una compra?</h2>
         <h3 class = "respuestas-ayuda">Puede cancelar las compras desde nuestro sitio web o contactándose con nuestra sucursal disponible para recibir las instrucciones de cancelación.</h3>
+            
         <h2 class = "preguntas-ayuda">¿Hay stock del producto?</h2>
         <h3 class = "respuestas-ayuda">Si el producto figura en nuestro sitio web, es porque hay stock del mismo.</h3>
+            </div>
     </div>
     </section>
     <%- include('partials/footer') %>
