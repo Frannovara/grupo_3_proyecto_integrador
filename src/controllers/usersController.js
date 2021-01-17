@@ -11,10 +11,11 @@ const users = JSON.parse(fs.readFileSync(usersFilePath, 'utf-8'));
 const saveUser = function(req) {
 	let newUser = {
 		id: Date.now(),
-		...req.body,
+        ...req.body,
         image: "/images/users/default.png",
         category: 'user'
     };
+    
     delete newUser.terms
     newUser.password = bcrypt.hashSync(newUser.password, 10);
 	users.push(newUser);
@@ -59,10 +60,11 @@ const deleteUser = (req) => {
 
 const controladorUsuarios = {
     login: (req , res) =>{
-        res.render ('./users/login')
+        res.render ('./users/login' ,  {loginData : {} , errors : []})
     },
     loginProcess: (req , res) =>{
         let errors = validationResult(req)
+        console.log (errors)
         if (errors.isEmpty()){
             let userToLogin = {...users.find(user => user.email === req.body.email)}
             console.log(userToLogin)
@@ -70,16 +72,17 @@ const controladorUsuarios = {
                 if( bcrypt.compareSync(req.body.password , userToLogin.password)  ){
                         delete userToLogin.password;
                         req.session.user = userToLogin
-                        res.locals.usuario = req.session.user
-                        res.redirect('/users/profile');
+                         if (req.body.remember){res.cookie('user' ,userToLogin.email,{maxAge: 1000 * 60 * 60} )}
+                         res.locals.usuario = req.session.user
+                        res.redirect('/users/profile');//como sabe que perfil es???
                     }else{
-                    res.render('./users/login' , { errors : {password : "el usuario no coincide"} })
+                        res.render ('./users/login' , {errors: errors.mapped() , loginData : {...req.body, password: ''}})
                 }
             }else{
-                res.render ('./users/login' , {errors : {email : "no hay usuario con ese mail"}})
+                res.render ('./users/login' , {errors: errors.mapped() , loginData : {...req.body, password: ''}})
             }   
         }else{
-            res.render ('login' , {errors: errors.errors})
+            res.render ('./users/login' , {errors: errors.mapped() , loginData : {...req.body, password: ''}});
        }
     },
     logout: (req, res) => {
