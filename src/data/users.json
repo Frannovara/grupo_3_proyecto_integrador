@@ -22,4 +22,12 @@
     "password": "$2a$10$WEkKlKZtHhBWXJa7NVnO1eqGTz9o66s/Vraqu2F5JlmBLBhm8fSK6",
     "image": "/images/users/default.png",
     "category": "user"
+}, {
+    "id": 1610916230792,
+    "first_name": "ana",
+    "last_name": "hidalgo",
+    "email": "anairene.hidalgo@gmail.com",
+    "password": "$2a$10$fLoUMeUcukRT9essjlGSu.vMC43yfKnEzrpJ9lQ8uIMWsdqW6D6aK",
+    "image": "/images/users/default.png",
+    "category": "user"
 }]
