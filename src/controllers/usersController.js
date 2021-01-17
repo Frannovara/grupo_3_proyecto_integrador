@@ -15,6 +15,7 @@ const saveUser = function(req) {
         image: "/images/users/default.png",
         category: 'user'
     };
+      
     
     delete newUser.terms
     newUser.password = bcrypt.hashSync(newUser.password, 10);
@@ -72,7 +73,7 @@ const controladorUsuarios = {
                 if( bcrypt.compareSync(req.body.password , userToLogin.password)  ){
                         delete userToLogin.password;
                         req.session.user = userToLogin
-                         if (req.body.remember){res.cookie('user' ,userToLogin.email,{maxAge: 1000 * 60 * 60} )}
+                         if (req.body.remember){res.cookie('user' ,userToLogin,{maxAge: 1000 * 60 * 60} )}
                          res.locals.usuario = req.session.user
                         res.redirect('/users/profile');//como sabe que perfil es???
                     }else{
@@ -117,6 +118,7 @@ const controladorUsuarios = {
     },
     logout: (req, res) => {
         req.session.destroy();
+        res.clearCookie('user');
         res.redirect('/')
     }
 }
