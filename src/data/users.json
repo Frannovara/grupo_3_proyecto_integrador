@@ -14,4 +14,12 @@
     "password": "$2a$10$vHDDGYQtnaAntBHYsoEb8eUesI.5ZdTV74f.b2JoxU5ffRVdbPaw6",
     "image": "/images/users/default.png",
     "category": "user"
+}, {
+    "id": 1610889010578,
+    "first_name": "Lautaro",
+    "last_name": "porlan",
+    "email": "l.porlann@gmail.com",
+    "password": "$2a$10$WEkKlKZtHhBWXJa7NVnO1eqGTz9o66s/Vraqu2F5JlmBLBhm8fSK6",
+    "image": "/images/users/default.png",
+    "category": "user"
 }]
