@@ -6,11 +6,12 @@
         <%- include('../partials/header') %>
         <main class="login-form">
             <h1 class="titulo-seccion">Ingreso</h1>
-            <form action="/users/login" method="POST">
+            <form action="/users/login" method="POST"  >
                 <label for="email">E-mail</label>
                 <div class="campo-datos">
-                    <i class="fas fa-envelope"></i><input type="email" name="email" id="email" class="campo-datos-type">
+                    <i class="fas fa-envelope"></i><input type="email" name="email" id="email" class="campo-datos-type" value="<%= loginData.email %>">    
                 </div>
+                <div class=""><p><%=typeof errors.email == 'undefined' ? '' : errors.email.msg%></p></div>
                 <label for="password">Contraseña</label>
                 <div class="campo-datos">
                     <i class="fas fa-lock"></i><input type="password" name="password" id="password" class="campo-datos-type">
