@@ -20,6 +20,7 @@
                             <input type="text" name="last_name" id="last_name" class="campo-datos-type">
                         </div>
                     </div>
+                    
                     <div class="register-form-block">
                         <label for="email">E-mail</label>
                         <div class="campo-datos">
@@ -45,6 +46,12 @@
                 </div>
                 <button type="submit" class="register-form-button">Registrarse</button>
             </form>
+            <div class="register-form-block">
+                <% if (typeof repitedUser != 'undefined') { %> 
+                  <strong>  <p><%= "el email " + repitedUser + " ya se encuentra en uso" %></p> </strong>
+                    <% } %>
+                     
+            </div>
             <div>
                 <!-- <div class="register-form-button"><i class="fab fa-google-plus-g"></i>   Ingresá con Google</div>
                 <div class="register-form-button"><i class="fab fa-facebook-f"></i>   Ingresá con Facebook</div> -->
