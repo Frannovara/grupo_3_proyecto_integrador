@@ -53,8 +53,7 @@ const controladorProductos = {
       res.render('./products/list', {products, toThousand})
     },
     detail: function(req, res) {
-      const product = products.find(item =>  item.id == req.params.id);
-      console.log(product)
+      let product = products.find(item =>  item.id == req.params.id);
 		  if(product.discount) {
 			  product.finalPrice = toThousand(product.price * (1 - product.discount/100))
 		  } else {
@@ -73,7 +72,6 @@ const controladorProductos = {
       res.render('./products/cart')
     },
     create: (req, res) => {
-     
       res.render('./products/create')
     },
     edit: (req, res, next) => {
@@ -81,11 +79,11 @@ const controladorProductos = {
       res.render('./products/edit' , {productToEdit, title: 'Editando ' + productToEdit.name}) 
     },
     confirm: (req, res, next) => {
-      const id = editProduct(req)
+      editProduct(req)
       res.redirect('/')
     },
     createProduct: (req, res, next) => {
-      const id = newProduct(req);
+      newProduct(req);
       res.redirect('/')
     }
 }
