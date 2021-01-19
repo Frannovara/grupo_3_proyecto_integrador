@@ -1102,11 +1102,20 @@ margin: -331% -29% 0% 85%;
 .div-contenedor-ayuda{
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .cuestionario-pregunta{
    width: 75%;
     flex-direction: row;
     display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.div-preguntas-ayuda{
+    flex-direction: column;
+    width: 45%;
 }
 /* fin ayuda */
