@@ -18,8 +18,8 @@ let upload = multer({ storage: storage })
 
 // Public Routes
 router.get('/', productController.list)
-router.get('/:id', productController.detail);
-router.get('/cart', userMiddleware.userToLogin, productController.cart)
+
+router.get('/cart', productController.cart)
 
 // Admin Routes
 router.post('/products', upload.any(), userMiddleware.userAdmin, productController.createProduct);
@@ -27,6 +27,8 @@ router.get('/edit/:id', userMiddleware.userAdmin, productController.edit)
 router.put('/detail/:id', upload.any() , userMiddleware.userAdmin, productController.confirm);
 router.get('/create', userMiddleware.userAdmin, productController.create)
 router.delete('/delete/:id', userMiddleware.userAdmin, productController.deleteConfirm); 
+
+router.get('/:id', productController.detail);
 
 
 module.exports = router;

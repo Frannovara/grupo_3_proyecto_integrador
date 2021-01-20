@@ -29,3 +29,18 @@ Franco Novara: Errores al hacer pull de github. Avanzó con la ruta POST de crea
 Lautaro Porlan: Encontró un error en algunas páginas que aparece la barra de scroll vertical al ingresar texto en formularios, se buscará de donde surge el error y como solucionarlo. Trabajó en el método de Login, aún sin terminar. Surgieron dudas con la variable ValidationResult. Creó el Middleware de Login. Solucionó la ruta DELETE, borra de la base de datos, pero al redirigir a la siguiente página, inicialmente aparece el producto. Finalizará el Login
 
 Francisco Lukac: Realizó la página de perfil de usuario y el formulario de registración de usuarios, también avanzó con el formulario de edición de datos de usuario y de imagen de perfil. Estos últimos dos están con errores actualmente que es necesario consultar. Hizo la elección de colores de moto en la página de detalle de producto. Avanzó con el formulario de eliminación de usuario, pero da error. Realizará la implementación de rutas de huéspedes y usuarios.
+
+
+
+## Reunión 18/1/2021
+
+Francisco lukac: Hizo la implementacion de rutas de huespedes, usuarios y administradores.Correccion del estilo de formularios de creacion y edicion de productos.
+Se rompieron las rutas de los formularios de creacion y edicion de productos y fue consultado en clase.
+Se trabajara en la semana en el boceto inicial de la DB.
+
+
+Lautaro Porlan: Completo la logica del login con ayuda del grupo, creo la validacion por email de register a nivel middleware de ruta y la creacion de cookie de usuario logueado y metodo log out. Trabajara en la redireccion del carrito de compras solo para usuarios logueados y en boceto inicial de la DB.
+
+Franco Novara: Finalizo la vista de ayuda
+
+
