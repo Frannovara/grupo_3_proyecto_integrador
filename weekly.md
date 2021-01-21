@@ -41,6 +41,6 @@ Se trabajara en la semana en el boceto inicial de la DB.
 
 Lautaro Porlan: Completo la logica del login con ayuda del grupo, creo la validacion por email de register a nivel middleware de ruta y la creacion de cookie de usuario logueado y metodo log out. Trabajara en la redireccion del carrito de compras solo para usuarios logueados y en boceto inicial de la DB.
 
-Franco Novara: Finalizo la vista de ayuda
+Franco Novara: Finalizo la vista de ayuda, se trabaja en formulario de creación de producto pero aún se encuentra incompleto.
 
 
