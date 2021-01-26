@@ -6,7 +6,7 @@
         <%- include('../partials/header') %>
         <section class="create-product">
             <h2>Crear un producto</h2>
-            <form action="/products" method="POST" class="create-form">
+            <form action="/products" method="POST" class="create-form" enctype="multipart/form-data">
                 <div class="create-form-row">
                     <div class="create-form-column"> 
                         <div class="create-form-element">
@@ -33,15 +33,15 @@
                         </div>
                         <div class="create-form-element">
                             <label for="price">Precio</label>
-                            <input type="number" class="create-form-input">
+                            <input type="number" class="create-form-input" name="price" id="price">
                         </div>
                         <div class="create-form-element">
                             <label for="discount">Descuento</label>
-                            <input type="number" class="create-form-input">
+                            <input type="number" class="create-form-input" name="discount" type="discount">
                         </div>
                         <div class="create-form-element">
                             <label for="year">Año</label>
-                            <input type="number" class="create-form-input">
+                            <input type="number" class="create-form-input" name="year" id="year">
                         </div>
                     </div>
                     <div class="create-form-column">
@@ -63,7 +63,7 @@
                         </div>
                         <div class="create-form-element">
                             <label for="color">Color</label>
-                            <input type="text" class="create-form-input">
+                            <input type="text" class="create-form-input" name="color" id="color">
                         </div>
                     </div>
                 </div>
