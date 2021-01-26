@@ -33,3 +33,10 @@
 #### Continuar haciendo: organizar las tareas con reuniones y en el tablero de trello.
 #### Hacer menos: 
 #### Dejar de hacer: repartir tareas en partes iguales para que no se comprima todo en un solo integrante.
+
+### Retrospectiva Sprint-5:
+#### Comenzar a hacer: Planificar las tareas del sprint equitativamente al recibir el enunciado, y dedicar el tiempo necesario para alcanzar esos objetivos.
+#### Hacer más: Repartir equitativamente las tareas del sprint de manera que todo el equipo pueda practicar los temas. Actualizar las tareas en el tablero con mayor precisión para no generar superposicion de tareas.
+#### Continuar haciendo: Consultar los errores en el grupo y con google. Y en caso de no poder consultarlo en las clases, para no atrasarnos con un error. Realizar reuniones semanales para ver como avanza el proyecto, y consultar los errores que fueron surgiendo.
+#### Hacer menos: dejar errores y/o consultas pendientes durante un tiempo prolongado que imposibilite continuar una tarea.
+#### Dejar de hacer: repartir las tareas casi aleatoriamente sin tener en cuenta quién de los integrantes puede estar más capacitado para realizarla.
