@@ -43,4 +43,6 @@ Lautaro Porlan: Completo la logica del login con ayuda del grupo, creo la valida
 
 Franco Novara: Finalizo la vista de ayuda
 
+## Reunión 25/1/2021
 
+    Se analizo el esquema de la db propuesto por Francisco lukac y el grupo esta conforme. Se analizaran propuestas de cambios durante el resto de la semana hasta comenzar el esquema definitivo, teniendo en cuenta tambien el feedback de los profesores.
