@@ -10,7 +10,7 @@ const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
 
 const newProduct = function(req) {
 	let newProduct = {
-		id: generateID(),
+		id: Date.now(),
 		...req.body,
 		image: req.files[0].filename
 	};
@@ -84,7 +84,7 @@ const controladorProductos = {
     },
     createProduct: (req, res, next) => {
       newProduct(req);
-      res.redirect('/')
+     res.redirect('/')
     }
 }
 
