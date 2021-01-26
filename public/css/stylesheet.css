@@ -509,6 +509,11 @@ margin: -331% -29% 0% 85%;
     flex-direction: column;
     align-items: center;
 }
+
+.consulta-enviada {
+    color: #FCA311;
+}
+
 ::placeholder {
     color: #265277;
 }

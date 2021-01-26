@@ -8,6 +8,7 @@ router.get('/contacto', mainController.contact)
 router.get('/nosotros', mainController.nosotros)
 router.get('/ayuda', mainController.help)
 router.post( '/' , mainController.form)
+router.post('/contact/send', mainController.contactSend)
 
 
 

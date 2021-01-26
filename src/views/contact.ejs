@@ -6,7 +6,12 @@
         <%- include('partials/header') %>
         <section class="contact-section">
             <h2>Dejanos tu consulta</h2>
-            <form class="contact-form" action="mailto:zonemotorbike@gmail.com" method="get" enctype="text/plain">
+
+            <% if (typeof mensaje != 'undefined') { %>
+                <h4 class="consulta-enviada"><%= mensaje %> </h4>
+            <% } %>
+            
+            <form class="contact-form" action="/contact/send" method="post">
                 <div>
                     <input class="contact-form-input" type="text" name="name" id="name" placeholder="Nombre y Apellido">
                 </div>
