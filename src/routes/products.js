@@ -22,7 +22,7 @@ router.get('/', productController.list)
 router.get('/cart', productController.cart)
 
 // Admin Routes
-router.post('/products', upload.any(), userMiddleware.userAdmin, productController.createProduct);
+router.post('/', upload.any(), userMiddleware.userAdmin, productController.createProduct);
 router.get('/edit/:id', userMiddleware.userAdmin, productController.edit)
 router.put('/detail/:id', upload.any() , userMiddleware.userAdmin, productController.confirm);
 router.get('/create', userMiddleware.userAdmin, productController.create)
