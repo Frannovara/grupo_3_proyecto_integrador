@@ -46,3 +46,7 @@ Franco Novara: Finalizo la vista de ayuda
 ## Reunión 25/1/2021
 
     Se analizo el esquema de la db propuesto por Francisco lukac y el grupo esta conforme. Se analizaran propuestas de cambios durante el resto de la semana hasta comenzar el esquema definitivo, teniendo en cuenta tambien el feedback de los profesores.
+
+## Reunión 26/1/2021
+    
+    Se reparten tareas de correcciones en Trello que cada integrante realizará a lo largo de la semana. Una vez corregido el diagrama de la base de datos enviada, pasaremos a dividir también las tareas en Trello que competen al sprint 6. 
