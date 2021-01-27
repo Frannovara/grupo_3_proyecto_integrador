@@ -1118,7 +1118,7 @@ margin: -331% -29% 0% 85%;
     flex-direction: row;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
 }
 
 .div-preguntas-ayuda{
