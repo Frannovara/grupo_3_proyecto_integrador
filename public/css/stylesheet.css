@@ -217,7 +217,8 @@ input:focus {
         text-decoration: underline;
     }
     .campo-datos {
-        border: solid 2px #265277;
+        border: solid 1px #265277;
+        background-color: #Ffffff;
         border-radius: 5px;
         padding: 5px;
         margin: 5px;
