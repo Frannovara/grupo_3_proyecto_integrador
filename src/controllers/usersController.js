@@ -40,15 +40,15 @@ const editUser =  (req) => {
 	users.forEach((user) => {
 		if (user.id == req.params.id) {
 			// product = { ...product, ...req.body, image: req.files[0].filename }
-			user.first_name = req.body.first_name,
-            user.last_name = req.body.last_name,
-            user.email = req.body.email,
-            user.password = bcrypt.hashSync(req.body.password, 10),
-            user.image = user.image,
+			user.first_name = req.body.first_name
+            user.last_name = req.body.last_name
+            user.email = req.body.email
+            if (req.body.password != '') {
+                user.password = bcrypt.hashSync(req.body.password, 10)
+            };            
             user.category = req.body.category
             const usersJson = JSON.stringify(users)
             fs.writeFileSync(usersFilePath, usersJson)
-            return user.id
 		}
 	})
 }
@@ -107,7 +107,7 @@ const controladorUsuarios = {
     },
     editUser: (req, res) => {
         editUser(req)
-        res.redirect('/')
+        res.redirect('/users/profile')
     },
     newPassword: (req, res) => {
         res.redirect('/users/login')
