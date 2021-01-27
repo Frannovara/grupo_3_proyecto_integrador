@@ -526,13 +526,14 @@ margin: -331% -29% 0% 85%;
 .contact-form-input {
     width: 300px;
     margin: 10px;
-    border: #265277 solid 2px;
+    border: #8aa4ba solid 1px;
     padding: 5px;
-    border-radius: 15px;
+    border-radius: 5px;
 }
 .contact-form-boton {
     margin: 10px;
-    border: #265277 solid 2px;
+    border: none;
+    background-color: #FCA311;
     padding: 5px;
     border-radius: 15px;
 }
