@@ -3,10 +3,61 @@ const fs = require('fs');
 const path = require('path');
 const bcrypt = require('bcryptjs');
 const {  validationResult  } = require('express-validator');
+const nodemailer = require('nodemailer');
 
 
 const usersFilePath = path.join(__dirname, '../data/users.json');
 const users = JSON.parse(fs.readFileSync(usersFilePath, 'utf-8'));
+
+function makeid() {
+    var result           = '';
+    var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%&?¡¿!';
+    var charactersLength = characters.length;
+    for ( var i = 0; i < 10; i++ ) {
+       result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    return result;
+ }
+
+// Función que envía un mail para regenerar la contraseña
+async function newPass(req) {
+
+    let testAcount = await nodemailer.createTestAccount();
+
+    let transporter = nodemailer.createTransport({
+        host: 'smtp.gmail.com',
+        port: 587,
+        secure: false,
+        auth: {
+            user: 'motorbikezone007@gmail.com',
+            pass: 'Mbz2021@',
+        },
+        tls: {
+            rejectUnauthorized: false
+        }
+    });
+
+    let randomPassword = makeid()
+
+    let info = await transporter.sendMail({
+        from: 'motorbikezone007@gmail.com',
+        to: req.body.email,
+        subject: 'Cambio de contraseña',
+        text: 'Su nueva contraseña es ' + randomPassword + ' actualizela al reingresar',
+    });
+
+    console.log('Message sent: %s', info.messageId);
+
+    console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
+
+    users.forEach((user) => {
+        if (user.email == req.body.email) {
+            user.password = bcrypt.hashSync(randomPassword, 10)
+        const usersJson = JSON.stringify(users)
+        fs.writeFileSync(usersFilePath, usersJson)
+        }
+    })
+}
 
 const saveUser = function(req) {
 	let newUser = {
@@ -110,6 +161,7 @@ const controladorUsuarios = {
         res.redirect('/users/profile')
     },
     newPassword: (req, res) => {
+        newPass(req)
         res.redirect('/users/login')
     },
     deleteUser: (req, res) => {
