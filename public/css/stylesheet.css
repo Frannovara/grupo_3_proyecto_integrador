@@ -15,6 +15,7 @@ input:focus {
 }
 .body-content {
     flex: 1 0 auto;
+    background-color: #f1f8fe;
   }
 
   a {
@@ -1053,6 +1054,7 @@ margin: -331% -29% 0% 85%;
     /* diseño nosotros */
     .nosotros-seccion {
         flex-direction: row;
+        justify-content: center;
     }
     .concesionario-div {
         display: flex;
