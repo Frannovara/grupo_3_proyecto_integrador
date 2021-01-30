@@ -1,6 +1,4 @@
-const {
-    render
-} = require("ejs");
+const {render} = require("ejs");
 const fs = require('fs');
 const path = require('path');
 const bcrypt = require('bcryptjs');
@@ -8,6 +6,9 @@ const {
     validationResult
 } = require('express-validator');
 const nodemailer = require('nodemailer');
+
+// requireing sequelize models
+const db = require( '../database/models' );
 
 
 const usersFilePath = path.join(__dirname, '../data/users.json');
