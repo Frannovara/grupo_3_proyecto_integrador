@@ -1,5 +1,3 @@
-const { BelongsTo } = require("sequelize/types");
-
 module.exports = (sequelize, dataTypes) => {
     
     let alias = 'User_category';
@@ -34,12 +32,12 @@ module.exports = (sequelize, dataTypes) => {
     
     const User_category = sequelize.define(alias, cols, config);
 
-    User_category.associate = function (modelos) {
-        User_category.belongsTo(modelos.User, {
+    User_category.association = function(models) {
+        User_category.belongsTo(models.User, {
             as: 'user_category',
             foreignKey: 'category_id'
         })
     }
 
-    return User;
+    return User_category;
 }
