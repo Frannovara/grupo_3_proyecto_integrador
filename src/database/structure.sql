@@ -208,16 +208,16 @@ CREATE TABLE IF NOT EXISTS `motorzone_db`.`cart_product` (
   `created_at` TIMESTAMP NULL,
   `updated_at` TIMESTAMP NULL,
   `deleted_at` TIMESTAMP NULL,
-  `sale_id` BIGINT NULL,
+  `cart_id` BIGINT NULL,
   `product_id` BIGINT NULL,
   `subtotal` DECIMAL NULL,
   `units` INT NULL,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `id_UNIQUE` (`id` ASC) ,
   INDEX `product_id_idx` (`product_id` ASC) ,
-  INDEX `sale_id_idx` (`sale_id` ASC) ,
-  CONSTRAINT `sale_id`
-    FOREIGN KEY (`sale_id`)
+  INDEX `cart_id_idx` (`cart_id` ASC) ,
+  CONSTRAINT `cart_id`
+    FOREIGN KEY (`cart_id`)
     REFERENCES `motorzone_db`.`carts` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
