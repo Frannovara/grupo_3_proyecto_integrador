@@ -1,6 +1,6 @@
 module.exports = (sequelize, dataTypes) => {
     
-    let alias = 'User_categories';
+    let alias = 'Carts';
     let cols = {
         id: {
             autoIncrement: true,
@@ -17,27 +17,37 @@ module.exports = (sequelize, dataTypes) => {
         deleted_at: {
             type: dataTypes.DATE,
         },
-        category: {
+        status: {
             type: dataTypes.STRING,
+        },
+        total: {
+            type: dataTypes.DECIMAL,
+        },
+        user_id: {
+            type: dataTypes.BIGINT,
         }
 
     }
     let config = {
-        tableName: 'user_categories',
+        tableName: 'carts',
         timestamps: true,
         creadetAt: 'created_at',
         updatedAt: 'updated_at',
         deletedAT: 'deleted_at'
     }
     
-    const User_category = sequelize.define(alias, cols, config);
+    const Cart = sequelize.define(alias, cols, config);
 
-     User_category.associate = function(models) {
-         User_category.belongsTo(models.Users, {
-             as: 'user_category',
-             foreignKey: 'category_id'
-         })
-     }
+    Cart.associate = function(models) {
+        Cart.belongsTo(models.Users, {
+            as: 'carts',
+            foreignKey: 'user_id'
+        })
+        , Cart.hasMany(models.Users, {
+            as: 'cart_product',
+            foreignKey: 'cart_id'
+        })
+    }
 
-    return User_category;
+    return Cart;
 }

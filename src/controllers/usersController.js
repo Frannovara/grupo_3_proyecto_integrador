@@ -1,4 +1,3 @@
-const {render} = require("ejs");
 const fs = require('fs');
 const path = require('path');
 const bcrypt = require('bcryptjs');
@@ -9,6 +8,9 @@ const nodemailer = require('nodemailer');
 
 // requireing sequelize models
 const db = require( '../database/models' );
+
+// requireing .env
+require('dotenv').config()
 
 
 const usersFilePath = path.join(__dirname, '../data/users.json');
@@ -34,8 +36,8 @@ async function newPass(req) {
         port: 587,
         secure: false,
         auth: {
-            user: 'motorbikezone007@gmail.com',
-            pass: 'Mbz2021@',
+            user: process.env.MAIL_MBZ,
+            pass: process.env.PASSWORD_EMAIL,
         },
         tls: {
             rejectUnauthorized: false
