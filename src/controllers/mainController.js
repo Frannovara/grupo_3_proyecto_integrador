@@ -5,6 +5,9 @@ const nodemailer = require('nodemailer');
 
 const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
+// requireing .env
+require('dotenv').config()
+
 const productsFilePath = path.join(__dirname, '../data/productsDataBase.json');
 const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
 
@@ -17,8 +20,8 @@ async function main(req) {
         port: 587,
         secure: false,
         auth: {
-            user: 'motorbikezone007@gmail.com',
-            pass: 'Mbz2021@',
+            user: process.env.MAIL_MBZ,
+            pass: process.env.PASSWORD_EMAIL,
         },
         tls: {
             rejectUnauthorized: false
