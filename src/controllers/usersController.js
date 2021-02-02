@@ -66,22 +66,6 @@ async function newPass(req) {
     })
 }
 
-const saveUser = function (req) {
-    let newUser = {
-        id: Date.now(),
-        ...req.body,
-        image: "/images/users/default.png",
-        category: 'user'
-    };
-
-
-    delete newUser.terms
-    newUser.password = bcrypt.hashSync(newUser.password, 10);
-    users.push(newUser);
-    let usersJSON = JSON.stringify(users);
-    fs.writeFileSync(usersFilePath, usersJSON)
-    console.log(newUser)
-}
 const setImage = (req) => {
     users.forEach((user) => {
         if (user.id == req.params.id) {
@@ -166,8 +150,40 @@ const controladorUsuarios = {
         })
     },
     saveUser: (req, res) => {
-        saveUser(req)
-        res.redirect('/users/login')
+        db.Users.findOne({
+            where: {
+                email: req.body.email
+            }
+        })
+        .then( resultado => {
+            if(resultado == null ) {
+                db.Users.create({   
+                    first_name: req.body.first_name,
+                    last_name: req.body.last_name,
+                    email: req.body.email,
+                    password: bcrypt.hashSync(req.body.password, 10),
+                    profile_image: "/images/users/default.png",
+                    category_id: 2
+                })
+                .then( resultado => {
+                    req.session.user = {   
+                        first_name: req.body.first_name,
+                        last_name: req.body.last_name,
+                        email: req.body.email,
+                        password: bcrypt.hashSync(req.body.password, 10),
+                        profile_image: "/images/users/default.png",
+                        category_id: 2
+                    }
+                    return res.redirect('/users/profile')
+                }) 
+            } else {
+                repitedUser = req.body.email
+                return res.redirect('register')
+            }
+        })
+        .catch(err => {
+            return err            
+        })
     },
     profileImage: (req, res) => {
         setImage(req)

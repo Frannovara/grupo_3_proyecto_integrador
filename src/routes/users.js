@@ -25,7 +25,7 @@ router.post('/login', logInValidator, usersController.loginProcess)
 router.post('/login/newPass', usersController.newPassword)
 
 router.get('/register', userMiddleware.userLogged, usersController.register)
-router.post('/register',registerMiddleware, usersController.saveUser)
+router.post('/register',/*registerMiddleware,*/ usersController.saveUser)
 
 router.get('/profile', userMiddleware.userToLogin, usersController.profile)
 router.put('/profile/:id', usersController.editUser)
