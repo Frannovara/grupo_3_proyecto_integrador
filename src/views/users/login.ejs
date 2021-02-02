@@ -16,6 +16,7 @@
                 <div class="campo-datos">
                     <i class="fas fa-lock"></i><input type="password" name="password" id="password" class="campo-datos-type">
                 </div>
+                <div class=""><p><%=typeof errors.password == 'undefined' ? '' : errors.password.msg%></p></div>
                 <div class="remember">
                     <input type="checkbox" name="remember" id="remember" class="remember"><label for="remember">Recordarme</label>
                 </div>

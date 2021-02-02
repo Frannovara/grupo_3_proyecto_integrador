@@ -66,18 +66,6 @@ async function newPass(req) {
     })
 }
 
-const setImage = (req) => {
-    users.forEach((user) => {
-        if (user.id == req.params.id) {
-            user.image = '/images/users/' + req.files[0].filename
-            const usersJson = JSON.stringify(users)
-            fs.writeFileSync(usersFilePath, usersJson)
-            return user.id
-        }
-    })
-
-}
-
 const editUser = (req) => {
     users.forEach((user) => {
         if (user.id == req.params.id) {
@@ -111,7 +99,32 @@ const controladorUsuarios = {
     loginProcess: (req, res) => {
         let errors = validationResult(req)
         if (errors.isEmpty()) {
-            let userToLogin = {
+            /* db.Users.findOne({
+                where: {
+                email: req.body.email
+                }
+            })
+            .then(resultado => {
+                if(resultado != null ) {
+                    if(bcrypt.compareSync(req.body.password, resultado.get('password'))) {
+                        req.session.user = {   
+                            first_name: resultado.get('first_name'),
+                            last_name: resultado.get('last_name'),
+                            email: resultado.get('email'),
+                            profile_image: resultado.get("profile_image"),
+                            category_id: resultado.get("category_id")
+                        }
+                        if (req.body.remember) {
+                            res.cookie('user', userToLogin, {
+                                maxAge: 1000 * 60 * 60
+                            })
+                        }
+                        res.locals.user = req.session.user
+                        res.redirect('/users/profile');
+                    }
+                }
+            }) */
+             let userToLogin = {
                 ...users.find(user => user.email === req.body.email)
             }
             if (userToLogin != undefined) {
@@ -123,11 +136,11 @@ const controladorUsuarios = {
                             maxAge: 1000 * 60 * 60
                         })
                     }
-                    res.locals.usuario = req.session.user
+                    res.locals.user = req.session.user
                     res.redirect('/users/profile'); //como sabe que perfil es???
                 }
             }
-        }
+        } 
         res.render('./users/login', {
             errors: errors.mapped(),
             loginData: {
@@ -174,6 +187,7 @@ const controladorUsuarios = {
                         profile_image: "/images/users/default.png",
                         category_id: 2
                     }
+                    res.locals.user = req.session.user
                     return res.redirect('/users/profile')
                 }) 
             } else {
@@ -186,12 +200,56 @@ const controladorUsuarios = {
         })
     },
     profileImage: (req, res) => {
-        setImage(req)
-        res.redirect('/')
+        db.Users.update({
+            profile_image: "/images/users/" + req.files[0].filename
+        }, {
+            where: {
+                email:  res.locals.user.email
+            }
+        })
+        .then( resultado => {
+            res.redirect('/users/profile')
+            })
+        .catch(err => {
+            res.send(err)
+        })
+        
     },
     editUser: (req, res) => {
-        editUser(req)
-        res.redirect('/users/profile')
+        if (req.body.password != '') {
+            db.Users.update({
+                first_name: req.body.first_name,
+                last_name: req.body.last_name,
+                email: req.body.email,
+            }, {
+                where: {
+                    email: session.email
+                }
+            })
+            .then( resultado => {
+                res.redirect('/users/profile')
+                })
+            .catch(err => {
+                res.send(err)
+            })
+        } else {
+            db.Users.update({
+                first_name: req.body.first_name,
+                last_name: req.body.last_name,
+                email: req.body.email,
+                password: bcrypt.hashSync(req.body.password, 10),
+            }, {
+                where: {
+                    email: session.email
+                }
+            })
+            .then( resultado => {
+                res.redirect('/users/profile')
+                })
+            .catch(err => {
+                res.send(err)
+            })
+        }
     },
     newPassword: (req, res) => {
         newPass(req)

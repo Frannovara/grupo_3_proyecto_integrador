@@ -4,7 +4,7 @@
     "last_name": "admin",
     "email": "admin@prueba.com",
     "password": "$2a$10$BJJ8/4l.opQC6QOBwufZHOnoHryxnjPAqV9IBaQQgOvH3PZ7HC0Om",
-    "image": "/images/users/default.png",
+    "profile_image": "/images/users/default.png",
     "category": "admin"
 }, {
     "id": 1610750289804,
@@ -12,7 +12,7 @@
     "last_name": "user",
     "email": "user@prueba.com",
     "password": "$2a$10$vHDDGYQtnaAntBHYsoEb8eUesI.5ZdTV74f.b2JoxU5ffRVdbPaw6",
-    "image": "/images/users/default.png",
+    "profile_image": "/images/users/default.png",
     "category": "user"
 }, {
     "id": 1610889010578,
@@ -20,7 +20,7 @@
     "last_name": "porlan",
     "email": "l.porlann@gmail.com",
     "password": "$2a$10$WEkKlKZtHhBWXJa7NVnO1eqGTz9o66s/Vraqu2F5JlmBLBhm8fSK6",
-    "image": "/images/users/default.png",
+    "profile_image": "/images/users/default.png",
     "category": "user"
 }, {
     "id": 1610916230792,
@@ -28,6 +28,6 @@
     "last_name": "hidalgo",
     "email": "anairene.hidalgo@gmail.com",
     "password": "$2a$10$fLoUMeUcukRT9essjlGSu.vMC43yfKnEzrpJ9lQ8uIMWsdqW6D6aK",
-    "image": "/images/users/default.png",
+    "profile_image": "/images/users/default.png",
     "category": "user"
 }]
