@@ -6,7 +6,7 @@
         <%- include('../partials/header') %>
         <main class="profile">
             <div class="div-profile-image">
-                <img class="profile-image" src="<%= locals.user.image %> " alt="<%= locals.user.first_name %> <%= locals.user.last_name %> ">           
+                <img class="profile-image" src="<%= locals.user.profile_image %> " alt="<%= locals.user.first_name %> <%= locals.user.last_name %> ">           
                 <button onclick="document.getElementById('profile-image-form').style.display='block'" class="boton-form" data-toggle="modal" data-target="#profile-image-form">
                     <small>Cambiar imagen de perfil</small>
                 </button>
@@ -31,7 +31,7 @@
                     </div>
                     <div class="modal-content-info">
                         <h3>Seleccionar la nueva imagen de perfil</h3>
-                        <form action="/users/profileImage/<%= locals.user.id %>/?_method=PUT" method="POST" enctype="multipart/form-data">
+                        <form action="/users/profileImage/?_method=PUT" method="POST" enctype="multipart/form-data">
                             <div class="create-form-element">
                                 <input type="file" name="image" id="image">
                             </div>

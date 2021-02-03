@@ -30,7 +30,7 @@ module.exports = (sequelize, dataTypes) => {
     }
     let config = {
         tableName: 'carts',
-        timestamps: true,
+        timestamps: true, 
         creadetAt: 'created_at',
         updatedAt: 'updated_at',
         deletedAT: 'deleted_at'
@@ -43,10 +43,10 @@ module.exports = (sequelize, dataTypes) => {
             as: 'carts',
             foreignKey: 'user_id'
         })
-        , Cart.hasMany(models.Users, {
+        /* , Cart.hasMany(models.products, {
             as: 'cart_product',
             foreignKey: 'cart_id'
-        })
+        }) */
     }
 
     return Cart;
