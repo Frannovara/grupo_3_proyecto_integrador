@@ -27,7 +27,7 @@ module.exports = (sequelize, dataTypes) => {
         timestamps: true,
         creadetAt: 'created_at',
         updatedAt: 'updated_at',
-        deletedAT: 'deleted_at'
+        deletedAt: 'deleted_at'
     }
     
     const User_category = sequelize.define(alias, cols, config);
