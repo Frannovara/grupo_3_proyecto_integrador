@@ -9,13 +9,13 @@ module.exports = function(sequelize, dataTypes){
             allowNull:false
         },
         created_at: {
-            dataTypes.DATE,
+            type: dataTypes.DATE,
         },
         updated_at: {
-            dataTypes.DATE,
+            type: dataTypes.DATE,
         },
         deleted_at: {
-            dataTypes.DATE,
+            type: dataTypes.DATE,
         },
         image: {
             type : dataTypes.STRING,
