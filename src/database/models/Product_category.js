@@ -16,7 +16,7 @@ module.exports = (sequelize , dataTypes) =>{
         deleted_at: {
             type: dataTypes.DATE,
         },
-        category: {
+        name: {
             type: dataTypes.STRING,
         }
     }
