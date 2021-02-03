@@ -32,7 +32,7 @@ module.exports = function(sequelize, dataTypes){
     let config = {
         tableName: 'images',
         timestamps: true, 
-        creadetAt: 'created_at',
+        createdAt: 'created_at',
         updatedAt: 'updated_at',
         deletedAT: 'deleted_at'
     }
