@@ -43,7 +43,7 @@
                                             <button type="button" class="boton-agregarcarrito"><strong>Agregar al carrito</strong></button>
                                         </div>
                                     </div>
-                                    <% if (locals.user.category == 'admin') { %>
+                                    <% if (locals.user.category_id == 1) { %>
                                         <div class="detalle-botones-admin">
                                             <div>
                                                 <a href="/products/edit/<%= product.id %> "><button type="button" class="boton-editar"><strong>Editar Producto</strong></button></a>
