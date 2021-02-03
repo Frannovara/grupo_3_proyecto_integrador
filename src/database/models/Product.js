@@ -53,7 +53,8 @@
     const Product = sequelize.define(alias, cols, config);
     Product.associate = models =>{
         Product.belongsTo(models.Brands, {
-            as : 'products',
+            as : 'product_brand',
+        
             foreignKey: 'brand_id'
 
         })
