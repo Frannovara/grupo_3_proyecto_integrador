@@ -4,8 +4,8 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 
 
 -- user categories 
-INSERT INTO `motorzone_db`.`user_categories` (id, category) VALUES (1, 'admin');
-INSERT INTO `motorzone_db`.`user_categories` (id, category) VALUES (2, 'user');
+INSERT INTO `motorzone_db`.`user_categories` (id, name) VALUES (1, 'admin');
+INSERT INTO `motorzone_db`.`user_categories` (id, name) VALUES (2, 'user');
 
 
 -- users
@@ -14,29 +14,29 @@ INSERT INTO `motorzone_db`.`users`( id, first_name, last_name, email, password, 
 INSERT INTO `motorzone_db`.`users`( id, first_name, last_name, email, password, profile_image, category_id) VALUES (3,'Lautaro','porlan','l.porlann@gmail.com','$2a$10$WEkKlKZtHhBWXJa7NVnO1eqGTz9o66s/Vraqu2F5JlmBLBhm8fSK6','/images/users/default.png',2);
 
 -- colors
-INSERT INTO `motorzone_db`.`colors`( id, color) VALUES (1, 'white');
-INSERT INTO `motorzone_db`.`colors`( id, color) VALUES (2, 'black');
-INSERT INTO `motorzone_db`.`colors`( id, color) VALUES (3, 'red');
-INSERT INTO `motorzone_db`.`colors`( id, color) VALUES (4, 'blue');
-INSERT INTO `motorzone_db`.`colors`( id, color) VALUES (5, 'green');
-INSERT INTO `motorzone_db`.`colors`( id, color) VALUES (6, 'purple');
-INSERT INTO `motorzone_db`.`colors`( id, color) VALUES (7, 'grey');
-INSERT INTO `motorzone_db`.`colors`( id, color) VALUES (8, 'lightblue');
+INSERT INTO `motorzone_db`.`colors`( id, name) VALUES (1, 'white');
+INSERT INTO `motorzone_db`.`colors`( id, name) VALUES (2, 'black');
+INSERT INTO `motorzone_db`.`colors`( id, name) VALUES (3, 'red');
+INSERT INTO `motorzone_db`.`colors`( id, name) VALUES (4, 'blue');
+INSERT INTO `motorzone_db`.`colors`( id, name) VALUES (5, 'green');
+INSERT INTO `motorzone_db`.`colors`( id, name) VALUES (6, 'purple');
+INSERT INTO `motorzone_db`.`colors`( id, name) VALUES (7, 'grey');
+INSERT INTO `motorzone_db`.`colors`( id, name) VALUES (8, 'lightblue');
 
 -- brands
-INSERT INTO `motorzone_db`.`brands`( id, brand) VALUES (1, 'Honda');
-INSERT INTO `motorzone_db`.`brands`( id, brand) VALUES (2, 'Benelli');
-INSERT INTO `motorzone_db`.`brands`( id, brand) VALUES (3, 'Harley-Davidson');
-INSERT INTO `motorzone_db`.`brands`( id, brand) VALUES (4, 'BMW');
-INSERT INTO `motorzone_db`.`brands`( id, brand) VALUES (5, 'Yamaha');
-INSERT INTO `motorzone_db`.`brands`( id, brand) VALUES (6, 'Kawasaki');
+INSERT INTO `motorzone_db`.`brands`( id, name) VALUES (1, 'Honda');
+INSERT INTO `motorzone_db`.`brands`( id, name) VALUES (2, 'Benelli');
+INSERT INTO `motorzone_db`.`brands`( id, name) VALUES (3, 'Harley-Davidson');
+INSERT INTO `motorzone_db`.`brands`( id, name) VALUES (4, 'BMW');
+INSERT INTO `motorzone_db`.`brands`( id, name) VALUES (5, 'Yamaha');
+INSERT INTO `motorzone_db`.`brands`( id, name) VALUES (6, 'Kawasaki');
 
 -- product_categories
-INSERT INTO `motorzone_db`.`product_categories`( id, category) VALUES (1, 'Naked');
-INSERT INTO `motorzone_db`.`product_categories`( id, category) VALUES (2, 'Motocross');
-INSERT INTO `motorzone_db`.`product_categories`( id, category) VALUES (3, 'Scooter');
-INSERT INTO `motorzone_db`.`product_categories`( id, category) VALUES (4, 'Casco');
-INSERT INTO `motorzone_db`.`product_categories`( id, category) VALUES (5, 'Accesorios');
+INSERT INTO `motorzone_db`.`product_categories`( id, name) VALUES (1, 'Naked');
+INSERT INTO `motorzone_db`.`product_categories`( id, name) VALUES (2, 'Motocross');
+INSERT INTO `motorzone_db`.`product_categories`( id, name) VALUES (3, 'Scooter');
+INSERT INTO `motorzone_db`.`product_categories`( id, name) VALUES (4, 'Casco');
+INSERT INTO `motorzone_db`.`product_categories`( id, name) VALUES (5, 'Accesorios');
 
 -- products
 INSERT INTO `motorzone_db`.`products`( id, name, description, year, base_price, discount, final_price, category_id, brand_id) VALUES (1 , "Benelli TNT 150" , 
@@ -50,17 +50,17 @@ INSERT INTO `motorzone_db`.`products`( id, name, description, year, base_price, 
 2020 , 284800 , 0, 284800 , 1 , 1);
 
 -- images
-INSERT INTO `motorzone_db`.`images`( id, image, product_id, color_id) VALUES (1, 'benelli-tnt-150-blanco.png', 1,1);
-INSERT INTO `motorzone_db`.`images`( id, image, product_id, color_id) VALUES (1, 'benelli-tnt-150-verde.png', 1,5);
-INSERT INTO `motorzone_db`.`images`( id, image, product_id, color_id) VALUES (1, 'benelli-tnt-150-rojo.png', 1,3);
-INSERT INTO `motorzone_db`.`images`( id, image, product_id, color_id) VALUES (1, 'benelli-tnt-150-negro.png', 1,2);
-INSERT INTO `motorzone_db`.`images`( id, image, product_id, color_id) VALUES (1, 'benelli-tnt-300-blanco.png', 2,1);
-INSERT INTO `motorzone_db`.`images`( id, image, product_id, color_id) VALUES (1, 'benelli-tnt-300-verde.png', 2,5);
-INSERT INTO `motorzone_db`.`images`( id, image, product_id, color_id) VALUES (1, 'benelli-tnt-300-rojo.png', 2,3);
-INSERT INTO `motorzone_db`.`images`( id, image, product_id, color_id) VALUES (1, 'benelli-tnt-300-negro.png', 2,2);
-INSERT INTO `motorzone_db`.`images`( id, image, product_id, color_id) VALUES (1, 'honda-titan-150-blanco.jpg', 3,1);
-INSERT INTO `motorzone_db`.`images`( id, image, product_id, color_id) VALUES (1, 'honda-titan-150-negro.jpg', 3,2);
-INSERT INTO `motorzone_db`.`images`( id, image, product_id, color_id) VALUES (1, 'honda-titan-150-rojo.jpg', 3,3);
+INSERT INTO `motorzone_db`.`images`( id, image, product_id, color_id) VALUES (1,'benelli-tnt-150-blanco.png', 1,1);
+INSERT INTO `motorzone_db`.`images`( id, image, product_id, color_id) VALUES (2, 'benelli-tnt-150-verde.png', 1,5);
+INSERT INTO `motorzone_db`.`images`( id, image, product_id, color_id) VALUES (3, 'benelli-tnt-150-rojo.png', 1,3);
+INSERT INTO `motorzone_db`.`images`( id, image, product_id, color_id) VALUES (4, 'benelli-tnt-150-negro.png', 1,2);
+INSERT INTO `motorzone_db`.`images`( id, image, product_id, color_id) VALUES (5, 'benelli-tnt-300-blanco.png', 2,1);
+INSERT INTO `motorzone_db`.`images`( id, image, product_id, color_id) VALUES (6, 'benelli-tnt-300-verde.png', 2,5);
+INSERT INTO `motorzone_db`.`images`( id, image, product_id, color_id) VALUES (7, 'benelli-tnt-300-rojo.png', 2,3);
+INSERT INTO `motorzone_db`.`images`( id, image, product_id, color_id) VALUES (8, 'benelli-tnt-300-negro.png', 2,2);
+INSERT INTO `motorzone_db`.`images`( id, image, product_id, color_id) VALUES (9, 'honda-titan-150-blanco.jpg', 3,1);
+INSERT INTO `motorzone_db`.`images`( id, image, product_id, color_id) VALUES (10, 'honda-titan-150-negro.jpg', 3,2);
+INSERT INTO `motorzone_db`.`images`( id, image, product_id, color_id) VALUES (11, 'honda-titan-150-rojo.jpg', 3,3);
 
 
 
