@@ -51,6 +51,13 @@
         deletedAt: 'deleted_at'
     }
     const Product = sequelize.define(alias, cols, config);
+    Product.associate = models =>{
+        Product.belongsTo(models.Brands, {
+            as : 'products',
+            foreignKey: 'brand_id'
+
+        })
+    }
 
     return Product;
 } 
