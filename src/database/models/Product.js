@@ -48,7 +48,7 @@
         timestamps: true,
         creadetAt: 'created_at',
         updatedAt: 'updated_at',
-        deletedAT: 'deleted_at'
+        deletedAt: 'deleted_at'
     }
     const Product = sequelize.define(alias, cols, config);
 
