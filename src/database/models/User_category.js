@@ -25,7 +25,7 @@ module.exports = (sequelize, dataTypes) => {
     let config = {
         tableName: 'user_categories',
         timestamps: true,
-        creadetAt: 'created_at',
+        createdAt: 'created_at',
         updatedAt: 'updated_at',
         deletedAt: 'deleted_at'
     }
