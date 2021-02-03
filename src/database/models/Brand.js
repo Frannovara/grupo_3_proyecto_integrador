@@ -1,6 +1,5 @@
-module.exports = (sequelize, dataTypes) => {
-    
-    let alias = 'User_categories';
+module.exports = (sequelize , dataTypes) =>{
+    let alias = 'Brands';
     let cols = {
         id: {
             autoIncrement: true,
@@ -17,27 +16,21 @@ module.exports = (sequelize, dataTypes) => {
         deleted_at: {
             type: dataTypes.DATE,
         },
+
         name: {
             type: dataTypes.STRING,
+            allowNull : false
         }
 
     }
     let config = {
-        tableName: 'user_categories',
+        tableName: 'brands',
         timestamps: true,
         creadetAt: 'created_at',
         updatedAt: 'updated_at',
         deletedAt: 'deleted_at'
     }
-    
-    const User_category = sequelize.define(alias, cols, config);
+    const Brand = sequelize.define(alias, cols, config);
 
-     User_category.associate = function(models) {
-         User_category.hasMany(models.Users, {
-             as: 'user_category',
-             foreignKey: 'category_id'
-         })
-     }
-
-    return User_category;
+    return Brand;
 }
