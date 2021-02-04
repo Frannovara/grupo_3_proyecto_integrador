@@ -48,7 +48,9 @@
         - El campo de repetir la contraseña no puede estar vacío, y debe ser igual al campo contraseña.
         - El checkbox de Términos y Condiciones debe estar chequeado.
 
-    - READ: En el proceso de Login, el controlador busca en la db si el mail existe (incluyendo los usuarios eliminados), de existir y no estar eliminado, realiza el login. Si existe y está eliminado, lo restaura y realiza el login. Si el mail o la contraseña no son correctos no realiza el login. Actualmente el validador del login no funciona correctamente, porque no verifica si el mail es existente. Al ingresar al perfil, busca en la db la información del usuario guardado en la sesión.
+    - READ: En el proceso de Login, el controlador busca en la db si el mail existe (incluyendo los usuarios eliminados), de existir y no estar eliminado, realiza el login. Si existe y está eliminado, lo restaura y realiza el login. Si el mail o la contraseña no son correctos no realiza el login. 
+    Actualmente el metodo login valida la existencia y comparacion de los campos, en caso de error arroja un unico mensaje en pantalla, el unico mensaje para el error de ambos campos es por una cuestion de seguridad.
+     Al ingresar al perfil, busca en la db la información del usuario guardado en la sesión.
         - Si el usuario no recuerda su contraseña, tiene la posibilidad de regenerarla. De esta manera le llegará un mail con una nueva contraseña. El método de la nueva contraseña no verifica si el mail ingresado es de un usuario registrado, pero redirige automáticamente al login.
 
     - UPDATE: El update se realiza por partes:
