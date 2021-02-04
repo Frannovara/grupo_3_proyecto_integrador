@@ -28,11 +28,11 @@ module.exports = (sequelize , dataTypes) =>{
         updatedAt: 'updated_at',
         deletedAt: 'deleted_at'
     }
-    const Product_category = sequelize.define(alias, cols, config);
+    
 
     const Product_category = sequelize.define(alias, cols, config);
     Product_category.associate = (models =>{
-        Brand.hasMany(models.Products,{
+        Product_category.hasMany(models.Products,{
             as : "products",
             foreignKey : 'category_id'
         })
