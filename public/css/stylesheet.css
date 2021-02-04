@@ -682,6 +682,15 @@ margin: -331% -29% 0% 85%;
     border-radius: 15px;
     width: 80%; /* Could be more or less, depending on screen size */
   }
+  .modal-content-info {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+  }
+  .modal-text{
+      padding: 40px;
+      text-align: center;
+  }
   .modal-header {
       text-align: center;
       width: 90%;
@@ -689,6 +698,7 @@ margin: -331% -29% 0% 85%;
   }
   .modal-titulo {
       margin: 0 auto;
+      padding: 20px;
       display: inline-block;
   }
   .close {

@@ -19,9 +19,9 @@
                 <button onclick="document.getElementById('edit-user-form').style.display='block'" class="boton-form" data-toggle="modal" data-target="#profile-image-form">
                     Editar datos de Usuario
                 </button>
-                <form action="/users/delete/<%= locals.user.id %> /?_method=DELETE" method="POST">
-                    <button type="submit" class="register-form-button">Eliminar Usuario</button>
-                </form>
+                <button onclick="document.getElementById('delete-user-form').style.display='block'" class="boton-form" data-toggle="modal" data-target="#delete-user-form">
+                    Eliminar Usuario
+                </button>
             </div>
             <div id="profile-image-form" class="modal">
                 <div class="modal-content">
@@ -83,6 +83,25 @@
                             <button type="submit" class="register-form-button">Editar Datos</button>
                         </form>
                     </div>
+                </div>
+            </div>
+            <div id="delete-user-form" class="modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-titulo">¿Estás seguro de que quieres eliminar el Usuario?</h3>
+                        <span class="close" onclick="document.getElementById('delete-user-form').style.display='none'">&times;</span>
+                    </div>
+                    <div class="modal-content-info">
+                        <% if (locals.user.category_id == 1) { %>
+                            <p class="modal-text">Lo sentimos, pero no es posible eliminar el usuario administrador</p>
+                        <% } else { %>
+                            <p class="modal-text">Al eliminar tu usuario puedes regresar cuando quieras, y volver a iniciar sesión, no es necesario registrarse.</p>
+                            <form action="/users/delete/<%= locals.user.id %> /?_method=DELETE" method="POST">
+                                <button type="submit" class="register-form-button">Eliminar Usuario</button>
+                            </form>
+                        <% } %>
+                    </div>
+                    
                 </div>
             </div>
         </main>
