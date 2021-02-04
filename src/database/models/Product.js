@@ -54,9 +54,19 @@
     Product.associate = models =>{
         Product.belongsTo(models.Brands, {
             as : 'product_brand',
-        
+
             foreignKey: 'brand_id'
 
+        })
+        Product.hasMany(models.Images, {
+            as : 'Product',
+
+            foreignKey: 'product_id'
+        })
+        Product.belongsTo(models.product_categories, {
+            as : 'Products',
+
+            foreignKey: 'category_id'
         })
     }
 
