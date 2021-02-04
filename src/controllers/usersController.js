@@ -34,8 +34,7 @@ const controladorUsuarios = {
         })
     },
     loginProcess: (req, res) => {
-        let errors = validationResult(req)
-        if (errors.isEmpty()) {
+        
             db.Users.findOne({
                 where: {
                     email: req.body.email,
@@ -44,51 +43,59 @@ const controladorUsuarios = {
             } 
             )
             .then(userToLogin => {
-                if(userToLogin.deleted_at) {
-                    db.Users.restore({
-                        where: {
-                            email: req.body.email,
-                        },
-                        paranoid:false 
-                    })
-                    .then( userRestored => {
+                if (userToLogin){
+                    if(userToLogin.deleted_at) {
+                        db.Users.restore({
+                            where: {
+                                email: req.body.email,
+                            },
+                            paranoid:false 
+                        })
+                        .then( userRestored => {
+                            if(bcrypt.compareSync(req.body.password, userToLogin.password)) {
+                                req.session.user = userToLogin
+                                res.locals.user = req.session.user;
+                                if (req.body.remember) {
+                                    res.cookie('user', userToLogin, {
+                                        maxAge: 1000 * 60 * 60
+                                    })
+                                }
+                            return res.redirect('/users/profile');  
+                            }else{
+                                let errormsg = "El usuario o la contraseña ingresados no son validos."
+                                return res.render ('./users/login' , {errormsg})
+                            }
+                        })
+                    } else { 
                         if(bcrypt.compareSync(req.body.password, userToLogin.password)) {
-                            req.session.user = userToLogin
-                            res.locals.user = req.session.user;
-                            if (req.body.remember) {
-                                res.cookie('user', userToLogin, {
-                                    maxAge: 1000 * 60 * 60
-                                })
+                                req.session.user = userToLogin
+                                res.locals.user = req.session.user;
+                                if (req.body.remember) {
+                                    res.cookie('user', userToLogin, {
+                                        maxAge: 1000 * 60 * 60
+                                    })
+                                }
+                            return res.redirect('/users/profile');  
                             }
-                        return res.redirect('/users/profile');  
-                        }
-                    })
-                } else { 
-                    if(bcrypt.compareSync(req.body.password, userToLogin.password)) {
-                            req.session.user = userToLogin
-                            res.locals.user = req.session.user;
-                            if (req.body.remember) {
-                                res.cookie('user', userToLogin, {
-                                    maxAge: 1000 * 60 * 60
-                                })
+                            else{
+                                let errormsg = "El usuario o la contraseña ingresados no son validos."
+                                
+                                return res.render ('./users/login' , {errormsg})
                             }
-                        return res.redirect('/users/profile');  
-                        }
+                    }
+                }else{
+                    let errormsg = "El usuario o la contraseña ingresados no son validos."
+                                
+                                return res.render ('./users/login' , {errormsg})
+
                 }
+                
             })
             .catch(err => {
                 console.log(err)
                 
             })
-        } else {
-            return res.render('./users/login', {
-                errors: errors.mapped(),
-                loginData: {
-                    ...req.body,
-                    password: ''
-                }
-            });
-        }
+        
          
     },
     register: (req, res) => {
