@@ -1,9 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const bcrypt = require('bcryptjs');
-const {
-    validationResult
-} = require('express-validator');
+const {validationResult} = require('express-validator');
 const nodemailer = require('nodemailer');
 
 // requireing sequelize models
@@ -83,6 +81,7 @@ const controladorUsuarios = {
                 
             })
         } else {
+            console.log(errors);
             return res.render('./users/login', {
                 errors: errors.mapped(),
                 loginData: {
@@ -94,7 +93,10 @@ const controladorUsuarios = {
          
     },
     register: (req, res) => {
-        res.render('./users/register')
+        res.render('./users/register', {
+            registerData: {},
+            errors: []
+        })
     },
     profile: (req, res) => {
         db.Users.findOne({
@@ -107,42 +109,55 @@ const controladorUsuarios = {
         })
     },
     saveUser: (req, res) => {
-        db.Users.findOne({
-            where: {
-                email: req.body.email
-            },
-            paranoid:false 
-        })
-        .then( resultado => {
-            if(resultado == null ) {
-                db.Users.create({   
-                    first_name: req.body.first_name,
-                    last_name: req.body.last_name,
-                    email: req.body.email,
-                    password: bcrypt.hashSync(req.body.password, 10),
-                    
-                })
-                .then( result => {
-                    req.session.user = {   
+        let errors = validationResult(req)
+        if (errors.isEmpty()) {
+            db.Users.findOne({
+                where: {
+                    email: req.body.email
+                },
+                paranoid:false 
+            })
+            .then( resultado => {
+                if(resultado == null ) {
+                    db.Users.create({   
                         first_name: req.body.first_name,
                         last_name: req.body.last_name,
                         email: req.body.email,
                         password: bcrypt.hashSync(req.body.password, 10),
-                    }
-                    res.locals.user = req.session.user
-                    return res.redirect('/users/profile')
-                })
-                .catch(err => {
-                    return err            
-                }) 
-            } else {
-                repitedUser = req.body.email
-                return res.redirect('register')
-            }
-        })
-        .catch(err => {
-            return err            
-        })
+                        
+                    })
+                    .then( result => {
+                        req.session.user = {   
+                            first_name: req.body.first_name,
+                            last_name: req.body.last_name,
+                            email: req.body.email,
+                            password: bcrypt.hashSync(req.body.password, 10),
+                        }
+                        res.locals.user = req.session.user
+                        return res.redirect('/users/profile')
+                    })
+                    .catch(err => {
+                        return err            
+                    }) 
+                } else {
+                    repitedUser = req.body.email
+                    return res.redirect('register');
+                }
+            })
+            .catch(err => {
+                return err            
+            })
+        } else {
+            console.log('encontró errores al validar');
+            console.log(errors);
+            return res.render('./users/register', {
+                errors: errors.mapped(),
+                registerData: {
+                    ...req.body,
+                }
+            })
+            
+        }
     },
     profileImage: (req, res) => {
         db.Users.update({
