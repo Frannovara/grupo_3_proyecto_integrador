@@ -48,12 +48,13 @@
         - El campo de repetir la contraseña no puede estar vacío, y debe ser igual al campo contraseña.
         - El checkbox de Términos y Condiciones debe estar chequeado.
 
-    - READ: En el proceso de Login, el controlador busca en la db si el mail existe (incluyendo los usuarios eliminados), de existir y no estar eliminado, realiza el login. Si existe y está eliminado, lo restaura y realiza el login. Si el mail o la contraseña no son correctos no realiza el login. Actualmente el validador del login no funciona correctamente, porque no verifica si el mail es existente. Al realizar el login, guarda al usuario en la session, y desde ahí carga la información en el perfil.
+    - READ: En el proceso de Login, el controlador busca en la db si el mail existe (incluyendo los usuarios eliminados), de existir y no estar eliminado, realiza el login. Si existe y está eliminado, lo restaura y realiza el login. Si el mail o la contraseña no son correctos no realiza el login. Actualmente el validador del login no funciona correctamente, porque no verifica si el mail es existente. Al ingresar al perfil, busca en la db la información del usuario guardado en la sesión.
         - Si el usuario no recuerda su contraseña, tiene la posibilidad de regenerarla. De esta manera le llegará un mail con una nueva contraseña. El método de la nueva contraseña no verifica si el mail ingresado es de un usuario registrado, pero redirige automáticamente al login.
 
     - UPDATE: El update se realiza por partes:
         - Por un lado permite actualizar la foto de perfil. En este caso, si la foto no es cuadrada se termina viendo mal.
-        - Por otro lado permite actualizar los datos del usuario junto con su contraseña. Si la contraseña no es completada, mantiene la contraseña anterior.
+        - Por otro lado permite actualizar los datos del usuario sin considerar la contraseña, y valida que todos los campos estén completos, y que el email sea un email.
+        - Por ultimo permite modificar la contraseña, validando que la misma cumpla los parámetros requeridos al registrarse.
 
     - DELETE: El sistema no permite eliminar un usuario administrador. Y si un usuario quiere eliminar su cuenta le pide confirmación. Luego realiza un soft-delete, cierra sesión, elimina la cookie si existe, y redirige al login.
 

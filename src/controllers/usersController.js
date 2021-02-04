@@ -81,7 +81,6 @@ const controladorUsuarios = {
                 
             })
         } else {
-            console.log(errors);
             return res.render('./users/login', {
                 errors: errors.mapped(),
                 loginData: {
@@ -105,7 +104,9 @@ const controladorUsuarios = {
             }
         })
         .then( user => {
-            res.render('./users/profile', {user})
+            let errors
+            console.log(errors);
+            res.render('./users/profile', {user, errors})
         })
     },
     saveUser: (req, res) => {
@@ -148,8 +149,6 @@ const controladorUsuarios = {
                 return err            
             })
         } else {
-            console.log('encontró errores al validar');
-            console.log(errors);
             return res.render('./users/register', {
                 errors: errors.mapped(),
                 registerData: {
@@ -176,42 +175,70 @@ const controladorUsuarios = {
         
     },
     editUser: (req, res) => {
-        if (req.body.password == '') {
-            db.Users.update({
-                first_name: req.body.first_name,
-                last_name: req.body.last_name,
-                email: req.body.email,
-            }, {
+        let errors = validationResult(req)
+        if (errors.isEmpty()) {
+                db.Users.update({
+                    first_name: req.body.first_name,
+                    last_name: req.body.last_name,
+                    email: req.body.email,
+                }, {
+                    where: {
+                        id: req.session.id
+                    }
+                })
+                .then( resultado => {
+                    res.locals.user.first_name = req.body.first_name
+                    res.locals.user.last_name = req.body.last_name
+                    res.locals.user.email = req.body.email
+                    res.redirect('/users/profile')
+                    })
+                .catch(err => {
+                    res.send(err)
+                })
+        } else {
+            console.log(errors);
+            db.Users.findOne({
                 where: {
-                    id: req.session.id
+                    email: req.session.user.email
                 }
             })
-            .then( resultado => {
-                res.locals.user.first_name = req.body.first_name
-                res.locals.user.last_name = req.body.last_name
-                res.locals.user.email = req.body.email
-                res.redirect('/users/profile')
+            .then( user => {
+                return res.render('./users/profile', {
+                    user,
+                    errors: errors.mapped(),
                 })
-            .catch(err => {
-                res.send(err)
             })
-        } else {
+            
+        }
+    },
+    changePassword: (req,res) => {
+        let password_errors = validationResult(req)
+        if (password_errors.isEmpty()) {
             db.Users.update({
-                first_name: req.body.first_name,
-                last_name: req.body.last_name,
-                email: req.body.email,
                 password: bcrypt.hashSync(req.body.password, 10),
             }, {
                 where: {
                     id: req.session.id
                 }
             })
-            .then( resultado => {
-                res.locals.user.first_name = req.body.first_name
-                res.locals.user.last_name = req.body.last_name
-                res.locals.user.email = req.body.email
-                res.redirect('/users/profile')
+            .then(passwordChanged => {
+                return res.redirect('/users/profile')
+            })
+            .catch(err => {
+                console.log(err)
+            })
+        } else {
+            db.Users.findOne({
+                where: {
+                    email: req.session.user.email
+                }
+            })
+            .then( user => {
+                return res.render('./users/profile', {
+                    user,
+                    password_errors: password_errors.mapped(),
                 })
+            })
             .catch(err => {
                 console.log(err)
             })

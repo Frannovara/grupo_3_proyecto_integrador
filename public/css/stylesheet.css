@@ -724,6 +724,11 @@ margin: -331% -29% 0% 85%;
       flex-direction: column;
       align-items: center;
   }
+  .edit-user-form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+  }
 /* fin diseño perfil usuario */
 
 /*A partir de ahora definimos el estilo de la versión web*/
