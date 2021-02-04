@@ -26,68 +26,7 @@ function makeid() {
     return result;
 }
 
-// Función que envía un mail para regenerar la contraseña
-async function newPass(req) {
 
-    let testAcount = await nodemailer.createTestAccount();
-
-    let transporter = nodemailer.createTransport({
-        host: 'smtp.gmail.com',
-        port: 587,
-        secure: false,
-        auth: {
-            user: process.env.MAIL_MBZ,
-            pass: process.env.PASSWORD_EMAIL,
-        },
-        tls: {
-            rejectUnauthorized: false
-        }
-    });
-
-    let randomPassword = makeid()
-
-    let info = await transporter.sendMail({
-        from: 'motorbikezone007@gmail.com',
-        to: req.body.email,
-        subject: 'Cambio de contraseña',
-        text: 'Su nueva contraseña es ' + randomPassword + ' actualizela al reingresar',
-    });
-
-    console.log('Message sent: %s', info.messageId);
-
-    console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
-
-    users.forEach((user) => {
-        if (user.email == req.body.email) {
-            user.password = bcrypt.hashSync(randomPassword, 10)
-            const usersJson = JSON.stringify(users)
-            fs.writeFileSync(usersFilePath, usersJson)
-        }
-    })
-}
-
-const editUser = (req) => {
-    users.forEach((user) => {
-        if (user.id == req.params.id) {
-            // product = { ...product, ...req.body, image: req.files[0].filename }
-            user.first_name = req.body.first_name
-            user.last_name = req.body.last_name
-            user.email = req.body.email
-            if (req.body.password != '') {
-                user.password = bcrypt.hashSync(req.body.password, 10)
-            };
-            user.category = req.body.category
-            const usersJson = JSON.stringify(users)
-            fs.writeFileSync(usersFilePath, usersJson)
-        }
-    })
-}
-
-const deleteUser = (req) => {
-    const usersNotDeleted = users.filter((user) => user.id != req.params.id)
-    const usersJson = JSON.stringify(usersNotDeleted)
-    fs.writeFileSync(usersFilePath, usersJson)
-}
 
 const controladorUsuarios = {
     login: (req, res) => {
@@ -99,74 +38,80 @@ const controladorUsuarios = {
     loginProcess: (req, res) => {
         let errors = validationResult(req)
         if (errors.isEmpty()) {
-            /* db.Users.findOne({
+            db.Users.findOne({
                 where: {
-                email: req.body.email
+                    email: req.body.email,
+                },
+                paranoid:false 
+            } 
+            )
+            .then(userToLogin => {
+                if(userToLogin.deleted_at) {
+                    db.Users.restore({
+                        where: {
+                            email: req.body.email,
+                        },
+                        paranoid:false 
+                    })
+                    .then( userRestored => {
+                        if(bcrypt.compareSync(req.body.password, userToLogin.password)) {
+                            req.session.user = userToLogin
+                            res.locals.user = req.session.user;
+                            if (req.body.remember) {
+                                res.cookie('user', userToLogin, {
+                                    maxAge: 1000 * 60 * 60
+                                })
+                            }
+                        return res.redirect('/users/profile');  
+                        }
+                    })
+                } else { 
+                    if(bcrypt.compareSync(req.body.password, userToLogin.password)) {
+                            req.session.user = userToLogin
+                            res.locals.user = req.session.user;
+                            if (req.body.remember) {
+                                res.cookie('user', userToLogin, {
+                                    maxAge: 1000 * 60 * 60
+                                })
+                            }
+                        return res.redirect('/users/profile');  
+                        }
                 }
             })
-            .then(resultado => {
-                if(resultado != null ) {
-                    if(bcrypt.compareSync(req.body.password, resultado.get('password'))) {
-                        req.session.user = {   
-                            first_name: resultado.get('first_name'),
-                            last_name: resultado.get('last_name'),
-                            email: resultado.get('email'),
-                            profile_image: resultado.get("profile_image"),
-                            category_id: resultado.get("category_id")
-                        }
-                        if (req.body.remember) {
-                            res.cookie('user', userToLogin, {
-                                maxAge: 1000 * 60 * 60
-                            })
-                        }
-                        res.locals.user = req.session.user
-                        res.redirect('/users/profile');
-                    }
+            .catch(err => {
+                console.log(err)
+                
+            })
+        } else {
+            return res.render('./users/login', {
+                errors: errors.mapped(),
+                loginData: {
+                    ...req.body,
+                    password: ''
                 }
-            }) */
-             let userToLogin = {
-                ...users.find(user => user.email === req.body.email)
-            }
-            if (userToLogin != undefined) {
-                if (bcrypt.compareSync(req.body.password, userToLogin.password)) {
-                    delete userToLogin.password;
-                    req.session.user = userToLogin
-                    if (req.body.remember) {
-                        res.cookie('user', userToLogin, {
-                            maxAge: 1000 * 60 * 60
-                        })
-                    }
-                    res.locals.user = req.session.user
-                    res.redirect('/users/profile'); //como sabe que perfil es???
-                }
-            }
-        } 
-        res.render('./users/login', {
-            errors: errors.mapped(),
-            loginData: {
-                ...req.body,
-                password: ''
-            }
-        });
-    },
-    logout: (req, res) => {
-        req.session.destroy();
-        res.redirect('/')
+            });
+        }
+         
     },
     register: (req, res) => {
         res.render('./users/register')
     },
     profile: (req, res) => {
-        const user = req.session.user
-        res.render('./users/profile', {
-            user
+        db.Users.findOne({
+            where: {
+                email: req.session.user.email
+            }
+        })
+        .then( user => {
+            res.render('./users/profile', {user})
         })
     },
     saveUser: (req, res) => {
         db.Users.findOne({
             where: {
                 email: req.body.email
-            }
+            },
+            paranoid:false 
         })
         .then( resultado => {
             if(resultado == null ) {
@@ -175,20 +120,20 @@ const controladorUsuarios = {
                     last_name: req.body.last_name,
                     email: req.body.email,
                     password: bcrypt.hashSync(req.body.password, 10),
-                    profile_image: "/images/users/default.png",
-                    category_id: 2
+                    
                 })
-                .then( resultado => {
+                .then( result => {
                     req.session.user = {   
                         first_name: req.body.first_name,
                         last_name: req.body.last_name,
                         email: req.body.email,
                         password: bcrypt.hashSync(req.body.password, 10),
-                        profile_image: "/images/users/default.png",
-                        category_id: 2
                     }
                     res.locals.user = req.session.user
                     return res.redirect('/users/profile')
+                })
+                .catch(err => {
+                    return err            
                 }) 
             } else {
                 repitedUser = req.body.email
@@ -216,17 +161,20 @@ const controladorUsuarios = {
         
     },
     editUser: (req, res) => {
-        if (req.body.password != '') {
+        if (req.body.password == '') {
             db.Users.update({
                 first_name: req.body.first_name,
                 last_name: req.body.last_name,
                 email: req.body.email,
             }, {
                 where: {
-                    email: session.email
+                    id: req.session.id
                 }
             })
             .then( resultado => {
+                res.locals.user.first_name = req.body.first_name
+                res.locals.user.last_name = req.body.last_name
+                res.locals.user.email = req.body.email
                 res.redirect('/users/profile')
                 })
             .catch(err => {
@@ -240,29 +188,76 @@ const controladorUsuarios = {
                 password: bcrypt.hashSync(req.body.password, 10),
             }, {
                 where: {
-                    email: session.email
+                    id: req.session.id
                 }
             })
             .then( resultado => {
+                res.locals.user.first_name = req.body.first_name
+                res.locals.user.last_name = req.body.last_name
+                res.locals.user.email = req.body.email
                 res.redirect('/users/profile')
                 })
             .catch(err => {
-                res.send(err)
+                console.log(err)
             })
         }
     },
     newPassword: (req, res) => {
-        newPass(req)
+        let transporter = nodemailer.createTransport({
+            host: 'smtp.gmail.com',
+            port: 587,
+            secure: false,
+            auth: {
+                user: process.env.MAIL_MBZ,
+                pass: process.env.PASSWORD_EMAIL,
+            },
+            tls: {
+                rejectUnauthorized: false
+            }
+        });
+    
+        let randomPassword = makeid()
+    
+        let info = transporter.sendMail({
+            from: 'motorbikezone007@gmail.com',
+            to: req.body.email,
+            subject: 'Cambio de contraseña',
+            text: 'Su nueva contraseña es ' + randomPassword + ' actualizela al reingresar',
+        });
+    
+        console.log('Message sent: %s', info.messageId);
+    
+        console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
+    
+        db.Users.update({
+            password: bcrypt.hashSync(randomPassword, 10)
+        }, {
+            where: {
+                email: req.body.email
+            }
+        })
         res.redirect('/users/login')
     },
     deleteUser: (req, res) => {
-        let i = deleteUser(req)
-        res.redirect('/')
+        db.Users.destroy({
+            where: {
+                id: res.locals.user.id
+            }
+        })
+        .then( userDestroy => {
+            req.session.destroy();
+            res.clearCookie('user');
+            res.redirect('/users/login') 
+        })
+        .catch(err => {
+            console.log(err)
+        })
+        
     },
     logout: (req, res) => {
         req.session.destroy();
         res.clearCookie('user');
-        res.redirect('/')
+        res.redirect('/users/login')
     }
 }
 

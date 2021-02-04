@@ -18,13 +18,12 @@ var storage = multer.diskStorage({
    
   var upload = multer({ storage: storage })
   
-
 router.get('/login', userMiddleware.userLogged, usersController.login)
 router.post('/login', logInValidator, usersController.loginProcess)
 router.post('/login/newPass', usersController.newPassword)
 
 router.get('/register', userMiddleware.userLogged, usersController.register)
-router.post('/register',/*registerMiddleware,*/ usersController.saveUser)
+router.post('/register', usersController.saveUser)
 
 router.get('/profile', userMiddleware.userToLogin, usersController.profile)
 router.put('/profile/:id', usersController.editUser)
