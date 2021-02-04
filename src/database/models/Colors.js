@@ -32,5 +32,12 @@ module.exports = function(sequelize, dataTypes){
 
     const Colors = sequelize.define(alias, cols, config);
 
+    Colors.associate = function(models) {
+        Colors.hasMany(models.Images, {
+            as: 'colors',
+            foreignKey: 'color_id'
+        })
+    }
+
     return Colors;
 }
