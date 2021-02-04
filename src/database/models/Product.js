@@ -46,15 +46,20 @@
     let config = {
         tableName: 'products',
         timestamps: true,
-        creadetAt: 'created_at',
+        createdAt: 'created_at',
         updatedAt: 'updated_at',
         deletedAt: 'deleted_at'
     }
     const Product = sequelize.define(alias, cols, config);
     Product.associate = models =>{
         Product.belongsTo(models.Brands, {
+<<<<<<< HEAD
             as : 'product_brand',
 
+=======
+            as : 'brand',
+         
+>>>>>>> 59e2b2f0e319bd16f106db58356e1a76c6b0c7c7
             foreignKey: 'brand_id'
 
         })

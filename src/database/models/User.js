@@ -25,6 +25,7 @@ module.exports = (sequelize, dataTypes) => {
         },
         profile_image:{
             type: dataTypes.STRING,
+            defaultValue: "/images/users/default.png"
         },
         created_at: {
             type: dataTypes.DATE,
@@ -37,6 +38,7 @@ module.exports = (sequelize, dataTypes) => {
         },
         category_id: {
             type: dataTypes.BIGINT,
+            defaultValue: 2
         }
 
     }
