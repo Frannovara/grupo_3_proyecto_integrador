@@ -252,40 +252,61 @@ const controladorUsuarios = {
         }
     },
     newPassword: (req, res) => {
-        let transporter = nodemailer.createTransport({
-            host: 'smtp.gmail.com',
-            port: 587,
-            secure: false,
-            auth: {
-                user: process.env.MAIL_MBZ,
-                pass: process.env.PASSWORD_EMAIL,
-            },
-            tls: {
-                rejectUnauthorized: false
-            }
-        });
-    
-        let randomPassword = makeid()
-    
-        let info = transporter.sendMail({
-            from: 'motorbikezone007@gmail.com',
-            to: req.body.email,
-            subject: 'Cambio de contraseña',
-            text: 'Su nueva contraseña es ' + randomPassword + ' actualizela al reingresar',
-        });
-    
-        console.log('Message sent: %s', info.messageId);
-    
-        console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
-    
-        db.Users.update({
-            password: bcrypt.hashSync(randomPassword, 10)
-        }, {
+        db.Users.findOne({
             where: {
                 email: req.body.email
+            },
+            paranoid:false 
+        })
+        .then(userEmail => {
+            console.log(userEmail);
+            if(userEmail) {
+                let transporter = nodemailer.createTransport({
+                    host: 'smtp.gmail.com',
+                    port: 587,
+                    secure: false,
+                    auth: {
+                        user: process.env.MAIL_MBZ,
+                        pass: process.env.PASSWORD_EMAIL,
+                    },
+                    tls: {
+                        rejectUnauthorized: false
+                    }
+                });
+            
+                let randomPassword = makeid()
+            
+                let info = transporter.sendMail({
+                    from: 'motorbikezone007@gmail.com',
+                    to: req.body.email,
+                    subject: 'Cambio de contraseña',
+                    text: 'Su nueva contraseña es ' + randomPassword + ' actualizela al reingresar',
+                });
+            
+                console.log('Message sent: %s', info.messageId);
+            
+                console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
+            
+                db.Users.update({
+                    password: bcrypt.hashSync(randomPassword, 10)
+                }, {
+                    where: {
+                        email: req.body.email
+                    },
+                    paranoid:false 
+                })
+                let mensajeOk = 'Se ha enviado un email a la casilla ' + req.body.email + '. Por favor siga los pasos indicados en el mismo para volver a ingresar.'
+                res.render('./users/login', {mensajeOk})
+            } else {
+                let mensajeErr = 'El email ingresado no se encuentra registrado, por favor registrese.'
+                res.render('./users/login', {mensajeErr})
             }
         })
-        res.redirect('/users/login')
+        .catch( err => {
+            console.log(err);
+        })
+
+        
     },
     deleteUser: (req, res) => {
         db.Users.destroy({

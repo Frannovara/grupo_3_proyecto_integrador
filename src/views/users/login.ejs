@@ -33,7 +33,11 @@
                 <a href="/users/register">¿No tenés una cuenta? Resgistrate</a>
             </div>
 
-            <div id="new-password-form" class="modal">
+            <div id="new-password-form" class="modal" 
+            <% if (typeof mensajeErr != 'undefined') { %>
+                style= "display:block"
+                <% } %>
+                >
                 <div class="modal-content">
                     <div class="new-password-content">
                         <div class="modal-header">
@@ -46,6 +50,11 @@
                                 <div class="campo-datos">
                                     <i class="fas fa-envelope"></i><input type="email" name="email" id="email" class="campo-datos-type">
                                 </div>
+                                <% if (typeof mensajeErr != 'undefined') { %>
+                                    <div>
+                                        <p><%= mensajeErr %> </p>
+                                    </div>
+                                    <% } %>
                                 <button class="boton-form">Enviar</button>
                             </form>
                         </div>
@@ -53,6 +62,34 @@
                     
                 </div>
             </div>
+
+
+            <div id="ok-message-form" class="modal" 
+            <% if (typeof mensajeOk != 'undefined') { %>
+                style= "display:block"
+                <% } %>
+                >
+                <div class="modal-content">
+                    <div class="new-password-content">
+                        <div class="modal-header">
+                            <h3 class="modal-titulo">Recuperar Contraseña</h3>
+                            <span class="close" onclick="document.getElementById('ok-message-form').style.display='none'">&times;</span>
+                        </div>
+                        <div class="new-pass-main">
+                            <% if (typeof mensajeOk != 'undefined') { %>
+                                    <div>
+                                        <p><%= mensajeOk %> </p>
+                                    </div>
+                                    <% } %>
+                        </div>
+                        <div>
+                            <button class="boton-form" onclick="document.getElementById('ok-message-form').style.display='none'">Aceptar</button>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            
 
         </main>    
     </div>

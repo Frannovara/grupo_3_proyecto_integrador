@@ -410,7 +410,10 @@ input:focus {
       .detail-info-content {
           display: flex;
           flex-direction: row;
-          justify-content: space-between;
+          justify-content: left;
+      }
+      .detail-info-element {
+          padding-right: 20px;
       }
 /*Version mobile carrito*/
 
