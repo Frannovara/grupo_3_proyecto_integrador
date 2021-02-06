@@ -41,6 +41,9 @@
         },
         category_id: {
             type: dataTypes.BIGINT,
+        },
+        brand_id: {
+            type: dataTypes.BIGINT
         }
     }
     let config = {
@@ -54,9 +57,7 @@
     Product.associate = models =>{
         Product.belongsTo(models.Brands, {
             as : 'brand',
-         
             foreignKey: 'brand_id'
-
         })
         Product.hasMany(models.Images, {
             as : 'Product',

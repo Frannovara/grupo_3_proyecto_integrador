@@ -2,6 +2,9 @@ const { name } = require('ejs');
 const { json } = require('express');
 const fs = require('fs');
 const path = require('path');
+const { Sequelize } = require('../database/models');
+const db = require('../database/models');
+const Op = Sequelize.Op
 
 const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
@@ -50,7 +53,111 @@ const deleteProduct = function(req) {
 
 const controladorProductos = {
     list: function(req, res) {
-      res.render('./products/list', {products, toThousand})
+      console.log(req.query);
+      let searched = req.query.buscador
+      let search_category = req.query.search
+      if (req.query.search == 'all'){
+        db.Products.findAll({
+          where: {
+            name: { [Op.like]: '%'+ req.query.buscador + '%'}
+          },
+          order: [
+            ['final_price', 'DESC']
+          ],
+          limit: 20
+        }, {
+          include: ['brand', 'Product', 'Products'],
+          raw: true,
+          nest: true,
+        })
+        .then(productsSearched => {
+          if (productsSearched.length > 0) {
+            res.render('./products/list', {productsSearched, toThousand})
+          } else {
+            let emptySearch  = true
+            res.render('./products/list', {searched, search_category, emptySearch})
+          }
+          
+        })
+        .catch(err => {
+          console.log(err);
+        })
+      } else if (req.query.search == 'brand') {
+        db.Products.findAll({
+          where: {
+            brand: { [Op.like]: '%'+ req.query.buscador + '%'}
+          },
+          order: [
+            ['final_price', 'DESC']
+          ],
+          limit: 20
+        }, {
+          include: ['brand', 'Product', 'Products'],
+          raw: true,
+          nest: true,
+        })
+        .then(productsSearched => {
+          if (productsSearched.length > 0) {
+            res.render('./products/list', {productsSearched, toThousand})
+          } else {
+            let emptySearch = true
+            res.render('./products/list', {searched, search_category, emptySearch})
+          }
+        })
+        .catch(err => {
+          console.log(err);
+        })
+      } else if (req.query.search == 'category') {
+        db.Products.findAll({
+          where: {
+            category: { [Op.like]: '%'+ req.query.buscador + '%'}
+          },
+          order: [
+            ['final_price', 'DESC']
+          ],
+          limit: 20
+        }, {
+          include: ['brand', 'Product', 'Products'],
+          raw: true,
+          nest: true,
+        })
+        .then(productsSearched => {
+          if (productsSearched.length > 0) {
+            res.render('./products/list', {productsSearched, toThousand})
+          } else {
+            let emptySearch = true
+            res.render('./products/list', {searched, search_category, emptySearch})
+          }
+        })
+        .catch(err => {
+          console.log(err);
+        })
+      } else if (req.query.search == 'year') {
+        db.Products.findAll({
+          where: {
+            year: { [Op.like]: '%'+ req.query.buscador + '%'}
+          },
+          order: [
+            ['final_price', 'DESC']
+          ],
+          limit: 20
+        }, {
+          include: ['brand', 'Product', 'Products'],
+          raw: true,
+          nest: true,
+        })
+        .then(productsSearched => {
+          if (productsSearched.length > 0) {
+            res.render('./products/list', {productsSearched, toThousand})
+          } else {
+            let emptySearch = true
+            res.render('./products/list', {searched, search_category, emptySearch})
+          }
+        })
+        .catch(err => {
+          console.log(err);
+        })
+      }      
     },
     detail: function(req, res) {
       let product = products.find(item =>  item.id == req.params.id);

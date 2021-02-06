@@ -5,18 +5,28 @@
     <div class="body-content section1">
         <%- include('../partials/header') %>
         <section class="section1">
-            <% products.forEach(product => { %>
-                <article class="article-home" >
-                    <a href="/products/<%= product.id %> " class="product-detail"> 
-                        <div class="div-img1">
-                            <img class="img1" src= "/images/products/<%= product.image %>"  alt= "<%= product.name %>"  >
-                        </div>
-                        <p class="p-home"> $<%= toThousand(product.price * (1 - product.discount/100)) %> <%= product.name %> 
-                                        <br>
-                            <%= product.year %>  | <%= product.kms %> . </p>
-                    </a>
-                </article>
-            <% }) %>                    
+            <% if (typeof emptySearch != 'undefined') { %>
+             <div>
+                <p>No se encontraron resultados para <strong>"<%= searched %>"</strong></p>
+                <a href="/">Volver al Inicio</a>
+             </div>
+                
+            <% } %>
+            <% if (typeof productsSearched != 'undefined') { %>
+                <% productsSearched.forEach(product => { %>
+                    <article class="article-home" >
+                        <a href="/products/<%= product.id %> " class="product-detail"> 
+                            <div class="div-img1">
+                                <img class="img1" src= "/images/products/<%= product.image %>"  alt= "<%= product.name %>"  >
+                            </div>
+                            <p class="p-home"> $<%= toThousand(product.price * (1 - product.discount/100)) %> <%= product.name %> 
+                                            <br>
+                                <%= product.year %>  | <%= product.kms %> . </p>
+                        </a>
+                    </article>
+                <% }) %>
+            <% } %>
+                                
         </section>
     </div>
     <%- include('../partials/footer') %>
