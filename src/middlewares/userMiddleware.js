@@ -14,7 +14,8 @@ module.exports = {
         }
     },
     userAdmin: (req, res, next) => {
-        if (locals.user.category_id == 1) {
+       
+        if (res.locals.user.category_id == 1) {
             next()
         } else {
             res.redirect('/')

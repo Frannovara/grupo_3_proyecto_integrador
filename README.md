@@ -40,7 +40,7 @@
 
 ## CRUD
 - USERS:
-    - CREATE: En el proceso de registro, el controlador busca en la db si el mail existe (incluyendo los usuarios eliminados) y verifica si el mail ya está en uso. De estarlo envía un error de no existir permite el registro en la db. Al registrarse, automáticamente realiza el login, y redirige a la página de perfil. Además al registrarse se validan las siguientes condiciones:
+    - CREATE: En el proceso de registro, el controlador busca en la db si el mail existe (incluyendo los usuarios eliminados) y verifica si el mail ya está en uso. De estarlo envía un error, de no existir permite el registro en la db. Al registrarse, automáticamente realiza el login, y redirige a la página de perfil. Además al registrarse se validan las siguientes condiciones:
         - El campo nombre no puede estar vacío.
         - El campo apellido no puede estar vacío.
         - El campo email no puede estar vacío, y debe ser un email válido.
