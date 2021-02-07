@@ -22,10 +22,10 @@ router.get('/', productController.list)
 router.get('/cart', productController.cart)
 
 // Admin Routes
-router.post('/', upload.any(), userMiddleware.userAdmin, productController.createProduct);
+router.post('/', upload.any(), userMiddleware.userAdmin, productController.createConfirm);
 router.get('/edit/:id', userMiddleware.userAdmin, productController.edit)
 router.put('/detail/:id', upload.any() , userMiddleware.userAdmin, productController.confirm);
-router.get('/create', userMiddleware.userAdmin, productController.create)
+router.get('/create', userMiddleware.userAdmin, productController.create2)
 router.delete('/delete/:id', userMiddleware.userAdmin, productController.deleteConfirm); 
 
 router.get('/:id', productController.detail);
