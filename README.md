@@ -57,6 +57,7 @@
         - Por un lado permite actualizar la foto de perfil. En este caso, si la foto no es cuadrada se termina viendo mal.
         - Por otro lado permite actualizar los datos del usuario sin considerar la contraseña, y valida que todos los campos estén completos, y que el email sea un email.
         - Por ultimo permite modificar la contraseña, validando que la misma cumpla los parámetros requeridos al registrarse.
+        - A su vez, si un usuario olvida su contraseña puede regenerarla. Este método primero valida que el mail igresado para regenerarla sea de un usuario existente. Luego envía una nueva contraseña por mail, y actualiza la db con esa nueva contraseña.
 
     - DELETE: El sistema no permite eliminar un usuario administrador. Y si un usuario quiere eliminar su cuenta le pide confirmación. Luego realiza un soft-delete, cierra sesión, elimina la cookie si existe, y redirige al login.
 
