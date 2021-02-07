@@ -16,10 +16,13 @@
                         <div class="create-form-element">
                             <label for="category">Categoría</label>
                             <select name="category" id="category" class="create-form-input">
-                                <option value="0">Seleccionar</option>
-                                <option value="1">Motocross</option>
-                                <option value="2">Chopera</option>
-                                <option value="3">Scooter</option>
+                               <% prodCats.forEach(category => { %>
+                                
+                                 <option value="<%= category.id %>">Seleccionar</option>
+                                    <%=category.name%> 
+                                
+                                 <% }) %>
+                                
                             </select>
                         </div class="create-form-element">
                         <div class="create-form-element">
