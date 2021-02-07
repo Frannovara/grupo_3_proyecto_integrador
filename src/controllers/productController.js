@@ -209,10 +209,6 @@ const controladorProductos = {
       newProduct(req);
      res.redirect('/')
     },
-<<<<<<< HEAD
-
-
-=======
     buyCart: (req, res) => {
 
     },
@@ -239,9 +235,8 @@ const controladorProductos = {
         })
       }
       
-    }
-}
->>>>>>> 35fa94487de344214afc2e7a4d778b8fed957075
+    },
+
 
 /* traemos al form de creacion las tablas brands y prod_categories */
 
@@ -253,7 +248,7 @@ create2 : (req , res)=>{
       console.log(prodCats)
       return res.render('./products/create' , { prodCats: prodCats}) 
     })  
-},
+
   /* probar hacer este metodo con una function separada tambien */
 
 createConfirm : (req , res) =>{
@@ -272,5 +267,7 @@ createConfirm : (req , res) =>{
   res.redirect('/')
 }
 }
+}
+
 module.exports = controladorProductos
   
