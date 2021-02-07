@@ -19,7 +19,7 @@
                             <div class="div-img1">
                                 <img class="img1" src= "/images/products/<%= product.image %>"  alt= "<%= product.name %>"  >
                             </div>
-                            <p class="p-home"> $<%= toThousand(product.price * (1 - product.discount/100)) %> <%= product.name %> 
+                            <p class="p-home"> $<%= toThousand(product.final_price) %> <%= product.name %> 
                                             <br>
                                 <%= product.year %>  | <%= product.kms %> . </p>
                         </a>
