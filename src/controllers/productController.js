@@ -247,7 +247,7 @@ create2 : (req , res)=>{
     .then(prodCats =>{
       console.log(prodCats)
       return res.render('./products/create' , { prodCats: prodCats}) 
-    })  
+    })  },
 
   /* probar hacer este metodo con una function separada tambien */
 
@@ -267,7 +267,7 @@ createConfirm : (req , res) =>{
   res.redirect('/')
 }
 }
-}
+
 
 module.exports = controladorProductos
   
