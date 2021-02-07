@@ -66,11 +66,12 @@ const controladorProductos = {
           ],
           limit: 20
         }, {
-          include: ['brand', 'Product', 'Products'],
+          include: [{association: 'brand'}, {association: 'images'}, {association: 'product_category'}],
           raw: true,
           nest: true,
         })
         .then(productsSearched => {
+          console.log(productsSearched);
           if (productsSearched.length > 0) {
             res.render('./products/list', {productsSearched, toThousand})
           } else {
@@ -176,6 +177,8 @@ const controladorProductos = {
       res.redirect('/products')
     },
     cart: function (req,res) {
+      res.locals.cart = req.session.cart
+      console.log(res.locals.cart);
       res.render('./products/cart')
     },
     create: (req, res) => {
@@ -192,6 +195,33 @@ const controladorProductos = {
     createProduct: (req, res, next) => {
       newProduct(req);
      res.redirect('/')
+    },
+    buyCart: (req, res) => {
+
+    },
+    addToCart: (req, res) => {
+      if (typeof req.session.cart != 'undefined') {
+        db.Products.findByPk(req.params.id)
+        .then(product => {
+        req.session.cart.push(product)
+        res.locals.cart = req.session.cart
+        return res.redirect('/products/cart')
+        })
+        .catch( err => {
+        console.log(err);
+        })
+      } else {
+        db.Products.findByPk(req.params.id)
+        .then(product => {
+        req.session.cart = [product]
+        res.locals.cart = req.session.cart
+        return res.redirect('/products/cart')
+        })
+        .catch( err => {
+        console.log(err);
+        })
+      }
+      
     }
 }
 

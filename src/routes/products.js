@@ -27,6 +27,8 @@ router.get('/edit/:id', userMiddleware.userAdmin, productController.edit)
 router.put('/detail/:id', upload.any() , userMiddleware.userAdmin, productController.confirm);
 router.get('/create', userMiddleware.userAdmin, productController.create)
 router.delete('/delete/:id', userMiddleware.userAdmin, productController.deleteConfirm); 
+router.post('/buyCart', userMiddleware.userToLogin, productController.buyCart)
+router.get('/addToCart/:id', userMiddleware.userToLogin, productController.addToCart)
 
 router.get('/:id', productController.detail);
 

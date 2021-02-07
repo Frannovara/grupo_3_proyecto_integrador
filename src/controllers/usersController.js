@@ -34,7 +34,7 @@ const controladorUsuarios = {
         })
     },
     loginProcess: (req, res) => {
-        
+            
             db.Users.findOne({
                 where: {
                     email: req.body.email,
@@ -75,6 +75,7 @@ const controladorUsuarios = {
                                         maxAge: 1000 * 60 * 60
                                     })
                                 }
+                                
                             return res.redirect('/users/profile');  
                             }
                             else{
