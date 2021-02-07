@@ -65,7 +65,7 @@
             foreignKey: 'product_id'
         })
         Product.belongsTo(models.Product_categories, {
-            as : 'products_categories',
+            as : 'categories',
 
             foreignKey: 'category_id'
         })
