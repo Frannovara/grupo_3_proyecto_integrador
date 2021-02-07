@@ -16,10 +16,10 @@
                         <div class="create-form-element">
                             <label for="category">Categoría</label>
                             <select name="category" id="category" class="create-form-input">
-                               <% prodCats.forEach(category => { %>
+                               <% Products.forEach(products => { %>
                                 
-                                 <option value="<%= category.id %>">Seleccionar</option>
-                                    <%=category.name%> 
+                                 <option value="<%=products.categories.id%>">Seleccionar</option>
+                                    <%=products.categories.name%> 
                                 
                                  <% }) %>
                                 
@@ -28,10 +28,12 @@
                         <div class="create-form-element">
                             <label for="brand">Marca</label>
                             <select name="brand" id="brand" class="create-form-input">
-                                <option value="0">Seleccionar</option>
-                                <option value="1">Suzuki</option>
-                                <option value="2">Motomel</option>
-                                <option value="3">Honda</option>
+                                <% Products.forEach(products => { %>
+                                
+                                    <option value="<%=products.brand.id%>">Seleccionar</option>
+                                       <%=products.brand.name%> 
+                                   
+                                    <% }) %>
                             </select>
                         </div>
                         <div class="create-form-element">
