@@ -23,6 +23,19 @@ const newProduct = function(req) {
 	return newProduct.id
 }
 
+const newProductDb = function(req) {
+  
+    db.Brands.findAll()
+      .then(brands =>{
+        return brands
+      })
+    db.Product_categories.findAll()
+      .then(prodCats =>{
+        return prodCats 
+      })  
+  }
+
+
 const editProduct = function (req) {
 	products.forEach((product) => {
 		if (product.id == req.params.id) {
@@ -192,22 +205,38 @@ const controladorProductos = {
     createProduct: (req, res, next) => {
       newProduct(req);
      res.redirect('/')
-    }
-}
+    },
 
-module.exports = controladorProductos
+
+
 /* traemos al form de creacion las tablas brands y prod_categories */
+
+
 create2 : (req , res)=>{
-  db.Brands.findAll()
-    .then(brands =>{
-      return brands
-    })
+  
   db.Product_categories.findAll()
     .then(prodCats =>{
-      return res.render('./create' , {brands: brands , prodCats: prodCats}) 
+      console.log(prodCats)
+      return res.render('./products/create' , { prodCats: prodCats}) 
     })  
-}
+},
   /* probar hacer este metodo con una function separada tambien */
 
+createConfirm : (req , res) =>{
+  console.log(req.body)
+  db.Products.create({
+    name: req.body.name,
+    brand: req.body.brand,
+    base_price: req.body.price,
+    discount: req.body.discount,
+    year: req.body.year,
+    description : req.body.description,
+    image: req.files[0].filename,
+    color: req.body.color,
 
+  });
+  res.redirect('/')
+}
+}
+module.exports = controladorProductos
   
