@@ -196,3 +196,18 @@ const controladorProductos = {
 }
 
 module.exports = controladorProductos
+/* traemos al form de creacion las tablas brands y prod_categories */
+create2 : (req , res)=>{
+  db.Brands.findAll()
+    .then(brands =>{
+      return brands
+    })
+  db.Product_categories.findAll()
+    .then(prodCats =>{
+      return res.render('./create' , {brands: brands , prodCats: prodCats}) 
+    })  
+}
+  /* probar hacer este metodo con una function separada tambien */
+
+
+  
