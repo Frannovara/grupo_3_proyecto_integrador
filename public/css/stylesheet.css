@@ -418,13 +418,12 @@ input:focus {
 /*Version mobile carrito*/
 
 .carrito-compras{
-    background-color: white;
     display: flex;
     flex-direction: column;
 }
 .productos-carrito-div{
     display: flex;
-    background-color: #F1F8FE;
+    background-color: white;
     justify-content: space-between;
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
@@ -457,7 +456,6 @@ input:focus {
     display: flex;
     justify-content: space-between;
     background-color: white;
-    background-color: #F1F8FE;
     margin: 0 2%;
     border-bottom: #265277 solid 1px;
     color: rgb(85, 83, 83);
@@ -480,7 +478,7 @@ display: flex;
 justify-content: space-between;
 border-bottom-left-radius: 8px;
 border-bottom-right-radius: 8px;
-background-color: #F1F8FE;
+background-color: white;
 border-top: #265277 solid 2px;
 margin: 0 2% 1% 2%;
 color: rgb(85, 83, 83);
@@ -934,7 +932,6 @@ margin: -331% -29% 0% 85%;
         display: flex;
         justify-content: space-between;
         background-color: white;
-        background-color: #F1F8FE;
         margin: 0 2%;
         border-bottom: #265277 solid 1px;
         color: rgb(85, 83, 83);
@@ -943,6 +940,10 @@ margin: -331% -29% 0% 85%;
 
     .motos-carrito{
         margin-left: 11%;
+    }
+    .cantidad-carrito {
+        display: flex;
+        align-items: center;
     }
     .precio-numeros{
         margin-left: 38%;
