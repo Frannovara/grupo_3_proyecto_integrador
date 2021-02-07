@@ -35,11 +35,15 @@
                                 </p>
                                 <div class="detalle-botones">
                                     <div class="detalle-botones-public">
+                                        <!-- <div>
+                                            <form action="/products/buy" method="post">
+                                                <button type="submit" class="boton-agregar"><strong>Comprar</strong></button>
+                                            </form>
+                                        </div> -->
                                         <div>
-                                            <button type="button" class="boton-agregar"><strong>Comprar</strong></button>
-                                        </div>
-                                        <div>
-                                            <button type="button" class="boton-agregarcarrito"><strong>Agregar al carrito</strong></button>
+                                            <form action="/products/addToCart/<%= product.id %>" method="get">
+                                                <button type="submit" class="boton-agregarcarrito"><strong>Agregar al carrito</strong></button>
+                                            </form>
                                         </div>
                                     </div>
                                     <% if (locals.user.category_id == 1) { %>

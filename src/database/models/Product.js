@@ -60,12 +60,12 @@
             foreignKey: 'brand_id'
         })
         Product.hasMany(models.Images, {
-            as : 'Product',
+            as : 'images',
 
             foreignKey: 'product_id'
         })
         Product.belongsTo(models.Product_categories, {
-            as : 'Products',
+            as : 'products_categories',
 
             foreignKey: 'category_id'
         })
