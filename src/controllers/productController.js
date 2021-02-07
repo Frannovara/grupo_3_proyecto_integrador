@@ -243,11 +243,15 @@ const controladorProductos = {
 
 create2 : (req , res)=>{
   
-  db.Product_categories.findAll()
-    .then(prodCats =>{
-      console.log(prodCats)
-      return res.render('./products/create' , { prodCats: prodCats}) 
-    })  },
+  db.Products.findAll([{association : 'brand'} , {association : 'categories'}] )
+    .then(Products =>{
+      console.log(Products)
+      return res.render('./products/create' , { Products: Products}) 
+    })  
+    .catch (error =>{
+      console.log (error)
+      
+    })},
 
   /* probar hacer este metodo con una function separada tambien */
 
@@ -265,8 +269,21 @@ createConfirm : (req , res) =>{
 
   });
   res.redirect('/')
+},
+delete2: (req , res) =>{
+    db.Products.destroy({
+      where: {
+        id: req.params.id
+      }
+    })
+    res.redirect('/products')
 }
+
+
+
+
 }
+
 
 
 module.exports = controladorProductos
