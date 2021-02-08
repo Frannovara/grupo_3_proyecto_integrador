@@ -2,6 +2,9 @@ const { name } = require('ejs');
 const fs = require('fs');
 const path = require('path');
 const nodemailer = require('nodemailer');
+const { Sequelize } = require('../database/models');
+const db = require('../database/models');
+const Op = Sequelize.Op
 
 const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
@@ -43,7 +46,18 @@ async function main(req) {
 
 const controller = {
     home: function(req, res) {
-        res.render('index', {products, toThousand});
+        db.Products.findAll({
+            where: {
+                discount: { [Op.ne]: 0}
+            },
+            limit: 10
+        })
+        .then ( productsInSale => {
+            res.render('index', {productsInSale, toThousand});
+        }) 
+        .catch ( err => {
+            console.log(err);
+        })
       },
     
     nosotros: function (req,res) {
