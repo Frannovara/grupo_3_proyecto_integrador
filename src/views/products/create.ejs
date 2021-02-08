@@ -18,8 +18,9 @@
                             <select name="category" id="category" class="create-form-input">
                                <% Products.forEach(products => { %>
                                 
-                                 <option value="<%=products.categories.id%>">Seleccionar</option>
-                                    <%=products.categories.name%> 
+                                 <option value="<%=products.categories.id%>">
+                                        <%=products.categories.name%></option>
+                                     
                                 
                                  <% }) %>
                                 
@@ -30,8 +31,9 @@
                             <select name="brand" id="brand" class="create-form-input">
                                 <% Products.forEach(products => { %>
                                 
-                                    <option value="<%=products.brand.id%>">Seleccionar</option>
-                                       <%=products.brand.name%>
+                                    <option value="<%=products.brand.id%>">
+                                        <%=products.brand.name%></option>
+                                       
                                    
                                     <% }) %>
                             </select>
