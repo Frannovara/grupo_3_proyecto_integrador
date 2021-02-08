@@ -51,13 +51,13 @@ const controller = {
                 discount: { [Op.ne]: 0}
             },
             limit: 10,
-            include: [{association: 'brand'}, {association: 'images'}, {association: 'products_categories'}, {association: 'colors'}],
+            include: [{association: 'brand'}, {association: 'products_categories'}, {association: 'colors'}],
             raw: true,
             nest: true,
         })
         .then ( productsInSale => {
-           // res.send(productsInSale)
-           res.render('index', {productsInSale, toThousand});
+            //res.send(productsInSale)
+            res.render('index', {productsInSale, toThousand});
         }) 
         .catch ( err => {
             console.log(err);

@@ -97,7 +97,7 @@ const controladorProductos = {
         .catch(err => {
           console.log(err);
         })
-        
+
       } else if (req.query.search == 'brand') {
         db.Brands.findOne({
           where: {
@@ -198,26 +198,41 @@ const controladorProductos = {
     detail: function(req, res) {
 
       /*Esta búsqueda tiene que devolver el color perteneciente, y también la marca. */
-      let productToShow = db.Products.findOne({
+      let requestProductToShow = db.Products.findAll({
         where: {
           id: req.params.id
         },
-          include: [{association: 'brand'}, {association: 'images'}, {association: 'products_categories'}, {association: 'colors'}],
+          include: [{association: 'brand'}, {association: 'products_categories'}, {association: 'colors'}],
           raw: true,
           nest: true,
         /* También crear la limitación de búsqueda por color.*/ 
       })
-      /**Hacer una nueva búsqueda de todos los colores en los que se tiene el producto. */
+      
+      let requestProductsInSale = db.Products.findAll({
+        where: {
+            discount: { [Op.ne]: 0}
+        },
+        limit: 10,
+        include: [{association: 'brand'}, {association: 'products_categories'}, {association: 'colors'}],
+        raw: true,
+        nest: true,
+    })
 
+      
       /* Hacer una búsqueda de los productos en oferta bajo el nombre productsFilter excluyendo el producto actual */
 
-      /*Hacer un promise all */
-      .then(productToShow => {
-        let productsFilter = products.filter((bikes) => bikes.id != req.params.id)
-        let filterByName = products.filter((item) => productToShow.name == item.name)
-
-        res.render('./products/detail' , {productToShow, title: productToShow.name, productsFilter, toThousand, filterByName});
+       /*Hacer un promise all */
+      Promise.all( [requestProductToShow,  requestProductsInSale])
+      .then( function ([productToShow,  productsInSale]) {
+        
+        //res.send(productToShow)
+        res.render('./products/detail' , {productToShow, title: productToShow.name, productsInSale, toThousand});
       })
+        
+     
+     
+        //res.send(productToShow)
+      
       .catch(err => {
         console.log(err);
       })
