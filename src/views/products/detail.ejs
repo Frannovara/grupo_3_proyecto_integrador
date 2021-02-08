@@ -12,26 +12,32 @@
                         <div class=listas-caracteristicas>
                             <div class="moto-imagenes">
                                 <div class="div-imagen-moto">
-                                    <img class="imagen-moto" src="/images/products/<%= product.image %> " alt="imagen-moto1">
+                                    <img class="imagen-moto" src="/images/products/<%= productToShow.images.image %> " alt="imagen-moto1">
                                 </div>
                                 <h4 class="titulo-colores">Colores</h4>
                                 <div class="colores">
+                                    <!-- Este for each recibe la búsqueda de los colores que tiene este producto, y crea los círculos con los colores.  -->
                                     <% filterByName.forEach(bike => { %>
-                                        <a href="/products/<%= bike.id %> "><span class="dot" style= "background-color: <%= bike.color %>"></span></a>
+                                        <a href="/products/<%= bike.id %>/<%= bike.color_id %>  "><span class="dot" style= "background-color: <%= bike.color.name %>"></span></a>
                                     <% }) %>
                                 </div>
                             </div>
                             <div class="acomodar">
                                 <p class="detail-info">
-                                    <h2><strong><%= product.name %></strong></h2>
+                                    <h2><strong><%= productToShow.name %></strong></h2>
                                     <div class="detail-info-content">
-                                        <p class="detail-info-element"><strong>Año:</strong> <%= product.year %> </p>
-                                        <p class="detail-info-element"><strong>Marca:</strong> <%= product.brand %> </p>
+                                        <p class="detail-info-element"><strong>Año:</strong> <%= productToShow.year %> </p>
+                                        <p class="detail-info-element"><strong>Marca:</strong> <%= productToShow.brand.name %> </p>
+                                        <p class="detail-info-element"><strong>Categoría:</strong> <%= productToShow.products_categories.name %> </p>
                                     </div>
                                     <div class="detail-info-content">
-                                        <p><strong>Precio:</strong> <small class="precio-tachado">$<%= product.price %> </small> $<%= product.finalPrice %> <small class="product-discount"><%= product.discount %>%</small></p>
+                                        <% if (productToShow.discount == 0) { %>
+                                            <p><strong>Precio:</strong> $<%= productToShow.final_price %></p>
+                                        <% } else { %>
+                                            <p><strong>Precio:</strong> <small class="precio-tachado">$<%= productToShow.base_price %> </small> $<%= productToShow.final_price %> <small class="product-discount"><%= productToShow.discount %>%</small></p>
+                                        <% } %>
                                     </div>
-                                    <p><strong>Descripción:</strong> <%= product.description %> </p>  
+                                    <p><strong>Descripción:</strong> <%= productToShow.description %> </p>  
                                 </p>
                                 <div class="detalle-botones">
                                     <div class="detalle-botones-public">
@@ -41,7 +47,7 @@
                                             </form>
                                         </div> -->
                                         <div>
-                                            <form action="/products/addToCart/<%= product.id %>" method="get">
+                                            <form action="/products/addToCart/<%= productToShow.id %>" method="get">
                                                 <button type="submit" class="boton-agregarcarrito"><strong>Agregar al carrito</strong></button>
                                             </form>
                                         </div>
@@ -49,10 +55,10 @@
                                     <% if (locals.user.category_id == 1) { %>
                                         <div class="detalle-botones-admin">
                                             <div>
-                                                <a href="/products/edit/<%= product.id %> "><button type="button" class="boton-editar"><strong>Editar Producto</strong></button></a>
+                                                <a href="/products/edit/<%= productToShow.id %> "><button type="button" class="boton-editar"><strong>Editar Producto</strong></button></a>
                                             </div>
                                             <div>
-                                                <form method="POST" action="/products/delete/<%= product.id %>?_method=DELETE"  >
+                                                <form method="POST" action="/products/delete/<%= productToShow.id %>?_method=DELETE"  >
                                                     <button type="submit" class="boton-editar"><strong>Eliminar Producto</strong></button>
                                                 </form>    
                                             </div>
@@ -70,7 +76,7 @@
                 <div class="div-articulo">
                     <section class="section-pd">
                         <% productsFilter.forEach(product => { %>
-                            <article class="article-home" >
+                            <article class="article-home">
                                 <a href="/products/<%= product.id %>" class="product-detail" > 
                                     <div class="div-img1">
                                         <img class="img1" src= "/images/products/<%= product.image %>"  alt= "<%= product.name %>"  >

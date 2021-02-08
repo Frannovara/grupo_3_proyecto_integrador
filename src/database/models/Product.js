@@ -65,9 +65,23 @@
             foreignKey: 'product_id'
         })
         Product.belongsTo(models.Product_categories, {
+<<<<<<< HEAD
             as : 'categories',
 
+=======
+            as : 'products_categories',
+>>>>>>> b5bc2448be0ac8738d5ea2625e35f9b7a546b331
             foreignKey: 'category_id'
+        })
+        Product.belongsToMany(models.Colors, {
+            as: 'colors',
+            through: 'Images',
+            foreignKey: 'product_id',
+            otherKey: 'color_id',
+            timestamps: true,
+            createdAt: 'created_at',
+            updatedAt: 'updated_at',
+            deletedAt: 'deleted_at'
         })
     }
 

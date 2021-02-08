@@ -22,7 +22,7 @@
                         <article class="article-home" >
                             <a href="/products/<%= product.id %> " class="product-detail"> 
                                 <div class="div-img1">
-                                    <img class="img1" src= "/images/products/<%= product.image %>"  alt= "<%= product.name %>"  >
+                                    <img class="img1" src= "/images/products/<%= product.images.image %>"  alt= "<%= product.name %>"  >
                                 </div>
                                 <p class="p-home"> $<%= toThousand(product.final_price) %> <%= product.name %> 
                                                 <br>
