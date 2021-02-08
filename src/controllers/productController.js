@@ -73,13 +73,14 @@ const controladorProductos = {
         db.Products.findAll({
           where: {
             name: { [Op.like]: '%'+ req.query.buscador + '%'}
+            
           },
           order: [
             ['final_price', 'DESC']
           ],
-          limit: 20
-        }, {
-          include: [{association: 'brand'}, {association: 'images'}, {association: 'product_category'}],
+          limit: 20,
+       
+          include: [{association: 'brand'}, {association: 'images'}, {association: 'products_categories'}],
           raw: true,
           nest: true,
         })
@@ -96,42 +97,60 @@ const controladorProductos = {
         .catch(err => {
           console.log(err);
         })
+        
       } else if (req.query.search == 'brand') {
-        db.Products.findAll({
+        db.Brands.findOne({
           where: {
-            brand: { [Op.like]: '%'+ req.query.buscador + '%'}
-          },
-          order: [
-            ['final_price', 'DESC']
-          ],
-          limit: 20
-        }, {
-          include: ['brand', 'Product', 'Products'],
-          raw: true,
-          nest: true,
-        })
-        .then(productsSearched => {
-          if (productsSearched.length > 0) {
-            res.render('./products/list', {productsSearched, toThousand})
-          } else {
-            let emptySearch = true
-            res.render('./products/list', {searched, search_category, emptySearch})
+            name: { [Op.like]: '%'+req.query.buscador+'%'}
           }
         })
-        .catch(err => {
+        .then(brandSearched => {
+          db.Products.findAll({
+            where: {
+              brand_id: brandSearched.id
+            },
+            order: [
+              ['final_price', 'DESC']
+            ],
+            limit: 20,
+         
+            include:  [{association: 'brand'}, {association: 'images'}, {association: 'products_categories'}],
+            raw: true,
+            nest: true,
+          })
+          .then(productsSearched => {
+            if (productsSearched.length > 0) {
+              res.render('./products/list', {productsSearched, toThousand})
+            } else {
+              let emptySearch = true
+              res.render('./products/list', {searched, search_category, emptySearch})
+            }
+          })
+          .catch(err => {
+            console.log(err);
+          })
+        })
+        .catch(err=> {
           console.log(err);
         })
+        
       } else if (req.query.search == 'category') {
+        db.Product_categories.findOne({
+          where: {
+            name: { [Op.like]: '%'+req.query.buscador+'%'}
+          }
+        })
+        .then(categorySearched => {
         db.Products.findAll({
           where: {
-            category: { [Op.like]: '%'+ req.query.buscador + '%'}
+            category_id: categorySearched.id
           },
           order: [
             ['final_price', 'DESC']
           ],
-          limit: 20
-        }, {
-          include: ['brand', 'Product', 'Products'],
+          limit: 20,
+       
+          include:  [{association: 'brand'}, {association: 'images'}, {association: 'products_categories'}],
           raw: true,
           nest: true,
         })
@@ -146,6 +165,9 @@ const controladorProductos = {
         .catch(err => {
           console.log(err);
         })
+      })
+      .catch(err => {console.log(err);})
+
       } else if (req.query.search == 'year') {
         db.Products.findAll({
           where: {
@@ -154,9 +176,9 @@ const controladorProductos = {
           order: [
             ['final_price', 'DESC']
           ],
-          limit: 20
-        }, {
-          include: ['brand', 'Product', 'Products'],
+          limit: 20,
+        
+          include: [{association: 'brand'}, {association: 'images'}, {association: 'products_categories'}],
           raw: true,
           nest: true,
         })
@@ -174,16 +196,33 @@ const controladorProductos = {
       }      
     },
     detail: function(req, res) {
-      let product = products.find(item =>  item.id == req.params.id);
-		  if(product.discount) {
-			  product.finalPrice = toThousand(product.price * (1 - product.discount/100))
-		  } else {
-			  product.price = toThousand (product.price)
-      }
-      let productsFilter = products.filter((bikes) => bikes.id != req.params.id)
-      let filterByName = products.filter((item) => product.name == item.name)
 
-      res.render('./products/detail' , {product, title: product.name, productsFilter, toThousand, filterByName});
+      /*Esta búsqueda tiene que devolver el color perteneciente, y también la marca. */
+      let productToShow = db.Products.findOne({
+        where: {
+          id: req.params.id
+        },
+          include: [{association: 'brand'}, {association: 'images'}, {association: 'products_categories'}, {association: 'colors'}],
+          raw: true,
+          nest: true,
+        /* También crear la limitación de búsqueda por color.*/ 
+      })
+      /**Hacer una nueva búsqueda de todos los colores en los que se tiene el producto. */
+
+      /* Hacer una búsqueda de los productos en oferta bajo el nombre productsFilter excluyendo el producto actual */
+
+      /*Hacer un promise all */
+      .then(productToShow => {
+        let productsFilter = products.filter((bikes) => bikes.id != req.params.id)
+        let filterByName = products.filter((item) => productToShow.name == item.name)
+
+        res.render('./products/detail' , {productToShow, title: productToShow.name, productsFilter, toThousand, filterByName});
+      })
+      .catch(err => {
+        console.log(err);
+      })
+		  
+      
     },
     deleteConfirm : (req, res, next) => {
       deleteProduct(req)

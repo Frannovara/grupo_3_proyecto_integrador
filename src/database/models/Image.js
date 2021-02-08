@@ -34,7 +34,7 @@ module.exports = function(sequelize, dataTypes){
         timestamps: true, 
         createdAt: 'created_at',
         updatedAt: 'updated_at',
-        deletedAT: 'deleted_at'
+        deletedAt: 'deleted_at'
     }
 
     const Images = sequelize.define(alias, cols, config);
