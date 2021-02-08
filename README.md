@@ -61,4 +61,11 @@
 
     - DELETE: El sistema no permite eliminar un usuario administrador. Y si un usuario quiere eliminar su cuenta le pide confirmación. Luego realiza un soft-delete, cierra sesión, elimina la cookie si existe, y redirige al login.
 
-- PRODUCTS
+- PRODUCTS:
+    - CREATE:
+    - READ: La lectura de la base de datos se realiza en varias páginas diferentes, a continuación se explica el funcionamiento de cada una de ellas.
+        - BUSCADOR: El buscador permite 4 opciones, buscar por marca, por categoría, por año o sin especificar. Si es por marca realiza una lectura de la base de datos con un "where" y un "like" que contenga lo que ha buscado el usuario en la columna de brand. Para categoría y año es igual. Si el usuario no especifíca, la búsqueda la realiza en la columna del nombre del producto. Luego muestra en una nueva vista los resultados de la búsqueda. Si no encuentra coincidencias entonces muestra un mensaje de que no se encontraron resultados.
+        - PAGINA DE DETALLE:
+        - PAGINA DE INICIO: En la sección de ofertas, realiza una búsqueda en la db de todos los productos que estén en oferta, es decir que tengan un descuento no sea 0. Y limita la búsqueda a 10 productos.
+    - UPDATE:
+    - DELETE:
