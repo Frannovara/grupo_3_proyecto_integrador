@@ -51,7 +51,7 @@ const controller = {
                 discount: { [Op.ne]: 0}
             },
             limit: 10,
-            include: [{association: 'brand'}, {association: 'images'}, {association: 'products_categories'}, {association: 'colors'}],
+            include: [{association: 'brand'}, {association: 'images'}, {association: 'categories'}, {association: 'colors'}],
             raw: true,
             nest: true,
         })
