@@ -62,7 +62,6 @@
         
         Product.belongsTo(models.Product_categories, {
             as : 'categories',
-
             foreignKey: 'category_id'
         })
         Product.belongsToMany(models.Colors, {
@@ -70,6 +69,16 @@
             through: 'Images',
             foreignKey: 'product_id',
             otherKey: 'color_id',
+            timestamps: true,
+            createdAt: 'created_at',
+            updatedAt: 'updated_at',
+            deletedAt: 'deleted_at'
+        })
+        Product.belongsToMany(models.Carts, {
+            as: 'buying_cart',
+            through: 'Cart_products',
+            foreignKey: 'product_id',
+            otherKey: 'cart_id',
             timestamps: true,
             createdAt: 'created_at',
             updatedAt: 'updated_at',

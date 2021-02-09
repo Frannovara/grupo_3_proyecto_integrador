@@ -17,12 +17,6 @@ module.exports = function(sequelize, dataTypes){
         deleted_at: {
             type: dataTypes.DATE,
         },
-        cart_id: {
-            type: dataTypes.BIGINT,
-        },
-        product_id: {
-            type: dataTypes.BIGINT,
-        },
         subtotal: {
             type : dataTypes.DECIMAL,
             allowNull : false
