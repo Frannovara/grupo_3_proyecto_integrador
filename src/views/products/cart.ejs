@@ -18,10 +18,10 @@
                     </div>
                     <% locals.cart.forEach(product => { %>
                         <div class="productos-en-carrito">
-                            <h5 class="motos-carrito"><%= product.name %> </h5>
+                            <a class="motos-carrito" href="/products/<%= product.id %> "><h5 ><%= product.name %> </h5></a>
                             <h5 class="precio-numeros">$ <%= product.final_price %> </h5>
                             <div class="cantidad-carrito">
-                                <input type="number" name="amount" id="amount">
+                                <h5 class="amount">0</h5>
                                 <div class="flechas-cantidad">
                                     <i class="fas fa-chevron-up"></i>
                                     <i class="fas fa-chevron-down"></i>

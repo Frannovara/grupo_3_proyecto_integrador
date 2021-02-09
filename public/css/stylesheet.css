@@ -504,10 +504,13 @@ margin-right: 4%;
     padding: 5px;
     border: none;
 }
+.amount {
+    margin:0
+}
 .flechas-cantidad {
 display: flex;
 flex-direction: column;
-margin: -331% -29% 0% 85%;
+margin-left: 5px;
 }
     
 /* diseño pagina de contacto */
@@ -969,7 +972,7 @@ margin: -331% -29% 0% 85%;
     .flechas-cantidad {
         display: flex;
         flex-direction: column;
-        margin: -331% -29% 0% 85%;
+        margin-left: 5px;
     }
 
 
