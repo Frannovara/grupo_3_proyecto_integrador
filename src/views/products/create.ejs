@@ -62,7 +62,15 @@
                         </div>
                         <div class="create-form-element">
                             <label for="color">Color</label>
-                            <input type="text" class="create-form-input" name="color" id="color">
+                            <select name="color" id="color" class="create-form-input">
+                                <% colors.forEach(color => { %>
+                                
+                                    <option value="<%=color.id%>">
+                                        <%=color.name%></option>
+                                       
+                                   
+                                    <% }) %>
+                            </select>
                         </div>
                     </div>
                 </div>
