@@ -266,9 +266,32 @@ const controladorProductos = {
       const productToEdit = products.find(item =>  item.id == req.params.id);
       res.render('./products/edit' , {productToEdit, title: 'Editando ' + productToEdit.name}) 
     },
-    confirm: (req, res, next) => {
-      editProduct(req)
-      res.redirect('/')
+    update : (req , res) =>{
+      console.log(req.body)
+      db.Products.update({
+        name: req.body.name,
+        base_price: req.body.price,
+        discount: req.body.discount,
+        year: req.body.year,
+        description : req.body.description,
+        final_price : req.body.price * (1 - req.body.discount),
+        category_id : req.body.category ,
+        brand_id : req.body.brand
+    
+      }, { where: {
+        id: req.params.id
+      }})
+      .then( created => {
+          created.addColors(req.body.color , {
+            trough : {
+              image : req.files[0].filename
+            }
+          })
+        
+        res.redirect('/')})
+        .catch(error =>{
+          res.send (error)
+        })
     },
     createProduct: (req, res, next) => {
       newProduct(req);
