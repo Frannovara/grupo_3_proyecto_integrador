@@ -484,6 +484,8 @@ margin-right: 1px;
 }
 .subtotal-numeros{
 margin-right: 2%;
+
+align-self: flex-end;
 }
 .total-carrito{
 display: flex;

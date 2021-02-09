@@ -234,6 +234,7 @@ const controladorProductos = {
       res.redirect('/products')
     },
     cart: function (req,res) {
+      
       db.Carts.findOne({
         where: {
           user_id: req.session.user.id,
@@ -244,9 +245,17 @@ const controladorProductos = {
         ]
       })
       .then( usersCart => {
-        console.log(typeof usersCart);
+        db.Cart_product.sum('subtotal', {
+          where: {
+            cart_id: usersCart.id
+          }
+        })
+        .then((total)=> {
+        
         //res.send(usersCart)
-        res.render('./products/cart', {usersCart})
+        res.render('./products/cart', {usersCart, total})
+        })
+        
       })
      
     },
@@ -279,7 +288,7 @@ const controladorProductos = {
       })
     },
     addToCart: (req, res) => {
-      db.Carts.findOrCreate({
+      let requestCart = db.Carts.findOrCreate({
         where: {
           user_id: req.session.user.id,
           status: null
@@ -288,38 +297,62 @@ const controladorProductos = {
           {association: 'item'}
         ]
       })
-      .then(userCart => {
+
+      let requestProduct = db.Products.findByPk(req.params.id)
+      
+      Promise.all([requestCart, requestProduct])
+      .then(([userCart, product]) => {
+        
         
         db.Cart_product.findOne({
           where: {
-            product_id: req.params.id,
+            product_id: product.id,
             cart_id: userCart[0].id
           }
         })
         .then(item => {
+          
           if (item != null) {
-            
+            console.log('hasta aca');
+            //return res.send(item)
             db.Cart_product.update( {
-              units: item.units + 1
+              units: item.units + 1,
+              subtotal: (item.units + 1) * product.final_price
             },{
               where: {
-                product_id: req.params.id
+                product_id: product.id
               }
             })
-            res.redirect('/products/cart')
-            //res.send(userCart)
+            
+              .then(()=> {
+                res.redirect('/products/cart')
+                //res.send(userCart)
+              })
+              
+           
+            .catch(error => {res.send(error)})
+            
           } else {
-            console.log('Hasta acá llego');
-            console.log(req.params.id);
-            userCart.addItem(req.params.id , {
+            
+            db.Cart_product.create({
+              units: 1,
+              subtotal: product.final_price,
+              product_id: product.id,
+              cart_id: userCart[0].id
+            })
+            
+              .then(()=> {
+                res.redirect('/products/cart')
+                //res.send(userCart)
+              })
+            
+            /* userCart.addItem(product.id , {
               through: {
                 units: 1,
-                subtotal: 1,
+                subtotal: product.final_price,
               }
-            })
+            }) */
             .then(() => {
-              console.log('llegó');
-                return res.send(userCart)
                 res.redirect('/products/cart')
             //res.send(userCart)
             }) 
@@ -333,7 +366,7 @@ const controladorProductos = {
     },
 
     addOne: (req, res) => {
-      db.Carts.findOne({
+      let requestCart = db.Carts.findOne({
         where: {
           user_id: req.session.user.id,
           status: null
@@ -342,7 +375,11 @@ const controladorProductos = {
           {association: 'item'}
         ]
       })
-      .then(userCart => {
+      let requestProduct = db.Products.findByPk(req.params.id)
+      
+      Promise.all([requestCart, requestProduct])
+      .then(([userCart, product]) => {
+        
         
         db.Cart_product.findOne({
           where: {
@@ -352,16 +389,20 @@ const controladorProductos = {
         })
         .then(item => {
           db.Cart_product.update( {
-            units: item.units + 1
+            units: item.units + 1,
+            subtotal: (item.units + 1) * product.final_price
           },{
             where: {
               product_id: req.params.id,
               cart_id: userCart.id
             }
           })
-          .then(() => {
-            res.redirect('/products/cart')
-          })
+          
+            .then(()=> {
+              res.redirect('/products/cart')
+              //res.send(userCart)
+            })
+          
           .catch(error => { res.send(error)})
         })
         .catch(error => { res.send(error)})
@@ -370,7 +411,7 @@ const controladorProductos = {
     },
 
     removeOne: (req, res) => {
-      db.Carts.findOne({
+      let requestCart = db.Carts.findOne({
         where: {
           user_id: req.session.user.id,
           status: null
@@ -379,7 +420,10 @@ const controladorProductos = {
           {association: 'item'}
         ]
       })
-      .then(userCart => {
+      let requestProduct = db.Products.findByPk(req.params.id)
+      
+      Promise.all([requestCart, requestProduct])
+      .then(([userCart, product]) => {
         
         db.Cart_product.findOne({
           where: {
@@ -388,31 +432,34 @@ const controladorProductos = {
           }
         })
         .then(item => {
-          if(item.units == 1) {
-            db.Cart_product.destroy({
+          
+          if (item.units == 1) {
+            db.Cart_product.destroy( {
               where: {
                 product_id: req.params.id,
                 cart_id: userCart.id
               }
             })
-            .then(()=> {
-              res.redirect('/products/cart')
-            })
+            .then(()=> {res.redirect('/products/cart')})
             .catch(error => {res.send(error)})
           } else {
           db.Cart_product.update( {
-            units: item.units - 1
+            units: item.units - 1,
+            subtotal: (item.units - 1) * product.final_price
           },{
             where: {
               product_id: req.params.id,
               cart_id: userCart.id
             }
           })
-          .then(() => {
-            res.redirect('/products/cart')
-          })
+          
+            .then(()=> {
+              res.redirect('/products/cart')
+              //res.send(userCart)
+            })
+          
           .catch(error => { res.send(error)})
-        }
+          }
         })
         .catch(error => { res.send(error)})
       })

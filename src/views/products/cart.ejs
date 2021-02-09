@@ -34,12 +34,12 @@
                                     </form>                                    
                                 </div>
                             </div>
-                            <h5 class="subtotal-numeros">$<%= product.Cart_product.units*product.final_price %> </h5>
+                            <h5 class="subtotal-numeros">$<%= product.Cart_product.subtotal %> </h5>
                         </div>
                     <% }) %>
                     <div class="total-carrito">
                         <h4 class="total-listado">Total</h4>
-                        <h5 class="total-numero">$0.00</h5>
+                        <h5 class="total-numero">$<%= total %> </h5>
                     </div>
                     <div class="boton-compra-div">
                         <form action="/products/buyCart" method="post">

@@ -22,6 +22,7 @@ module.exports = (sequelize, dataTypes) => {
         },
         total: {
             type: dataTypes.FLOAT(3,1),
+            defaultValue: 0
         },
         user_id: {
             type: dataTypes.BIGINT,
