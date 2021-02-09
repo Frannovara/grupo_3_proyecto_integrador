@@ -34,8 +34,18 @@ module.exports = function(sequelize, dataTypes){
 
     Colors.associate = function(models) {
         Colors.hasMany(models.Images, {
-            as: 'colors',
+            as: 'colors_image',
             foreignKey: 'color_id'
+        })
+        Colors.belongsToMany(models.Products, {
+            as: 'product_color',
+            through: 'Images',
+            foreignKey: 'color_id',
+            otherKey: 'product_id',
+            timestamps: true,
+            createdAt: 'created_at',
+            updatedAt: 'updated_at',
+            deletedAt: 'deleted_at'
         })
     }
 

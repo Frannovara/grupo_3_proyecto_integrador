@@ -183,7 +183,47 @@ const controladorProductos = {
       let productsFilter = products.filter((bikes) => bikes.id != req.params.id)
       let filterByName = products.filter((item) => product.name == item.name)
 
-      res.render('./products/detail' , {product, title: product.name, productsFilter, toThousand, filterByName});
+      /*Esta búsqueda tiene que devolver el color perteneciente, y también la marca. */
+      let requestProductToShow = db.Products.findAll({
+        where: {
+          id: req.params.id
+        },
+          include: [{association: 'brand'}, {association: 'products_categories'}, {association: 'colors'}],
+          raw: true,
+          nest: true,
+        /* También crear la limitación de búsqueda por color.*/ 
+      })
+      
+      let requestProductsInSale = db.Products.findAll({
+        where: {
+            discount: { [Op.ne]: 0}
+        },
+        limit: 10,
+        include: [{association: 'brand'}, {association: 'products_categories'}, {association: 'colors'}],
+        raw: true,
+        nest: true,
+    })
+
+      
+      /* Hacer una búsqueda de los productos en oferta bajo el nombre productsFilter excluyendo el producto actual */
+
+       /*Hacer un promise all */
+      Promise.all( [requestProductToShow,  requestProductsInSale])
+      .then( function ([productToShow,  productsInSale]) {
+        
+        //res.send(productToShow)
+        res.render('./products/detail' , {productToShow, title: productToShow.name, productsInSale, toThousand});
+      })
+        
+     
+     
+        //res.send(productToShow)
+      
+      .catch(err => {
+        console.log(err);
+      })
+		  
+      
     },
     deleteConfirm : (req, res, next) => {
       deleteProduct(req)
