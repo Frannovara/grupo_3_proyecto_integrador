@@ -234,9 +234,21 @@ const controladorProductos = {
       res.redirect('/products')
     },
     cart: function (req,res) {
-      res.locals.cart = req.session.cart
-      console.log(res.locals.cart);
-      res.render('./products/cart')
+      db.Carts.findOne({
+        where: {
+          user_id: req.session.user.id,
+          status: null
+        },
+        include: [
+          {association: 'item'}
+        ]
+      })
+      .then( usersCart => {
+        console.log(typeof usersCart);
+        //res.send(usersCart)
+        res.render('./products/cart', {usersCart})
+      })
+     
     },
     create: (req, res) => {
       res.render('./products/create')
@@ -254,31 +266,157 @@ const controladorProductos = {
      res.redirect('/')
     },
     buyCart: (req, res) => {
-
+      db.Carts.update({
+        status: 'finish'
+      }, {
+        where: {
+          user_id: req.session.user.id,
+          status: null
+        }
+      })
+      .then(()=> {
+        res.redirect('/')
+      })
     },
     addToCart: (req, res) => {
-      if (typeof req.session.cart != 'undefined') {
-        db.Products.findByPk(req.params.id)
-        .then(product => {
-        req.session.cart.push(product)
-        res.locals.cart = req.session.cart
-        return res.redirect('/products/cart')
+      db.Carts.findOrCreate({
+        where: {
+          user_id: req.session.user.id,
+          status: null
+        },
+        include: [
+          {association: 'item'}
+        ]
+      })
+      .then(userCart => {
+        
+        db.Cart_product.findOne({
+          where: {
+            product_id: req.params.id,
+            cart_id: userCart[0].id
+          }
         })
-        .catch( err => {
-        res.send(err);
+        .then(item => {
+          if (item != null) {
+            
+            db.Cart_product.update( {
+              units: item.units + 1
+            },{
+              where: {
+                product_id: req.params.id
+              }
+            })
+            res.redirect('/products/cart')
+            //res.send(userCart)
+          } else {
+            console.log('Hasta acá llego');
+            console.log(req.params.id);
+            userCart.addItem(req.params.id , {
+              through: {
+                units: 1,
+                subtotal: 1,
+              }
+            })
+            .then(() => {
+              console.log('llegó');
+                return res.send(userCart)
+                res.redirect('/products/cart')
+            //res.send(userCart)
+            }) 
+            .catch( error => {res.send(error)})
+          }
         })
-      } else {
-        db.Products.findByPk(req.params.id)
-        .then(product => {
-        req.session.cart = [product]
-        res.locals.cart = req.session.cart
-        return res.redirect('/products/cart')
-        })
-        .catch( err => {
-        res.send(err);
-        })
-      }
+        .catch( error => {res.send(error)})
+      })
+      .catch( error => {res.send(error)})
       
+    },
+
+    addOne: (req, res) => {
+      db.Carts.findOne({
+        where: {
+          user_id: req.session.user.id,
+          status: null
+        },
+        include: [
+          {association: 'item'}
+        ]
+      })
+      .then(userCart => {
+        
+        db.Cart_product.findOne({
+          where: {
+            product_id: req.params.id,
+            cart_id: userCart.id
+          }
+        })
+        .then(item => {
+          db.Cart_product.update( {
+            units: item.units + 1
+          },{
+            where: {
+              product_id: req.params.id,
+              cart_id: userCart.id
+            }
+          })
+          .then(() => {
+            res.redirect('/products/cart')
+          })
+          .catch(error => { res.send(error)})
+        })
+        .catch(error => { res.send(error)})
+      })
+      .catch(error => { res.send(error)})
+    },
+
+    removeOne: (req, res) => {
+      db.Carts.findOne({
+        where: {
+          user_id: req.session.user.id,
+          status: null
+        },
+        include: [
+          {association: 'item'}
+        ]
+      })
+      .then(userCart => {
+        
+        db.Cart_product.findOne({
+          where: {
+            product_id: req.params.id,
+            cart_id: userCart.id
+          }
+        })
+        .then(item => {
+          if(item.units == 1) {
+            db.Cart_product.destroy({
+              where: {
+                product_id: req.params.id,
+                cart_id: userCart.id
+              }
+            })
+            .then(()=> {
+              res.redirect('/products/cart')
+            })
+            .catch(error => {res.send(error)})
+          } else {
+          db.Cart_product.update( {
+            units: item.units - 1
+          },{
+            where: {
+              product_id: req.params.id,
+              cart_id: userCart.id
+            }
+          })
+          .then(() => {
+            res.redirect('/products/cart')
+          })
+          .catch(error => { res.send(error)})
+        }
+        })
+        .catch(error => { res.send(error)})
+      })
+      .catch(error => { res.send(error)})
     },
 
 

@@ -10,6 +10,9 @@
                 
 
                 <% if (typeof usersCart != 'undefined') { %>
+                    <% if (usersCart != null) { %>
+                     
+                    
                     <div class="productos-carrito-div">
                         <h4 class="producto-listado">Producto/s</h4>
                         <h4 class="precio-unitario">Precio unitario</h4>
@@ -23,9 +26,12 @@
                             <div class="cantidad-carrito">
                                 <h5 class="amount"><%= product.Cart_product.units %> </h5>
                                 <div class="flechas-cantidad">
-                                    <button class="boton-flechas-cantidad"><i class="fas fa-chevron-up"></i></button>
-                                    <button class="boton-flechas-cantidad"><i class="fas fa-chevron-down"></i></button>
-                                    
+                                    <form action="/products/addOne/<%= product.id %> " method="post">
+                                        <button type="submit" class="boton-flechas-cantidad"><i class="fas fa-chevron-up"></i></button>
+                                    </form>
+                                    <form action="/products/removeOne/<%= product.id %> " method="post">
+                                        <button type="submit" class="boton-flechas-cantidad"><i class="fas fa-chevron-down"></i></button>
+                                    </form>                                    
                                 </div>
                             </div>
                             <h5 class="subtotal-numeros">$<%= product.Cart_product.units*product.final_price %> </h5>
@@ -37,16 +43,15 @@
                     </div>
                     <div class="boton-compra-div">
                         <form action="/products/buyCart" method="post">
-                            <button type="button" class="boton-compra"><strong>COMPRAR</strong></button>
+                            <button type="submit" class="boton-compra"><strong>COMPRAR</strong></button>
                         </form>
                     </div>
+                    <% } else { %>
+                        <h3>No has agregado productos al carrito de compras</h3>  
+                    <% } %>
                 <% } else { %>
                        <h3>No has agregado productos al carrito de compras</h3>  
-                <% } %>
-                
-
-
-                
+                <% } %>                
             </section>
         </main>
     </div>

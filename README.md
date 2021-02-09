@@ -69,3 +69,8 @@
         - PAGINA DE INICIO: En la sección de ofertas, realiza una búsqueda en la db de todos los productos que estén en oferta, es decir que tengan un descuento no sea 0. Y limita la búsqueda a 10 productos.
     - UPDATE:
     - DELETE:
+- CARRITO DE COMPRAS:
+    - CREATE: Al agregar un producto al carrito de compras, realiza un findOrCreate en la tabla Carts, para ver si ya existe algún carrito de compras pendiente para ese usuario. Una vez que hay un carrito pendiente, agrega una instancia en la tabla pivot con el producto. Si el producto ya se encuentra en el carrito, aumenta en 1 la cantidad de unidades a comprar.
+    - READ: Al redirigir a la página del carrito, realiza una búsqueda de los carritos pendientes para el usuario logueado, y muestra los productos asociados.
+    - UPDATE: Si se modifica la cantidad de unidades, se actualiza la tabla pivot. 
+    - DELETE: Si las unidades llegan a 0 se realiza un soft.delete, y el producto no se muestra mas en el carrito.

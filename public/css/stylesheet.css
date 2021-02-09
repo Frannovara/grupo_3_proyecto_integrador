@@ -421,6 +421,7 @@ input:focus {
 .carrito-compras{
     display: flex;
     flex-direction: column;
+    justify-content: center;
 }
 .productos-carrito-div{
     display: flex;
