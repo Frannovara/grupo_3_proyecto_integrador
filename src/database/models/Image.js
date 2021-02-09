@@ -21,12 +21,12 @@ module.exports = function(sequelize, dataTypes){
             type : dataTypes.STRING,
             allowNull : false
         },
-        product_id: {
+       /*  product_id: {
             type: dataTypes.BIGINT,
         },
         color_id: {
             type: dataTypes.BIGINT,
-        }
+        } */
     }
 
     let config = {
@@ -39,15 +39,5 @@ module.exports = function(sequelize, dataTypes){
 
     const Images = sequelize.define(alias, cols, config);
 
-    Images.associate = function(models) {
-        Images.belongsTo(models.Colors, {
-            as: 'images_colors',
-            foreignKey: 'color_id'
-        }),
-        Images.belongsTo(models.Products, {
-            as: 'images_products',
-            foreignKey: 'product_id'
-        })
-    }
     return Images;
 }
