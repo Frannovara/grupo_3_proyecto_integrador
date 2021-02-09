@@ -77,20 +77,25 @@ const controladorProductos = {
           order: [
             ['final_price', 'DESC']
           ],
+<<<<<<< HEAD
           limit: 20
         }, {
           include: [{association: 'brand'}, {association: 'images'}, {association: 'product_category'}],
           raw: true,
           nest: true,
+=======
+          limit: 20,
+       
+          include: [{association: 'brand'}, {association: 'products_categories'}, {association: 'colors'}],
+          
+>>>>>>> ee8fa09e689a92563e3d7e59475ce66112487997
         })
         .then(productsSearched => {
           console.log(productsSearched);
-          if (productsSearched.length > 0) {
+          
+            //res.send(productsSearched)
             res.render('./products/list', {productsSearched, toThousand})
-          } else {
-            let emptySearch  = true
-            res.render('./products/list', {searched, search_category, emptySearch})
-          }
+          
           
         })
         .catch(err => {
@@ -110,6 +115,7 @@ const controladorProductos = {
           raw: true,
           nest: true,
         })
+<<<<<<< HEAD
         .then(productsSearched => {
           if (productsSearched.length > 0) {
             res.render('./products/list', {productsSearched, toThousand})
@@ -117,6 +123,32 @@ const controladorProductos = {
             let emptySearch = true
             res.render('./products/list', {searched, search_category, emptySearch})
           }
+=======
+        .then(brandSearched => {
+          db.Products.findAll({
+            where: {
+              brand_id: brandSearched.id
+            },
+            order: [
+              ['final_price', 'DESC']
+            ],
+            limit: 20,
+         
+            include:  [{association: 'brand'}, {association: 'colors'}, {association: 'products_categories'}],
+            
+          })
+          .then(productsSearched => {
+            if (productsSearched.length > 0) {
+              res.render('./products/list', {productsSearched, toThousand})
+            } else {
+              let emptySearch = true
+              res.render('./products/list', {searched, search_category, emptySearch})
+            }
+          })
+          .catch(err => {
+            console.log(err);
+          })
+>>>>>>> ee8fa09e689a92563e3d7e59475ce66112487997
         })
         .catch(err => {
           console.log(err);
@@ -129,11 +161,18 @@ const controladorProductos = {
           order: [
             ['final_price', 'DESC']
           ],
+<<<<<<< HEAD
           limit: 20
         }, {
           include: ['brand', 'Product', 'Products'],
           raw: true,
           nest: true,
+=======
+          limit: 20,
+       
+          include:  [{association: 'brand'}, {association: 'colors'}, {association: 'products_categories'}],
+          
+>>>>>>> ee8fa09e689a92563e3d7e59475ce66112487997
         })
         .then(productsSearched => {
           if (productsSearched.length > 0) {
@@ -154,11 +193,18 @@ const controladorProductos = {
           order: [
             ['final_price', 'DESC']
           ],
+<<<<<<< HEAD
           limit: 20
         }, {
           include: ['brand', 'Product', 'Products'],
           raw: true,
           nest: true,
+=======
+          limit: 20,
+        
+          include: [{association: 'brand'}, {association: 'colors'}, {association: 'products_categories'}],
+          
+>>>>>>> ee8fa09e689a92563e3d7e59475ce66112487997
         })
         .then(productsSearched => {
           if (productsSearched.length > 0) {
@@ -189,8 +235,7 @@ const controladorProductos = {
           id: req.params.id
         },
           include: [{association: 'brand'}, {association: 'products_categories'}, {association: 'colors'}],
-          raw: true,
-          nest: true,
+          
         /* También crear la limitación de búsqueda por color.*/ 
       })
       
@@ -200,8 +245,7 @@ const controladorProductos = {
         },
         limit: 10,
         include: [{association: 'brand'}, {association: 'products_categories'}, {association: 'colors'}],
-        raw: true,
-        nest: true,
+        
     })
 
       
@@ -214,11 +258,7 @@ const controladorProductos = {
         //res.send(productToShow)
         res.render('./products/detail' , {productToShow, title: productToShow.name, productsInSale, toThousand});
       })
-        
-     
-     
         //res.send(productToShow)
-      
       .catch(err => {
         console.log(err);
       })

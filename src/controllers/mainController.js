@@ -55,9 +55,13 @@ const controller = {
             include: [{association: 'brand'}, {association: 'images'}, {association: 'categories'}, {association: 'colors'}],
 =======
             include: [{association: 'brand'}, {association: 'products_categories'}, {association: 'colors'}],
+<<<<<<< HEAD
 >>>>>>> 6359f4ed1bb5d080aae224324f59c69cdcf2232a
             raw: true,
             nest: true,
+=======
+    
+>>>>>>> ee8fa09e689a92563e3d7e59475ce66112487997
         })
         .then ( productsInSale => {
             //res.send(productsInSale)
