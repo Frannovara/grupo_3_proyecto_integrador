@@ -76,7 +76,7 @@
         })
         Product.belongsToMany(models.Carts, {
             as: 'buying_cart',
-            through: 'Cart_products',
+            through: 'Cart_product',
             foreignKey: 'product_id',
             otherKey: 'cart_id',
             timestamps: true,

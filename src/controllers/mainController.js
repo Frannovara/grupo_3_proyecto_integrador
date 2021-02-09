@@ -16,7 +16,7 @@ const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
 
 async function main(req) {
 
-    let testAcount = await nodemailer.createTestAccount();
+    
 
     let transporter = nodemailer.createTransport({
         host: 'smtp.gmail.com',

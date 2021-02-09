@@ -33,7 +33,7 @@ module.exports = (sequelize, dataTypes) => {
         timestamps: true, 
         createdAt: 'created_at',
         updatedAt: 'updated_at',
-        deletedAT: 'deleted_at'
+        deletedAt: 'deleted_at'
     }
     
     const Cart = sequelize.define(alias, cols, config);
@@ -44,8 +44,8 @@ module.exports = (sequelize, dataTypes) => {
             foreignKey: 'user_id'
         })
         Cart.belongsToMany(models.Products, {
-            as: 'items',
-            through: 'Cart_products',
+            as: 'item',
+            through: 'Cart_product',
             foreignKey: 'cart_id',
             otherKey: 'product_id',
             timestamps: true,
