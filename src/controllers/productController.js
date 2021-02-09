@@ -91,21 +91,13 @@ const controladorProductos = {
           
         })
         .catch(err => {
-          console.log(err);
+          res.send(err);
         })
       } else if (req.query.search == 'brand') {
-        db.Products.findAll({
+        db.Brands.findOne({
           where: {
-            brand: { [Op.like]: '%'+ req.query.buscador + '%'}
-          },
-          order: [
-            ['final_price', 'DESC']
-          ],
-          limit: 20
-        }, {
-          include: ['brand', 'Product', 'Products'],
-          raw: true,
-          nest: true,
+            name: { [Op.like]: '%'+ req.query.buscador + '%'}
+          }
         })
         .then(brandSearched => {
           db.Products.findAll({
@@ -116,7 +108,6 @@ const controladorProductos = {
               ['final_price', 'DESC']
             ],
             limit: 20,
-         
             include:  [{association: 'brand'}, {association: 'colors'}, {association: 'categories'}],
             
           })
@@ -129,35 +120,42 @@ const controladorProductos = {
             }
           })
           .catch(err => {
-            console.log(err);
+            res.send(err);
           })
         })
         .catch(err => {
-          console.log(err);
+          res.send(err);
         })
       } else if (req.query.search == 'category') {
-        db.Products.findAll({
+        db.Product_categories.findOne({
           where: {
-            category: { [Op.like]: '%'+ req.query.buscador + '%'}
-          },
-          order: [
-            ['final_price', 'DESC']
-          ],
-          limit: 20,
-       
-          include:  [{association: 'brand'}, {association: 'colors'}, {association: 'categories'}],
-          
-        })
-        .then(productsSearched => {
-          if (productsSearched.length > 0) {
-            res.render('./products/list', {productsSearched, toThousand})
-          } else {
-            let emptySearch = true
-            res.render('./products/list', {searched, search_category, emptySearch})
+            name: { [Op.like]: '%'+ req.query.buscador + '%'}
           }
         })
-        .catch(err => {
-          console.log(err);
+        .then(CategorySearched => {
+          db.Products.findAll({
+            where: {
+              category_id: CategorySearched.id
+            },
+            order: [
+              ['final_price', 'DESC']
+            ],
+            limit: 20,
+        
+            include:  [{association: 'brand'}, {association: 'colors'}, {association: 'categories'}],
+            
+          })
+          .then(productsSearched => {
+            if (productsSearched.length > 0) {
+              res.render('./products/list', {productsSearched, toThousand})
+            } else {
+              let emptySearch = true
+              res.render('./products/list', {searched, search_category, emptySearch})
+            }
+          })
+          .catch(err => {
+            res.send(err);
+          })
         })
       } else if (req.query.search == 'year') {
         db.Products.findAll({
@@ -181,7 +179,7 @@ const controladorProductos = {
           }
         })
         .catch(err => {
-          console.log(err);
+          res.send(err);
         })
       }      
     },
@@ -196,7 +194,7 @@ const controladorProductos = {
       let filterByName = products.filter((item) => product.name == item.name)
 
       /*Esta búsqueda tiene que devolver el color perteneciente, y también la marca. */
-      let requestProductToShow = db.Products.findAll({
+      let requestProductToShow = db.Products.findOne({
         where: {
           id: req.params.id
         },
@@ -221,12 +219,12 @@ const controladorProductos = {
       Promise.all( [requestProductToShow,  requestProductsInSale])
       .then( function ([productToShow,  productsInSale]) {
         
-        //res.send(productToShow)
+        //res.send(colors)
         res.render('./products/detail' , {productToShow, title: productToShow.name, productsInSale, toThousand});
       })
         //res.send(productToShow)
       .catch(err => {
-        console.log(err);
+        res.send(err);
       })
 		  
       
@@ -267,7 +265,7 @@ const controladorProductos = {
         return res.redirect('/products/cart')
         })
         .catch( err => {
-        console.log(err);
+        res.send(err);
         })
       } else {
         db.Products.findByPk(req.params.id)
@@ -277,7 +275,7 @@ const controladorProductos = {
         return res.redirect('/products/cart')
         })
         .catch( err => {
-        console.log(err);
+        res.send(err);
         })
       }
       

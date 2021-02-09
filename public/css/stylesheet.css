@@ -168,7 +168,8 @@ input:focus {
         border-radius: 6px;
         margin-top : 10px;
         margin-bottom: 10px; 
-        background-color: white;        
+        background-color: white;
+        height: fit-content;        
     }  
     .article-home:hover {
         border: 1px solid #265277;
