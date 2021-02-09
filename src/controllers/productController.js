@@ -247,7 +247,7 @@ const controladorProductos = {
       const productToEdit = products.find(item =>  item.id == req.params.id);
       res.render('./products/edit' , {productToEdit, title: 'Editando ' + productToEdit.name}) 
     },
-    confirm: (req, res, next) => {
+    update: (req, res, next) => {
       editProduct(req)
       res.redirect('/')
     },
