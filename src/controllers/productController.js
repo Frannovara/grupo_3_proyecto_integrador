@@ -79,7 +79,7 @@ const controladorProductos = {
           ],
           limit: 20,
        
-          include: [{association: 'brand'}, {association: 'products_categories'}, {association: 'colors'}],
+          include: [{association: 'brand'}, {association: 'categories'}, {association: 'colors'}],
           
         })
         .then(productsSearched => {
@@ -117,7 +117,7 @@ const controladorProductos = {
             ],
             limit: 20,
          
-            include:  [{association: 'brand'}, {association: 'colors'}, {association: 'products_categories'}],
+            include:  [{association: 'brand'}, {association: 'colors'}, {association: 'categories'}],
             
           })
           .then(productsSearched => {
@@ -145,7 +145,7 @@ const controladorProductos = {
           ],
           limit: 20,
        
-          include:  [{association: 'brand'}, {association: 'colors'}, {association: 'products_categories'}],
+          include:  [{association: 'brand'}, {association: 'colors'}, {association: 'categories'}],
           
         })
         .then(productsSearched => {
@@ -169,7 +169,7 @@ const controladorProductos = {
           ],
           limit: 20,
         
-          include: [{association: 'brand'}, {association: 'colors'}, {association: 'products_categories'}],
+          include: [{association: 'brand'}, {association: 'colors'}, {association: 'categories'}],
           
         })
         .then(productsSearched => {
@@ -200,7 +200,7 @@ const controladorProductos = {
         where: {
           id: req.params.id
         },
-          include: [{association: 'brand'}, {association: 'products_categories'}, {association: 'colors'}],
+          include: [{association: 'brand'}, {association: 'categories'}, {association: 'colors'}],
           
         /* También crear la limitación de búsqueda por color.*/ 
       })
@@ -210,7 +210,7 @@ const controladorProductos = {
             discount: { [Op.ne]: 0}
         },
         limit: 10,
-        include: [{association: 'brand'}, {association: 'products_categories'}, {association: 'colors'}],
+        include: [{association: 'brand'}, {association: 'categories'}, {association: 'colors'}],
         
     })
 
@@ -288,32 +288,41 @@ const controladorProductos = {
 
 create2 : (req , res)=>{
   
-  db.Products.findAll([{association : 'brand'} , {association : 'categories'}] )
-    .then(Products =>{
-      console.log(Products)
-      return res.render('./products/create' , { Products: Products}) 
-    })  
-    .catch (error =>{
-      console.log (error)
-      
-    })},
+     let requestBrands =  db.Brands.findAll()
+     let requestCategories = db.Product_categories.findAll()
+     let requestColors = db.Colors.findAll()
 
+     Promise.all([requestBrands , requestCategories , requestColors])
+     .then(([brands , categories , colors]) =>{
+       res.render ('./products/create' , {brands , categories , colors})
+     })},
+    
   /* probar hacer este metodo con una function separada tambien */
 
 createConfirm : (req , res) =>{
   console.log(req.body)
   db.Products.create({
     name: req.body.name,
-    brand: req.body.brand,
     base_price: req.body.price,
     discount: req.body.discount,
     year: req.body.year,
     description : req.body.description,
-    image: req.files[0].filename,
-    color: req.body.color,
+    final_price : req.body.price * (1 - req.body.discount),
+    category_id : req.body.category ,
+    brand_id : req.body.brand
 
-  });
-  res.redirect('/')
+  })
+  .then( created => {
+      created.addColors(req.body.color , {
+        trough : {
+          image : req.files[0].filename
+        }
+      })
+    
+    res.redirect('/')})
+    .catch(error =>{
+      res.send (error)
+    })
 },
 delete2: (req , res) =>{
     db.Products.destroy({
