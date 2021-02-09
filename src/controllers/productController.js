@@ -77,18 +77,10 @@ const controladorProductos = {
           order: [
             ['final_price', 'DESC']
           ],
-<<<<<<< HEAD
-          limit: 20
-        }, {
-          include: [{association: 'brand'}, {association: 'images'}, {association: 'product_category'}],
-          raw: true,
-          nest: true,
-=======
           limit: 20,
        
           include: [{association: 'brand'}, {association: 'products_categories'}, {association: 'colors'}],
           
->>>>>>> ee8fa09e689a92563e3d7e59475ce66112487997
         })
         .then(productsSearched => {
           console.log(productsSearched);
@@ -115,15 +107,6 @@ const controladorProductos = {
           raw: true,
           nest: true,
         })
-<<<<<<< HEAD
-        .then(productsSearched => {
-          if (productsSearched.length > 0) {
-            res.render('./products/list', {productsSearched, toThousand})
-          } else {
-            let emptySearch = true
-            res.render('./products/list', {searched, search_category, emptySearch})
-          }
-=======
         .then(brandSearched => {
           db.Products.findAll({
             where: {
@@ -148,7 +131,6 @@ const controladorProductos = {
           .catch(err => {
             console.log(err);
           })
->>>>>>> ee8fa09e689a92563e3d7e59475ce66112487997
         })
         .catch(err => {
           console.log(err);
@@ -161,18 +143,10 @@ const controladorProductos = {
           order: [
             ['final_price', 'DESC']
           ],
-<<<<<<< HEAD
-          limit: 20
-        }, {
-          include: ['brand', 'Product', 'Products'],
-          raw: true,
-          nest: true,
-=======
           limit: 20,
        
           include:  [{association: 'brand'}, {association: 'colors'}, {association: 'products_categories'}],
           
->>>>>>> ee8fa09e689a92563e3d7e59475ce66112487997
         })
         .then(productsSearched => {
           if (productsSearched.length > 0) {
@@ -193,18 +167,10 @@ const controladorProductos = {
           order: [
             ['final_price', 'DESC']
           ],
-<<<<<<< HEAD
-          limit: 20
-        }, {
-          include: ['brand', 'Product', 'Products'],
-          raw: true,
-          nest: true,
-=======
           limit: 20,
         
           include: [{association: 'brand'}, {association: 'colors'}, {association: 'products_categories'}],
           
->>>>>>> ee8fa09e689a92563e3d7e59475ce66112487997
         })
         .then(productsSearched => {
           if (productsSearched.length > 0) {
