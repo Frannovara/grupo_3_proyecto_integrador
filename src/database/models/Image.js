@@ -20,13 +20,7 @@ module.exports = function(sequelize, dataTypes){
         image: {
             type : dataTypes.STRING,
             allowNull : false
-        },
-       /*  product_id: {
-            type: dataTypes.BIGINT,
-        },
-        color_id: {
-            type: dataTypes.BIGINT,
-        } */
+        }
     }
 
     let config = {

@@ -54,7 +54,7 @@ module.exports = (sequelize, dataTypes) => {
 
     User.associate = function(models) {
         User.belongsTo(models.User_categories, {
-            as: 'user_category',
+            as: 'role',
             foreignKey: 'category_id'
         }),
         User.hasMany(models.Carts, {

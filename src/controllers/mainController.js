@@ -16,7 +16,7 @@ const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
 
 async function main(req) {
 
-    let testAcount = await nodemailer.createTestAccount();
+    
 
     let transporter = nodemailer.createTransport({
         host: 'smtp.gmail.com',
@@ -51,9 +51,8 @@ const controller = {
                 discount: { [Op.ne]: 0}
             },
             limit: 10,
-            include: [{association: 'brand'}, {association: 'products_categories'}, {association: 'colors'}],
-            raw: true,
-            nest: true,
+            include: [{association: 'brand'}, {association: 'categories'}, {association: 'colors'}],
+           
         })
         .then ( productsInSale => {
             //res.send(productsInSale)

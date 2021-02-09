@@ -168,7 +168,8 @@ input:focus {
         border-radius: 6px;
         margin-top : 10px;
         margin-bottom: 10px; 
-        background-color: white;        
+        background-color: white;
+        height: fit-content;        
     }  
     .article-home:hover {
         border: 1px solid #265277;
@@ -420,6 +421,7 @@ input:focus {
 .carrito-compras{
     display: flex;
     flex-direction: column;
+    justify-content: center;
 }
 .productos-carrito-div{
     display: flex;
@@ -438,18 +440,20 @@ input:focus {
 
 .producto-listado{
     margin-left: 3%;
+    width: 45%;
 }
 .precio-unitario{
-    margin-left: 16%;
+    width: 18%;
+    text-align: center;
     font-size: small;
 }
 .cantidad-listado{
-    margin-right: 17px;
+    width: 18%;
+    text-align: center;
     font-size: small;
 }
 .subtotal-listado{
     margin-right: 2%;
-    margin-left: -4px;
     font-size: small;
 }
 .productos-en-carrito{
@@ -462,16 +466,24 @@ input:focus {
 }
 
 .motos-carrito{
-margin-left: 3%;
+    margin-left: 3%;
+    width: 45%;
 }
 .precio-numeros{
-margin-left: 18%;
+    width: 18%;
+    text-align: center;
+}
+.cantidad-carrito {
+    display: flex;
+    align-items: center;
+    width: 18%;
+    justify-content: center;
 }
 .cantidad-numeros{
 margin-right: 1px;
 }
 .subtotal-numeros{
-margin-right: 4%;
+margin-right: 2%;
 }
 .total-carrito{
 display: flex;
@@ -487,7 +499,7 @@ color: rgb(85, 83, 83);
 margin-left: 3%;
 }
 .total-numero{
-margin-right: 4%;
+margin-right: 2%;
 }
 .boton-compra-div {
     display: flex;
@@ -503,10 +515,18 @@ margin-right: 4%;
     padding: 5px;
     border: none;
 }
+.amount {
+    margin:0
+}
 .flechas-cantidad {
 display: flex;
 flex-direction: column;
-margin: -331% -29% 0% 85%;
+margin-left: 5px;
+}
+.boton-flechas-cantidad {
+    box-shadow: 0px 0px 0px transparent;
+    border: 0px solid transparent;
+    background: none;
 }
     
 /* diseño pagina de contacto */
@@ -913,19 +933,15 @@ margin: -331% -29% 0% 85%;
     /*Color gris para las letras del carrito*/
 
 
-    .producto-listado{
-        margin-left: 11%;
-    }
+    
     .precio-unitario{
-        margin-left: 35%;
+        
         font-size: medium;
     }
     .cantidad-listado{
-        margin-right: 1px;
         font-size: medium;
     }
     .subtotal-listado{
-        margin-right: 10%;
         font-size: medium;
     }
     .productos-en-carrito{
@@ -938,37 +954,29 @@ margin: -331% -29% 0% 85%;
     }
 
 
-    .motos-carrito{
-        margin-left: 11%;
-    }
+    
     .cantidad-carrito {
         display: flex;
         align-items: center;
+        width: 18%;
+        justify-content: center;
     }
-    .precio-numeros{
-        margin-left: 38%;
-    }
+   
     .cantidad-numeros{
         margin-right: 1px;
     }
-    .subtotal-numeros{
-        margin-right: 10%;
-    }
+    
     .total-carrito{
         display: flex;
         justify-content: space-between;
     }
-    .total-listado{
-        margin-left: 11%;
-    }
-    .total-numero{
-        margin-right: 10%;
-    }
+    
+    
 
     .flechas-cantidad {
         display: flex;
         flex-direction: column;
-        margin: -331% -29% 0% 85%;
+        margin-left: 5px;
     }
 
 

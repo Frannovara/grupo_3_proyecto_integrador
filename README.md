@@ -65,7 +65,12 @@
     - CREATE:
     - READ: La lectura de la base de datos se realiza en varias páginas diferentes, a continuación se explica el funcionamiento de cada una de ellas.
         - BUSCADOR: El buscador permite 4 opciones, buscar por marca, por categoría, por año o sin especificar. Si es por marca realiza una lectura de la base de datos con un "where" y un "like" que contenga lo que ha buscado el usuario en la columna de brand. Para categoría y año es igual. Si el usuario no especifíca, la búsqueda la realiza en la columna del nombre del producto. Luego muestra en una nueva vista los resultados de la búsqueda. Si no encuentra coincidencias entonces muestra un mensaje de que no se encontraron resultados.
-        - PAGINA DE DETALLE:
+        - PAGINA DE DETALLE: En la página de detalle se busca por el req.params.id al producto con sus relaciones, y todos los colores. Los colores para elegir surgen de la búsqueda. Aunque no tienen funcionalidad actualmente. El cambio de imagen de acuerdo al color elegido se realizará con JS para Front, ya que las imagenes de todos los colores están cargadas, pero con display none.
         - PAGINA DE INICIO: En la sección de ofertas, realiza una búsqueda en la db de todos los productos que estén en oferta, es decir que tengan un descuento no sea 0. Y limita la búsqueda a 10 productos.
     - UPDATE:
     - DELETE:
+- CARRITO DE COMPRAS:
+    - CREATE: Al agregar un producto al carrito de compras, realiza un findOrCreate en la tabla Carts, para ver si ya existe algún carrito de compras pendiente para ese usuario. Una vez que hay un carrito pendiente, agrega una instancia en la tabla pivot con el producto. Si el producto ya se encuentra en el carrito, aumenta en 1 la cantidad de unidades a comprar.
+    - READ: Al redirigir a la página del carrito, realiza una búsqueda de los carritos pendientes para el usuario logueado, y muestra los productos asociados.
+    - UPDATE: Si se modifica la cantidad de unidades, se actualiza la tabla pivot. 
+    - DELETE: Si las unidades llegan a 0 se realiza un soft.delete, y el producto no se muestra mas en el carrito.

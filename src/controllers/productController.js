@@ -79,7 +79,7 @@ const controladorProductos = {
           ],
           limit: 20,
        
-          include: [{association: 'brand'}, {association: 'products_categories'}, {association: 'colors'}],
+          include: [{association: 'brand'}, {association: 'categories'}, {association: 'colors'}],
           
         })
         .then(productsSearched => {
@@ -91,21 +91,13 @@ const controladorProductos = {
           
         })
         .catch(err => {
-          console.log(err);
+          res.send(err);
         })
       } else if (req.query.search == 'brand') {
-        db.Products.findAll({
+        db.Brands.findOne({
           where: {
-            brand: { [Op.like]: '%'+ req.query.buscador + '%'}
-          },
-          order: [
-            ['final_price', 'DESC']
-          ],
-          limit: 20
-        }, {
-          include: ['brand', 'Product', 'Products'],
-          raw: true,
-          nest: true,
+            name: { [Op.like]: '%'+ req.query.buscador + '%'}
+          }
         })
         .then(brandSearched => {
           db.Products.findAll({
@@ -116,8 +108,7 @@ const controladorProductos = {
               ['final_price', 'DESC']
             ],
             limit: 20,
-         
-            include:  [{association: 'brand'}, {association: 'colors'}, {association: 'products_categories'}],
+            include:  [{association: 'brand'}, {association: 'colors'}, {association: 'categories'}],
             
           })
           .then(productsSearched => {
@@ -129,35 +120,42 @@ const controladorProductos = {
             }
           })
           .catch(err => {
-            console.log(err);
+            res.send(err);
           })
         })
         .catch(err => {
-          console.log(err);
+          res.send(err);
         })
       } else if (req.query.search == 'category') {
-        db.Products.findAll({
+        db.Product_categories.findOne({
           where: {
-            category: { [Op.like]: '%'+ req.query.buscador + '%'}
-          },
-          order: [
-            ['final_price', 'DESC']
-          ],
-          limit: 20,
-       
-          include:  [{association: 'brand'}, {association: 'colors'}, {association: 'products_categories'}],
-          
-        })
-        .then(productsSearched => {
-          if (productsSearched.length > 0) {
-            res.render('./products/list', {productsSearched, toThousand})
-          } else {
-            let emptySearch = true
-            res.render('./products/list', {searched, search_category, emptySearch})
+            name: { [Op.like]: '%'+ req.query.buscador + '%'}
           }
         })
-        .catch(err => {
-          console.log(err);
+        .then(CategorySearched => {
+          db.Products.findAll({
+            where: {
+              category_id: CategorySearched.id
+            },
+            order: [
+              ['final_price', 'DESC']
+            ],
+            limit: 20,
+        
+            include:  [{association: 'brand'}, {association: 'colors'}, {association: 'categories'}],
+            
+          })
+          .then(productsSearched => {
+            if (productsSearched.length > 0) {
+              res.render('./products/list', {productsSearched, toThousand})
+            } else {
+              let emptySearch = true
+              res.render('./products/list', {searched, search_category, emptySearch})
+            }
+          })
+          .catch(err => {
+            res.send(err);
+          })
         })
       } else if (req.query.search == 'year') {
         db.Products.findAll({
@@ -169,7 +167,7 @@ const controladorProductos = {
           ],
           limit: 20,
         
-          include: [{association: 'brand'}, {association: 'colors'}, {association: 'products_categories'}],
+          include: [{association: 'brand'}, {association: 'colors'}, {association: 'categories'}],
           
         })
         .then(productsSearched => {
@@ -181,7 +179,7 @@ const controladorProductos = {
           }
         })
         .catch(err => {
-          console.log(err);
+          res.send(err);
         })
       }      
     },
@@ -196,11 +194,11 @@ const controladorProductos = {
       let filterByName = products.filter((item) => product.name == item.name)
 
       /*Esta búsqueda tiene que devolver el color perteneciente, y también la marca. */
-      let requestProductToShow = db.Products.findAll({
+      let requestProductToShow = db.Products.findOne({
         where: {
           id: req.params.id
         },
-          include: [{association: 'brand'}, {association: 'products_categories'}, {association: 'colors'}],
+          include: [{association: 'brand'}, {association: 'categories'}, {association: 'colors'}],
           
         /* También crear la limitación de búsqueda por color.*/ 
       })
@@ -210,7 +208,7 @@ const controladorProductos = {
             discount: { [Op.ne]: 0}
         },
         limit: 10,
-        include: [{association: 'brand'}, {association: 'products_categories'}, {association: 'colors'}],
+        include: [{association: 'brand'}, {association: 'categories'}, {association: 'colors'}],
         
     })
 
@@ -221,12 +219,12 @@ const controladorProductos = {
       Promise.all( [requestProductToShow,  requestProductsInSale])
       .then( function ([productToShow,  productsInSale]) {
         
-        //res.send(productToShow)
+        //res.send(colors)
         res.render('./products/detail' , {productToShow, title: productToShow.name, productsInSale, toThousand});
       })
         //res.send(productToShow)
       .catch(err => {
-        console.log(err);
+        res.send(err);
       })
 		  
       
@@ -236,9 +234,21 @@ const controladorProductos = {
       res.redirect('/products')
     },
     cart: function (req,res) {
-      res.locals.cart = req.session.cart
-      console.log(res.locals.cart);
-      res.render('./products/cart')
+      db.Carts.findOne({
+        where: {
+          user_id: req.session.user.id,
+          status: null
+        },
+        include: [
+          {association: 'item'}
+        ]
+      })
+      .then( usersCart => {
+        console.log(typeof usersCart);
+        //res.send(usersCart)
+        res.render('./products/cart', {usersCart})
+      })
+     
     },
     create: (req, res) => {
       res.render('./products/create')
@@ -256,31 +266,157 @@ const controladorProductos = {
      res.redirect('/')
     },
     buyCart: (req, res) => {
-
+      db.Carts.update({
+        status: 'finish'
+      }, {
+        where: {
+          user_id: req.session.user.id,
+          status: null
+        }
+      })
+      .then(()=> {
+        res.redirect('/')
+      })
     },
     addToCart: (req, res) => {
-      if (typeof req.session.cart != 'undefined') {
-        db.Products.findByPk(req.params.id)
-        .then(product => {
-        req.session.cart.push(product)
-        res.locals.cart = req.session.cart
-        return res.redirect('/products/cart')
+      db.Carts.findOrCreate({
+        where: {
+          user_id: req.session.user.id,
+          status: null
+        },
+        include: [
+          {association: 'item'}
+        ]
+      })
+      .then(userCart => {
+        
+        db.Cart_product.findOne({
+          where: {
+            product_id: req.params.id,
+            cart_id: userCart[0].id
+          }
         })
-        .catch( err => {
-        console.log(err);
+        .then(item => {
+          if (item != null) {
+            
+            db.Cart_product.update( {
+              units: item.units + 1
+            },{
+              where: {
+                product_id: req.params.id
+              }
+            })
+            res.redirect('/products/cart')
+            //res.send(userCart)
+          } else {
+            console.log('Hasta acá llego');
+            console.log(req.params.id);
+            userCart.addItem(req.params.id , {
+              through: {
+                units: 1,
+                subtotal: 1,
+              }
+            })
+            .then(() => {
+              console.log('llegó');
+                return res.send(userCart)
+                res.redirect('/products/cart')
+            //res.send(userCart)
+            }) 
+            .catch( error => {res.send(error)})
+          }
         })
-      } else {
-        db.Products.findByPk(req.params.id)
-        .then(product => {
-        req.session.cart = [product]
-        res.locals.cart = req.session.cart
-        return res.redirect('/products/cart')
-        })
-        .catch( err => {
-        console.log(err);
-        })
-      }
+        .catch( error => {res.send(error)})
+      })
+      .catch( error => {res.send(error)})
       
+    },
+
+    addOne: (req, res) => {
+      db.Carts.findOne({
+        where: {
+          user_id: req.session.user.id,
+          status: null
+        },
+        include: [
+          {association: 'item'}
+        ]
+      })
+      .then(userCart => {
+        
+        db.Cart_product.findOne({
+          where: {
+            product_id: req.params.id,
+            cart_id: userCart.id
+          }
+        })
+        .then(item => {
+          db.Cart_product.update( {
+            units: item.units + 1
+          },{
+            where: {
+              product_id: req.params.id,
+              cart_id: userCart.id
+            }
+          })
+          .then(() => {
+            res.redirect('/products/cart')
+          })
+          .catch(error => { res.send(error)})
+        })
+        .catch(error => { res.send(error)})
+      })
+      .catch(error => { res.send(error)})
+    },
+
+    removeOne: (req, res) => {
+      db.Carts.findOne({
+        where: {
+          user_id: req.session.user.id,
+          status: null
+        },
+        include: [
+          {association: 'item'}
+        ]
+      })
+      .then(userCart => {
+        
+        db.Cart_product.findOne({
+          where: {
+            product_id: req.params.id,
+            cart_id: userCart.id
+          }
+        })
+        .then(item => {
+          if(item.units == 1) {
+            db.Cart_product.destroy({
+              where: {
+                product_id: req.params.id,
+                cart_id: userCart.id
+              }
+            })
+            .then(()=> {
+              res.redirect('/products/cart')
+            })
+            .catch(error => {res.send(error)})
+          } else {
+          db.Cart_product.update( {
+            units: item.units - 1
+          },{
+            where: {
+              product_id: req.params.id,
+              cart_id: userCart.id
+            }
+          })
+          .then(() => {
+            res.redirect('/products/cart')
+          })
+          .catch(error => { res.send(error)})
+        }
+        })
+        .catch(error => { res.send(error)})
+      })
+      .catch(error => { res.send(error)})
     },
 
 
@@ -288,32 +424,41 @@ const controladorProductos = {
 
 create2 : (req , res)=>{
   
-  db.Products.findAll([{association : 'brand'} , {association : 'categories'}] )
-    .then(Products =>{
-      console.log(Products)
-      return res.render('./products/create' , { Products: Products}) 
-    })  
-    .catch (error =>{
-      console.log (error)
-      
-    })},
+     let requestBrands =  db.Brands.findAll()
+     let requestCategories = db.Product_categories.findAll()
+     let requestColors = db.Colors.findAll()
 
+     Promise.all([requestBrands , requestCategories , requestColors])
+     .then(([brands , categories , colors]) =>{
+       res.render ('./products/create' , {brands , categories , colors})
+     })},
+    
   /* probar hacer este metodo con una function separada tambien */
 
 createConfirm : (req , res) =>{
   console.log(req.body)
   db.Products.create({
     name: req.body.name,
-    brand: req.body.brand,
     base_price: req.body.price,
     discount: req.body.discount,
     year: req.body.year,
     description : req.body.description,
-    image: req.files[0].filename,
-    color: req.body.color,
+    final_price : req.body.price * (1 - req.body.discount),
+    category_id : req.body.category ,
+    brand_id : req.body.brand
 
-  });
-  res.redirect('/')
+  })
+  .then( created => {
+      created.addColors(req.body.color , {
+        trough : {
+          image : req.files[0].filename
+        }
+      })
+    
+    res.redirect('/')})
+    .catch(error =>{
+      res.send (error)
+    })
 },
 delete2: (req , res) =>{
     db.Products.destroy({

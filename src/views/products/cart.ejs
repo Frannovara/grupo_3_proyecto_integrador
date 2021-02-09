@@ -9,25 +9,32 @@
             <section class="carrito-compras">
                 
 
-                <% if (typeof locals.cart != 'undefined') { %>
+                <% if (typeof usersCart != 'undefined') { %>
+                    <% if (usersCart != null) { %>
+                     
+                    
                     <div class="productos-carrito-div">
                         <h4 class="producto-listado">Producto/s</h4>
                         <h4 class="precio-unitario">Precio unitario</h4>
                         <h4 class="cantidad-listado">Cantidad</h4>
                         <h4 class="subtotal-listado">Subtotal</h4>
                     </div>
-                    <% locals.cart.forEach(product => { %>
+                    <% usersCart.item.forEach(product => { %>
                         <div class="productos-en-carrito">
-                            <h5 class="motos-carrito"><%= product.name %> </h5>
+                            <a class="motos-carrito" href="/products/<%= product.id %> "><h5 ><%= product.name %> </h5></a>
                             <h5 class="precio-numeros">$ <%= product.final_price %> </h5>
                             <div class="cantidad-carrito">
-                                <input type="number" name="amount" id="amount">
+                                <h5 class="amount"><%= product.Cart_product.units %> </h5>
                                 <div class="flechas-cantidad">
-                                    <i class="fas fa-chevron-up"></i>
-                                    <i class="fas fa-chevron-down"></i>
+                                    <form action="/products/addOne/<%= product.id %> " method="post">
+                                        <button type="submit" class="boton-flechas-cantidad"><i class="fas fa-chevron-up"></i></button>
+                                    </form>
+                                    <form action="/products/removeOne/<%= product.id %> " method="post">
+                                        <button type="submit" class="boton-flechas-cantidad"><i class="fas fa-chevron-down"></i></button>
+                                    </form>                                    
                                 </div>
                             </div>
-                            <h5 class="subtotal-numeros">$0.00</h5>
+                            <h5 class="subtotal-numeros">$<%= product.Cart_product.units*product.final_price %> </h5>
                         </div>
                     <% }) %>
                     <div class="total-carrito">
@@ -36,16 +43,15 @@
                     </div>
                     <div class="boton-compra-div">
                         <form action="/products/buyCart" method="post">
-                            <button type="button" class="boton-compra"><strong>COMPRAR</strong></button>
+                            <button type="submit" class="boton-compra"><strong>COMPRAR</strong></button>
                         </form>
                     </div>
+                    <% } else { %>
+                        <h3>No has agregado productos al carrito de compras</h3>  
+                    <% } %>
                 <% } else { %>
                        <h3>No has agregado productos al carrito de compras</h3>  
-                <% } %>
-                
-
-
-                
+                <% } %>                
             </section>
         </main>
     </div>
