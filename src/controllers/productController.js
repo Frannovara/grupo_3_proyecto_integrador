@@ -80,18 +80,15 @@ const controladorProductos = {
           ],
           limit: 20,
        
-          include: [{association: 'brand'}, {association: 'images'}, {association: 'products_categories'}],
-          raw: true,
-          nest: true,
+          include: [{association: 'brand'}, {association: 'products_categories'}, {association: 'colors'}],
+          
         })
         .then(productsSearched => {
           console.log(productsSearched);
-          if (productsSearched.length > 0) {
+          
+            //res.send(productsSearched)
             res.render('./products/list', {productsSearched, toThousand})
-          } else {
-            let emptySearch  = true
-            res.render('./products/list', {searched, search_category, emptySearch})
-          }
+          
           
         })
         .catch(err => {
@@ -114,9 +111,8 @@ const controladorProductos = {
             ],
             limit: 20,
          
-            include:  [{association: 'brand'}, {association: 'images'}, {association: 'products_categories'}],
-            raw: true,
-            nest: true,
+            include:  [{association: 'brand'}, {association: 'colors'}, {association: 'products_categories'}],
+            
           })
           .then(productsSearched => {
             if (productsSearched.length > 0) {
@@ -150,9 +146,8 @@ const controladorProductos = {
           ],
           limit: 20,
        
-          include:  [{association: 'brand'}, {association: 'images'}, {association: 'products_categories'}],
-          raw: true,
-          nest: true,
+          include:  [{association: 'brand'}, {association: 'colors'}, {association: 'products_categories'}],
+          
         })
         .then(productsSearched => {
           if (productsSearched.length > 0) {
@@ -178,9 +173,8 @@ const controladorProductos = {
           ],
           limit: 20,
         
-          include: [{association: 'brand'}, {association: 'images'}, {association: 'products_categories'}],
-          raw: true,
-          nest: true,
+          include: [{association: 'brand'}, {association: 'colors'}, {association: 'products_categories'}],
+          
         })
         .then(productsSearched => {
           if (productsSearched.length > 0) {
@@ -203,8 +197,7 @@ const controladorProductos = {
           id: req.params.id
         },
           include: [{association: 'brand'}, {association: 'products_categories'}, {association: 'colors'}],
-          raw: true,
-          nest: true,
+          
         /* También crear la limitación de búsqueda por color.*/ 
       })
       
@@ -214,8 +207,7 @@ const controladorProductos = {
         },
         limit: 10,
         include: [{association: 'brand'}, {association: 'products_categories'}, {association: 'colors'}],
-        raw: true,
-        nest: true,
+        
     })
 
       
@@ -228,11 +220,7 @@ const controladorProductos = {
         //res.send(productToShow)
         res.render('./products/detail' , {productToShow, title: productToShow.name, productsInSale, toThousand});
       })
-        
-     
-     
         //res.send(productToShow)
-      
       .catch(err => {
         console.log(err);
       })

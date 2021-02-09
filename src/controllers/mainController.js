@@ -52,8 +52,7 @@ const controller = {
             },
             limit: 10,
             include: [{association: 'brand'}, {association: 'products_categories'}, {association: 'colors'}],
-            raw: true,
-            nest: true,
+    
         })
         .then ( productsInSale => {
             //res.send(productsInSale)
