@@ -19,7 +19,7 @@ let upload = multer({ storage: storage })
 // Public Routes
 router.get('/', productController.list)
 
-router.get('/cart', productController.cart)
+router.get('/cart',userMiddleware.userToLogin ,productController.cart)
 
 // Admin Routes
 router.post('/', upload.any(), userMiddleware.userAdmin, productController.createConfirm);

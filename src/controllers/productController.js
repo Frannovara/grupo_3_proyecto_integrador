@@ -245,16 +245,25 @@ const controladorProductos = {
         ]
       })
       .then( usersCart => {
-        db.Cart_product.sum('subtotal', {
-          where: {
-            cart_id: usersCart.id
-          }
-        })
-        .then((total)=> {
+        //console.log(usersCart);
+        //return res.send(usersCart)
+        if (usersCart != null && usersCart.item.length != 0) {
+          db.Cart_product.sum('subtotal', {
+            where: {
+              cart_id: usersCart.id
+            }
+          })
+          .then((total)=> {
+          
+          // res.send(total)
+          res.render('./products/cart', {usersCart, total})
+          })
+          .catch(error => {res.send(error)})
+        } else {
+          let total
+          res.render('./products/cart', {total})
+        }
         
-        //res.send(usersCart)
-        res.render('./products/cart', {usersCart, total})
-        })
         
       })
      

@@ -421,7 +421,10 @@ input:focus {
 .carrito-compras{
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    
+}
+.carrito-vacio {
+    text-align: center;
 }
 .productos-carrito-div{
     display: flex;
