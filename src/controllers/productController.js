@@ -290,16 +290,16 @@ const controladorProductos = {
       }, { where: {
         id: req.params.id
       }})
-      .then( created => {
-          created.addColors(req.body.color , {
-            trough : {
+     .then( created => {
+         created.addColors(req.body.color , {
+          trough : {
               image : req.files[0].filename
             }
           })
         
         res.redirect('/')})
         .catch(error =>{
-          res.send (error)
+        res.send (error)
         })
     },
     createProduct: (req, res, next) => {
