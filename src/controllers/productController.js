@@ -499,7 +499,7 @@ const controladorProductos = {
     },
 
 
-/* traemos al form de creacion las tablas brands y prod_categories */
+/* traemos al form de creacion las tablas brands , colors y prod_categories */
 
 create2 : (req , res)=>{
   
@@ -545,7 +545,12 @@ delete2: (req , res) =>{
         id: req.params.id
       }
     })
-    res.redirect('/products')
+     .then( result =>{ if (result){
+       res.redirect ('/')
+     }}) 
+     .catch(error =>{
+       res.send (error)
+     })
 }
 
 

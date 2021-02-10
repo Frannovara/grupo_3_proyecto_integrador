@@ -26,7 +26,7 @@ router.post('/', upload.any(), userMiddleware.userAdmin, productController.creat
 router.get('/edit/:id', userMiddleware.userAdmin, productController.edit)
 router.put('/detail/:id', upload.any() , userMiddleware.userAdmin, productController.update);
 router.get('/create', userMiddleware.userAdmin, productController.create2)
-router.delete('/delete/:id', userMiddleware.userAdmin, productController.deleteConfirm); 
+router.delete('/delete/:id', userMiddleware.userAdmin, productController.delete2); 
 router.post('/buyCart', userMiddleware.userToLogin, productController.buyCart)
 router.get('/addToCart/:id', userMiddleware.userToLogin, productController.addToCart)
 router.post('/addOne/:id', userMiddleware.userToLogin, productController.addOne)
