@@ -524,7 +524,7 @@ createConfirm : (req , res) =>{
     discount: req.body.discount,
     year: req.body.year,
     description : req.body.description,
-    final_price : req.body.price * (1 - req.body.discount),
+    final_price : req.body.price * (1 - req.body.discount/100),
     category_id : req.body.category ,
     brand_id : req.body.brand
 
@@ -538,7 +538,8 @@ createConfirm : (req , res) =>{
       .catch(errors => {
        return res.send (errors)
       })
-    
+    console.log(created)
+
      res.redirect("/") 
   })
     
