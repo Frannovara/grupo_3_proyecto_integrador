@@ -48,7 +48,7 @@ const controller = {
     home: function(req, res) {
         db.Products.findAll({
             where: {
-                discount: { [Op.ne]: 0}
+                /* discount: { [Op.ne]: 0} */
             },
             limit: 10,
             include: [{association: 'brand'}, {association: 'categories'}, {association: 'colors'}],
@@ -56,8 +56,10 @@ const controller = {
         })
         .then ( productsInSale => {
             //res.send(productsInSale)
-             res.render('index', {productsInSale, toThousand}); 
-            
+             
+            res.render('index', {productsInSale, toThousand}); 
+           
+             /* res.send(productsInSale) */
         }) 
         .catch ( err => {
             console.log(err);
