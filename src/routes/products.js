@@ -22,16 +22,16 @@ router.get('/', productController.list)
 router.get('/cart',userMiddleware.userToLogin ,productController.cart)
 
 // Admin Routes
-router.post('/', upload.any(), userMiddleware.userAdmin, productController.createConfirm);
+router.post('/',  userMiddleware.userAdmin, upload.any(),productController.createConfirm);
 router.get('/edit/:id', userMiddleware.userAdmin, productController.edit)
-router.put('/detail/:id', upload.any() , userMiddleware.userAdmin, productController.update);
+router.put('/detail/:id',  userMiddleware.userAdmin,upload.any() , productController.update);
 router.get('/create', userMiddleware.userAdmin, productController.create2)
 router.delete('/delete/:id', userMiddleware.userAdmin, productController.delete2); 
 router.post('/buyCart', userMiddleware.userToLogin, productController.buyCart)
 router.get('/addToCart/:id', userMiddleware.userToLogin, productController.addToCart)
 router.post('/addOne/:id', userMiddleware.userToLogin, productController.addOne)
 router.post('/removeOne/:id', userMiddleware.userToLogin, productController.removeOne)
-router.put('/addColor/:id', userMiddleware.userAdmin, productController.addColor)
+router.put('/addColor/:id', userMiddleware.userAdmin, upload.any(), productController.addColor)
 router.get('/:id', productController.detail);
 
 module.exports = router;

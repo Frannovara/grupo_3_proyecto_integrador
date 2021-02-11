@@ -546,25 +546,19 @@ delete2: (req , res) =>{
        res.send (error)
      })
 },
-addColor: (req,res) => {
-  db.Products.findByPk(req.params.id)
-  .then( product => {
-    console.log(product);
-    product.addColors(req.body.color , {
-      through : {
-        image : req.files[0].filename
-      }
+addColor: (req,res) => { 
+  
+    db.Images.create({
+      image: req.files[0].filename,
+      product_id: req.params.id,
+      color_id: req.body.color
+    })    
+    .then(()=> {
+      return res.redirect("/products/" + req.params.id) 
     })
     .catch(errors => {
      return res.send (errors)
     })
-  
-   return res.redirect("/products/" + req.params.id) 
-})
-  
-  .catch(error =>{
-    return res.send (error)
-  })
 }
 
 
