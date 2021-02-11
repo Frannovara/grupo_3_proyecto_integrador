@@ -40,3 +40,12 @@
 #### Continuar haciendo: Consultar los errores en el grupo y con google. Y en caso de no poder consultarlo en las clases, para no atrasarnos con un error. Realizar reuniones semanales para ver como avanza el proyecto, y consultar los errores que fueron surgiendo.
 #### Hacer menos: dejar errores y/o consultas pendientes durante un tiempo prolongado que imposibilite continuar una tarea.
 #### Dejar de hacer: repartir las tareas casi aleatoriamente sin tener en cuenta quién de los integrantes puede estar más capacitado para realizarla.
+
+
+
+### Retrospectiva Sprint-6:
+#### Comenzar a hacer: Aprovechar todos los dias del sprint, avanzar aunque sea un poco todos los dias y si es necesario hacer consultas con los profesores, hacerlo a tiempo.
+#### Hacer más: Colaborar todos en el trello y estar en tema durante todos los dias del sprint.
+#### Continuar haciendo: Realizar consultas y mantener la comunicacion dentro del grupo, tratar de aprovechar mas a los profesores y su disponibilidad.
+#### Hacer menos: Realizar las tareas en un orden que no es optimo para el avance del proyecto.
+#### Dejar de hacer: Intentar no dejar pasar mucho tiempo en un problema puntual del sprint, tratar de resolverlo, si se necesita una consulta continuar con algun otro punto del sprint para no estancarse.
