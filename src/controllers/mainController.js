@@ -48,7 +48,7 @@ const controller = {
     home: function(req, res) {
         db.Products.findAll({
             where: {
-                /* discount: { [Op.ne]: 0} */
+                discount: { [Op.gt]: 0}
             },
             limit: 10,
             include: [{association: 'brand'}, {association: 'categories'}, {association: 'colors'}],
