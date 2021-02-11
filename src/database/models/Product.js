@@ -26,6 +26,7 @@
         },
         discount: {
             type : dataTypes.INTEGER, 
+            allowNull : true
         },
         final_price: {
             type : dataTypes.DECIMAL,
