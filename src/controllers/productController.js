@@ -184,25 +184,11 @@ const controladorProductos = {
       }      
     },
     detail: function(req, res) {
-      let product = products.find(item =>  item.id == req.params.id);
-		  if(product.discount) {
-			  product.finalPrice = toThousand(product.price * (1 - product.discount/100))
-		  } else {
-			  product.price = toThousand (product.price)
-      }
-      let productsFilter = products.filter((bikes) => bikes.id != req.params.id)
-      let filterByName = products.filter((item) => product.name == item.name)
-
       /*Esta búsqueda tiene que devolver el color perteneciente, y también la marca. */
-      let requestProductToShow = db.Products.findOne({
-        where: {
-          id: req.params.id
-        },
+      let requestProductToShow = db.Products.findByPk(req.params.id,{
           include: [{association: 'brand'}, {association: 'categories'}, {association: 'colors'}],
-          
-        /* También crear la limitación de búsqueda por color.*/ 
       })
-      
+      let requestColors = db.Colors.findAll()
       let requestProductsInSale = db.Products.findAll({
         where: {
             discount: { [Op.ne]: 0}
@@ -216,11 +202,11 @@ const controladorProductos = {
       /* Hacer una búsqueda de los productos en oferta bajo el nombre productsFilter excluyendo el producto actual */
 
        /*Hacer un promise all */
-      Promise.all( [requestProductToShow,  requestProductsInSale])
-      .then( function ([productToShow,  productsInSale]) {
+      Promise.all( [requestProductToShow,  requestProductsInSale, requestColors])
+      .then( function ([productToShow,  productsInSale, colors]) {
         
         //res.send(colors)
-        res.render('./products/detail' , {productToShow, title: productToShow.name, productsInSale, toThousand});
+        res.render('./products/detail' , {productToShow, title: productToShow.name, productsInSale, toThousand, colors});
       })
         //res.send(productToShow)
       .catch(err => {
@@ -558,6 +544,26 @@ delete2: (req , res) =>{
      .catch(error =>{
        res.send (error)
      })
+},
+addColor: (req,res) => {
+  db.Products.findByPk(req.params.id)
+  .then( product => {
+    console.log(product);
+    product.addColors(req.body.color , {
+      through : {
+        image : req.files[0].filename
+      }
+    })
+    .catch(errors => {
+     return res.send (errors)
+    })
+  
+   return res.redirect("/products/" + req.params.id) 
+})
+  
+  .catch(error =>{
+    return res.send (error)
+  })
 }
 
 

@@ -31,6 +31,7 @@ router.post('/buyCart', userMiddleware.userToLogin, productController.buyCart)
 router.get('/addToCart/:id', userMiddleware.userToLogin, productController.addToCart)
 router.post('/addOne/:id', userMiddleware.userToLogin, productController.addOne)
 router.post('/removeOne/:id', userMiddleware.userToLogin, productController.removeOne)
+router.put('/addColor/:id', userMiddleware.userAdmin, productController.addColor)
 router.get('/:id', productController.detail);
 
 module.exports = router;

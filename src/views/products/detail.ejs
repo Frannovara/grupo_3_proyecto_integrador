@@ -26,6 +26,12 @@
                                     <% productToShow.colors.forEach(bike => { %>
                                         <button class="dot" style= "background-color: <%= bike.name %>"></button>
                                     <% }) %>
+                                    <% if (locals.user.category_id == 1) { %>
+                                        <button onclick="document.getElementById('new-color-form').style.display='block'" class="dot" data-toggle="modal" data-target="#new-color-form">
+                                            +
+                                        </button>
+                                    <% } %>
+
                                 </div>
                             </div>
                             <div class="acomodar">
@@ -96,6 +102,34 @@
                     </section>
                 </div>        
             </section> 
+
+
+            <div id="new-color-form" class="modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-titulo">Agregar un color para este producto</h3>
+                        <span class="close" onclick="document.getElementById('new-color-form').style.display='none'">&times;</span>
+                    </div>
+                    <div class="modal-content-info">
+                        <form action="/products/addColor/<%= productToShow.id %>/?_method=PUT" method="post"  enctype="multipart/form-data">
+                            <div class="create-form-element">
+                                <label for="image">Imagen</label>
+                                <input type="file" name="image" id="image"  class="create-form-input" required>
+                            </div>
+                            <div class="create-form-element">
+                                <label for="color">Color</label>
+                                <select name="color" id="color" class="create-form-input" required>
+                                    <% colors.forEach(color => { %>
+                                        <option value="<%=color.id%>"><%=color.name%></option>
+                                    <% }) %>
+                                </select>
+                            </div>
+                            <button type="submit" class="boton-form"><strong>Agregar Color</strong></button>
+                        </form>
+                        
+                    </div>
+                </div>
+            </div>
         </main>
     </div>
     <%- include('../partials/footer') %>
