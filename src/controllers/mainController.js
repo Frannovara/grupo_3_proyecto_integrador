@@ -56,7 +56,8 @@ const controller = {
         })
         .then ( productsInSale => {
             //res.send(productsInSale)
-            res.render('index', {productsInSale, toThousand});
+             res.render('index', {productsInSale, toThousand}); 
+            
         }) 
         .catch ( err => {
             console.log(err);

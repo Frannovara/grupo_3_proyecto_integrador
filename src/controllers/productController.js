@@ -515,8 +515,10 @@ create2 : (req , res)=>{
   /* probar hacer este metodo con una function separada tambien */
 
 createConfirm : (req , res) =>{
+  
   console.log(req.body)
   db.Products.create({
+    
     name: req.body.name,
     base_price: req.body.price,
     discount: req.body.discount,
@@ -529,14 +531,19 @@ createConfirm : (req , res) =>{
   })
   .then( created => {
       created.addColors(req.body.color , {
-        trough : {
+        through : {
           image : req.files[0].filename
         }
       })
+      .catch(errors => {
+       return res.send (errors)
+      })
     
-    res.redirect('/')})
+     res.redirect("/") 
+  })
+    
     .catch(error =>{
-      res.send (error)
+      return res.send (error)
     })
 },
 delete2: (req , res) =>{
