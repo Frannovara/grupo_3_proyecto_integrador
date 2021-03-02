@@ -637,7 +637,16 @@ const controladorProductos = {
         })
     },
     newBrand: (req,res) => {
-
+        db.Brands.create({
+            name: req.body.brand
+        })
+        .then( () => {
+            return res.redirect('/')
+        })
+        .catch(err => {
+            console.log(err);
+            res.render('dbError')
+        })
     },
     newColor: (req,res) => {
 
