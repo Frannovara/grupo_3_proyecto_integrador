@@ -616,13 +616,32 @@ const controladorProductos = {
             .then(() => {
                 return res.redirect("/products/" + req.params.id)
             })
-            .catch(errors => {
-                return res.send(errors)
+            .catch(err => {
+                console.log(err);
+                res.render('dbError')
             })
     },
     databaseForm: (req, res) => {
         res.render('./products/dbForm', {title: 'Database Form -'})
-    }
+    },
+    newCategory: (req,res) => {
+        db.Product_categories.create({
+            name: req.body.category
+        })
+        .then( () => {
+            return res.redirect('/')
+        })
+        .catch(err => {
+            console.log(err);
+            res.render('dbError')
+        })
+    },
+    newBrand: (req,res) => {
+
+    },
+    newColor: (req,res) => {
+
+    },
 }
 
 
