@@ -649,7 +649,16 @@ const controladorProductos = {
         })
     },
     newColor: (req,res) => {
-
+        db.Colors.create({
+            name: req.body.color
+        })
+        .then( () => {
+            return res.redirect('/')
+        })
+        .catch(err => {
+            console.log(err);
+            res.render('dbError')
+        })
     },
 }
 
