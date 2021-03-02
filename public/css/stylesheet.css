@@ -204,6 +204,12 @@ input:focus {
         align-items: center;
         text-align: center;
     }
+    .viewPass {
+        cursor: pointer;
+    }
+    .viewRePass {
+        cursor: pointer;
+    }
     .new-pass-button:hover {
         cursor: pointer;
     }
