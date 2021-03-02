@@ -48,7 +48,14 @@ router.post('/removeOne/:id', userMiddleware.userToLogin, productController.remo
 /* ADD A COLOR AND IMAGE TO A PRODUCT */
 router.put('/addColor/:id', userMiddleware.userAdmin, upload.any(), productController.addColor)
 
+/* Modify DB Form */
+router.get('/databaseForm', userMiddleware.userAdmin, productController.databaseForm)
+router.post('/newCategory',userMiddleware.userAdmin, productController.newCategory)
+router.post('/newBrand',userMiddleware.userAdmin, productController.newBrand)
+router.post('/newColor',userMiddleware.userAdmin, productController.newColor)
+
 /* PRODUCT DETAIL */
 router.get('/:id', productController.detail);
+
 
 module.exports = router;
