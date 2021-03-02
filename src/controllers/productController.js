@@ -608,7 +608,6 @@ const controladorProductos = {
                 })
     },
     addColor: (req, res) => {
-
         db.Images.create({
                 image: req.files[0].filename,
                 product_id: req.params.id,
@@ -620,6 +619,9 @@ const controladorProductos = {
             .catch(errors => {
                 return res.send(errors)
             })
+    },
+    databaseForm: (req, res) => {
+        res.render('./products/dbForm', {title: 'Database Form -'})
     }
 }
 
