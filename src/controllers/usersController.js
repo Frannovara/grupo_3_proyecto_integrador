@@ -52,7 +52,7 @@ const controladorUsuarios = {
                             },
                             paranoid:false 
                         })
-                        .then( userRestored => {
+                        .then( () => {
                             if(bcrypt.compareSync(req.body.password, userToLogin.password)) {
                                 req.session.user = userToLogin
                                 res.locals.user = req.session.user;
@@ -66,6 +66,10 @@ const controladorUsuarios = {
                                 let errormsg = "El usuario o la contraseña ingresados no son validos."
                                 return res.render ('./users/login' , {errormsg, title: 'Login -'})
                             }
+                        })
+                        .catch(err => {
+                            console.log(err);
+                            res.render('dbError')
                         })
                     } else { 
                         if(bcrypt.compareSync(req.body.password, userToLogin.password)) {
@@ -94,8 +98,8 @@ const controladorUsuarios = {
                 
             })
             .catch(err => {
-                console.log(err)
-                
+                console.log(err);
+                res.render('dbError')
             })
         
          
@@ -117,6 +121,10 @@ const controladorUsuarios = {
             let errors
             console.log(errors);
             res.render('./users/profile', {user, errors, title: 'Perfil -'})
+        })
+        .catch(err => {
+            console.log(err);
+            res.render('dbError')
         })
     },
     saveUser: (req, res) => {
@@ -148,16 +156,18 @@ const controladorUsuarios = {
                         return res.redirect('/users/profile')
                     })
                     .catch(err => {
-                        return err            
-                    }) 
+                    console.log(err);
+                    res.render('dbError')
+                })
                 } else {
                     repitedUser = req.body.email
                     return res.redirect('register');
                 }
             })
             .catch(err => {
-                return err            
-            })
+                    console.log(err);
+                    res.render('dbError')
+                })
         } else {
             return res.render('./users/register', {
                 errors: errors.mapped(),
@@ -181,8 +191,9 @@ const controladorUsuarios = {
             res.redirect('/users/profile')
             })
         .catch(err => {
-            res.send(err)
-        })
+                    console.log(err);
+                    res.render('dbError')
+                })
         
     },
     editUser: (req, res) => {
@@ -204,7 +215,8 @@ const controladorUsuarios = {
                     res.redirect('/users/profile')
                     })
                 .catch(err => {
-                    res.send(err)
+                    console.log(err);
+                    res.render('dbError')
                 })
         } else {
             console.log(errors);
@@ -237,8 +249,9 @@ const controladorUsuarios = {
                 return res.redirect('/users/profile')
             })
             .catch(err => {
-                console.log(err)
-            })
+                    console.log(err);
+                    res.render('dbError')
+                })
         } else {
             db.Users.findOne({
                 where: {
@@ -253,8 +266,9 @@ const controladorUsuarios = {
                 })
             })
             .catch(err => {
-                console.log(err)
-            })
+                    console.log(err);
+                    res.render('dbError')
+                })
         }
     },
     newPassword: (req, res) => {
@@ -308,9 +322,10 @@ const controladorUsuarios = {
                 res.render('./users/login', {mensajeErr, title: 'Login -'})
             }
         })
-        .catch( err => {
-            console.log(err);
-        })
+        .catch(err => {
+                    console.log(err);
+                    res.render('dbError')
+                })
 
         
     },
@@ -326,8 +341,9 @@ const controladorUsuarios = {
             res.redirect('/users/login') 
         })
         .catch(err => {
-            console.log(err)
-        })
+                    console.log(err);
+                    res.render('dbError')
+                })
         
     },
     logout: (req, res) => {

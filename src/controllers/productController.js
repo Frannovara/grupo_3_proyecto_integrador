@@ -1,15 +1,8 @@
-const fs = require('fs');
-const path = require('path');
-const {
-    Sequelize
-} = require('../database/models');
+const {Sequelize} = require('../database/models');
 const db = require('../database/models');
 const Op = Sequelize.Op
 
 const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-
-const productsFilePath = path.join(__dirname, '../data/productsDataBase.json');
-const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
 
 const controladorProductos = {
     list: function (req, res) {
@@ -50,7 +43,8 @@ const controladorProductos = {
 
                 })
                 .catch(err => {
-                    res.send(err);
+                    console.log(err);
+                    res.render('dbError')
                 })
         } else if (req.query.search == 'brand') {
             db.Brands.findOne({
@@ -322,9 +316,10 @@ const controladorProductos = {
 
                 res.redirect('/')
             })
-            .catch(error => {
-                res.send(error)
-            })
+            .catch(err => {
+                    console.log(err);
+                    res.render('dbError')
+                })
     },
     buyCart: (req, res) => {
         db.Carts.update({
@@ -419,9 +414,10 @@ const controladorProductos = {
                         res.send(error)
                     })
             })
-            .catch(error => {
-                res.send(error)
-            })
+            .catch(err => {
+                    console.log(err);
+                    res.render('dbError')
+                })
 
     },
     addOne: (req, res) => {
@@ -470,9 +466,10 @@ const controladorProductos = {
                         res.send(error)
                     })
             })
-            .catch(error => {
-                res.send(error)
-            })
+            .catch(err => {
+                    console.log(err);
+                    res.render('dbError')
+                })
     },
     removeOne: (req, res) => {
         let requestCart = db.Carts.findOne({
@@ -535,9 +532,10 @@ const controladorProductos = {
                         res.send(error)
                     })
             })
-            .catch(error => {
-                res.send(error)
-            })
+            .catch(err => {
+                    console.log(err);
+                    res.render('dbError')
+                })
     },
     /* traemos al form de creacion las tablas brands , colors y prod_categories */
 
@@ -604,9 +602,10 @@ const controladorProductos = {
                     res.redirect('/')
                 }
             })
-            .catch(error => {
-                res.send(error)
-            })
+            .catch(err => {
+                    console.log(err);
+                    res.render('dbError')
+                })
     },
     addColor: (req, res) => {
 

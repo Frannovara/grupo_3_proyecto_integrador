@@ -61,8 +61,9 @@ const controller = {
            
              /* res.send(productsInSale) */
         }) 
-        .catch ( err => {
+        .catch(err => {
             console.log(err);
+            res.render('dbError')
         })
       },
     
