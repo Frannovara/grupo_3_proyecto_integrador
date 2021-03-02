@@ -36,7 +36,7 @@
                         <h3>Seleccionar la nueva imagen de perfil</h3>
                         <form action="/users/profileImage/?_method=PUT" method="POST" enctype="multipart/form-data">
                             <div class="create-form-element">
-                                <input type="file" name="image" id="image" required>
+                                <input type="file" name="image" id="image" required accept="images/*">
                             </div>
                             <button type="submit" class="register-form-button">Subir imagen</button>
                         </form>
