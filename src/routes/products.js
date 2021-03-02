@@ -16,22 +16,39 @@ let storage = multer.diskStorage({
    
 let upload = multer({ storage: storage })
 
-// Public Routes
+/* SEARCHING */
 router.get('/', productController.list)
 
+/* PRODUCT CART */
 router.get('/cart',userMiddleware.userToLogin ,productController.cart)
 
-// Admin Routes
+/* CREATING A PRODUCT */
 router.post('/',  userMiddleware.userAdmin, upload.any(),productController.createConfirm);
+router.get('/create', userMiddleware.userAdmin, productController.create)
+
+/* EDITING A PRODUCT */
 router.get('/edit/:id', userMiddleware.userAdmin, productController.edit)
 router.put('/detail/:id',  userMiddleware.userAdmin,upload.any() , productController.update);
-router.get('/create', userMiddleware.userAdmin, productController.create2)
-router.delete('/delete/:id', userMiddleware.userAdmin, productController.delete2); 
+
+/* DELETE PRODUCT */
+router.delete('/delete/:id', userMiddleware.userAdmin, productController.delete); 
+
+/* BUY PRODUCT CART */
 router.post('/buyCart', userMiddleware.userToLogin, productController.buyCart)
+
+/* ADD PRODUCT TO CART */
 router.get('/addToCart/:id', userMiddleware.userToLogin, productController.addToCart)
+
+/* ADD ONE UNIT OF A PRODUCT IN CART */
 router.post('/addOne/:id', userMiddleware.userToLogin, productController.addOne)
+
+/* REMOVE ONE UNIT OF A PRODUCT IN CART */
 router.post('/removeOne/:id', userMiddleware.userToLogin, productController.removeOne)
+
+/* ADD A COLOR AND IMAGE TO A PRODUCT */
 router.put('/addColor/:id', userMiddleware.userAdmin, upload.any(), productController.addColor)
+
+/* PRODUCT DETAIL */
 router.get('/:id', productController.detail);
 
 module.exports = router;
