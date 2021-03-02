@@ -15,6 +15,7 @@
                 <label for="password">Contraseña</label>
                 <div class="campo-datos">
                     <i class="fas fa-lock"></i><input type="password" name="password" id="password" class="campo-datos-type">
+                    <span class="viewPass"><i class="fas fa-eye"></i></span>
                 </div>
                 <div class="register-errors"><p><%=typeof errormsg == 'undefined' ? '' : errormsg%></p></div>
                 <div class="remember">
@@ -94,5 +95,6 @@
         </main>    
     </div>
     <%- include('../partials/footer') %>
+    <script src="/js/viewPass.js"></script>
 </body>
 </html>
