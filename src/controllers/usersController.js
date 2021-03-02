@@ -30,7 +30,8 @@ const controladorUsuarios = {
     login: (req, res) => {
         res.render('./users/login', {
             loginData: {},
-            errors: []
+            errors: [],
+            title: 'Login -'
         })
     },
     loginProcess: (req, res) => {
@@ -63,7 +64,7 @@ const controladorUsuarios = {
                             return res.redirect('/users/profile');  
                             }else{
                                 let errormsg = "El usuario o la contraseña ingresados no son validos."
-                                return res.render ('./users/login' , {errormsg})
+                                return res.render ('./users/login' , {errormsg, title: 'Login -'})
                             }
                         })
                     } else { 
@@ -81,13 +82,13 @@ const controladorUsuarios = {
                             else{
                                 let errormsg = "El usuario o la contraseña ingresados no son validos."
                                 
-                                return res.render ('./users/login' , {errormsg})
+                                return res.render ('./users/login' , {errormsg, title: 'Login -'})
                             }
                     }
                 }else{
                     let errormsg = "El usuario o la contraseña ingresados no son validos."
                                 
-                                return res.render ('./users/login' , {errormsg})
+                                return res.render ('./users/login' , {errormsg,title: 'Login -'})
 
                 }
                 
@@ -102,7 +103,8 @@ const controladorUsuarios = {
     register: (req, res) => {
         res.render('./users/register', {
             registerData: {},
-            errors: []
+            errors: [],
+            title: 'Register -'
         })
     },
     profile: (req, res) => {
@@ -114,7 +116,7 @@ const controladorUsuarios = {
         .then( user => {
             let errors
             console.log(errors);
-            res.render('./users/profile', {user, errors})
+            res.render('./users/profile', {user, errors, title: 'Perfil -'})
         })
     },
     saveUser: (req, res) => {
@@ -161,7 +163,8 @@ const controladorUsuarios = {
                 errors: errors.mapped(),
                 registerData: {
                     ...req.body,
-                }
+                },
+                title: 'Register -'
             })
             
         }
@@ -214,6 +217,7 @@ const controladorUsuarios = {
                 return res.render('./users/profile', {
                     user,
                     errors: errors.mapped(),
+                    title: 'Perfil -'
                 })
             })
             
@@ -245,6 +249,7 @@ const controladorUsuarios = {
                 return res.render('./users/profile', {
                     user,
                     password_errors: password_errors.mapped(),
+                    title: 'Perfil -'
                 })
             })
             .catch(err => {
@@ -297,10 +302,10 @@ const controladorUsuarios = {
                     paranoid:false 
                 })
                 let mensajeOk = 'Se ha enviado un email a la casilla ' + req.body.email + '. Por favor siga los pasos indicados en el mismo para volver a ingresar.'
-                res.render('./users/login', {mensajeOk})
+                res.render('./users/login', {mensajeOk, title: 'Login -'})
             } else {
                 let mensajeErr = 'El email ingresado no se encuentra registrado, por favor registrese.'
-                res.render('./users/login', {mensajeErr})
+                res.render('./users/login', {mensajeErr, title: 'Login -'})
             }
         })
         .catch( err => {
