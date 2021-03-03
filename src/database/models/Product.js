@@ -85,6 +85,16 @@
             updatedAt: 'updated_at',
             deletedAt: 'deleted_at'
         })
+        Product.belongsToMany(models.Users, {
+            as: 'views_product',
+            through: 'Views',
+            foreignKey: 'product_id',
+            otherKey: 'user_id',
+            timestamps: true,
+            createdAt: 'created_at',
+            updatedAt: 'updated_at',
+            deletedAt: 'deleted_at'
+        })
     }
 
     return Product;
