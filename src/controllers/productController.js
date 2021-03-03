@@ -94,7 +94,8 @@ const controladorProductos = {
                         })
                 })
                 .catch(err => {
-                    res.send(err);
+                    console.log(err);
+                    res.render('dbError')
                 })
         } else if (req.query.search == 'category') {
             db.Product_categories.findOne({
@@ -141,7 +142,8 @@ const controladorProductos = {
                             }
                         })
                         .catch(err => {
-                            res.send(err);
+                            console.log(err);
+                            res.render('dbError')
                         })
                 })
         } else if (req.query.search == 'year') {
@@ -183,11 +185,26 @@ const controladorProductos = {
                     }
                 })
                 .catch(err => {
-                    res.send(err);
+                    console.log(err);
+                    res.render('dbError')
                 })
         }
     },
     detail: function (req, res) {
+        /* SI HAY UN USUARIO LOGUEADO, GUARDAR EL PRODUCTO EN LA TABLA VIEWS */
+        if(req.session.user) {
+            db.Views.create({
+                user_id: req.session.user.id,
+                product_id: req.params.id
+            }).then(()=>{
+
+            })
+            .catch(err => {
+                console.log(err);
+                res.render('dbError')
+            })
+        }
+
         /*Esta búsqueda tiene que devolver el color perteneciente, y también la marca. */
         let requestProductToShow = db.Products.findByPk(req.params.id, {
             include: [{
@@ -234,7 +251,8 @@ const controladorProductos = {
             })
             //res.send(productToShow)
             .catch(err => {
-                res.send(err);
+                console.log(err);
+                res.render('dbError')
             })
 
 
