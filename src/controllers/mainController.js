@@ -4,6 +4,7 @@ const path = require('path');
 const nodemailer = require('nodemailer');
 const { Sequelize } = require('../database/models');
 const db = require('../database/models');
+const Views = require('../database/models/Views');
 const Op = Sequelize.Op
 
 const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
@@ -11,12 +12,8 @@ const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 // requireing .env
 require('dotenv').config()
 
-const productsFilePath = path.join(__dirname, '../data/productsDataBase.json');
-const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
 
 async function main(req) {
-
-    
 
     let transporter = nodemailer.createTransport({
         host: 'smtp.gmail.com',
@@ -46,7 +43,18 @@ async function main(req) {
 
 const controller = {
     home: function(req, res) {
-        db.Products.findAll({
+        let lastViewsRequest
+        if(req.session.user) {
+            lastViewsRequest = db.sequelize.query(`select * from products
+            inner join views on products.id = views.product_id
+            inner join images on products.id = images.product_id 
+            where views.user_id = ${req.session.user.id}
+            group by images.product_id
+            limit 5`)
+        }
+        
+        
+        let inSaleRequest = db.Products.findAll({
             where: {
                 discount: { [Op.gt]: 0}
             },
@@ -54,20 +62,17 @@ const controller = {
             include: [{association: 'brand'}, {association: 'categories'}, {association: 'colors'}],
            
         })
-        .then ( productsInSale => {
-            //res.send(productsInSale)
-             
-            res.render('index', {productsInSale, toThousand, title: ''}); 
-           
-             /* res.send(productsInSale) */
+        Promise.all([inSaleRequest, lastViewsRequest])
+        .then ( ([productsInSale, lastViews]) => {            
+            res.render('index', {productsInSale, lastViews, toThousand, title: ''}); 
         }) 
         .catch(err => {
             console.log(err);
-            res.render('dbError')
+            res.render('dbError', {title:''})
         })
       },
     
-    nosotros: function (req,res) {
+    nosotros:  (req,res) => {
         res.render('nosotros')
     },
     contact: (req,res) => {
