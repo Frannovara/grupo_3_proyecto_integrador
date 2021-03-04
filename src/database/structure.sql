@@ -56,7 +56,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `motorzone_db`.`products` ;
 
 CREATE TABLE IF NOT EXISTS `motorzone_db`.`products` (
-  `id` BIGINT NOT NULL,
+  `id` BIGINT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(100) NOT NULL,
   `description` VARCHAR(500) NOT NULL,
   `year` INT NULL,
