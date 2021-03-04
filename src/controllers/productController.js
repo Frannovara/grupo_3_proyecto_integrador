@@ -193,9 +193,11 @@ const controladorProductos = {
     detail: function (req, res) {
         /* SI HAY UN USUARIO LOGUEADO, GUARDAR EL PRODUCTO EN LA TABLA VIEWS */
         if(req.session.user) {
-            db.Views.create({
-                user_id: req.session.user.id,
-                product_id: req.params.id
+            db.Views.findOrCreate({
+                where: {
+                    user_id: req.session.user.id,
+                    product_id: req.params.id
+                }
             }).then(()=>{
 
             })
