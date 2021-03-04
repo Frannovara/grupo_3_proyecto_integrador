@@ -193,11 +193,9 @@ const controladorProductos = {
     detail: function (req, res) {
         /* SI HAY UN USUARIO LOGUEADO, GUARDAR EL PRODUCTO EN LA TABLA VIEWS */
         if(req.session.user) {
-            db.Views.findOrCreate({
-                where: {
+            db.Views.create({
                     user_id: req.session.user.id,
                     product_id: req.params.id
-                }
             }).then(()=>{
 
             })
@@ -582,7 +580,6 @@ const controladorProductos = {
 
         console.log(req.body)
         db.Products.create({
-
                 name: req.body.name,
                 base_price: req.body.price,
                 discount: req.body.discount,
@@ -594,17 +591,21 @@ const controladorProductos = {
 
             })
             .then(created => {
-                created.addColors(req.body.color, {
-                        through: {
-                            image: req.files[0].filename
-                        }
-                    })
-                    .catch(errors => {
-                        return res.send(errors)
-                    })
-                console.log(created)
+                //return res.send(created)
+                db.Images.create({
+                    image: req.files[0].filename,
+                    product_id: created.id,
+                    color_id: req.body.color
+                })
+                .then( ()=> {
+                    res.redirect("/")
+                })
+                .catch(errors => {
+                    return res.send(errors)
+                })
+                
 
-                res.redirect("/")
+                
             })
 
             .catch(error => {
