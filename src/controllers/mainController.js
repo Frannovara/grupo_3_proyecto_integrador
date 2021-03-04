@@ -50,6 +50,7 @@ const controller = {
             inner join images on products.id = images.product_id 
             where views.user_id = ${req.session.user.id}
             group by images.product_id
+            order by products.id desc
             limit 5`)
         }
         
