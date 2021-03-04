@@ -13,7 +13,7 @@
                             <div class="moto-imagenes">
                                 <div class="div-imagen-moto">
                                     <% for( let i = 0; i < productToShow.colors.length; i++ ) { %>
-                                        <img class="imagen-moto" id="<%= productToShow.colors[i].id %>" src="/images/products/<%= productToShow.colors[i].Images.image %> " alt="imagen-moto1" 
+                                        <img class="imagen-moto" id="bike<%= i %>" src="/images/products/<%= productToShow.colors[i].Images.image %> " alt="imagen-moto1" 
                                         <% if (i!=0) { %>
                                             style= "display:none"
                                         <% } %>
@@ -23,15 +23,15 @@
                                 <h4 class="titulo-colores">Colores</h4>
                                 <div class="colores">
                                     <!-- Este for each recibe la búsqueda de los colores que tiene este producto, y crea los círculos con los colores.  -->
-                                    <% productToShow.colors.forEach(bike => { %>
-                                        <button class="dot" style= "background-color: <%= bike.name %>"></button>
-                                    <% }) %>
+                                    
+                                    <% for( let i = 0; i < productToShow.colors.length; i++ ) { %>
+                                        <button class="dot" id="button<%= i%>" style= "background-color: <%= productToShow.colors[i].name %>"></button>
+                                    <% } %>
                                     <% if (locals.user.category_id == 1) { %>
                                         <button onclick="document.getElementById('new-color-form').style.display='block'" class="dot" data-toggle="modal" data-target="#new-color-form">
                                             +
                                         </button>
                                     <% } %>
-
                                 </div>
                             </div>
                             <div class="acomodar">
@@ -132,6 +132,7 @@
         </main>
     </div>
     <%- include('../partials/footer') %>
+    <script src="/js/detailImages.js"></script>
 </body>
 
 </html>
