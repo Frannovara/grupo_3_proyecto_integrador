@@ -108,7 +108,7 @@ const controladorUsuarios = {
         res.render('./users/register', {
             registerData: {},
             errors: [],
-            title: 'Register -'
+            title: 'Registro -'
         })
     },
     profile: (req, res) => {

@@ -2,8 +2,8 @@ var {check} = require ('express-validator')
 
 module.exports = {
     register: [
-    check('first_name').isLength({min:1}).withMessage('Este campo es obligatorio'),
-    check('last_name').isLength({min:1}).withMessage('Este campo es obligatorio'),
+    check('first_name').isLength({min:2}).withMessage('Este campo es obligatorio'),
+    check('last_name').isLength({min:2}).withMessage('Este campo es obligatorio'),
     check('email').isLength({min:1}).withMessage('Este campo es obligatorio').isEmail().withMessage('No es un email válido'),
     check('password').isLength({min:1}).withMessage('Este campo es obligatorio').isLength( {
         min:8
