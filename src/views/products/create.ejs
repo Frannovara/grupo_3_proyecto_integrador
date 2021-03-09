@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-    <%- include('../partials/head.ejs') %>
+<%- include('../partials/head.ejs') %>
+
 <body>
     <div class="body-content">
         <%- include('../partials/header') %>
@@ -8,69 +9,86 @@
             <h2>Crear un producto</h2>
             <form action="/products" method="POST" class="create-form" enctype="multipart/form-data">
                 <div class="create-form-row">
-                    <div class="create-form-column"> 
+                    <div class="create-form-column">
                         <div class="create-form-element">
                             <label for="name">Nombre del producto</label>
                             <input type="text" name="name" id="name" class="create-form-input">
+                            <div class="register-errors">
+                                <p id="nameError"></p>
+                            </div>
                         </div>
                         <div class="create-form-element">
                             <label for="category">Categoría</label>
                             <select name="category" id="category" class="create-form-input">
-                               <% categories.forEach(category => { %>
-                                
-                                 <option value="<%=category.id%>">
-                                        <%=category.name%></option>
-                                     
-                                
-                                 <% }) %>
-                                
+                                <% categories.forEach(category => { %>
+                                <option value="<%=category.id%>"><%=category.name%></option>
+                                <% }) %>
+
                             </select>
-                        </div class="create-form-element">
+                            <div class="register-errors">
+                                <p id="categoryError"></p>
+                            </div>
+                        </div>
                         <div class="create-form-element">
                             <label for="brand">Marca</label>
                             <select name="brand" id="brand" class="create-form-input">
                                 <% brands.forEach(brand => { %>
-                                
-                                    <option value="<%=brand.id%>">
-                                        <%=brand.name%></option>
-                                       
-                                   
-                                    <% }) %>
+                                <option value="<%=brand.id%>"><%=brand.name%></option>
+                                <% }) %>
                             </select>
+                            <div class="register-errors">
+                                <p id="brandError"></p>
+                            </div>
                         </div>
                         <div class="create-form-element">
                             <label for="price">Precio</label>
                             <input type="number" class="create-form-input" name="price" id="price">
+                            <div class="register-errors">
+                                <p id="priceError"></p>
+                            </div>
                         </div>
                         <div class="create-form-element">
                             <label for="discount">Descuento</label>
                             <input type="number" class="create-form-input" name="discount" type="discount">
+                            <div class="register-errors">
+                                <p id="discountError"></p>
+                            </div>
                         </div>
                         <div class="create-form-element">
                             <label for="year">Año</label>
                             <input type="number" class="create-form-input" name="year" id="year">
+                            <div class="register-errors">
+                                <p id="yearError"></p>
+                            </div>
                         </div>
                     </div>
                     <div class="create-form-column">
                         <div class="create-form-element">
                             <label for="description">Descripción:</label><br>
-                            <textarea name="description" class="create-form-input" id="description" cols="30" rows="10"></textarea>
+                            <textarea name="description" class="create-form-input" id="description" cols="30"
+                                rows="10"></textarea>
+                            <div class="register-errors">
+                                <p id="descriptionError"></p>
+                            </div>
                         </div>
                         <div class="create-form-element">
                             <label for="image">Imagen</label>
-                            <input type="file" name="image" id="image"  class="create-form-input" accept="images/*">
+                            <input type="file" name="image" id="image" class="create-form-input" accept="images/*">
+                            <div class="register-errors">
+                                <p id="imageError"></p>
+                            </div>
                         </div>
                         <div class="create-form-element">
                             <label for="color">Color</label>
                             <select name="color" id="color" class="create-form-input">
                                 <% colors.forEach(color => { %>
-                                
-                                    <option value="<%=color.id%>">
-                                        <%=color.name%></option>
-                                       
-                                   
-                                    <% }) %>
+                                <option value="<%=color.id%>">
+                                    <%=color.name%></option>
+                                <% }) %>
                             </select>
+                            <div class="register-errors">
+                                <p id="colorError"></p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -86,4 +104,5 @@
     <%- include('../partials/footer') %>
     <script src="/js/createProduct.js"></script>
 </body>
+
 </html>
