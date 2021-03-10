@@ -16,10 +16,8 @@
                             <input type="text" name="first_name" id="first_name" class="campo-datos-type"
                                 value="<%= registerData.first_name %>">
                         </div>
-                        <div class="register-errors">
-                            <p id="first_name_error">
-                                <%=typeof errors.first_name != 'undefined' ?  errors.first_name.msg : ''%>
-                            </p>
+                        <div class="create-validation-errors" id="first_name_error">
+                            <%=typeof errors.first_name != 'undefined' ?  errors.first_name.msg : ''%>
                         </div>
                     </div>
                     <div class="div-campo-datos">
@@ -29,10 +27,8 @@
                             <input type="text" name="last_name" id="last_name" class="campo-datos-type"
                                 value="<%= registerData.last_name %>">
                         </div>
-                        <div class="register-errors">
-                            <p id="last_name_error">
+                        <div class="create-validation-errors" id="last_name_error">
                                 <%=typeof errors.last_name != 'undefined' ?  errors.last_name.msg : ''%>
-                            </p>
                         </div>
                     </div>
                     <div class="div-campo-datos">
@@ -42,10 +38,8 @@
                             <input type="email" name="email" id="email" class="campo-datos-type"
                                 value="<%= registerData.email %>">
                         </div>
-                        <div class="register-errors">
-                            <p id="email_error">
+                        <div class="create-validation-errors" id="email_error">
                                 <%=typeof errors.email != 'undefined' ?  errors.email.msg : ''%>
-                            </p>
                         </div>
                     </div>
                     <div class="div-campo-datos">
@@ -55,10 +49,8 @@
                             <input type="password" name="password" id="password" class="campo-datos-type">
                             <span class="viewPass"><i class="fas fa-eye"></i></span>
                         </div>
-                        <div class="register-errors">
-                            <p id="password_error">
+                        <div class="create-validation-errors" id="password_error">
                                 <%=typeof errors.password != 'undefined' ?  errors.password.msg : ''%>
-                            </p>
                         </div>
                     </div>
                     <div class="div-campo-datos">
@@ -68,23 +60,19 @@
                             <input type="password" name="re_password" id="re_password" class="campo-datos-type">
                             <span class="viewRePass"><i class="fas fa-eye"></i></span>
                         </div>
-                        <div class="register-errors">
-                            <p id="re_password_error">
+                        <div class="create-validation-errors" id="re_password_error">
                                 <%=typeof errors.re_password != 'undefined' ?  errors.re_password.msg : ''%>
-                            </p>
                         </div>
                     </div>
                 </div>
                 <div class="register-form-terms">
                     <input type="checkbox" name="terms" id="terms" class="register-form-terms-checkbox">
                     <label for="terms">Acepto los términos y Condiciones</label>
-                    <div class="register-errors">
-                        <p id="terms_error"></p>
-                    </div>
+                    <div class="create-validation-errors" id="terms_error"></div>
                 </div>
                 <button type="submit" class="register-form-button">Registrarse</button>
             </form>
-            <div class="register-errors">
+            <div class="create-validation-errors">
                 <% if (typeof repitedUser != 'undefined') { %>
                 <strong>
                     <p><%= "El email " + repitedUser + " ya se encuentra en uso" %></p>
