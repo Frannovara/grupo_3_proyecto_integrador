@@ -145,7 +145,7 @@ const controladorUsuarios = {
                         password: bcrypt.hashSync(req.body.password, 10),
                         
                     })
-                    .then( result => {
+                    .then( () => {
                         req.session.user = {   
                             first_name: req.body.first_name,
                             last_name: req.body.last_name,
@@ -161,7 +161,12 @@ const controladorUsuarios = {
                 })
                 } else {
                     repitedUser = req.body.email
-                    return res.redirect('register');
+                    return res.render('./users/register', {
+                        registerData: {},
+                        errors: [],
+                        title: 'Registro -',
+                        repitedUser
+                    })
                 }
             })
             .catch(err => {
