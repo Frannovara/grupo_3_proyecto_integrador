@@ -18,61 +18,41 @@
             <a href="/" class="logo-azul"><img src="/design/logo2.jpg" alt="Logo MotorBike Zone" class="logo-azul"></a>
             <a href="/" class="logo-naranja"><img class="logo-naranja-img" src="/design/logo3.jpg" alt="Logo MotorBike Zone" class="logo-naranja"></a>                
             <div class="menu">
-                <div class="collapsible-menu">
-                    <input type="checkbox" id="menu">
-                    <label for="menu"><i class="fas fa-bars"></i></label>
-                    <div class="menu-content">
-                        <ul class="menu-list">
-                            <li>
-                                <form action="/products/" method="get">
-                                    <select name="search" id="search" class="buscador">
-                                        <option value="all">Seleccionar</option>
-                                        <option value="brand">Marca</option>
-                                        <option value="category">Categoría</option>
-                                        <option value="year">Año</option>
-                                    </select>
-                                    <input type="search" name="buscador" id="buscador" placeholder="Buscar" class="buscador">
-                                    <button type="submit" class="buscador"><i class="fas fa-search"></i></button></li>
-                                </form>
-                            <li><a href="/products/cart">Carro de Compras</a></li>
-                            <% if (locals.user == false) { %>
-                                <li><a href="/users/login">Ingreso</a></li>
-                            <% } %>    
-                            <li><a href="/users/register">Registro</a></li>
-                            <li><a href="/users/profile/1">Perfil</a></li>
-                            <li><a href="/nosotros">Nosotros</a></li>
-                            <li><a href="/contact">Contacto</a></li>
-                            <li><a href="/help">Ayuda</a></li>
-                        </ul>
-                    </div>
-                </div>
                 <div class="indice" id="indice">
-                    <div class="navbar">
-                        <form action="/products/" method="get">
-                            <select name="search" id="search" class="buscador">
-                                <option value="all">Seleccionar</option>
-                                <option value="brand">Marca</option>
-                                <option value="category">Categoría</option>
-                                <option value="year">Año</option>
-                            </select>
-                            <input type="search" name="buscador" id="buscador" placeholder="Buscar" class="buscador">
-                            <button type="submit" class="buscador"><i class="fas fa-search"></i></button>
-                        </form>
+                    <label class="only-mobile" id="menu"><i class="fas fa-bars"></i></label>
+                    <div class="indice-desplegable menu-visible">
+                        <div class="navbar">
+                            <form action="/products/" method="get">
+                                <select name="search" id="search" class="buscador">
+                                    <option value="all">Seleccionar</option>
+                                    <option value="brand">Marca</option>
+                                    <option value="category">Categoría</option>
+                                    <option value="year">Año</option>
+                                </select>
+                                <input type="search" name="buscador" id="buscador" placeholder="Buscar" class="buscador">
+                                <button type="submit" class="buscador"><i class="fas fa-search"></i></button>
+                            </form>
+                        </div>
+                        <a href="/products/cart" class="carrito"><i class="fas fa-shopping-cart"><span class="only-mobile"> Carro de Compras</span></i></a>
+                        <% if (locals.user == false) { %>
+                            <a href="/users/login" class="login">Ingresar</a>
+                            <a class="only-mobile" href="/users/register">Registro</a>
+                        <% } %>
+                        <% if (locals.user.category_id == 1) { %>
+                            <a class="only-mobile" href="/products/databaseForm" style="margin: 10px;">Modificar Base de Datos</a>
+                            <a class="only-mobile" href="/products/create">Crear Producto</a>
+                        <% } %>
+                        <% if (locals.user) { %>
+                            <a href="/users/profile" class="login">Perfil</a>
+                            <a href="/users/logout" class="login">Log Out</a>
+                        <% } %>
+                        <a class="only-mobile" href="/nosotros">Nosotros</a>
+                        <a class="only-mobile" href="/contacto">Contacto</a>
+                        <a class="only-mobile" href="/ayuda">Ayuda</a>
                     </div>
-                    <a href="/products/cart" class="carrito"><i class="fas fa-shopping-cart"></i></a>
-                    <% if (locals.user == false) { %>
-                        <a href="/users/login" class="login">Ingresar</a>
-                        <a href="/users/login" class="login-mobile"><i class="fas fa-user-alt"></i></a>
-                    <% } %>
-                    
-                    <% if (locals.user) { %>
-                        <a href="/users/profile" class="login">Perfil</a>
-                        <a href="/users/logout" class="login">Log Out</a>
-                    <% } %>
-                    
-
                 </div>
             </div>
         </div>
     </div>
+    <script src="/js/collapsibleMenu.js"></script>
 </header>
