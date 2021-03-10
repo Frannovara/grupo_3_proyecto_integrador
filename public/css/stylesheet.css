@@ -586,6 +586,17 @@ margin-left: 5px;
     color: #265277;
     background-color: #F1F8FE;
 }
+.create-validation-errors {
+    position: absolute;
+    background-color: #ffffff;
+    z-index: 2;
+    border: 1px solid #04233b;
+    padding: 3px;
+    margin: 2;
+    top:100%;
+    color: red;
+    visibility: hidden;
+}
 .create-form {
     display: flex;
     flex-direction: column;
@@ -594,9 +605,10 @@ margin-left: 5px;
 }
 .create-form-element {
     padding: 10px;
-    margin: 5px;
+    margin: 15px;
     border-radius: 5px;
     border: #aaa 1px solid;
+    position: relative;
 }
 .create-form-button {
     margin: 15px;
