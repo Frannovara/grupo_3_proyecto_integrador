@@ -596,6 +596,7 @@ margin-left: 5px;
     top:100%;
     color: red;
     visibility: hidden;
+    font-size:smaller;
 }
 .create-form {
     display: flex;
@@ -1187,6 +1188,8 @@ margin-left: 5px;
         flex-direction: column;
         align-items: center;
         width: 350px;
+        position: relative;
+        margin-bottom: 30px;
     }
     .register-form-block {
         margin: 10px;
