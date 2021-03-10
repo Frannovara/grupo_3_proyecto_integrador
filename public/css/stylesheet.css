@@ -234,6 +234,9 @@ input:focus {
         padding: 5px;
         width: fit-content;
     }
+    .repetead-user-error {
+        color: red;
+    }
     .register-form {
         text-align: center;
         color: #265277;
