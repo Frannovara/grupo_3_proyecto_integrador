@@ -13,53 +13,42 @@
                         <div class="create-form-element">
                             <label for="name">Nombre del producto</label>
                             <input type="text" name="name" id="name" class="create-form-input">
-                            <div class="register-errors">
-                                <p id="nameError"></p>
-                            </div>
+                            <div class="create-validation-errors" id="nameError"></div>
                         </div>
                         <div class="create-form-element">
                             <label for="category">Categoría</label>
                             <select name="category" id="category" class="create-form-input">
+                                <option value="A">Seleccione una categoría</option>
                                 <% categories.forEach(category => { %>
                                 <option value="<%=category.id%>"><%=category.name%></option>
                                 <% }) %>
-
                             </select>
-                            <div class="register-errors">
-                                <p id="categoryError"></p>
-                            </div>
+                            <div class="create-validation-errors" id="categoryError"></div>
                         </div>
                         <div class="create-form-element">
                             <label for="brand">Marca</label>
                             <select name="brand" id="brand" class="create-form-input">
+                                <option value="A">Seleccione una marca</option>
                                 <% brands.forEach(brand => { %>
                                 <option value="<%=brand.id%>"><%=brand.name%></option>
                                 <% }) %>
                             </select>
-                            <div class="register-errors">
-                                <p id="brandError"></p>
-                            </div>
+                            <div class="create-validation-errors"id="brandError"></div>
                         </div>
                         <div class="create-form-element">
                             <label for="price">Precio</label>
                             <input type="number" class="create-form-input" name="price" id="price">
-                            <div class="register-errors">
-                                <p id="priceError"></p>
-                            </div>
+                            <div class="create-validation-errors" id="priceError"></div>
                         </div>
                         <div class="create-form-element">
                             <label for="discount">Descuento</label>
-                            <input type="number" class="create-form-input" name="discount" type="discount">
-                            <div class="register-errors">
-                                <p id="discountError"></p>
-                            </div>
+                            <input type="number" class="create-form-input" name="discount" id="discount" type="discount">
+                            <div class="create-validation-errors" id="discountError"></div>
                         </div>
                         <div class="create-form-element">
                             <label for="year">Año</label>
                             <input type="number" class="create-form-input" name="year" id="year">
-                            <div class="register-errors">
-                                <p id="yearError"></p>
-                            </div>
+                            <div class="create-validation-errors" id="yearError"></div>
                         </div>
                     </div>
                     <div class="create-form-column">
@@ -67,28 +56,22 @@
                             <label for="description">Descripción:</label><br>
                             <textarea name="description" class="create-form-input" id="description" cols="30"
                                 rows="10"></textarea>
-                            <div class="register-errors">
-                                <p id="descriptionError"></p>
-                            </div>
+                            <div class="create-validation-errors" id="descriptionError"></div>
                         </div>
                         <div class="create-form-element">
                             <label for="image">Imagen</label>
                             <input type="file" name="image" id="image" class="create-form-input" accept="images/*">
-                            <div class="register-errors">
-                                <p id="imageError"></p>
-                            </div>
+                            <div class="create-validation-errors" id="imageError"></div>
                         </div>
                         <div class="create-form-element">
                             <label for="color">Color</label>
                             <select name="color" id="color" class="create-form-input">
+                                <option value="A">Seleccione un color</option>
                                 <% colors.forEach(color => { %>
-                                <option value="<%=color.id%>">
-                                    <%=color.name%></option>
+                                <option value="<%=color.id%>"> <%=color.name%> </option>
                                 <% }) %>
                             </select>
-                            <div class="register-errors">
-                                <p id="colorError"></p>
-                            </div>
+                            <div class="create-validation-errors" id="colorError"></div>
                         </div>
                     </div>
                 </div>
