@@ -49,6 +49,7 @@ const controller = {
             inner join views on products.id = views.product_id
             inner join images on products.id = images.product_id 
             where views.user_id = ${req.session.user.id}
+            and products.deleted_at is null
             group by images.product_id
             order by products.id desc
             limit 5`)
