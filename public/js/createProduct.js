@@ -93,7 +93,7 @@ window.addEventListener('load', function(){
         }
     })
     image.addEventListener('input', function(){
-        let imageOk = regexImage.test(image.files[0].type)
+        let imageOk = regexImage.test(image.files[0].name)
         if(!imageOk) {
             imageError.innerHTML = `<small>El archivo ingresado no es una imagen</small>`
             imageError.style.visibility = "visible"
@@ -149,8 +149,7 @@ window.addEventListener('load', function(){
             descriptionError.style.visibility = "visible"
             i++
         }
-        let imageOk = regexImage.test(image.files[0]?.type)
-        if(!imageOk || image.files.length == 0) {
+        if(image.files.length == 0) {
             imageError.innerHTML = `<small>El archivo ingresado no es una imagen</small>`
             imageError.style.visibility = "visible"
             i++
@@ -161,8 +160,11 @@ window.addEventListener('load', function(){
             i++
         }
 
-        if(i>0) {
-            event.preventDefault()
+        if(i == 0) {
+            swal("Producto Creado", "", "success")
+            .then(value => {
+                createForm.submit()
+            })
         }
     })
 
