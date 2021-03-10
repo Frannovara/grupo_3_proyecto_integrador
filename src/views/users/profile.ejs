@@ -7,7 +7,7 @@
         <main class="profile">
             <div class="div-profile-image">
                 <img class="profile-image" src="<%= locals.user.profile_image %> " alt="<%= locals.user.first_name %> <%= locals.user.last_name %> ">           
-                <button onclick="document.getElementById('profile-image-form').style.display='block'" class="boton-form" data-toggle="modal" data-target="#profile-image-form">
+                <button class="boton-form" id="change-image-button">
                     <small>Cambiar imagen de perfil</small>
                 </button>
             </div>
@@ -16,21 +16,27 @@
                 <p>Nombre: <%= locals.user.first_name %> </p>
                 <p>Apellido: <%= locals.user.last_name %> </p>
                 <p>Email: <%= locals.user.email %> </p>
-                <button onclick="document.getElementById('edit-user-form').style.display='block'" class="boton-form" data-toggle="modal" data-target="#profile-image-form">
+                <button class="boton-form" id="edit-user-button">
                     Editar datos de Usuario
                 </button>
-                <button onclick="document.getElementById('change-password-form').style.display='block'" class="boton-form" data-toggle="modal" data-target="#profile-image-form">
+                <button class="boton-form" id="change-password-button">
                     Cambiar contraseña
                 </button>
-                <button onclick="document.getElementById('delete-user-form').style.display='block'" class="boton-form" data-toggle="modal" data-target="#delete-user-form">
-                    Eliminar Usuario
-                </button>
+                <% if (locals.user.category_id != 1) { %>
+                    <form action="/users/delete/<%= locals.user.id %> /?_method=DELETE" method="POST" class="delete-user-form">
+                        <button type="submit" class="boton-form" id="delete-user-button">
+                            Eliminar Usuario
+                        </button>
+                    </form>
+                <% } %>
             </div>
+
+
             <div id="profile-image-form" class="modal">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h3 class="modal-titulo">Editar foto de perfil</h3>
-                        <span class="close" onclick="document.getElementById('profile-image-form').style.display='none'">&times;</span>
+                        <span class="close" id="close-image">&times;</span>
                     </div>
                     <div class="modal-content-info">
                         <h3>Seleccionar la nueva imagen de perfil</h3>
@@ -54,7 +60,7 @@
                     <div class="edit-user-content">
                         <div class="modal-header">
                             <h3 class="modal-titulo">Editar datos de Usuario</h3>
-                            <span class="close" onclick="document.getElementById('edit-user-form').style.display='none'">&times;</span>
+                            <span class="close" id="close-edit">&times;</span>
                         </div>
                         <form class="edit-user-form" action="/users/profile/<%= locals.user.id %> /?_method=PUT" method="POST">
                             <div class="register-form-fields">
@@ -118,7 +124,7 @@
                     <div class="edit-user-content">
                         <div class="modal-header">
                             <h3 class="modal-titulo">Cambiar la contraseña</h3>
-                            <span class="close" onclick="document.getElementById('change-password-form').style.display='none'">&times;</span>
+                            <span class="close" id="close-password">&times;</span>
                         </div>
                         <form class="edit-user-form" action="/users/newpassword/?_method=PUT" method="POST">
                             <div class="register-form-fields">                        
@@ -133,7 +139,6 @@
                                             <% if (typeof password_errors != 'undefined') { %>
                                                 <%=typeof password_errors.password != 'undefined' ?  password_errors.password.msg : ''%>
                                                 <% } %>
-                                            
                                         </p>
                                     </div>
                                 </div>
@@ -148,7 +153,6 @@
                                             <% if (typeof password_errors != 'undefined') { %>
                                                 <%=typeof password_errors.re_password != 'undefined' ?  password_errors.re_password.msg : ''%>
                                                 <% } %>
-                                            
                                         </p>
                                     </div>
                                 </div>
@@ -158,28 +162,9 @@
                     </div>
                 </div>
             </div>
-
-            <div id="delete-user-form" class="modal">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h3 class="modal-titulo">¿Estás seguro de que quieres eliminar el Usuario?</h3>
-                        <span class="close" onclick="document.getElementById('delete-user-form').style.display='none'">&times;</span>
-                    </div>
-                    <div class="modal-content-info">
-                        <% if (locals.user.category_id == 1) { %>
-                            <p class="modal-text">Lo sentimos, pero no es posible eliminar el usuario administrador</p>
-                        <% } else { %>
-                            <p class="modal-text">Al eliminar tu usuario puedes regresar cuando quieras, y volver a iniciar sesión, no es necesario registrarse.</p>
-                            <form action="/users/delete/<%= locals.user.id %> /?_method=DELETE" method="POST">
-                                <button type="submit" class="register-form-button">Eliminar Usuario</button>
-                            </form>
-                        <% } %>
-                    </div>
-                    
-                </div>
-            </div>
         </main>
     </div>
     <%- include('../partials/footer') %>
+    <script src="/js/profile.js"></script>
 </body>
 </html>
