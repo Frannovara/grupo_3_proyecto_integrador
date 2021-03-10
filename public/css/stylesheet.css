@@ -30,13 +30,7 @@ input:focus {
     }
     .logo-azul{
         display: none;
-    }
-    .login{
-        display: none;
-    }
-    .indice {
-        display: none;
-    }
+    }    
     .encabezado {
         width: 100%;
         margin: auto;
@@ -65,38 +59,21 @@ input:focus {
         text-align: center;
         color: #265277;
     }
-    .menu-list li {
-        list-style-type: none;
-        text-align: center;
-    }
-    .menu-list {
-        padding-inline-start: 0%;
-    }
-    .menu-list a {
-        display: block;
-        text-decoration: none;
-        color: #265277;
-    }
-    .menu-content {
-        max-height: 0;
-        overflow: hidden;
-    }
-    .menu-content ul li {
-        border-bottom: solid 1px #265277;
-    }
-    input:checked ~ .menu-content {
-        max-height: 100%;
+    .indice-desplegable {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
     input#menu {
+        display: none;
+    }
+    .menu-visible {
         display: none;
     }
     .menu-nav-mobile {
         display: flex;
         align-items: center;
-    }
-    .login-mobile {
-        order: 1;
-        color: #265277
     }
     .buscador {
         color: #265277;
@@ -823,39 +800,34 @@ margin-left: 5px;
     .logo-naranja {
         display: none;
     }
-    .login-mobile{
+    .only-mobile {
         display: none;
     }
     .collapsible-menu {
         display: none;
     }
+    .indice-desplegable {
+        flex-direction: row;
+    }
     .margen-superior {
+        display: inline-block;
+    }
+    .menu-visible {
         display: inline-block;
     }
     .indice {
         display: inline-block;
     }
-
     .navbar {
         display: inline-block;
-        background-color: #265277;
+        background-color: #f1f8fe;
+        border-radius: 20px;
+        border: solid 2px #8aa4ba;
         padding: 10px;
-    }
-    #buscador{
-        display:none;
     }
     .buscador {
         background-color: inherit;
         border: none;
-    }
-
-    .navbar:hover #buscador{
-        display: inline-block;
-    }
-    .navbar:hover {
-        background-color: #f1f8fe;
-        border-radius: 20px;
-        border: solid 2px #8aa4ba;
     }
     /*Hasta acá es el estilizado del buscador*/
 
