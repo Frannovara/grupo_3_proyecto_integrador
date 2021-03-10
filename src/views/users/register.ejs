@@ -7,6 +7,14 @@
         <%- include('../partials/header') %>
         <main class="register-form">
             <h1 class="titulo-seccion">Registro</h1>
+            <div class="repetead-user-error">
+                <% if (typeof repitedUser != 'undefined') { %>
+                
+                    <p><%= "El email " + repitedUser + " ya se encuentra en uso" %></p>
+                
+                <% } %>
+
+            </div>
             <form action="/users/register" method="POST" id="register_form">
                 <div class="register-form-fields">
                     <div class="div-campo-datos">
@@ -72,14 +80,6 @@
                 </div>
                 <button type="submit" class="register-form-button">Registrarse</button>
             </form>
-            <div class="create-validation-errors">
-                <% if (typeof repitedUser != 'undefined') { %>
-                <strong>
-                    <p><%= "El email " + repitedUser + " ya se encuentra en uso" %></p>
-                </strong>
-                <% } %>
-
-            </div>
             <div>
                 <!-- <div class="register-form-button"><i class="fab fa-google-plus-g"></i>   Ingresá con Google</div>
                 <div class="register-form-button"><i class="fab fa-facebook-f"></i>   Ingresá con Facebook</div> -->
