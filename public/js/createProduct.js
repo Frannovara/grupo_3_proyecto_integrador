@@ -161,8 +161,8 @@ window.addEventListener('load', function(){
         }
 
         if(i == 0) {
-            swal("Producto Creado", "", "success")
-            .then(value => {
+            swal("Exito", "El producto fue creado", "success")
+            .then(() => {
                 createForm.submit()
             })
         }
