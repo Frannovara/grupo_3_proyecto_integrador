@@ -43,9 +43,9 @@ window.addEventListener('load', function() {
             lastNameError.style.visibility = 'hidden'
         }
     })
-    email.addEventListener('blur', function() {
-        let emailOk = regexEmail.test(email.value)
-        if(emailOk) {
+    
+    email.addEventListener('blur', function() {        
+        if(email.value.match(regexEmail)) {
             emailError.innerHTML = ""
             emailError.style.visibility = 'hidden'
         } else {
@@ -53,12 +53,13 @@ window.addEventListener('load', function() {
             emailError.style.visibility = 'visible'
         }
     })
+    let passwordOk
     password.addEventListener('blur', function() {
         if(rePassword.value != "" && rePassword.value != password.value) {
             rePasswordError.innerHTML = "<small>Las contraseñas deben coincidir</small>"
             rePasswordError.style.visibility = 'visible'
         }
-        let passwordOk = regexPassword.test(password.value)
+        passwordOk = regexPassword.test(password.value)
         if(passwordOk) {
             passwordError.innerHTML =""
             passwordError.style.visibility = 'hidden'
@@ -88,8 +89,6 @@ window.addEventListener('load', function() {
 
     form.addEventListener('submit', function(event) {
         event.preventDefault()
-        let passwordOk = regexPassword.test(password.value)
-        let emailOk = regexEmail.test(email.value)
         let i=0
 
         if(firstName.value.length < 2 ) {
@@ -102,12 +101,12 @@ window.addEventListener('load', function() {
             lastNameError.style.visibility = 'visible'
             i++
         }
-        if(!emailOk) {
+        if(!email.value.match(regexEmail)) {
             emailError.innerHTML = "<small>El email ingresado no corresponde con un email válido</small>"
             emailError.style.visibility = 'visible'
             i++
         }
-        if(!passwordOk) {
+        if(!password.value.match(regexPassword)) {
             passwordError.innerHTML = "<small>La contraseña debe tener al menos un número, una mayúscula, una mínuscula y 8 caracteres</small>"
             passwordError.style.visibility = 'visible'
             i++
@@ -122,9 +121,11 @@ window.addEventListener('load', function() {
             termsError.style.visibility = 'visible'
             i++
         }
-        console.log(i);
-        if( i>0 ) {
-            event.preventDefault()
+        if( i == 0 ) {
+            swal("Exito","El usuario fue registrado con éxito","success")
+            .then(()=>{
+                form.submit()
+            })
         }
     })
 })
