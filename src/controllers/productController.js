@@ -90,8 +90,9 @@ const controladorProductos = {
                             }
                         })
                         .catch(err => {
-                            res.send(err);
-                        })
+                                console.log(err);
+                                res.render('dbError')
+                            })
                 })
                 .catch(err => {
                     console.log(err);
@@ -200,9 +201,9 @@ const controladorProductos = {
 
             })
             .catch(err => {
-                console.log(err);
-                res.render('dbError')
-            })
+                    console.log(err);
+                    res.render('dbError')
+                })
         }
 
         /*Esta búsqueda tiene que devolver el color perteneciente, y también la marca. */
@@ -286,9 +287,10 @@ const controladorProductos = {
                                 title: 'Carrito -'
                             })
                         })
-                        .catch(error => {
-                            res.send(error)
-                        })
+                        .catch(err => {
+                                console.log(err);
+                                res.render('dbError')
+                            })
                 } else {
                     let total
                     res.render('./products/cart', {
@@ -351,6 +353,10 @@ const controladorProductos = {
             .then(() => {
                 res.redirect('/')
             })
+            .catch(err => {
+                console.log(err);
+                res.render('dbError')
+            })
     },
     addToCart: (req, res) => {
         let requestCart = db.Carts.findOrCreate({
@@ -378,8 +384,6 @@ const controladorProductos = {
                     .then(item => {
 
                         if (item != null) {
-                            console.log('hasta aca');
-                            //return res.send(item)
                             db.Cart_product.update({
                                     units: item.units + 1,
                                     subtotal: (item.units + 1) * product.final_price
@@ -393,11 +397,10 @@ const controladorProductos = {
                                     res.redirect('/products/cart')
                                     //res.send(userCart)
                                 })
-
-
-                                .catch(error => {
-                                    res.send(error)
-                                })
+                                .catch(err => {
+                                        console.log(err);
+                                        res.render('dbError')
+                                    })
 
                         } else {
 
@@ -423,14 +426,16 @@ const controladorProductos = {
                                     res.redirect('/products/cart')
                                     //res.send(userCart)
                                 })
-                                .catch(error => {
-                                    res.send(error)
-                                })
+                                .catch(err => {
+                                        console.log(err);
+                                        res.render('dbError')
+                                    })
                         }
                     })
-                    .catch(error => {
-                        res.send(error)
-                    })
+                    .catch(err => {
+                            console.log(err);
+                            res.render('dbError')
+                        })
             })
             .catch(err => {
                     console.log(err);
@@ -475,14 +480,15 @@ const controladorProductos = {
                                 res.redirect('/products/cart')
                                 //res.send(userCart)
                             })
-
-                            .catch(error => {
-                                res.send(error)
-                            })
+                            .catch(err => {
+                                    console.log(err);
+                                    res.render('dbError')
+                                })
                     })
-                    .catch(error => {
-                        res.send(error)
-                    })
+                    .catch(err => {
+                            console.log(err);
+                            res.render('dbError')
+                        })
             })
             .catch(err => {
                     console.log(err);
@@ -522,9 +528,10 @@ const controladorProductos = {
                                 .then(() => {
                                     res.redirect('/products/cart')
                                 })
-                                .catch(error => {
-                                    res.send(error)
-                                })
+                                .catch(err => {
+                                        console.log(err);
+                                        res.render('dbError')
+                                    })
                         } else {
                             db.Cart_product.update({
                                     units: item.units - 1,
@@ -540,15 +547,16 @@ const controladorProductos = {
                                     res.redirect('/products/cart')
                                     //res.send(userCart)
                                 })
-
-                                .catch(error => {
-                                    res.send(error)
-                                })
+                                .catch(err => {
+                                        console.log(err);
+                                        res.render('dbError')
+                                    })
                         }
                     })
-                    .catch(error => {
-                        res.send(error)
-                    })
+                    .catch(err => {
+                            console.log(err);
+                            res.render('dbError')
+                        })
             })
             .catch(err => {
                     console.log(err);
@@ -571,6 +579,10 @@ const controladorProductos = {
                     colors,
                     title: 'Create Product -'
                 })
+            })
+            .catch(err => {
+                console.log(err);
+                res.render('dbError')
             })
     },
 
@@ -598,18 +610,16 @@ const controladorProductos = {
                     color_id: req.body.color
                 })
                 .then( ()=> {
-                    res.redirect("/")
+                    res.redirect("/products/"+created.id)
                 })
-                .catch(errors => {
-                    return res.send(errors)
-                })
-                
-
-                
+                .catch(err => {
+                        console.log(err);
+                        res.render('dbError')
+                    })
             })
-
-            .catch(error => {
-                return res.send(error)
+            .catch(err => {
+                console.log(err);
+                res.render('dbError')
             })
     },
     delete: (req, res) => {
