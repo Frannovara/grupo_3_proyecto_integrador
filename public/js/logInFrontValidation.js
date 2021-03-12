@@ -13,14 +13,14 @@ window.addEventListener('load', () => {
     let password = qs('#password')
     let form = qs('.login-form')
 
-
-
     let emailError = qs('#email_error')
     let passwordError = qs('#password_error')
 
 
+    
 
-    window.addEventListener('blur', () =>{
+
+    window.addEventListener('blur', () =>{ 
         let emailCheck = regexEmail.test(email.value)
         if(emailCheck){
             emailError.innerHTML = ""
