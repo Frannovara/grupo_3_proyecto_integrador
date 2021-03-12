@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-    <%- include('../partials/head.ejs') %>
+<%- include('../partials/head.ejs') %>
+
 <body>
     <div class="body-content">
         <%- include('../partials/header') %>
         <main class="profile">
             <div class="div-profile-image">
-                <img class="profile-image" src="<%= locals.user.profile_image %> " alt="<%= locals.user.first_name %> <%= locals.user.last_name %> ">           
+                <img class="profile-image" src="<%= locals.user.profile_image %> "
+                    alt="<%= locals.user.first_name %> <%= locals.user.last_name %> ">
                 <button class="boton-form" id="change-image-button">
                     <small>Cambiar imagen de perfil</small>
                 </button>
@@ -23,11 +25,13 @@
                     Cambiar contraseña
                 </button>
                 <% if (locals.user.category_id != 1) { %>
-                    <form action="/users/delete/<%= locals.user.id %> /?_method=DELETE" method="POST" class="delete-user-form">
-                        <button type="submit" class="boton-form" id="delete-user-button">
-                            Eliminar Usuario
-                        </button>
-                    </form>
+                <form action="/users/delete/<%= locals.user.id %> /?_method=DELETE" method="POST"
+                    class="delete-user-form">
+                    <button type="submit" class="boton-form" id="delete-user-button">
+                        Eliminar Usuario
+                    </button>
+                </form>
+                <script src="/js/deleteUser.js"></script>
                 <% } %>
             </div>
 
@@ -40,29 +44,27 @@
                     </div>
                     <div class="modal-content-info">
                         <h3>Seleccionar la nueva imagen de perfil</h3>
-                        <form action="/users/profileImage/?_method=PUT" method="POST" enctype="multipart/form-data">
+                        <form action="/users/profileImage/?_method=PUT" method="POST" id="image-form" enctype="multipart/form-data">
                             <div class="create-form-element">
                                 <input type="file" name="image" id="image" required accept="images/*">
+                                <div class="create-validation-errors" id="image_error"></div>
                             </div>
                             <button type="submit" class="register-form-button">Subir imagen</button>
                         </form>
                     </div>
-                    
                 </div>
             </div>
-            
-            <div id="edit-user-form" class="modal" 
-            <% if (typeof errors != 'undefined') { %>
-                style= "display:block"
-                <% } %>
-                >
+
+            <div id="edit-user-form" class="modal" <% if (typeof errors != 'undefined') { %> style="display:block"
+                <% } %>>
                 <div class="modal-content">
                     <div class="edit-user-content">
                         <div class="modal-header">
                             <h3 class="modal-titulo">Editar datos de Usuario</h3>
                             <span class="close" id="close-edit">&times;</span>
                         </div>
-                        <form class="edit-user-form" action="/users/profile/<%= locals.user.id %> /?_method=PUT" method="POST">
+                        <form class="edit-user-form" id="edit-user-form" action="/users/profile/<%= locals.user.id %> /?_method=PUT"
+                            method="POST">
                             <div class="register-form-fields">
                                 <div class="div-campo-datos">
                                     <label for="name">Nombre</label>
@@ -71,10 +73,10 @@
                                         <input type="text" name="first_name" id="first_name" class="campo-datos-type"
                                             value="<%= user.first_name %>">
                                     </div>
-                                    <div class="register-errors">
+                                    <div class="create-validation-errors"  id="first-name-errors">
                                         <p>
                                             <% if (typeof errors != 'undefined') { %>
-                                                <%=typeof errors.first_name != 'undefined' ?  errors.first_name.msg : ''%>
+                                            <%=typeof errors.first_name != 'undefined' ?  errors.first_name.msg : ''%>
                                             <% } %>
                                         </p>
                                     </div>
@@ -86,11 +88,11 @@
                                         <input type="text" name="last_name" id="last_name" class="campo-datos-type"
                                             value="<%= user.last_name %>">
                                     </div>
-                                    <div class="register-errors">
+                                    <div class="create-validation-errors" id="last-name-errors">
                                         <p>
                                             <% if (typeof errors != 'undefined') { %>
-                                                <%=typeof errors.last_name != 'undefined' ?  errors.last_name.msg : ''%>
-                                                <% } %>
+                                            <%=typeof errors.last_name != 'undefined' ?  errors.last_name.msg : ''%>
+                                            <% } %>
                                         </p>
                                     </div>
                                 </div>
@@ -101,11 +103,11 @@
                                         <input type="email" name="email" id="email" class="campo-datos-type"
                                             value="<%= user.email %>">
                                     </div>
-                                    <div class="register-errors">
+                                    <div class="create-validation-errors" id="email-errors">
                                         <p>
                                             <% if (typeof errors != 'undefined') { %>
-                                                <%=typeof errors.email != 'undefined' ?  errors.email.msg : ''%>
-                                                <% } %>
+                                            <%=typeof errors.email != 'undefined' ?  errors.email.msg : ''%>
+                                            <% } %>
                                         </p>
                                     </div>
                                 </div>
@@ -115,45 +117,45 @@
                     </div>
                 </div>
             </div>
-            <div id="change-password-form" class="modal" 
-            <% if (typeof password_errors != 'undefined') { %>
-                style= "display:block"
-                <% } %>
-                >
+            <div id="change-password-form" class="modal" <% if (typeof password_errors != 'undefined') { %>
+                style="display:block" <% } %>>
                 <div class="modal-content">
                     <div class="edit-user-content">
                         <div class="modal-header">
                             <h3 class="modal-titulo">Cambiar la contraseña</h3>
                             <span class="close" id="close-password">&times;</span>
                         </div>
-                        <form class="edit-user-form" action="/users/newpassword/?_method=PUT" method="POST">
-                            <div class="register-form-fields">                        
+                        <form class="edit-user-form" id="password-form" action="/users/newpassword/?_method=PUT" method="POST">
+                            <div class="register-form-fields">
                                 <div class="div-campo-datos">
                                     <label for="password">Contraseña</label>
                                     <div class="campo-datos">
                                         <i class="fas fa-lock"></i>
                                         <input type="password" name="password" id="password" class="campo-datos-type">
+                                        <span class="viewPass"><i class="fas fa-eye"></i></span>
                                     </div>
-                                    <div class="register-errors">
-                                        <p>
+                                    <div class="register-errors" id="password_error">
+                                    
                                             <% if (typeof password_errors != 'undefined') { %>
-                                                <%=typeof password_errors.password != 'undefined' ?  password_errors.password.msg : ''%>
-                                                <% } %>
-                                        </p>
+                                            <%=typeof password_errors.password != 'undefined' ?  password_errors.password.msg : ''%>
+                                            <% } %>
+                                    
                                     </div>
                                 </div>
                                 <div class="div-campo-datos">
                                     <label for="re-password">Repita la contraseña</label>
                                     <div class="campo-datos">
                                         <i class="fas fa-lock"></i>
-                                        <input type="password" name="re_password" id="re_password" class="campo-datos-type">
+                                        <input type="password" name="re_password" id="re_password"
+                                            class="campo-datos-type">
+                                            <span class="viewRePass"><i class="fas fa-eye"></i></span>
                                     </div>
-                                    <div class="register-errors">
-                                        <p>
+                                    <div class="register-errors" id="re_password_error">
+                                        
                                             <% if (typeof password_errors != 'undefined') { %>
-                                                <%=typeof password_errors.re_password != 'undefined' ?  password_errors.re_password.msg : ''%>
-                                                <% } %>
-                                        </p>
+                                            <%=typeof password_errors.re_password != 'undefined' ?  password_errors.re_password.msg : ''%>
+                                            <% } %>
+                                       
                                     </div>
                                 </div>
                             </div>
@@ -166,5 +168,7 @@
     </div>
     <%- include('../partials/footer') %>
     <script src="/js/profile.js"></script>
+    <script src="/js/viewPass.js"></script>
 </body>
+
 </html>
