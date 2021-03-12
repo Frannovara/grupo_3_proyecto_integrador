@@ -1,4 +1,4 @@
-window.addEventListener('load', function() {
+window.addEventListener('load', () => {
     let qs = function(a) {
         return document.querySelector(a)
     }
@@ -12,7 +12,25 @@ window.addEventListener('load', function() {
     let email = qs('#email')
     let password = qs('#password')
     let form = qs('.login-form')
-    
+
+
+
+    let emailError = qs('#email_error')
+    let passwordError = qs('#password_error')
+
+
+
+    window.addEventListener('blur', () =>{
+        let emailCheck = regexEmail.test(email.value)
+        if(emailCheck){
+            emailError.innerHTML = ""
+            emailError.style.visibility = 'hidden'
+        } else {
+            emailError.innerHTML = "<small>El email ingresado no corresponde con un email válido</small>"
+            emailError.style.visibility = 'visible'
+        }
+        }
+     )
 
 
 
