@@ -220,7 +220,12 @@ input:focus {
         flex-direction: row;
         justify-content: flex-start;
     }
-  
+  .contact-email {
+      position: relative;
+      margin: 15px 0;
+      display: flex;
+      justify-content: center;
+  }
     .campo-datos-type {
         border: none;
         flex-grow: 1;
