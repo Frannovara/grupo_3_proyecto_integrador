@@ -53,14 +53,13 @@ window.addEventListener('load', function() {
             emailError.style.visibility = 'visible'
         }
     })
-    let passwordOk
     password.addEventListener('blur', function() {
         if(rePassword.value != "" && rePassword.value != password.value) {
             rePasswordError.innerHTML = "<small>Las contraseñas deben coincidir</small>"
             rePasswordError.style.visibility = 'visible'
         }
-        passwordOk = regexPassword.test(password.value)
-        if(passwordOk) {
+        
+        if(password.value.match(regexPassword)) {
             passwordError.innerHTML =""
             passwordError.style.visibility = 'hidden'
         } else {
