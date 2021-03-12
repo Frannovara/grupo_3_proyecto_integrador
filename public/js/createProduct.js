@@ -93,8 +93,7 @@ window.addEventListener('load', function(){
         }
     })
     image.addEventListener('input', function(){
-        let imageOk = regexImage.test(image.files[0].name)
-        if(!imageOk) {
+        if(!image.files[0].name.match(regexImage)) {
             imageError.innerHTML = `<small>El archivo ingresado no es una imagen</small>`
             imageError.style.visibility = "visible"
         } else {
@@ -149,7 +148,7 @@ window.addEventListener('load', function(){
             descriptionError.style.visibility = "visible"
             i++
         }
-        if(image.files.length == 0) {
+        if(!image.files[0].name.match(regexImage)) {
             imageError.innerHTML = `<small>El archivo ingresado no es una imagen</small>`
             imageError.style.visibility = "visible"
             i++
