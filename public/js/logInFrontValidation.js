@@ -29,9 +29,19 @@ window.addEventListener('load', () => {
             emailError.innerHTML = "<small>El email ingresado no corresponde con un email válido</small>"
             emailError.style.visibility = 'visible'
         }
+        })
+    
+    window.addEventListener('blur' ,() =>{
+        let passwordCheck = regexPassword.test(password.value)
+        if(passwordCheck){
+            passwordError.innerHTML = ""
+            passwordError.style.visibility = 'hidden'
+        } else {
+            passwordError.innerHTML = "<small></small>"
         }
-     )
-
+       
+    })
+     
 
 
 
