@@ -1,110 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
-    <%- include('../partials/head.ejs') %>
+<%- include('../partials/head.ejs') %>
+
 <body>
     <div class="body-content">
         <%- include('../partials/header') %>
         <main class="login-form">
             <h1 class="titulo-seccion">Ingreso</h1>
-            <form action="/users/login" method="POST"  >
+            <form action="/users/login" method="POST">
                 <div class="div-campo-datos">
                     <label for="email">E-mail</label>
                     <div class="campo-datos">
                         <i class="fas fa-envelope"></i>
                         <input type="email" name="email" id="email" class="campo-datos-type">
-                            
                     </div>
                     <div class="create-validation-errors" id="email_error">
-                            <%=typeof errors.email != 'undefined' ?  errors.email.msg : ''%>
+
+                        <%=typeof errors.email != 'undefined' ?  errors.email.msg : ''%>
                     </div>
                 </div>
-                    
-                        
+
+
                 <label for="password">Contraseña</label>
                 <div class="campo-datos">
-                    <i class="fas fa-lock"></i><input type="password" name="password" id="password" class="campo-datos-type">
+                    <i class="fas fa-lock"></i><input type="password" name="password" id="password"
+                        class="campo-datos-type">
                     <span class="viewPass"><i class="fas fa-eye"></i></span>
                 </div>
-                <div class="register-errors"><p><%=typeof errormsg == 'undefined' ? '' : errormsg%></p></div>
+                <div class="register-errors">
+                    <p><%=typeof errormsg == 'undefined' ? '' : errormsg%></p>
+                </div>
                 <div class="remember">
-                    <input type="checkbox" name="remember" id="remember" class="remember"><label for="remember">Recordarme</label>
+                    <input type="checkbox" name="remember" id="remember" class="remember"><label
+                        for="remember">Recordarme</label>
                 </div>
                 <div class="olvide-pass-link">
-                    <p onclick="document.getElementById('new-password-form').style.display='block'" class="new-pass-button" data-toggle="modal" data-target="#profile-image-form">Olvidé mi contraseña </p>
+                    <p onclick="document.getElementById('new-password-form').style.display='block'"
+                        class="new-pass-button" data-toggle="modal" data-target="#profile-image-form">Olvidé mi
+                        contraseña </p>
                 </div>
                 <button type="submit" class="boton-form">Ingresar</button>
             </form>
             <div>
                 <!-- <div class="boton-form"><i class="fab fa-google-plus-g"></i>   Ingresá con Google</div>
                 <div class="boton-form"><i class="fab fa-facebook-f"></i>   Ingresá con Facebook</div> -->
-            </div>  
+            </div>
             <div class="registrate">
                 <a href="/users/register">¿No tenés una cuenta? Resgistrate</a>
             </div>
 
-            <div id="new-password-form" class="modal" 
-            <% if (typeof mensajeErr != 'undefined') { %>
-                style= "display:block"
-                <% } %>
-                >
+            <div id="new-password-form" class="modal" <% if (typeof mensajeErr != 'undefined') { %>
+                style="display:block" <% } %>>
                 <div class="modal-content">
                     <div class="new-password-content">
                         <div class="modal-header">
                             <h3 class="modal-titulo">Recuperar Contraseña</h3>
-                            <span class="close" onclick="document.getElementById('new-password-form').style.display='none'">&times;</span>
+                            <span class="close"
+                                onclick="document.getElementById('new-password-form').style.display='none'">&times;</span>
                         </div>
                         <div class="new-pass-main">
                             <p>Enviaremos un email a tu casilla con un link para regenerar la contraseña</p>
-                            <form action="/users/login/newPass" method="POST">
+                            <form action="/users/login/newPass" method="POST" class="new-pass-form">
                                 <div class="campo-datos">
-                                    <i class="fas fa-envelope"></i><input type="email" name="email" id="email-newPass" class="campo-datos-type">
+                                    <i class="fas fa-envelope"></i><input type="email" name="email" id="email-newPass"
+                                        class="campo-datos-type">
+                                    <div class="create-validation-errors" id="email-new-pass-errors"></div>
                                 </div>
+                                
                                 <% if (typeof mensajeErr != 'undefined') { %>
-                                    <div>
-                                        <p><%= mensajeErr %> </p>
-                                    </div>
-                                    <% } %>
+                                <div>
+                                    <p><%= mensajeErr %> </p>
+                                </div>
+                                <% } %>
                                 <button class="boton-form">Enviar</button>
                             </form>
                         </div>
                     </div>
-                    
                 </div>
             </div>
-
-
-            <div id="ok-message-form" class="modal" 
-            <% if (typeof mensajeOk != 'undefined') { %>
-                style= "display:block"
-                <% } %>
-                >
+            <div id="ok-message-form" class="modal" <% if (typeof mensajeOk != 'undefined') { %> style="display:block"
+                <% } %>>
                 <div class="modal-content">
                     <div class="new-password-content">
                         <div class="modal-header">
                             <h3 class="modal-titulo">Recuperar Contraseña</h3>
-                            <span class="close" onclick="document.getElementById('ok-message-form').style.display='none'">&times;</span>
+                            <span class="close"
+                                onclick="document.getElementById('ok-message-form').style.display='none'">&times;</span>
                         </div>
                         <div class="new-pass-main">
                             <% if (typeof mensajeOk != 'undefined') { %>
-                                    <div>
-                                        <p><%= mensajeOk %> </p>
-                                    </div>
-                                    <% } %>
+                            <div>
+                                <p><%= mensajeOk %> </p>
+                            </div>
+                            <% } %>
                         </div>
                         <div>
-                            <button class="boton-form" onclick="document.getElementById('ok-message-form').style.display='none'">Aceptar</button>
+                            <button class="boton-form"
+                                onclick="document.getElementById('ok-message-form').style.display='none'">Aceptar</button>
                         </div>
                     </div>
-                    
+
                 </div>
             </div>
-            
 
-        </main>    
+
+        </main>
     </div>
     <%- include('../partials/footer') %>
     <script src="/js/viewPass.js"></script>
-    
+
     <script src="/js/logInFrontValidation.js"></script>
+    <script src="/js/newPassEmail.js"></script>
 </body>
+
 </html>
