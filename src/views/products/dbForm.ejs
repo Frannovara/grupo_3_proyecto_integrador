@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-    <%- include('../partials/head.ejs') %>
+<%- include('../partials/head.ejs') %>
+
 <body>
     <div class="body-content">
         <%- include('../partials/header') %>
@@ -8,24 +9,55 @@
             <h1>Formulario para modificar la Base de Datos</h1>
         </div>
         <section class="database_form">
-            <form action="/products/newCategory" method="post" class="new_category">
-                <label for="category">Nueva Categoria</label>
-                <input type="text" name="category" id="category" class="db-form-input" placeholder="...">
-                <button type="submit" class="boton-form">Agregar</button>
-            </form>
-            <form action="/products/newBrand" method="post" class="new_brand">
-                <label for="brand">Nueva Marca</label>
-                <input type="text" name="brand" id="brand" class="db-form-input" placeholder="...">
-                <button type="submit" class="boton-form">Agregar</button>
-            </form>
-            <form action="/products/newColor" method="post" class="new_color">
-                <label for="color">Nuevo Color: (en inglés)</label>
-                <input type="text" name="color" id="color" class="db-form-input" placeholder="...">
-                <button type="submit" class="boton-form">Agregar</button>
-            </form>
-       </section>
-
+            <div class="new_category">
+                <form action="/products/editCategory/?_method=PATCH" method="post">
+                    <label for="category">Editar Categoria</label>
+                    <select name="actual_category" id="actual_category">
+                        <option value="0">Seleccionar</option>
+                    </select>
+                    <input type="text" name="category" id="category" class="db-form-input" placeholder="...">
+                    <button type="submit" class="boton-form">Modificar</button>
+                </form>
+                <form action="/products/newCategory" method="post">
+                    <label for="category">Nueva Categoria</label>
+                    <input type="text" name="category" id="category" class="db-form-input" placeholder="...">
+                    <button type="submit" class="boton-form">Agregar</button>
+                </form>
+            </div>
+            <div class="new_brand">
+                <form action="/products/editBrand/?_method=PATCH" method="post">
+                    <label for="brand">Editar Marca</label>
+                    <select name="actual_brand" id="actual_brand">
+                        <option value="0">Seleccionar</option>
+                    </select>
+                    <input type="text" name="brand" id="brand" class="db-form-input" placeholder="...">
+                    <button type="submit" class="boton-form">Modificar</button>
+                </form>
+                <form action="/products/newBrand" method="post">
+                    <label for="brand">Nueva Marca</label>
+                    <input type="text" name="brand" id="brand" class="db-form-input" placeholder="...">
+                    <button type="submit" class="boton-form">Agregar</button>
+                </form>
+            </div>
+            <div class="new_color">
+                <form action="/products/editColor/?_method=PATCH" method="post">
+                    <label for="color">Editar Color</label>
+                    <select name="actual_color" id="actual_color">
+                        <option value="0">Seleccionar</option>
+                    </select>
+                    <input type="text" name="color" id="color" class="db-form-input" placeholder="En inglés">
+                    <button type="submit" class="boton-form">Modificar</button>
+                </form>
+                <form action="/products/newColor" method="post">
+                    <label for="color">Nuevo Color: </label>
+                    <input type="text" name="color" id="color" class="db-form-input" placeholder="En inglés">
+                    <button type="submit" class="boton-form">Agregar</button>
+                </form>
+            </div>
+        </section>
     </div>
     <%- include('../partials/footer') %>
+    <script src="/js/dbForm.js"></script>
 </body>
+
 </html>
