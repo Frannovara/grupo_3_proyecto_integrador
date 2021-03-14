@@ -2,7 +2,9 @@ const db = require( '../../database/models' );
 
 const controller = {
     list: (req,res) =>{
-        db.Users.findAll()
+        db.Users.findAll({
+            paranoid: false
+        })
         .then(users => {
             /**** ONLY RETURNS THE USERS EMAIL****/
             users = users.map( user => user = user.email)
