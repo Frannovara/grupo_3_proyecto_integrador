@@ -691,6 +691,54 @@ const controladorProductos = {
             res.render('dbError')
         })
     },
+    editCategory: (req,res) => {
+        db.Product_categories.update({
+            name: req.body.category
+        }, {
+            where: {
+                id: req.body.actual_category
+            }
+        })
+        .then( () => {
+            return res.redirect('/')
+        })
+        .catch(err => {
+            console.log(err);
+            res.render('dbError')
+        })
+    },
+    editBrand: (req,res) => {
+        db.Brands.update({
+            name: req.body.brand
+        }, {
+            where: {
+                id: req.body.actual_brand
+            }
+        })
+        .then( () => {
+            return res.redirect('/')
+        })
+        .catch(err => {
+            console.log(err);
+            res.render('dbError')
+        })
+    },
+    editColor: (req,res) => {
+        db.Colors.update({
+            name: req.body.color
+        }, {
+            where: {
+                id: req.body.actual_color
+            }
+        })
+        .then( () => {
+            return res.redirect('/')
+        })
+        .catch(err => {
+            console.log(err);
+            res.render('dbError')
+        })
+    }
 }
 
 
