@@ -157,11 +157,9 @@ input:focus {
         background-color: #FCA311 ;
         text-align: center;
     }
-    
     .product-detail {
         text-decoration: none;
     }
-
     .div-ofertas {
         padding: 2px;
         background-color:#FCA311;
@@ -211,6 +209,8 @@ input:focus {
         display: flex;
         flex-direction: row;
         justify-content: flex-start;
+        position: relative;
+        margin-bottom: 20px;
     }
     .campo-datos-checkbox {  
         border-radius: 5px;
