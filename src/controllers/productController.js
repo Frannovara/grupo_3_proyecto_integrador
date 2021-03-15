@@ -660,7 +660,7 @@ const controladorProductos = {
             name: req.body.category
         })
         .then( () => {
-            return res.redirect('/')
+            return res.redirect('/products/databaseForm')
         })
         .catch(err => {
             console.log(err);
@@ -672,7 +672,7 @@ const controladorProductos = {
             name: req.body.brand
         })
         .then( () => {
-            return res.redirect('/')
+            return res.redirect('/products/databaseForm')
         })
         .catch(err => {
             console.log(err);
@@ -684,7 +684,7 @@ const controladorProductos = {
             name: req.body.color
         })
         .then( () => {
-            return res.redirect('/')
+            return res.redirect('/products/databaseForm')
         })
         .catch(err => {
             console.log(err);
@@ -700,7 +700,7 @@ const controladorProductos = {
             }
         })
         .then( () => {
-            return res.redirect('/')
+            return res.redirect('/products/databaseForm')
         })
         .catch(err => {
             console.log(err);
@@ -716,7 +716,7 @@ const controladorProductos = {
             }
         })
         .then( () => {
-            return res.redirect('/')
+            return res.redirect('/products/databaseForm')
         })
         .catch(err => {
             console.log(err);
@@ -732,7 +732,7 @@ const controladorProductos = {
             }
         })
         .then( () => {
-            return res.redirect('/')
+            return res.redirect('/products/databaseForm')
         })
         .catch(err => {
             console.log(err);
