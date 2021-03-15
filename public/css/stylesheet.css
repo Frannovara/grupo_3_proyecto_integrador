@@ -160,6 +160,16 @@ input:focus {
     .product-detail {
         text-decoration: none;
     }
+    .add-color-form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .color-form-input {
+        outline: none;
+        background-color: #ffffff;
+        border: none;
+    }
     .div-ofertas {
         padding: 2px;
         background-color:#FCA311;
@@ -234,6 +244,18 @@ input:focus {
         border: none;
         border-radius: 5px;
         background-color: #FCA311;
+        color: #04233b;
+        margin: 5px;
+        padding: 5px;
+        width: fit-content;
+        -webkit-box-shadow: 0px 0px 10px -3px rgba(0,0,0,0.75);
+        -moz-box-shadow: 0px 0px 10px -3px rgba(0,0,0,0.75);
+        box-shadow: 0px 0px 10px -3px rgba(0,0,0,0.75);
+    }
+    .boton-form-danger {
+        border: none;
+        border-radius: 5px;
+        background-color: red;
         color: #04233b;
         margin: 5px;
         padding: 5px;
@@ -937,8 +959,10 @@ margin-left: 5px;
         color: #FCA311;
         text-decoration: none;
         padding:10 px;
-        text-align: center;
-        
+        text-align: center; 
+    }
+    .login:hover {
+        color: #04233b
     }
 
     .div-encabezado {
