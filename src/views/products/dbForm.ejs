@@ -10,8 +10,9 @@
         </div>
         <section class="database_form">
             <div class="new_category">
+                <h2 class="database_form_title">Categorías</h2>
                 <form action="/products/editCategory/?_method=PATCH" method="post">
-                    <label for="category">Editar Categoria</label>
+                    <label for="category">Editar</label>
                     <select name="actual_category" id="actual_category">
                         <option value="0">Seleccionar</option>
                     </select>
@@ -19,14 +20,15 @@
                     <button type="submit" class="boton-form">Modificar</button>
                 </form>
                 <form action="/products/newCategory" method="post">
-                    <label for="category">Nueva Categoria</label>
+                    <label for="category">Nueva</label>
                     <input type="text" name="category" id="category" class="db-form-input" placeholder="...">
                     <button type="submit" class="boton-form">Agregar</button>
                 </form>
             </div>
             <div class="new_brand">
+                <h2 class="database_form_title">Marcas</h2>
                 <form action="/products/editBrand/?_method=PATCH" method="post">
-                    <label for="brand">Editar Marca</label>
+                    <label for="brand">Editar</label>
                     <select name="actual_brand" id="actual_brand">
                         <option value="0">Seleccionar</option>
                     </select>
@@ -34,14 +36,15 @@
                     <button type="submit" class="boton-form">Modificar</button>
                 </form>
                 <form action="/products/newBrand" method="post">
-                    <label for="brand">Nueva Marca</label>
+                    <label for="brand">Nueva</label>
                     <input type="text" name="brand" id="brand" class="db-form-input" placeholder="...">
                     <button type="submit" class="boton-form">Agregar</button>
                 </form>
             </div>
             <div class="new_color">
+                <h2 class="database_form_title">Colores</h2>
                 <form action="/products/editColor/?_method=PATCH" method="post">
-                    <label for="color">Editar Color</label>
+                    <label for="color">Editar</label>
                     <select name="actual_color" id="actual_color">
                         <option value="0">Seleccionar</option>
                     </select>
@@ -49,7 +52,7 @@
                     <button type="submit" class="boton-form">Modificar</button>
                 </form>
                 <form action="/products/newColor" method="post">
-                    <label for="color">Nuevo Color: </label>
+                    <label for="color">Nuevo</label>
                     <input type="text" name="color" id="color" class="db-form-input" placeholder="En inglés">
                     <button type="submit" class="boton-form">Agregar</button>
                 </form>
