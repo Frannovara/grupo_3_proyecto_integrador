@@ -1,7 +1,7 @@
 const db = require( '../../database/models' );
 
 const controller = {
-    list: (req,res) =>{
+    emailRegistered: (req,res) =>{
         db.Users.findOne({
             where: {
                 email: req.params.email
