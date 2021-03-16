@@ -104,6 +104,19 @@ window.addEventListener('load', function() {
             emailError.innerHTML = "<small>El email ingresado no corresponde con un email válido</small>"
             emailError.style.visibility = 'visible'
             i++
+        } else {
+            fetch(`/api/users/${email.value}`)
+            .then(response => {
+                return response.json()
+            })
+            .then(dataDecode => {
+                let register = dataDecode.email;
+                if (register) {
+                    emailNewPassErrors.innerHTML = `<small>El email ingresado ya se encuentra registrado</small>`
+                    emailNewPassErrors.style.visibility = 'visible'
+                    i++
+                }
+            })
         }
         if(!password.value.match(regexPassword)) {
             passwordError.innerHTML = "<small>La contraseña debe tener al menos un número, una mayúscula, una mínuscula y 8 caracteres</small>"
