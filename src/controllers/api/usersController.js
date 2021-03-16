@@ -2,22 +2,24 @@ const db = require( '../../database/models' );
 
 const controller = {
     list: (req,res) =>{
-        db.Users.findAll({
+        db.Users.findOne({
+            where: {
+                email: req.params.email
+            },
             paranoid: false
         })
-        .then(users => {
-            /**** ONLY RETURNS THE USERS EMAIL****/
-            users = users.map( user => user = user.email)
-            usuarios = {
-                "meta": {
-                    "status": 200,
-                    "count": users.length,
-                    "url": "api/users/"
-                },
-                "data": users
+        .then(user => {
+            let result
+            if (user) {
+                result = true
+            } else {
+                result = false
+            }
+            usuario = {
+                "email": result
             }
 
-            return res.json(usuarios)
+            return res.json(usuario)
         })
     }
 }
