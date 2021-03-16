@@ -32,12 +32,13 @@ window.addEventListener('load', () => {
         })
     
     window.addEventListener('blur' ,() =>{
-        let passwordCheck = regexPassword.test(password.value)
-        if(passwordCheck){
+        /* let passwordCheck = regexPassword.match(password.value) */
+        if(password.value.match(regexPassword)){
             passwordError.innerHTML = ""
             passwordError.style.visibility = 'hidden'
         } else {
-            passwordError.innerHTML = "<small></small>"
+            passwordError.innerHTML = "<small>La contraseña no es valida</small>"
+            passwordError.style.visibility = 'visible'
         }
        
     })
