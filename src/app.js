@@ -26,10 +26,14 @@ app.set('view engine', 'ejs');
 const mainRoutes = require ('./routes/main');
 const productRoutes = require ('./routes/products');
 const userRoutes = require ('./routes/users');
+const productsApiRoutes = require('./routes/api/products')
+const usersApiRoutes = require('./routes/api/users')
 
 app.use ('/', mainRoutes);
 app.use ('/products', productRoutes);
 app.use ('/users' , userRoutes);
+app.use ('/api/users', usersApiRoutes)
+app.use ('/api/products', productsApiRoutes)
 
 //catch 404 and forward to error handler
 // app.use(function(req, res, next) {

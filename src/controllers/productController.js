@@ -660,7 +660,7 @@ const controladorProductos = {
             name: req.body.category
         })
         .then( () => {
-            return res.redirect('/')
+            return res.redirect('/products/databaseForm')
         })
         .catch(err => {
             console.log(err);
@@ -672,7 +672,7 @@ const controladorProductos = {
             name: req.body.brand
         })
         .then( () => {
-            return res.redirect('/')
+            return res.redirect('/products/databaseForm')
         })
         .catch(err => {
             console.log(err);
@@ -684,13 +684,61 @@ const controladorProductos = {
             name: req.body.color
         })
         .then( () => {
-            return res.redirect('/')
+            return res.redirect('/products/databaseForm')
         })
         .catch(err => {
             console.log(err);
             res.render('dbError')
         })
     },
+    editCategory: (req,res) => {
+        db.Product_categories.update({
+            name: req.body.category
+        }, {
+            where: {
+                id: req.body.actual_category
+            }
+        })
+        .then( () => {
+            return res.redirect('/products/databaseForm')
+        })
+        .catch(err => {
+            console.log(err);
+            res.render('dbError')
+        })
+    },
+    editBrand: (req,res) => {
+        db.Brands.update({
+            name: req.body.brand
+        }, {
+            where: {
+                id: req.body.actual_brand
+            }
+        })
+        .then( () => {
+            return res.redirect('/products/databaseForm')
+        })
+        .catch(err => {
+            console.log(err);
+            res.render('dbError')
+        })
+    },
+    editColor: (req,res) => {
+        db.Colors.update({
+            name: req.body.color
+        }, {
+            where: {
+                id: req.body.actual_color
+            }
+        })
+        .then( () => {
+            return res.redirect('/products/databaseForm')
+        })
+        .catch(err => {
+            console.log(err);
+            res.render('dbError')
+        })
+    }
 }
 
 

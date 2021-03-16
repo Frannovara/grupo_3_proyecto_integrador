@@ -11,7 +11,7 @@ window.addEventListener('load', function() {
     for (let i = 0; i < colorButtons.length; i++) {
         images[i] = document.getElementById('bike'+i)
     }
-    for (let i = 0; i < colorButtons.length; i++) {
+    for (let i = 0; i < colorButtons.length-1; i++) {
         colorButtons[i].addEventListener('click', () => {
             for (let j = 0; j < images.length; j++) {
                 if (i == j) {

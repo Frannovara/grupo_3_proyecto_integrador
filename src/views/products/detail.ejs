@@ -13,24 +13,24 @@
                             <div class="moto-imagenes">
                                 <div class="div-imagen-moto">
                                     <% for( let i = 0; i < productToShow.colors.length; i++ ) { %>
-                                        <img class="imagen-moto" id="bike<%= i %>" src="/images/products/<%= productToShow.colors[i].Images.image %> " alt="imagen-moto1" 
-                                        <% if (i!=0) { %>
-                                            style= "display:none"
-                                        <% } %>
-                                        >
+                                    <img class="imagen-moto" id="bike<%= i %>"
+                                        src="/images/products/<%= productToShow.colors[i].Images.image %> "
+                                        alt="imagen-moto1" <% if (i!=0) { %> style="display:none" <% } %>>
                                     <% } %>
                                 </div>
                                 <h4 class="titulo-colores">Colores</h4>
                                 <div class="colores">
                                     <!-- Este for each recibe la búsqueda de los colores que tiene este producto, y crea los círculos con los colores.  -->
-                                    
+
                                     <% for( let i = 0; i < productToShow.colors.length; i++ ) { %>
-                                        <button class="dot" id="button<%= i%>" style= "background-color: <%= productToShow.colors[i].name %>"></button>
+                                    <button class="dot" id="button<%= i%>"
+                                        style="background-color: <%= productToShow.colors[i].name %>"></button>
                                     <% } %>
                                     <% if (locals.user.category_id == 1) { %>
-                                        <button onclick="document.getElementById('new-color-form').style.display='block'" class="dot" data-toggle="modal" data-target="#new-color-form">
-                                            +
-                                        </button>
+                                    <button onclick="document.getElementById('new-color-form').style.display='block'"
+                                        class="dot" data-toggle="modal" data-target="#new-color-form">
+                                        +
+                                    </button>
                                     <% } %>
                                 </div>
                             </div>
@@ -38,45 +38,50 @@
                                 <p class="detail-info">
                                     <h2><strong><%= productToShow.name %></strong></h2>
                                     <div class="detail-info-content">
-                                        <p class="detail-info-element"><strong>Año:</strong> <%= productToShow.year %> </p>
-                                        <p class="detail-info-element"><strong>Marca:</strong> <%= productToShow.brand.name %> </p>
-                                        <p class="detail-info-element"><strong>Categoría:</strong> <%= productToShow.categories.name %> </p>
+                                        <p class="detail-info-element"><strong>Año:</strong> <%= productToShow.year %>
+                                        </p>
+                                        <p class="detail-info-element"><strong>Marca:</strong>
+                                            <%= productToShow.brand.name %> </p>
+                                        <p class="detail-info-element"><strong>Categoría:</strong>
+                                            <%= productToShow.categories.name %> </p>
                                     </div>
                                     <div class="detail-info-content">
                                         <% if (productToShow.discount == 0) { %>
-                                            <p><strong>Precio:</strong> $<%= productToShow.final_price %></p>
+                                        <p><strong>Precio:</strong> $<%= productToShow.final_price %></p>
                                         <% } else { %>
-                                            <p><strong>Precio:</strong> <small class="precio-tachado">$<%= productToShow.base_price %> </small> $<%= productToShow.final_price %> <small class="product-discount"><%= productToShow.discount %>%</small></p>
+                                        <p><strong>Precio:</strong> <small
+                                                class="precio-tachado">$<%= productToShow.base_price %> </small>
+                                            $<%= productToShow.final_price %> <small
+                                                class="product-discount"><%= productToShow.discount %>%</small></p>
                                         <% } %>
                                     </div>
-                                    <p><strong>Descripción:</strong> <%= productToShow.description %> </p>  
+                                    <p><strong>Descripción:</strong> <%= productToShow.description %> </p>
                                 </p>
                                 <div class="detalle-botones">
                                     <div class="detalle-botones-public">
-                                        <!-- <div>
-                                            <form action="/products/buy" method="post">
-                                                <button type="submit" class="boton-agregar"><strong>Comprar</strong></button>
-                                            </form>
-                                        </div> -->
                                         <div>
                                             <form action="/products/addToCart/<%= productToShow.id %>" method="get">
-                                                <button type="submit" class="boton-agregarcarrito"><strong>Agregar al carrito</strong></button>
+                                                <button type="submit" class="boton-form"><strong>Agregar al
+                                                        carrito</strong></button>
                                             </form>
                                         </div>
                                     </div>
                                     <% if (locals.user.category_id == 1) { %>
-                                        <div class="detalle-botones-admin">
-                                            <div>
-                                                <a href="/products/edit/<%= productToShow.id %> "><button type="button" class="boton-editar"><strong>Editar Producto</strong></button></a>
-                                            </div>
-                                            <div>
-                                                <form method="POST" action="/products/delete/<%= productToShow.id %>?_method=DELETE"  >
-                                                    <button type="submit" class="boton-editar"><strong>Eliminar Producto</strong></button>
-                                                </form>    
-                                            </div>
+                                    <div class="detalle-botones-admin">
+                                        <div>
+                                            <a href="/products/edit/<%= productToShow.id %> "><button type="button"
+                                                    class="boton-form-danger"><strong>Editar Producto</strong></button></a>
                                         </div>
+                                        <div>
+                                            <form method="POST"
+                                                action="/products/delete/<%= productToShow.id %>?_method=DELETE">
+                                                <button type="submit" class="boton-form-danger"><strong>Eliminar
+                                                        Producto</strong></button>
+                                            </form>
+                                        </div>
+                                    </div>
                                     <% } %>
-                                    
+
                                 </div>
                             </div>
                         </div>
@@ -88,44 +93,50 @@
                 <div class="div-articulo">
                     <section class="section-pd">
                         <% productsInSale.forEach(product => { %>
-                            <article class="article-home">
-                                <a href="/products/<%= product.id %>" class="product-detail" > 
-                                    <div class="div-img1">
-                                        <img class="img1" src= "/images/products/<%= product.colors[0].Images.image %>"  alt= "<%= product.name %>"  >
-                                    </div>
-                                    <p class="p-home">  <%= product.name %><br>
-                                        $<%= toThousand(product.final_price) %> - <%= product.year %></p>
-                                </a>
-                            </article>
+                        <article class="article-home">
+                            <a href="/products/<%= product.id %>" class="product-detail">
+                                <div class="div-img1">
+                                    <img class="img1" src="/images/products/<%= product.colors[0].Images.image %>"
+                                        alt="<%= product.name %>">
+                                </div>
+                                <p class="p-home"> <%= product.name %><br>
+                                    $<%= toThousand(product.final_price) %> - <%= product.year %></p>
+                            </a>
+                        </article>
                         <% }) %>
                     </section>
-                </div>        
-            </section> 
+                </div>
+            </section>
 
 
             <div id="new-color-form" class="modal">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h3 class="modal-titulo">Agregar un color para este producto</h3>
-                        <span class="close" onclick="document.getElementById('new-color-form').style.display='none'">&times;</span>
+                        <span class="close"
+                            onclick="document.getElementById('new-color-form').style.display='none'">&times;</span>
                     </div>
                     <div class="modal-content-info">
-                        <form action="/products/addColor/<%= productToShow.id %>/?_method=PUT" method="post"  enctype="multipart/form-data">
+                        <form action="/products/addColor/<%= productToShow.id %>/?_method=PUT" method="post"
+                            enctype="multipart/form-data" class="add-color-form">
                             <div class="create-form-element">
                                 <label for="image">Imagen</label>
-                                <input type="file" name="image" id="image"  class="create-form-input" required>
+                                <input type="file" name="image" id="image" class="color-form-input" required>
+                                <div class="create-validation-errors" id="image-error"></div>
                             </div>
                             <div class="create-form-element">
                                 <label for="color">Color</label>
-                                <select name="color" id="color" class="create-form-input" required>
+                                <select name="color" id="color" class="color-form-input" required>
+                                    <option class="color-option" value="0">Seleccione un color</option>
                                     <% colors.forEach(color => { %>
-                                        <option value="<%=color.id%>"><%=color.name%></option>
+                                    <option class="color-option" value="<%=color.id%>"><%=color.name%></option>
                                     <% }) %>
                                 </select>
+                                <div class="create-validation-errors" id="color-error"></div>
                             </div>
                             <button type="submit" class="boton-form"><strong>Agregar Color</strong></button>
                         </form>
-                        
+
                     </div>
                 </div>
             </div>
@@ -133,6 +144,7 @@
     </div>
     <%- include('../partials/footer') %>
     <script src="/js/detailImages.js"></script>
+    <script src="/js/colorForm.js"></script>
 </body>
 
 </html>

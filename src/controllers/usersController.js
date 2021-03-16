@@ -1,5 +1,3 @@
-const fs = require('fs');
-const path = require('path');
 const bcrypt = require('bcryptjs');
 const {validationResult} = require('express-validator');
 const nodemailer = require('nodemailer');
@@ -10,9 +8,6 @@ const db = require( '../database/models' );
 // requireing .env
 require('dotenv').config()
 
-
-const usersFilePath = path.join(__dirname, '../data/users.json');
-const users = JSON.parse(fs.readFileSync(usersFilePath, 'utf-8'));
 
 function makeid() {
     var result = '';
@@ -30,7 +25,7 @@ const controladorUsuarios = {
     login: (req, res) => {
         res.render('./users/login', {
             loginData: {},
-            errors: [],
+            errors: {},
             title: 'Login -'
         })
     },
@@ -284,7 +279,6 @@ const controladorUsuarios = {
             paranoid:false 
         })
         .then(userEmail => {
-            console.log(userEmail);
             if(userEmail) {
                 let transporter = nodemailer.createTransport({
                     host: 'smtp.gmail.com',
@@ -320,11 +314,18 @@ const controladorUsuarios = {
                     },
                     paranoid:false 
                 })
-                let mensajeOk = 'Se ha enviado un email a la casilla ' + req.body.email + '. Por favor siga los pasos indicados en el mismo para volver a ingresar.'
-                res.render('./users/login', {mensajeOk, title: 'Login -'})
+                .then(()=> {
+                    let mensajeOk = 'Se ha enviado un email a la casilla ' + req.body.email + '. Por favor siga los pasos indicados en el mismo para volver a ingresar.'
+                    res.render('./users/login', {mensajeOk, title: 'Login -', errors: {}})
+                })
+                .catch(err => {
+                    console.log(err);
+                    res.render('dbError')
+                })
+                
             } else {
                 let mensajeErr = 'El email ingresado no se encuentra registrado, por favor registrese.'
-                res.render('./users/login', {mensajeErr, title: 'Login -'})
+                res.render('./users/login', {mensajeErr, title: 'Login -', errors: {}})
             }
         })
         .catch(err => {

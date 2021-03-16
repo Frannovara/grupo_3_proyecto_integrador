@@ -157,11 +157,19 @@ input:focus {
         background-color: #FCA311 ;
         text-align: center;
     }
-    
     .product-detail {
         text-decoration: none;
     }
-
+    .add-color-form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .color-form-input {
+        outline: none;
+        background-color: #ffffff;
+        border: none;
+    }
     .div-ofertas {
         padding: 2px;
         background-color:#FCA311;
@@ -211,6 +219,8 @@ input:focus {
         display: flex;
         flex-direction: row;
         justify-content: flex-start;
+        position: relative;
+        margin-bottom: 20px;
     }
     .campo-datos-checkbox {  
         border-radius: 5px;
@@ -238,6 +248,21 @@ input:focus {
         margin: 5px;
         padding: 5px;
         width: fit-content;
+        -webkit-box-shadow: 0px 0px 10px -3px rgba(0,0,0,0.75);
+        -moz-box-shadow: 0px 0px 10px -3px rgba(0,0,0,0.75);
+        box-shadow: 0px 0px 10px -3px rgba(0,0,0,0.75);
+    }
+    .boton-form-danger {
+        border: none;
+        border-radius: 5px;
+        background-color: red;
+        color: #04233b;
+        margin: 5px;
+        padding: 5px;
+        width: fit-content;
+        -webkit-box-shadow: 0px 0px 10px -3px rgba(0,0,0,0.75);
+        -moz-box-shadow: 0px 0px 10px -3px rgba(0,0,0,0.75);
+        box-shadow: 0px 0px 10px -3px rgba(0,0,0,0.75);
     }
     .repetead-user-error {
         color: red;
@@ -595,6 +620,7 @@ margin-left: 5px;
     border-radius: 5px;
     border: #aaa 1px solid;
     position: relative;
+    width: 400px;
 }
 .create-form-button {
     margin: 15px;
@@ -612,6 +638,7 @@ margin-left: 5px;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    flex-wrap: wrap;
 }
 .create-form-input {
     outline: none;
@@ -767,36 +794,50 @@ margin-left: 5px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: #265277 solid 1px;
+    background-color: #ffffff;
     border-radius: 5px;
     padding: 10px;
     margin: 20px;
+    width: 435px;
+    -webkit-box-shadow: 0px 0px 54px -30px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 54px -30px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 54px -30px rgba(0,0,0,0.75);
 }
 .new_color{
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: #265277 solid 1px;
+    background-color: #ffffff;
     border-radius: 5px;
     padding: 10px;
     margin: 20px;
+    width: 435px;
+    -webkit-box-shadow: 0px 0px 54px -30px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 54px -30px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 54px -30px rgba(0,0,0,0.75);
 }
 .new_brand{
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: #265277 solid 1px;
+    background-color: #ffffff;
     border-radius: 5px;
     padding: 10px;
     margin: 20px;
+    width: 435px;
+    -webkit-box-shadow: 0px 0px 54px -30px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 54px -30px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 54px -30px rgba(0,0,0,0.75);
 }
 .database_form {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
 }
 .database_form_title {
     text-align: center;
+    color: #173650;
 }
 
 /* fin database form */
@@ -918,8 +959,10 @@ margin-left: 5px;
         color: #FCA311;
         text-decoration: none;
         padding:10 px;
-        text-align: center;
-        
+        text-align: center; 
+    }
+    .login:hover {
+        color: #04233b
     }
 
     .div-encabezado {
@@ -1150,9 +1193,13 @@ margin-left: 5px;
     /* creacion producto */
     .create-form-row {
         flex-direction: row;
+        justify-content: space-between;
     }
     .create-form-column {
         width: 45%;
+    }
+    .create-form {
+        height: 550px;
     }
     /* fin producto  */
 

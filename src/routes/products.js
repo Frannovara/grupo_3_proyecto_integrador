@@ -53,6 +53,9 @@ router.get('/databaseForm', userMiddleware.userAdmin, productController.database
 router.post('/newCategory',userMiddleware.userAdmin, productController.newCategory)
 router.post('/newBrand',userMiddleware.userAdmin, productController.newBrand)
 router.post('/newColor',userMiddleware.userAdmin, productController.newColor)
+router.patch('/editCategory',userMiddleware.userAdmin, productController.editCategory)
+router.patch('/editBrand',userMiddleware.userAdmin, productController.editBrand)
+router.patch('/editColor',userMiddleware.userAdmin, productController.editColor)
 
 /* PRODUCT DETAIL */
 router.get('/:id', productController.detail);
