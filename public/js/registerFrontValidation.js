@@ -7,7 +7,7 @@ window.addEventListener('load', function() {
     }
     
     let regexEmail = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g
-    let regexPassword = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/g
+    let regexPassword = /((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W]).{8,64})/g
 
 
     let firstName = qs('#first_name')

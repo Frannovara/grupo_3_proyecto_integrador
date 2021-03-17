@@ -74,4 +74,51 @@
     - READ: Al redirigir a la página del carrito, realiza una búsqueda de los carritos pendientes para el usuario logueado, y muestra los productos asociados.
     - UPDATE: Si se modifica la cantidad de unidades, se actualiza la tabla pivot. 
     - DELETE: Si las unidades llegan a 0 se realiza un soft.delete, y el producto no se muestra mas en el carrito.
+- FORMULARIO DE EDICIÓN DE BASE DE DATOS:
+    Este formulario permite al administrador editar y crear nuevas categorias, marcas y colores, para tenerlos en la base de datos y disponibles para la creación y edición de productos.
     
+## VALIDACIONES DEL FRONT
+    - LOGIN
+    - REGISTRO: Si todas las validaciones son correctas muestra un sweet alert y luego hace el submit del formulario.
+        - NOMBRE: debe ser al menos 2 caracteres
+        - APELLIDO: debe ser al menos 2 caracteres
+        - EMAIL: valida que sea un email valido con regex, y luego valida que el email no este registrado a través de una API que devuelve un booleano.
+        - CONTRASEÑA: La misma debe tener al menos una mayúscula, una minúscula, un número, un caracter especial, y entre 8 y 64 caracteres. Todo a través de una regex
+        - REPETICIÓN DE CONTRASEÑA: Debe ser igual al campo Contraseña.
+        - TERMINOS Y CONDICIONES: Se debe haber aceptado los terminos y condiciones.
+    - CREACIÓN DEL PRODUCTO:
+        - NOMBRE: debe tener al menos 5 caracteres.
+        - CATEGORIA: debe ser un número (id). Esto previene que modifiquen el HTML y haya un error al procesar el formulario en el backend.
+        - MARCA: debe ser un número (id).
+        - PRECIO: Debe ser un número mayor a cero.
+        - DESCUENTO: Debe ser un número mayor a cero.
+        - AÑO: debe ser un número de 4 dígitos.
+        - DESCRIPCIÓN: Debe tener al menos 20 caracteres.
+        - IMAGEN: Debe ser una imagen con formato png, jpg, jpeg o gif. validado con una regex.
+        -COLOR: Debe ser un número (id).
+    - EDICIÓN DEL PRODUCTO
+        - FALTA REALIZAR
+    - RECUPERACIÓN DE CONTRASEÑA
+        - EMAIL: el email debe ser un email válido (con regex), y debe estar registrado en la base de datos (a través de la misma API mencionada anteriormente).
+    - FORMULARIO DE EDICIÓN DE BASE DE DATOS
+        - CATEGORIA: al editar valida que sea un número.
+        - MARCA: al editar valida que sea un número.
+        - COLOR: al editar valida que sea un número.
+    - FORMULARIO DE AGREGAR FOTO Y COLOR DE PRODUCTO:
+        - IMAGEN: valida que sea una imagen con formato png, jpg, jpeg o gif con una regex
+        - COLOR: Valida que se haya seleccionado una opción.
+    - FORMULARIO DE CONTACTO
+        - EMAIL: valida que sea un email válido
+    - SUBIR AVATAR
+        - IMAGEN: valida que sea una imagen con formato png, jpg, jpeg o gif con una regex
+    - EDITAR USUARIO
+        - NOMBRE: debe ser al menos 2 caracteres
+        - APELLIDO: debe ser al menos 2 caracteres
+        - EMAIL: valida que sea un email válido. FALTARÍA VALIDAR QUE ESE MAIL INGRESADO NO EXISTA.
+    - MODIFICACIÓN DE CONTRASEÑA
+        - CONTRASEÑA: La misma debe tener al menos una mayúscula, una minúscula, un número, un caracter especial, y entre 8 y 64 caracteres. Todo a través de una regex
+        - REPETICIÓN DE CONTRASEÑA: Debe ser igual al campo Contraseña.
+    - ELIMINAR USUARIO
+        - No es estrictamente una validación, pero pregunta si está seguro de querer eliminar el usuario. No se puede eliminar al administrador.
+    - VER CONTRASEÑA
+        - Tampoco es una validación, pero permite ver la contraseña si se mantiene clickeado el botón de ver contraseña.
