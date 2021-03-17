@@ -59,7 +59,7 @@ const controladorUsuarios = {
                             return res.redirect('/users/profile');  
                             }else{
                                 let errormsg = "El usuario o la contraseña ingresados no son validos."
-                                return res.render ('./users/login' , {errormsg, title: 'Login -'})
+                                return res.render ('./users/login' , {errormsg,errors: {},loginData: {}, title: 'Login -'})
                             }
                         })
                         .catch(err => {
@@ -81,13 +81,13 @@ const controladorUsuarios = {
                             else{
                                 let errormsg = "El usuario o la contraseña ingresados no son validos."
                                 
-                                return res.render ('./users/login' , {errormsg, title: 'Login -'})
+                                return res.render ('./users/login' , {errormsg,errors: {},loginData: {}, title: 'Login -'})
                             }
                     }
                 }else{
                     let errormsg = "El usuario o la contraseña ingresados no son validos."
                                 
-                                return res.render ('./users/login' , {errormsg,title: 'Login -'})
+                    return res.render ('./users/login' , {errormsg,errors: {},loginData: {}, title: 'Login -'})
 
                 }
                 

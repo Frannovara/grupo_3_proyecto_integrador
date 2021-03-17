@@ -78,7 +78,11 @@
     Este formulario permite al administrador editar y crear nuevas categorias, marcas y colores, para tenerlos en la base de datos y disponibles para la creación y edición de productos.
     
 ## VALIDACIONES DEL FRONT
-    - LOGIN
+    - LOGIN: -Compara y valida el formato de ambos campos con regex.
+                La contraseña debe tener mayuscula, minuscula, un numero y al menos 8 caracteres.
+                El email debe respetar el formato de un email.
+             -Compara el campo Email se encuentre registrado mediante una consulta con una API
+             -Mediante prevent default detiene el submit del formulario hasta que no haya errores   
     - REGISTRO: Si todas las validaciones son correctas muestra un sweet alert y luego hace el submit del formulario.
         - NOMBRE: debe ser al menos 2 caracteres
         - APELLIDO: debe ser al menos 2 caracteres
