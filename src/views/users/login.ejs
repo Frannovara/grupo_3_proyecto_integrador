@@ -7,17 +7,18 @@
         <%- include('../partials/header') %>
         <main class="login-form">
             <h1 class="titulo-seccion">Ingreso</h1>
-            <form action="/users/login" method="POST">
+            <form action="/users/login" method="POST" id="login_form">
                 <div class="div-campo-datos">
                     <label for="email">E-mail</label>
                     <div class="campo-datos">
                         <i class="fas fa-envelope"></i>
                         <input type="email" name="email" id="email" class="campo-datos-type">
                     </div>
-                    <div class="create-validation-errors" id="email_error">
-
+                    <div class="create-validation-errors" id="email_error" <% if (typeof errormsg != 'undefined') { %>
+                        style="visibility: visible" <% } %>>
                         <%=typeof errors.email != 'undefined' ?  errors.email.msg : ''%>
-                    </div>
+                        <%=typeof errormsg != 'undefined' ?  errormsg : ''%>
+                </div>
                 </div>
                     
                 <div class="div-campo-datos">       
