@@ -112,8 +112,8 @@ window.addEventListener('load', function() {
             .then(dataDecode => {
                 let register = dataDecode.email;
                 if (register) {
-                    emailNewPassErrors.innerHTML = `<small>El email ingresado ya se encuentra registrado</small>`
-                    emailNewPassErrors.style.visibility = 'visible'
+                    emailError.innerHTML = `<small>El email ingresado ya se encuentra registrado</small>`
+                    emailError.style.visibility = 'visible'
                     i++
                 }
             })
