@@ -20,19 +20,19 @@ window.addEventListener('load', () => {
     
 
 
-    window.addEventListener('blur', () =>{ 
+    email.addEventListener('blur', () =>{ 
         let emailCheck = regexEmail.test(email.value)
         if(emailCheck){
             emailError.innerHTML = ""
             emailError.style.visibility = 'hidden'
         } else {
-            emailError.innerHTML = "<small>El email ingresado no corresponde con un email válido</small>"
+            emailError.innerHTML = "<small>El formato del email es incorrecto</small>"
             emailError.style.visibility = 'visible'
         }
         })
     
-    window.addEventListener('blur' ,() =>{
-        /* let passwordCheck = regexPassword.match(password.value) */
+    password.addEventListener('blur' ,() =>{
+        
         if(password.value.match(regexPassword)){
             passwordError.innerHTML = ""
             passwordError.style.visibility = 'hidden'
