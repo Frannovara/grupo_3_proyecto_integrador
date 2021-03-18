@@ -66,7 +66,7 @@ window.addEventListener('load', function(){
         }
     })
     discount.addEventListener('blur', function(){
-        if (Number.isInteger(Number(discount.value)) && Number(discount.value) > 0) {
+        if (Number.isInteger(Number(discount.value)) && Number(discount.value) >= 0) {
             discountError.innerHTML = ``
             discountError.style.visibility = "hidden"
         } else {
@@ -133,7 +133,7 @@ window.addEventListener('load', function(){
             priceError.style.visibility = "visible"
             i++
         }
-        if (!Number.isInteger(Number(discount.value)) || Number(discount.value) <= 0) {
+        if (!Number.isInteger(Number(discount.value)) || Number(discount.value) < 0) {
             discountError.innerHTML = `<small>Debe ingresar un valor de descuento</small>`
             discountError.style.visibility = "visible"
             i++
