@@ -8,7 +8,7 @@ module.exports = {
     check('password').isLength({min:1}).withMessage('Este campo es obligatorio').isLength( {
         min:8
     }).withMessage('La contraseña debe tener 8 caracteres como mínimo y al menos una minúscula, una mayúscula y un número')
-    .matches(/((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W]).{8,64})/g, "i").withMessage('La contraseña debe tener 8 caracteres como mínimo y al menos una minúscula, una mayúscula y un número'),
+    .matches(/((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W]).{8,64})/, "i").withMessage('La contraseña debe tener 8 caracteres como mínimo y al menos una minúscula, una mayúscula y un número'),
     check('re_password').isLength({min:1}).withMessage('Este campo es obligatorio')
     .custom((value,{req, loc, path}) => {
         if (value !== req.body.password) {
