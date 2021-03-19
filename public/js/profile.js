@@ -95,7 +95,7 @@ window.addEventListener('load', function(){
         if( i == 0 ) {
             swal("Exito","La contraseña fue modificada con éxito","success")
             .then(()=>{
-                form.submit()
+                passwordForm.submit()
             })
         }
     })
@@ -177,7 +177,7 @@ window.addEventListener('load', function(){
         if( i == 0 ) {
             swal("Exito","El usuario fue registrado con éxito","success")
             .then(()=>{
-                form.submit()
+                editForm.submit()
             })
         }
     })

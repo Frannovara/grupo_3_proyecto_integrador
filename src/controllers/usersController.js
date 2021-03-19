@@ -114,7 +114,6 @@ const controladorUsuarios = {
         })
         .then( user => {
             let errors
-            console.log(errors);
             res.render('./users/profile', {user, errors, title: 'Perfil -'})
         })
         .catch(err => {
@@ -238,14 +237,16 @@ const controladorUsuarios = {
     changePassword: (req,res) => {
         let password_errors = validationResult(req)
         if (password_errors.isEmpty()) {
+            console.log(req.body);
             db.Users.update({
                 password: bcrypt.hashSync(req.body.password, 10),
             }, {
                 where: {
-                    id: req.session.id
+                    id: req.session.user.id
                 }
             })
-            .then(passwordChanged => {
+            .then( userUpdate => {
+                console.log(userUpdate);
                 return res.redirect('/users/profile')
             })
             .catch(err => {

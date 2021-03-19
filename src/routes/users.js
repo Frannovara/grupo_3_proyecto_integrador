@@ -30,7 +30,7 @@ router.post('/register', registerValidator.register ,usersController.saveUser)
 router.get('/profile', userMiddleware.userToLogin, usersController.profile)
 router.put('/profile/:id',  registerValidator.edit , usersController.editUser)
 router.put('/profileimage', upload.any(), usersController.profileImage)
-router.put('/newpassword', registerValidator.changePassword , usersController.changePassword)
+router.put('/changepassword', registerValidator.changePassword , usersController.changePassword)
 
 router.delete('/delete/:id', usersController.deleteUser)
 router.get('/logout', usersController.logout)
