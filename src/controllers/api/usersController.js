@@ -26,12 +26,13 @@ const controller = {
         db.Users.findAll()
         .then(users =>{
             
-            users = users.map(user => user = {id : user.id , first_name : user.first_name , last_name : user.last_name , email : user.email })
+            users = users.map(user => user = {id : user.id , first_name : user.first_name , last_name : user.last_name , email : user.email , detail : `/api/users/${user.id}`})
 
             let usersResponse= {
                 meta : {
                     status : 200,
-                    count : users.length
+                    count : users.length,
+                    url : "/api/users"
                 },
                 data : users
             }
