@@ -39,11 +39,21 @@ const controller = {
             
             res.json(usersResponse)
         })     
-            
+    },
+    description : (req , res)=>{
+        db.Users.findAll({
+            where : [{
+                id : req.params.id
+            }]
+        })
+        .then(result => {
+            res.json(result)
+        })
+    }        
             
 
        
-    }
+    
 }
 
 module.exports = controller
