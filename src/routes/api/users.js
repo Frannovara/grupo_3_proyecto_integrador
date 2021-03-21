@@ -4,5 +4,6 @@ const usersController = require ('../../controllers/api/usersController');
 
 /**** LIST OF ALL EMAILS REGISTER ****/
 router.get('/:email', usersController.emailRegistered)
+router.get('/' , usersController.list)
 
 module.exports = router
