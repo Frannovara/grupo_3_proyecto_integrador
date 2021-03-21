@@ -46,8 +46,21 @@ const controller = {
                 id : req.params.id
             }]
         })
-        .then(result => {
-            res.json(result)
+        .then(user => {
+            user = user.map(user => user = {id : user.id , first_name : user.first_name , last_name : user.last_name , email : user.email , image : user.profile_image }) 
+
+            let userResponse= {
+                meta : {
+                    status : 200,
+                    
+                    url : `/api/users/${req.params.id}`
+                },
+                data : user
+            }
+           
+           res.json(userResponse)
+           
+            
         })
     }        
             
