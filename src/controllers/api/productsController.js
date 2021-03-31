@@ -59,5 +59,124 @@ module.exports = {
             console.log(error);
             res.render(dbError)
         })
+    },
+    productDetail: (req, res) => {
+        db.Products.findByPk(req.params.id, {
+            include: [{
+                association: 'brand'
+            }, {
+                association: 'categories'
+            }, {
+                association: 'colors'
+            }]
+        })
+        .then( product => {
+            product.colors.map(image => image.Images.image = '/api/products/image/' + product.id + '/' + image.id)
+
+            let productResponse = {
+                "meta": {
+                    "status": 200,
+                    "url": "/api/products/" + req.params.id
+                },
+                "data": product
+            }
+            return res.json(productResponse)
+        })
+    },
+    products: async function(req, res) {
+        let products
+        let categories
+        let countByCategory = {}
+
+        let page = 1
+        let productsPerPage = 10
+        if(req.params.page) {
+            page = parseInt(req.params.page) + 1
+        }
+        
+        try {
+            products = await db.Products.findAndCountAll({
+                include: [{
+                    association: 'brand'
+                }],
+                limit: productsPerPage,
+                offset: (page-1)*productsPerPage
+            })
+            categories = await db.Product_categories.findAll()
+            for (const category of categories) {
+                let categorySum
+                try {categorySum = await db.Products.count({
+                    where: {
+                        category_id: category.dataValues.id
+                    }
+                })}
+                catch (error) {
+                    return res.status(404).json({
+                        error,
+                        message: 'Error de Base de Datos'
+                    })
+                }
+                countByCategory[category.dataValues.name] = categorySum
+            }
+        } catch (error) {
+            return res.status(404).json({
+                error,
+                message: 'Error de Base de Datos'
+            })
+        }
+        let productsCount = products.count
+        products = products.rows
+        products = products.map( product => product = {id: product.id, name: product.name, description: product.description, brand: product.brand, detail: '/products/'+product.id})
+
+        let previous
+        if( page > 1 ) {
+            let previouspage = parseInt(page) - 2
+            if(previouspage == 0){
+                previous = '/api/products/list/'
+            } else {
+            previous = '/api/products/list/' + previouspage
+            }
+        } else {
+            previous = ''
+        }
+
+        let maxpage = Math.ceil(productsCount / productsPerPage)
+        let next
+        if( page < maxpage ) {
+            next = '/api/products/list/' + page
+        } else {
+            next = ''
+        }
+
+        let productsResponse = {
+            "meta": {
+                "status": 200,
+                "count": productsCount,
+                "countByCategory": countByCategory,
+                "previous": previous,
+                "next": next,
+            },
+            "data": {
+                "products": products
+            }
+        }
+        return res.json(productsResponse)
+    
+    },
+    image: async (req, res) => {
+        let product = await db.Products.findByPk(req.params.id, {
+            include: [{association: 'colors'}]
+        })
+        let image
+        for (const color of product.colors) {
+            if( color.id == req.params.color) {
+                image = `
+                <img class="imagen-moto" id="bike<%= i %>"
+                    src="/images/products/${color.Images.image}"
+                    alt="/images/products/${color.Images.image}">
+                `
+            }
+        }
+        return res.send(image)
     }
 }
