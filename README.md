@@ -31,8 +31,8 @@
 
 ## Usuarios de prueba
 #### Si bien hay una base de datos de usuarios, los usuarios de prueba utilizados son los siguientes:
-##### Usuario administrador ==> email: admin@prueba.com  password: admin1234
-##### Usuario administrador ==> email: user@prueba.com  password: user1234
+##### Administrador ==> email: motorbikezone007@gmail.com password: Admin@1234
+##### Usuario ==> password: User@1234
 
 ## IMPORTANTE: en el archivo app.js se encuentran comentadas las líneas que redirigen a la página de Error 404, para poder entender los errores que estamos teniendo, y poder hacer el debug de los mismos.
 
