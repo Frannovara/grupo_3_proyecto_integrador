@@ -305,10 +305,11 @@ const controladorProductos = {
     },
     edit: (req, res, next) => {
         const productToEdit = products.find(item => item.id == req.params.id);
+        let requestProductEdit = db.Products.findByPk(req.params.id);
         res.render('./products/edit', {
             productToEdit,
             title: 'Edit ' + productToEdit.name
-        })
+        })//.then( user => ... )
     },
     update: (req, res) => {
         console.log(req.body)
