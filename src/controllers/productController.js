@@ -304,10 +304,23 @@ const controladorProductos = {
 
     },
     edit: (req, res, next) => {
-        const productToEdit = products.find(item => item.id == req.params.id);
+
+        let requestBrands = db.Brands.findAll()
+        let requestCategories = db.Product_categories.findAll()
+        let requestColors = db.Colors.findAll()
+
+        let requestProductToEdit = db.Products.findByPk(req.params.id)
+        Promise.all([requestBrands, requestCategories, requestColors, requestProductToEdit])
+        .then(([brands, categories, colors, productToEdit]) =>
         res.render('./products/edit', {
+            brands,
+            categories,
+            colors,
             productToEdit,
             title: 'Edit ' + productToEdit.name
+        })).catch(err => {
+            console.log(err);
+            res.render('dbError')
         })
     },
     update: (req, res) => {
