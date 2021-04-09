@@ -6,6 +6,8 @@ const logger = require('morgan');
 const methodOverride = require('method-override');
 const session = require ('express-session');
 const authentication = require ('./middlewares/authentication')
+const cors = require ('cors')
+
 
 
 const app = express();
@@ -18,6 +20,7 @@ app.use(express.static(path.join(__dirname, '../public')));
 app.use(methodOverride('_method'));
 app.use (session ({secret: "secreto", resave: false , saveUninitialized: true}));
 app.use(authentication)
+app.use(cors())
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
