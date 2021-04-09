@@ -309,9 +309,9 @@ const controladorProductos = {
         let requestCategories = db.Product_categories.findAll()
         let requestColors = db.Colors.findAll()
 
-        db.Products.findByPk(req.params.id)
-        Promise.all([requestBrands, requestCategories, requestColors])
-        .then(([brands, categories, colors]), productToEdit =>
+        let productToEdit = db.Products.findByPk(req.params.id)
+        Promise.all([requestBrands, requestCategories, requestColors, requestProductToEdit])
+        .then(([brands, categories, colors, productToEdit]) =>
         res.render('./products/edit', {
             brands,
             categories,
