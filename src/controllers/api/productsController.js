@@ -129,7 +129,7 @@ module.exports = {
         }
         let productsCount = products.count
         products = products.rows
-        products = products.map( product => product = {id: product.id, name: product.name, description: product.description, brand: product.brand, detail: '/products/'+product.id})
+        products = products.map( product => product = {id: product.id, name: product.name, description: product.description, brand: product.brand.name, detail: 'http://localhost:3001/products/'+product.id})
 
         let previous
         if( page > 1 ) {
