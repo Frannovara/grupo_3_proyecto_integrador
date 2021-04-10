@@ -100,7 +100,10 @@ module.exports = {
                     association: 'brand'
                 }],
                 limit: productsPerPage,
-                offset: (page-1)*productsPerPage
+                offset: (page-1)*productsPerPage,
+                order: [
+                    ['updated_at', 'DESC']
+                ]
             })
             categories = await db.Product_categories.findAll()
             for (const category of categories) {
