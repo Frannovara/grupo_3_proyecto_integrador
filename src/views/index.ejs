@@ -4,13 +4,22 @@
     <body>
         <div class="body-content">
             <%- include('partials/header') %>
-            <div>
-                <img class="div-imagen-home" src="/images/imagen-banner-homepage.jpg" alt="img-home">
+
+            <div id="image-slider" class="splide">
+                <div class="splide__track">
+                    <ul class="splide__list">
+                        <li class="splide__slide">
+                            <img class="div-imagen-home" src="/images/imagen-banner-homepage.jpg" alt="img-home">
+                        </li>
+                        <li class="splide__slide">
+                            <img class="div-imagen-home" src="/images/imagen-banner-payments.jpg" alt="img-payment">
+                        </li>
+                    </ul>
+                </div>
             </div>
 
             <div class="listado-categorias">
                 <h4><a class="listado-categorias-link" href="http://localhost:3001/products/?search=all&buscador=">Todos los productos</a></h4>
-
             </div>
 
             <% if (typeof lastViews != 'undefined') { %>
@@ -56,6 +65,13 @@
                 </section>
             </div>  
             <script src="/js/productList.js"></script>
+            <script>
+                new Splide( '.splide', {
+                    type    : 'loop',
+                    perPage : 1,
+                    autoplay: true,
+                } ).mount();
+            </script>
         </div>
         <%- include('partials/footer') %>
     </body>
