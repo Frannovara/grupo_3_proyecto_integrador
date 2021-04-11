@@ -295,12 +295,12 @@ const controladorProductos = {
                 }]
             })
             .then(usersCart => {
-                //console.log(usersCart);
+                console.log(usersCart);
                 //return res.send(usersCart)
                 if (usersCart != null && usersCart.item.length != 0) {
                     db.Cart_product.sum('subtotal', {
                             where: {
-                                cart_id: usersCart.id
+                                sale_id: usersCart.id
                             }
                         })
                         .then((total) => {
@@ -309,6 +309,7 @@ const controladorProductos = {
                             res.render('./products/cart', {
                                 usersCart,
                                 total,
+                                toThousand,
                                 title: 'Carrito -'
                             })
                         })
@@ -320,6 +321,7 @@ const controladorProductos = {
                     let total
                     res.render('./products/cart', {
                         total,
+                        toThousand,
                         title: 'Carrito -'
                     })
                 }
@@ -416,12 +418,13 @@ const controladorProductos = {
                 db.Cart_product.findOne({
                         where: {
                             product_id: product.id,
-                            cart_id: userCart[0].id
+                            sale_id: userCart[0].id
                         }
                     })
                     .then(item => {
 
                         if (item != null) {
+                            console.log('Por acá');
                             db.Cart_product.update({
                                     units: item.units + 1,
                                     subtotal: (item.units + 1) * product.final_price
@@ -432,7 +435,7 @@ const controladorProductos = {
                                 })
 
                                 .then(() => {
-                                    res.redirect('/products/cart')
+                                    return res.redirect('/products/cart')
                                     //res.send(userCart)
                                 })
                                 .catch(err => {
@@ -441,27 +444,16 @@ const controladorProductos = {
                                     })
 
                         } else {
-
+                            console.log('Por B');
                             db.Cart_product.create({
                                     units: 1,
                                     subtotal: product.final_price,
                                     product_id: product.id,
-                                    cart_id: userCart[0].id
+                                    sale_id: userCart[0].id
                                 })
 
                                 .then(() => {
-                                    res.redirect('/products/cart')
-                                    //res.send(userCart)
-                                })
-
-                                /* userCart.addItem(product.id , {
-                                  through: {
-                                    units: 1,
-                                    subtotal: product.final_price,
-                                  }
-                                }) */
-                                .then(() => {
-                                    res.redirect('/products/cart')
+                                    return res.redirect('/products/cart')
                                     //res.send(userCart)
                                 })
                                 .catch(err => {
@@ -500,7 +492,7 @@ const controladorProductos = {
                 db.Cart_product.findOne({
                         where: {
                             product_id: req.params.id,
-                            cart_id: userCart.id
+                            sale_id: userCart.id
                         }
                     })
                     .then(item => {
@@ -510,7 +502,7 @@ const controladorProductos = {
                             }, {
                                 where: {
                                     product_id: req.params.id,
-                                    cart_id: userCart.id
+                                    sale_id: userCart.id
                                 }
                             })
 
@@ -551,7 +543,7 @@ const controladorProductos = {
                 db.Cart_product.findOne({
                         where: {
                             product_id: req.params.id,
-                            cart_id: userCart.id
+                            sale_id: userCart.id
                         }
                     })
                     .then(item => {
@@ -560,7 +552,7 @@ const controladorProductos = {
                             db.Cart_product.destroy({
                                     where: {
                                         product_id: req.params.id,
-                                        cart_id: userCart.id
+                                        sale_id: userCart.id
                                     }
                                 })
                                 .then(() => {
@@ -577,7 +569,7 @@ const controladorProductos = {
                                 }, {
                                     where: {
                                         product_id: req.params.id,
-                                        cart_id: userCart.id
+                                        sale_id: userCart.id
                                     }
                                 })
 
