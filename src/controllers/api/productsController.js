@@ -135,9 +135,9 @@ module.exports = {
         if( page > 1 ) {
             let previouspage = parseInt(page) - 2
             if(previouspage == 0){
-                previous = '/api/products/list/'
+                previous = 'http://localhost:3001/api/products/list/'
             } else {
-            previous = '/api/products/list/' + previouspage
+            previous = 'http://localhost:3001/api/products/list/' + previouspage
             }
         } else {
             previous = ''
@@ -146,7 +146,7 @@ module.exports = {
         let maxpage = Math.ceil(productsCount / productsPerPage)
         let next
         if( page < maxpage ) {
-            next = '/api/products/list/' + page
+            next = 'http://localhost:3001/api/products/list/' + page
         } else {
             next = ''
         }
