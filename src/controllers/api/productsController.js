@@ -6,7 +6,7 @@ module.exports = {
     categories: (req, res) => {
         db.Product_categories.findAll()
         .then(categories => {
-            categories = categories.map( category => category = { id: category.id ,name: category.name})
+            categories = categories.map( category => category = { id: category.id ,name: category.name, url: "http://localhost:3001/products/?search=category&buscador="+ category.name})
             let categorias = {
                 "meta": {
                     "status": 200,
