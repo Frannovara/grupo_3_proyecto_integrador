@@ -23,7 +23,7 @@
                                     <!-- Este for each recibe la búsqueda de los colores que tiene este producto, y crea los círculos con los colores.  -->
 
                                     <% for( let i = 0; i < productToShow.colors.length; i++ ) { %>
-                                    <button class="dot" id="button<%= i%>"
+                                    <button class="dot color-dot" id="button<%= i%>"
                                         style="background-color: <%= productToShow.colors[i].name %>"></button>
                                     <% } %>
                                     <% if (locals.user.category_id == 1) { %>

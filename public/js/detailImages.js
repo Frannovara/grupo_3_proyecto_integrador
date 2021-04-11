@@ -6,12 +6,12 @@ window.addEventListener('load', function() {
         return document.querySelectorAll(text)
     }
 
-    let colorButtons = qsa('.dot')
+    let colorButtons = qsa('.color-dot')
     let images = []
     for (let i = 0; i < colorButtons.length; i++) {
         images[i] = document.getElementById('bike'+i)
     }
-    for (let i = 0; i < colorButtons.length-1; i++) {
+    for (let i = 0; i < colorButtons.length; i++) {
         colorButtons[i].addEventListener('click', () => {
             for (let j = 0; j < images.length; j++) {
                 if (i == j) {
