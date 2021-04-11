@@ -5,7 +5,8 @@ module.exports = {
     "username": process.env.USERNAME_DB,
     "password": process.env.PASSWORD_DB,
     "database": process.env.NAME_DB,
-    "host": "127.0.0.1",
+    "port": process.env.PORT_DB,
+    "host": process.env.HOST_DB,
     "dialect": "mysql",
     "operatorsAliases": false,
     "logging": false, /* No muestra las queries en la consola */
