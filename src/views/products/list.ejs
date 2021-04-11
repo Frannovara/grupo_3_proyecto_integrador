@@ -15,15 +15,15 @@
             <% if (typeof productsSearched != 'undefined') { %>
                 <% productsSearched.forEach(product => { %>
                     <article class="article-home" >
-                        <a href="/products/<%= product.id %> " class="product-detail"> 
+                        <a href="/products/<%= product.product_id %> " class="product-detail"> 
                             <div class="div-img1">
                                 <img class="img1" src= "/images/products/<%= product.colors[0].Images.image%>"  alt= "<%= product.name %>"  >
                             </div>
-                            <p class="p-home"> $<%= toThousand(product.final_price) %> <%= product.name %> 
-                                            <br>
-                                <%= product.year %>  | <%= product.kms %> . </p>
+                            <p class="p-home">  <%= product.name %> <br>
+                            $<%= toThousand(product.final_price) %> - <%= product.year %> </p>
                         </a>
                     </article>
+                    
                 <% }) %>
             <% } %>
                                 
