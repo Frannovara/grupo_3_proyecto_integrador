@@ -8,6 +8,11 @@
                 <img class="div-imagen-home" src="/images/imagen-banner-homepage.jpg" alt="img-home">
             </div>
 
+            <div class="listado-categorias">
+                <h4><a class="listado-categorias-link" href="http://localhost:3001/products/?search=all&buscador=">Todos los productos</a></h4>
+
+            </div>
+
             <% if (typeof lastViews != 'undefined') { %>
                 <div class="div-ofertas">
                     <h3>TUS ÚLTIMAS VISITAS</h3> 
@@ -50,6 +55,7 @@
                     <% }) %>                    
                 </section>
             </div>  
+            <script src="/js/productList.js"></script>
         </div>
         <%- include('partials/footer') %>
     </body>
