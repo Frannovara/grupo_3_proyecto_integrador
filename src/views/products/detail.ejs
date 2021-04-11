@@ -47,12 +47,13 @@
                                     </div>
                                     <div class="detail-info-content">
                                         <% if (productToShow.discount == 0) { %>
-                                        <p><strong>Precio:</strong> $<%= productToShow.final_price %></p>
+                                        <p><strong>Precio:</strong> $<%= toThousand(productToShow.final_price) %></p>
                                         <% } else { %>
                                         <p><strong>Precio:</strong> <small
-                                                class="precio-tachado">$<%= productToShow.base_price %> </small>
-                                            $<%= productToShow.final_price %> <small
-                                                class="product-discount"><%= productToShow.discount %>%</small></p>
+                                                class="precio-tachado">$<%= toThousand(productToShow.base_price) %> </small>
+                                                <small class="product-discount"><%= productToShow.discount %>%</small>
+                                            $<%= toThousand(productToShow.final_price) %> 
+                                        </p>
                                         <% } %>
                                     </div>
                                     <p><strong>Descripción:</strong> <%= productToShow.description %> </p>
