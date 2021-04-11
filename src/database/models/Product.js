@@ -79,7 +79,7 @@
             as: 'buying_cart',
             through: 'Cart_product',
             foreignKey: 'product_id',
-            otherKey: 'cart_id',
+            otherKey: 'sale_id',
             timestamps: true,
             createdAt: 'created_at',
             updatedAt: 'updated_at',
