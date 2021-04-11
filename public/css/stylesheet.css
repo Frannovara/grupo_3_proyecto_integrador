@@ -438,19 +438,21 @@ input:focus {
 .carrito-compras{
     display: flex;
     flex-direction: column;
-    
+    justify-content: center;
+    align-items: center;
 }
 .carrito-vacio {
     text-align: center;
 }
+.cart-table {
+    width: 80%;
+    margin-top: 20px;
+}
 .productos-carrito-div{
-    display: flex;
     background-color: white;
-    justify-content: space-between;
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
     border-bottom: solid 2px #265277;
-    margin: 6% 2% 0 2%;
     color: #173650;
 }
 .section1 {
@@ -458,45 +460,38 @@ input:focus {
 }
 /*Color gris para las letras del carrito*/
 
-.producto-listado{
-    margin-left: 3%;
-    width: 45%;
-}
-.precio-unitario{
-    width: 18%;
-    text-align: center;
-    font-size: small;
-}
-.cantidad-listado{
-    width: 18%;
-    text-align: center;
-    font-size: small;
-}
+
+
 .subtotal-listado{
     margin-right: 2%;
     font-size: small;
 }
 .productos-en-carrito{
-    display: flex;
-    justify-content: space-between;
     background-color: white;
-    margin: 0 2%;
     border-bottom: #265277 solid 1px;
     color: rgb(85, 83, 83);
+}
+td {
+    border-bottom: #265277 solid 1px;
+}
+td, th {
+    text-align: center;
+}
+.table-head {
+    border-bottom: #265277 solid 2px;
+}
+.table-footer {
+    border-top: #265277 solid 2px;
 }
 
 .motos-carrito{
     margin-left: 3%;
     width: 45%;
 }
-.precio-numeros{
-    width: 18%;
-    text-align: center;
-}
+
 .cantidad-carrito {
     display: flex;
     align-items: center;
-    width: 18%;
     justify-content: center;
 }
 .cantidad-numeros{
@@ -508,13 +503,10 @@ margin-right: 2%;
 align-self: flex-end;
 }
 .total-carrito{
-display: flex;
-justify-content: space-between;
 border-bottom-left-radius: 8px;
 border-bottom-right-radius: 8px;
 background-color: white;
 border-top: #265277 solid 2px;
-margin: 0 2% 1% 2%;
 color: rgb(85, 83, 83);
 }
 .total-listado{
@@ -1011,55 +1003,30 @@ margin-left: 5px;
    
     /*Desde aca se arma el listado de productos en carrito de compras*/
     .productos-carrito-div{
-        display: flex;
-        justify-content: space-between;
         border-top-left-radius: 8px;
         border-top-right-radius: 8px;
-        margin: 6% 2% 0 2%;
         color: #173650;
     }
     /*Color gris para las letras del carrito*/
 
 
     
-    .precio-unitario{
-        
-        font-size: medium;
-    }
-    .cantidad-listado{
-        font-size: medium;
-    }
     .subtotal-listado{
         font-size: medium;
     }
     .productos-en-carrito{
-        display: flex;
-        justify-content: space-between;
         background-color: white;
-        margin: 0 2%;
         border-bottom: #265277 solid 1px;
         color: rgb(85, 83, 83);
     }
-
-
-    
     .cantidad-carrito {
         display: flex;
         align-items: center;
-        width: 18%;
         justify-content: center;
     }
-   
     .cantidad-numeros{
         margin-right: 1px;
     }
-    
-    .total-carrito{
-        display: flex;
-        justify-content: space-between;
-    }
-    
-    
 
     .flechas-cantidad {
         display: flex;
