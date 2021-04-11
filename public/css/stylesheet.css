@@ -180,7 +180,24 @@ input:focus {
         align-items: center;
         justify-content: center;
     }
-    
+    .listado-categorias{
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    .listado-categorias-link {
+        text-decoration: none;
+        display: flex;
+        justify-content: center;
+        height: 200px;
+        align-items: center;
+        text-align: center;
+        width: 200px;
+        background-color: #ffffff;
+        margin: 20px;
+        color: #04233b;
+    }
+
     /* Diseño de los formularios de login y registro */
     .login-form {
         color: #265277;
