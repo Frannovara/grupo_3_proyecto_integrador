@@ -31,16 +31,21 @@ const controladorProductos = {
 
                 })
                 .then(productsSearched => {
-                    console.log(productsSearched);
-
-                    //res.send(productsSearched)
+                    if(productsSearched.length > 0) {
                     res.render('./products/list', {
                         productsSearched,
                         toThousand,
-                        title: req.query.buscaror + ' -'
+                        title: "Resultados de " + req.query.buscador + ' -'
                     })
-
-
+                    } else {
+                        let emptySearch = true
+                                res.render('./products/list', {
+                                    searched,
+                                    search_category,
+                                    emptySearch,
+                                    title: "Resultados de " + req.query.buscador + ' -'
+                                })
+                    }
                 })
                 .catch(err => {
                     console.log(err);
@@ -55,6 +60,7 @@ const controladorProductos = {
                     }
                 })
                 .then(brandSearched => {
+                    if(brandSearched) {
                     db.Products.findAll({
                             where: {
                                 brand_id: brandSearched.id
@@ -77,7 +83,7 @@ const controladorProductos = {
                                 res.render('./products/list', {
                                     productsSearched,
                                     toThousand,
-                                    title: req.query.buscaror + ' -'
+                                    title: "Resultados de " + req.query.buscador + ' -'
                                 })
                             } else {
                                 let emptySearch = true
@@ -85,7 +91,7 @@ const controladorProductos = {
                                     searched,
                                     search_category,
                                     emptySearch,
-                                    title: req.query.buscaror + ' -'
+                                    title: "Resultados de " + req.query.buscador + ' -'
                                 })
                             }
                         })
@@ -93,6 +99,15 @@ const controladorProductos = {
                                 console.log(err);
                                 res.render('dbError')
                             })
+                        } else {
+                            let emptySearch = true
+                                    res.render('./products/list', {
+                                        searched,
+                                        search_category,
+                                        emptySearch,
+                                        title: "Resultados de " + req.query.buscador + ' -'
+                                    })
+                        }
                 })
                 .catch(err => {
                     console.log(err);
@@ -107,6 +122,7 @@ const controladorProductos = {
                     }
                 })
                 .then(CategorySearched => {
+                    if (CategorySearched) {
                     db.Products.findAll({
                             where: {
                                 category_id: CategorySearched.id
@@ -130,7 +146,7 @@ const controladorProductos = {
                                 res.render('./products/list', {
                                     productsSearched,
                                     toThousand,
-                                    title: req.query.buscaror + ' -'
+                                    title: "Resultados de " + req.query.buscador + ' -'
                                 })
                             } else {
                                 let emptySearch = true
@@ -138,7 +154,7 @@ const controladorProductos = {
                                     searched,
                                     search_category,
                                     emptySearch,
-                                    title: req.query.buscaror + ' -'
+                                    title: "Resultados de " + req.query.buscador + ' -'
                                 })
                             }
                         })
@@ -146,6 +162,15 @@ const controladorProductos = {
                             console.log(err);
                             res.render('dbError')
                         })
+                    } else {
+                        let emptySearch = true
+                                res.render('./products/list', {
+                                    searched,
+                                    search_category,
+                                    emptySearch,
+                                    title: "Resultados de " + req.query.buscador + ' -'
+                                })
+                    }
                 })
         } else if (req.query.search == 'year') {
             db.Products.findAll({
@@ -173,7 +198,7 @@ const controladorProductos = {
                         res.render('./products/list', {
                             productsSearched,
                             toThousand,
-                            title: req.query.buscaror + ' -'
+                            title: "Resultados de " + req.query.buscador + ' -'
                         })
                     } else {
                         let emptySearch = true
@@ -181,7 +206,7 @@ const controladorProductos = {
                             searched,
                             search_category,
                             emptySearch,
-                            title: req.query.buscaror + ' -'
+                            title: "Resultados de " + req.query.buscador + ' -'
                         })
                     }
                 })
