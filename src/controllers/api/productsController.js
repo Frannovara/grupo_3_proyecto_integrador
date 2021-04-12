@@ -71,12 +71,12 @@ module.exports = {
             }]
         })
         .then( product => {
-            product.colors.map(image => image.Images.image = '/api/products/image/' + product.id + '/' + image.id)
+            product.colors.map(image => image.Images.image = 'http://localhost:3001/api/products/image/' + product.id + '/' + image.id)
 
             let productResponse = {
                 "meta": {
                     "status": 200,
-                    "url": "/api/products/" + req.params.id
+                    "url": "http://localhost:3001/api/products/" + req.params.id
                 },
                 "data": product
             }
