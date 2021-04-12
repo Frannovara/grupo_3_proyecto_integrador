@@ -76,7 +76,8 @@ module.exports = {
             let productResponse = {
                 "meta": {
                     "status": 200,
-                    "url": "http://localhost:3001/api/products/" + req.params.id
+                    "url": "http://localhost:3001/api/products/" + req.params.id,
+                    "urlDetail": "http://localhost:3001/products/" + req.params.id,
                 },
                 "data": product
             }
