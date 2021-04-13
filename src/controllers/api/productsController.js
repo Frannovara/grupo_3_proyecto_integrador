@@ -99,6 +99,8 @@ module.exports = {
             products = await db.Products.findAndCountAll({
                 include: [{
                     association: 'brand'
+                }, {
+                    association: 'colors'
                 }],
                 limit: productsPerPage,
                 offset: (page-1)*productsPerPage,
@@ -130,7 +132,7 @@ module.exports = {
         }
         let productsCount = products.count
         products = products.rows
-        products = products.map( product => product = {id: product.id, name: product.name, description: product.description, brand: product.brand.name, detail: 'http://localhost:3001/products/'+product.id})
+        products = products.map( product => product = {id: product.id, name: product.name, description: product.description, brand: product.brand.name, detail: 'http://localhost:3001/products/'+product.id, image: 'http://localhost:3001/images/products/' + product.colors[0].Images.image})
 
         let previous
         if( page > 1 ) {
@@ -166,21 +168,5 @@ module.exports = {
         }
         return res.json(productsResponse)
     
-    },
-    image: async (req, res) => {
-        let product = await db.Products.findByPk(req.params.id, {
-            include: [{association: 'colors'}]
-        })
-        let image
-        for (const color of product.colors) {
-            if( color.id == req.params.color) {
-                image = `
-                <img class="imagen-moto" id="bike<%= i %>"
-                    src="/images/products/${color.Images.image}"
-                    alt="/images/products/${color.Images.image}">
-                `
-            }
-        }
-        return res.send(image)
     }
 }
