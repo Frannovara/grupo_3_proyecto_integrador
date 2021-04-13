@@ -63,7 +63,7 @@ window.addEventListener('load', function() {
             passwordError.innerHTML =""
             passwordError.style.visibility = 'hidden'
         } else {
-            passwordError.innerHTML = "<small>La contraseña debe tener al menos un número, una mayúscula, una mínuscula y 8 caracteres</small>"
+            passwordError.innerHTML = "<small>La contraseña debe tener al menos un número, una mayúscula, una mínuscula, un caracter especial y 8 caracteres</small>"
             passwordError.style.visibility = 'visible'
         }
     })
@@ -119,7 +119,7 @@ window.addEventListener('load', function() {
             })
         }
         if(!password.value.match(regexPassword)) {
-            passwordError.innerHTML = "<small>La contraseña debe tener al menos un número, una mayúscula, una mínuscula y 8 caracteres</small>"
+            passwordError.innerHTML = "<small>La contraseña debe tener al menos un número, una mayúscula, una mínuscula, un caracter especial y 8 caracteres</small>"
             passwordError.style.visibility = 'visible'
             i++
         }
