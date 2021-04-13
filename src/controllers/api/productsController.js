@@ -71,7 +71,7 @@ module.exports = {
             }]
         })
         .then( product => {
-            product.colors.map(image => image.Images.image = 'http://localhost:3001/api/products/image/' + product.id + '/' + image.id)
+            product.colors.map(image => image.Images.image = 'http://localhost:3001/images/products/' + image.Images.image)
 
             let productResponse = {
                 "meta": {
