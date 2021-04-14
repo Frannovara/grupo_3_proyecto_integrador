@@ -369,13 +369,13 @@ const controladorProductos = {
                 }
             })
             .then(created => {
-                created.addColors(req.body.color, {
+                db.Products.update(req.body.color, {
                     trough: {
                         image: req.files[0].filename
                     }
                 })
 
-                res.send('abc')
+                res.redirect('/')
             })
             .catch(err => {
                     console.log(err);
