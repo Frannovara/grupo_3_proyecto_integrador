@@ -351,7 +351,8 @@ const controladorProductos = {
         })
     },
     update: (req, res) => {
-        console.log(req.body)
+       db.Products.findByPk(req.params.id)
+       .then(result => {
         db.Products.update({
                 name: req.body.name,
                 base_price: req.body.price,
@@ -374,12 +375,13 @@ const controladorProductos = {
                     }
                 })
 
-                res.redirect('/')
+                res.send('abc')
             })
             .catch(err => {
                     console.log(err);
                     res.render('dbError')
                 })
+            })
     },
     buyCart: (req, res) => {
         db.Carts.update({
