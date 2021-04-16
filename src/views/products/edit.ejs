@@ -67,7 +67,9 @@
                             <select name="color" id="color" class="create-form-input">
                                 <option value="A">Seleccione un color</option>
                                 <% colors.forEach(color => { %>
-                                <option value="<%=color.id%>"> <%=color.name%> </option>
+                                    <% if (productColors.includes(color.id)) { %>
+                                        <option value="<%=color.id%>"> <%=color.name%> </option>
+                                    <% } %>
                                 <% }) %>
                             </select>
                             <input type="text" name="color" id="color" value="<%= productToEdit.color %>" class="create-form-input">

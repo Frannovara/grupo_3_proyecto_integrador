@@ -336,23 +336,29 @@ const controladorProductos = {
         let requestCategories = db.Product_categories.findAll()
         let requestColors = db.Colors.findAll()
 
-        let requestProductToEdit = db.Products.findByPk(req.params.id)
+        let requestProductToEdit = db.Products.findByPk(req.params.id, { include: [{association: "colors"}]})
         Promise.all([requestBrands, requestCategories, requestColors, requestProductToEdit])
-        .then(([brands, categories, colors, productToEdit]) =>
-        res.render('./products/edit', {
-            brands,
-            categories,
-            colors,
-            productToEdit,
-            title: 'Edit ' + productToEdit.name
-        })).catch(err => {
+        .then(([brands, categories, colors, productToEdit]) => {
+            
+            let productColors = []
+            for (const color of productToEdit.colors) {
+                productColors.push(color.Images.color_id)
+            }
+            res.render('./products/edit', {
+                brands,
+                categories,
+                colors,
+                productToEdit,
+                productColors,
+                title: 'Edit ' + productToEdit.name
+            })
+        })
+        .catch(err => {
             console.log(err);
             res.render('dbError')
         })
     },
     update: (req, res) => {
-       db.Products.findByPk(req.params.id)
-       .then(result => {
         db.Products.update({
                 name: req.body.name,
                 base_price: req.body.price,
@@ -362,26 +368,39 @@ const controladorProductos = {
                 final_price: req.body.price * (1 - req.body.discount),
                 category_id: req.body.category,
                 brand_id: req.body.brand
-
             }, {
                 where: {
                     id: req.params.id
                 }
             })
             .then(created => {
-                db.Products.update(req.body.color, {
-                    trough: {
-                        image: req.files[0].filename
-                    }
-                })
-
-                res.redirect('/')
+                if (req.files.length == 0) {
+                    res.redirect('/products/'+req.params.id)
+                } else {
+                    db.Images.update({
+                        image: req.files[0].filename,
+                        product_id: created.id,
+                        color_id: req.body.color
+                    }, {
+                        where: {
+                            product_id: req.params.id,
+                            color_id: req.body.color
+                        }
+                    })
+                    .then(() => {
+                        res.redirect('/products/'+req.params.id)
+                    })
+                    .catch(err => {
+                        console.log(err);
+                        res.render('dbError')
+                    })
+                }
             })
             .catch(err => {
                     console.log(err);
                     res.render('dbError')
                 })
-            })
+            
     },
     buyCart: (req, res) => {
         db.Carts.update({
