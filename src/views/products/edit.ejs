@@ -18,7 +18,12 @@
                             <select name="category" id="category" class="create-form-input">
                                 <option value="A">Seleccione una categoría</option>
                                 <% categories.forEach(category => { %>
-                                <option value="<%=category.id%>"><%=category.name%></option>
+                                    <% if (category.id == productToEdit.category_id) { %>
+                                        <option value="<%=category.id%>" selected><%=category.name%></option>
+                                    <% } else { %>
+                                        <option value="<%=category.id%>"><%=category.name%></option>
+                                    <% } %>
+                                
                                 <% }) %>
                             </select>
                         </div class="create-form-element">
@@ -27,13 +32,17 @@
                             <select name="brand" id="brand" class="create-form-input">
                                 <option value="A">Seleccione una marca</option>
                                 <% brands.forEach(brand => { %>
-                                <option value="<%=brand.id%>"><%=brand.name%></option>
+                                    <% if (brand.id == productToEdit.brand_id) { %>
+                                        <option value="<%=brand.id%>" selected><%=brand.name%></option>
+                                    <% } else { %>
+                                            <option value="<%=brand.id%>"><%=brand.name%></option>
+                                    <% } %>
                                 <% }) %>
                             </select>
                         </div>
                         <div class="create-form-element">
                             <label for="price">Precio</label>
-                            <input type="number" class="create-form-input" name="price" id="price" value="<%= productToEdit.price %>">
+                            <input type="number" class="create-form-input" name="price" id="price" value="<%= productToEdit.base_price %>">
                         </div>
                         <div class="create-form-element">
                             <label for="discount">Descuento</label>
