@@ -1,10 +1,7 @@
-const { name } = require('ejs');
-const fs = require('fs');
-const path = require('path');
+
 const nodemailer = require('nodemailer');
 const { Sequelize } = require('../database/models');
 const db = require('../database/models');
-const Views = require('../database/models/Views');
 const Op = Sequelize.Op
 
 const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
@@ -31,8 +28,8 @@ async function main(req) {
 
     let info = await transporter.sendMail({
         from: req.body.email,
-        to: "motorbikezone007@gmail.com",
-        subject: 'Consulta Motor Bike Zone de ' + req.body.name ,
+        to: process.env.MAIL_MBZ,
+        subject: 'Consulta Motor Bike Zone de ' + req.body.name + ' - ' + req.body.email,
         text: req.body.message,
     });
 
