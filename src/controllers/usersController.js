@@ -140,14 +140,14 @@ const controladorUsuarios = {
                         
                     })
                     .then( () => {
-                        req.session.user = {   
+                        /* req.session.user = {   
                             first_name: req.body.first_name,
                             last_name: req.body.last_name,
                             email: req.body.email,
                             password: bcrypt.hashSync(req.body.password, 10),
                         }
-                        res.locals.user = req.session.user
-                        return res.redirect('/users/profile')
+                        res.locals.user = req.session.user */
+                        return res.redirect('/')
                     })
                     .catch(err => {
                     console.log(err);
