@@ -25,7 +25,7 @@ module.exports = {
     "username": 'bd8547fcc3116c',
     "password": 'ad50488e',
     "database": 'heroku_c287edf3bb7864d',
-    "host": '@us-cdbr-east-03.cleardb.com',
+    "host": 'us-cdbr-east-03.cleardb.com',
     "dialect": "mysql"
   }
 }
