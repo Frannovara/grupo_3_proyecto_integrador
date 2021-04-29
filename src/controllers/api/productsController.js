@@ -6,7 +6,7 @@ module.exports = {
     categories: (req, res) => {
         db.Product_categories.findAll()
         .then(categories => {
-            categories = categories.map( category => category = { id: category.id ,name: category.name, url: "http://motorbikezone.harokuapp.com/products/?search=category&buscador="+ category.name})
+            categories = categories.map( category => category = { id: category.id ,name: category.name, url: "http://motorbikezone.herokuapp.com/products/?search=category&buscador="+ category.name})
             let categorias = {
                 "meta": {
                     "status": 200,
@@ -71,13 +71,13 @@ module.exports = {
             }]
         })
         .then( product => {
-            product.colors.map(image => image.Images.image = 'http://motorbikezone.harokuapp.com/images/products/' + image.Images.image)
+            product.colors.map(image => image.Images.image = 'http://motorbikezone.herokuapp.com/images/products/' + image.Images.image)
 
             let productResponse = {
                 "meta": {
                     "status": 200,
-                    "url": "http://motorbikezone.harokuapp.com/api/products/" + req.params.id,
-                    "urlDetail": "http://motorbikezone.harokuapp.com/products/" + req.params.id,
+                    "url": "http://motorbikezone.herokuapp.com/api/products/" + req.params.id,
+                    "urlDetail": "http://motorbikezone.herokuapp.com/products/" + req.params.id,
                 },
                 "data": product
             }
@@ -132,15 +132,15 @@ module.exports = {
         }
         let productsCount = products.count
         products = products.rows
-        products = products.map( product => product = {id: product.id, name: product.name, description: product.description, brand: product.brand.name, detail: 'http://motorbikezone.harokuapp.com/products/'+product.id, image: 'http://motorbikezone.harokuapp.com/images/products/' + product.colors[0].Images.image})
+        products = products.map( product => product = {id: product.id, name: product.name, description: product.description, brand: product.brand.name, detail: 'http://motorbikezone.herokuapp.com/products/'+product.id, image: 'http://motorbikezone.herokuapp.com/images/products/' + product.colors[0].Images.image})
 
         let previous
         if( page > 1 ) {
             let previouspage = parseInt(page) - 2
             if(previouspage == 0){
-                previous = 'http://motorbikezone.harokuapp.com/api/products/list/'
+                previous = 'http://motorbikezone.herokuapp.com/api/products/list/'
             } else {
-            previous = 'http://motorbikezone.harokuapp.com/api/products/list/' + previouspage
+            previous = 'http://motorbikezone.herokuapp.com/api/products/list/' + previouspage
             }
         } else {
             previous = ''
@@ -149,7 +149,7 @@ module.exports = {
         let maxpage = Math.ceil(productsCount / productsPerPage)
         let next
         if( page < maxpage ) {
-            next = 'http://motorbikezone.harokuapp.com/api/products/list/' + page
+            next = 'http://motorbikezone.herokuapp.com/api/products/list/' + page
         } else {
             next = ''
         }
