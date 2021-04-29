@@ -8,22 +8,22 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 
 -- -----------------------------------------------------
--- Schema motorzone_db
+-- Schema heroku_c287edf3bb7864d
 -- -----------------------------------------------------
-DROP SCHEMA IF EXISTS `motorzone_db` ;
+DROP SCHEMA IF EXISTS `heroku_c287edf3bb7864d` ;
 
 -- -----------------------------------------------------
--- Schema motorzone_db
+-- Schema heroku_c287edf3bb7864d
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `motorzone_db` DEFAULT CHARACTER SET utf8 ;
-USE `motorzone_db` ;
+CREATE SCHEMA IF NOT EXISTS `heroku_c287edf3bb7864d` DEFAULT CHARACTER SET utf8 ;
+USE `heroku_c287edf3bb7864d` ;
 
 -- -----------------------------------------------------
--- Table `motorzone_db`.`product_categories`
+-- Table `heroku_c287edf3bb7864d`.`product_categories`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `motorzone_db`.`product_categories` ;
+DROP TABLE IF EXISTS `heroku_c287edf3bb7864d`.`product_categories` ;
 
-CREATE TABLE IF NOT EXISTS `motorzone_db`.`product_categories` (
+CREATE TABLE IF NOT EXISTS `heroku_c287edf3bb7864d`.`product_categories` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
   `created_at` TIMESTAMP NULL,
   `updated_at` TIMESTAMP NULL,
@@ -35,11 +35,11 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `motorzone_db`.`brands`
+-- Table `heroku_c287edf3bb7864d`.`brands`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `motorzone_db`.`brands` ;
+DROP TABLE IF EXISTS `heroku_c287edf3bb7864d`.`brands` ;
 
-CREATE TABLE IF NOT EXISTS `motorzone_db`.`brands` (
+CREATE TABLE IF NOT EXISTS `heroku_c287edf3bb7864d`.`brands` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
   `created_at` TIMESTAMP NULL,
   `updated_at` TIMESTAMP NULL,
@@ -51,11 +51,11 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `motorzone_db`.`products`
+-- Table `heroku_c287edf3bb7864d`.`products`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `motorzone_db`.`products` ;
+DROP TABLE IF EXISTS `heroku_c287edf3bb7864d`.`products` ;
 
-CREATE TABLE IF NOT EXISTS `motorzone_db`.`products` (
+CREATE TABLE IF NOT EXISTS `heroku_c287edf3bb7864d`.`products` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(100) NOT NULL,
   `description` VARCHAR(500) NOT NULL,
@@ -74,23 +74,23 @@ CREATE TABLE IF NOT EXISTS `motorzone_db`.`products` (
   INDEX `brand_id_idx` (`brand_id` ASC) ,
   CONSTRAINT `category_id`
     FOREIGN KEY (`category_id`)
-    REFERENCES `motorzone_db`.`product_categories` (`id`)
+    REFERENCES `heroku_c287edf3bb7864d`.`product_categories` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `brand_id`
     FOREIGN KEY (`brand_id`)
-    REFERENCES `motorzone_db`.`brands` (`id`)
+    REFERENCES `heroku_c287edf3bb7864d`.`brands` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `motorzone_db`.`user_categories`
+-- Table `heroku_c287edf3bb7864d`.`user_categories`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `motorzone_db`.`user_categories` ;
+DROP TABLE IF EXISTS `heroku_c287edf3bb7864d`.`user_categories` ;
 
-CREATE TABLE IF NOT EXISTS `motorzone_db`.`user_categories` (
+CREATE TABLE IF NOT EXISTS `heroku_c287edf3bb7864d`.`user_categories` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
   `created_at` TIMESTAMP NULL,
   `updated_at` TIMESTAMP NULL,
@@ -102,11 +102,11 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `motorzone_db`.`users`
+-- Table `heroku_c287edf3bb7864d`.`users`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `motorzone_db`.`users` ;
+DROP TABLE IF EXISTS `heroku_c287edf3bb7864d`.`users` ;
 
-CREATE TABLE IF NOT EXISTS `motorzone_db`.`users` (
+CREATE TABLE IF NOT EXISTS `heroku_c287edf3bb7864d`.`users` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
   `first_name` VARCHAR(100) NOT NULL,
   `last_name` VARCHAR(100) NOT NULL,
@@ -122,18 +122,18 @@ CREATE TABLE IF NOT EXISTS `motorzone_db`.`users` (
   INDEX `category_id_idx` (`category_id` ASC) ,
   CONSTRAINT `user_category_id`
     FOREIGN KEY (`category_id`)
-    REFERENCES `motorzone_db`.`user_categories` (`id`)
+    REFERENCES `heroku_c287edf3bb7864d`.`user_categories` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `motorzone_db`.`colors`
+-- Table `heroku_c287edf3bb7864d`.`colors`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `motorzone_db`.`colors` ;
+DROP TABLE IF EXISTS `heroku_c287edf3bb7864d`.`colors` ;
 
-CREATE TABLE IF NOT EXISTS `motorzone_db`.`colors` (
+CREATE TABLE IF NOT EXISTS `heroku_c287edf3bb7864d`.`colors` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
   `created_at` TIMESTAMP NULL,
   `updated_at` TIMESTAMP NULL,
@@ -145,11 +145,11 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `motorzone_db`.`images`
+-- Table `heroku_c287edf3bb7864d`.`images`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `motorzone_db`.`images` ;
+DROP TABLE IF EXISTS `heroku_c287edf3bb7864d`.`images` ;
 
-CREATE TABLE IF NOT EXISTS `motorzone_db`.`images` (
+CREATE TABLE IF NOT EXISTS `heroku_c287edf3bb7864d`.`images` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
   `created_at` TIMESTAMP NULL,
   `updated_at` TIMESTAMP NULL,
@@ -163,23 +163,23 @@ CREATE TABLE IF NOT EXISTS `motorzone_db`.`images` (
   INDEX `color_id_idx` (`color_id` ASC) ,
   CONSTRAINT `image_product_id`
     FOREIGN KEY (`product_id`)
-    REFERENCES `motorzone_db`.`products` (`id`)
+    REFERENCES `heroku_c287edf3bb7864d`.`products` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `color_id`
     FOREIGN KEY (`color_id`)
-    REFERENCES `motorzone_db`.`colors` (`id`)
+    REFERENCES `heroku_c287edf3bb7864d`.`colors` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `motorzone_db`.`carts`
+-- Table `heroku_c287edf3bb7864d`.`carts`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `motorzone_db`.`carts` ;
+DROP TABLE IF EXISTS `heroku_c287edf3bb7864d`.`carts` ;
 
-CREATE TABLE IF NOT EXISTS `motorzone_db`.`carts` (
+CREATE TABLE IF NOT EXISTS `heroku_c287edf3bb7864d`.`carts` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
   `total` DECIMAL NULL,
   `user_id` BIGINT NULL,
@@ -192,18 +192,18 @@ CREATE TABLE IF NOT EXISTS `motorzone_db`.`carts` (
   INDEX `user_id_idx` (`user_id` ASC) ,
   CONSTRAINT `user_id`
     FOREIGN KEY (`user_id`)
-    REFERENCES `motorzone_db`.`users` (`id`)
+    REFERENCES `heroku_c287edf3bb7864d`.`users` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `motorzone_db`.`cart_product`
+-- Table `heroku_c287edf3bb7864d`.`cart_product`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `motorzone_db`.`cart_product` ;
+DROP TABLE IF EXISTS `heroku_c287edf3bb7864d`.`cart_product` ;
 
-CREATE TABLE IF NOT EXISTS `motorzone_db`.`cart_product` (
+CREATE TABLE IF NOT EXISTS `heroku_c287edf3bb7864d`.`cart_product` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
   `created_at` TIMESTAMP NULL,
   `updated_at` TIMESTAMP NULL,
@@ -218,23 +218,23 @@ CREATE TABLE IF NOT EXISTS `motorzone_db`.`cart_product` (
   INDEX `sale_id_idx` (`sale_id` ASC) ,
   CONSTRAINT `sale_id`
     FOREIGN KEY (`sale_id`)
-    REFERENCES `motorzone_db`.`carts` (`id`)
+    REFERENCES `heroku_c287edf3bb7864d`.`carts` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `product_id`
     FOREIGN KEY (`product_id`)
-    REFERENCES `motorzone_db`.`products` (`id`)
+    REFERENCES `heroku_c287edf3bb7864d`.`products` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `motorzone_db`.`views`
+-- Table `heroku_c287edf3bb7864d`.`views`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `motorzone_db`.`views` ;
+DROP TABLE IF EXISTS `heroku_c287edf3bb7864d`.`views` ;
 
-CREATE TABLE IF NOT EXISTS `motorzone_db`.`views` (
+CREATE TABLE IF NOT EXISTS `heroku_c287edf3bb7864d`.`views` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
   `user_id` BIGINT NOT NULL,
   `product_id` BIGINT NOT NULL,
@@ -247,12 +247,12 @@ CREATE TABLE IF NOT EXISTS `motorzone_db`.`views` (
   INDEX `views_user_id_idx` (`user_id` ASC) ,
   CONSTRAINT `views_product_id`
     FOREIGN KEY (`product_id`)
-    REFERENCES `motorzone_db`.`products` (`id`)
+    REFERENCES `heroku_c287edf3bb7864d`.`products` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `views_user_id`
     FOREIGN KEY (`user_id`)
-    REFERENCES `motorzone_db`.`users` (`id`)
+    REFERENCES `heroku_c287edf3bb7864d`.`users` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
