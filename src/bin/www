@@ -17,12 +17,7 @@ require('dotenv').config()
 var port = normalizePort(process.env.PORT || '3001');
 app.set('port', port);
 
-const connection = mysql.createConnection({
-  host: '@us-cdbr-east-03.cleardb.com',
-  user: 'bd8547fcc3116c',
-  password: 'ad50488e',
-  database: 'heroku_c287edf3bb7864d'
-})
+
 
 
 /**
