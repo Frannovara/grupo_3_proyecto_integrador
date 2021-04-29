@@ -8,12 +8,22 @@ var app = require('../app');
 var debug = require('debug')('app:server');
 var http = require('http');
 
+require('dotenv').config()
+
 /**
  * Get port from environment and store in Express.
  */
 
 var port = normalizePort(process.env.PORT || '3001');
 app.set('port', port);
+
+const connection = mysql.createConnection({
+  host: '@us-cdbr-east-03.cleardb.com',
+  user: 'bd8547fcc3116c',
+  password: 'ad50488e',
+  database: 'heroku_c287edf3bb7864d'
+})
+
 
 /**
  * Create HTTP server.

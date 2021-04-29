@@ -2,11 +2,11 @@ require('dotenv').config()
 
 module.exports = {
   "development": {
-    "username": process.env.USERNAME_DB,
-    "password": process.env.PASSWORD_DB,
-    "database": process.env.NAME_DB,
+    "username": 'bd8547fcc3116c',
+    "password": 'ad50488e',
+    "database": 'heroku_c287edf3bb7864d',
     "port": process.env.PORT_DB,
-    "host": process.env.HOST_DB,
+    "host": '@us-cdbr-east-03.cleardb.com',
     "dialect": "mysql",
     "operatorsAliases": false,
     "logging": false, /* No muestra las queries en la consola */
