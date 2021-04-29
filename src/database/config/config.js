@@ -6,7 +6,7 @@ module.exports = {
     "password": 'ad50488e',
     "database": 'heroku_c287edf3bb7864d',
     "port": process.env.PORT_DB,
-    "host": '@us-cdbr-east-03.cleardb.com',
+    "host": 'us-cdbr-east-03.cleardb.com',
     "dialect": "mysql",
     "operatorsAliases": false,
     "logging": false, /* No muestra las queries en la consola */
